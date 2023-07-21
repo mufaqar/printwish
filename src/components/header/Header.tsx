@@ -1,6 +1,8 @@
+import { NavLinks, NavLinksType } from '@/const/navlinks'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import Product_Box from '../product-widgets/product-box'
 
 const Header = () => {
   return (
@@ -8,7 +10,7 @@ const Header = () => {
       <header className="shadow-md">
         <nav className="bg-accent">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
-            <Link href="https://flowbite.com" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image src="/images/logo.png" alt="logo" width={100} height={200} />
             </Link>
             <p className='text-xl font-medium uppercase text-white text-center'>
@@ -159,163 +161,46 @@ const Header = () => {
 
           </div>
         </nav>
-        <nav id="megamenu" className="bg-white border-b border-gray-200">
+        <nav id="megamenu" className="bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0">
           <div
-            className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-4 md:px-6">
-            <ul className="col-span-2 md:col-span-1">
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50 ">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Online Stores</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50 ">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Segmentation</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Marketing CRM</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-            <ul className="col-span-2 md:col-span-1">
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Audience Management</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50 ">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Creative Tools</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50 ">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Marketing Automation</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-            <ul className="hidden lg:block">
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50 ">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Dynamic Content</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50 ">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Integrations</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="flex p-3 rounded-lg hover:bg-gray-50">
-                  <svg className="mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                  <div>
-                    <div className="font-semibold">Careers</div>
-                    <span className="text-sm font-light text-gray-500">Connect with
-                      third-party tools that you're already using.</span>
-                  </div>
-                </Link>
-              </li>
-            </ul>
-            <div className="col-span-2 p-4 lg:col-span-1">
-              <h2 className="mb-2 font-semibold text-accent">Our brands</h2>
-              <p className="mb-2 font-light text-gray-500">At JBS Foods, we pride ourselves on a
-                portfolio of brands that cater to a variety of preferences.</p>
-              <Link href="#"
-                className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-600">
-                Explore our brands <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"></path>
-                </svg>
-              </Link>
+            className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
+            <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
+              <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
+                Categories
+              </h6>
+              <ul className='grid gap-2'>
+                {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
+                  return <li key={idx} className="">
+                    <Link href={`/${item.link}`} className="text-xs font-semibold text-accent">
+                      {item.name}
+                    </Link>
+                  </li>
+                })}
+              </ul>
+            </div>
+            <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
+              <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
+                COMPANY
+              </h6>
+              <ul className='grid gap-2'>
+                {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
+                  return <li key={idx} className="">
+                    <Link href={`/${item.link}`} className="text-xs font-semibold text-accent">
+                      {item.name}
+                    </Link>
+                  </li>
+                })}
+              </ul>
+            </div>
+            <div className="col-span-2 md:col-span-3 md:block hidden">
+              <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
+                Featured Products
+              </h6>
+              <div className='grid grid-cols-3 gap-5'>
+                <Product_Box />
+                <Product_Box />
+                <Product_Box />
+              </div>
             </div>
           </div>
         </nav>
