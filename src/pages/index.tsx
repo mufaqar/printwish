@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { useDispatch, useSelector } from 'react-redux'
 import Main_Banner from '@/components/banner/main-banner'
 import Brands_Slider from '@/components/slider/brand-slider'
+import Reviews from '@/components/reviews/reviews'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Main_Banner />
       <Brands_Slider />
+      <Reviews />
     </>
   )
 }
