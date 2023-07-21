@@ -8,8 +8,8 @@
   :root {
     --primary-color: #1F375D;
     --secondary-color: #0088CC;
-    --accent-color: #1D2127;
-    --highlight-color: #7B858A;
+    --accent-color: #1d2127e4;
+    --highlight-color: #cbcbcb;
     --background-color: #F2F2F2;
   }
 }
@@ -58,4 +58,16 @@
   font-family: Roboto;
   src: url('../../public/fonts/Roboto-Regular.ttf');
   font-weight: 400;
+}
+
+/* hide input number arrowa   */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
