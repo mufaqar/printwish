@@ -20,7 +20,7 @@ const Header = () => {
               <ul className='flex gap-2 items-center'>
                 <li>
                   <Link href="telto:08000510821" className='text-sm font-medium text-white hover:text-secondary hover:underline'>
-                    0800 051 0821
+                     0800 051 0821
                   </Link>
                 </li>
                 <li>
