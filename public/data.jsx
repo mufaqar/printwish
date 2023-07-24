@@ -71,7 +71,6 @@ export const Posts = [
           ],
           fabric: "50% Polyester 50% Cotton",
           Weight: "220gsm",
-          SizeDescription: "",
           WashingInstructions: "Washable at 60°C"
      }
 ]
