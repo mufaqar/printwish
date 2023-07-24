@@ -4,6 +4,7 @@ export const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
   const [selectedCustomizedLayout, setSelectedCustomizedLayout] = useState('');
+  const [nameAndNumber, setNameAndNumber] = useState('')
   
 
   return (
@@ -11,6 +12,8 @@ export const SettingsProvider = ({ children }) => {
       value={{
        selectedCustomizedLayout,
        setSelectedCustomizedLayout,
+       nameAndNumber,
+       setNameAndNumber,
       }}
     >
       {children}
