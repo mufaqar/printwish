@@ -10,46 +10,46 @@ const Footer = () => {
       <div className='max-w-screen-xl mx-auto px-4'>
         <div className='grid md:grid-cols-5 grid-cols-1 gap-7'>
           <div>
-            <h6 className='text-xl font-semibold text-accent uppercase mb-3'>
+            <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               About
             </h6>
             <ul className='grid gap-2'>
               <li className="">
-                <span className="text-base font-semibold text-accent flex gap-1">
+                <span className="text-sm font-semibold font-roboto text-accent flex gap-1">
                   <BsPinMapFill size={20} className='text-secondary min-w-[20px]' /> PrintWish:
                   6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS
                 </span>
               </li>
               <li className="">
-                <Link href="telto:08000510821" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="telto:08000510821" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
                   <BsFillTelephoneFill size={20} className='text-secondary min-w-[20px]' /> 0800 051 0821
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeFill size={20} className='text-secondary min-w-[20px]' /> sales@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeFill size={20} className='text-secondary min-w-[20px]' /> enquiries@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeFill size={20} className='text-secondary min-w-[20px]' /> printwish20@gmail.com
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
-              COMPANY
+            <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
+              Categories
             </h6>
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -57,13 +57,13 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
+            <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               HELP CENTER
             </h6>
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(5, 9).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -71,13 +71,13 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
+            <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               LEGAL
             </h6>
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(9, 12).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -85,7 +85,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
+            <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               Socials
             </h6>
             <ul className='flex sm:gap-2 gap-1 items-center'>
@@ -140,7 +140,7 @@ const Footer = () => {
               <Image src="/images/logo.png" alt="logo" width={200} height={200} className='mx-auto' />
             </Link>
           </div>
-          <p className="block text-sm md:text-right text-highlight">Print4LessLtd is Trading as PrintWish. Copyright 2022. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794. | <Link href="#"
+          <p className="block text-sm md:text-right text-highlight font-roboto">Print4LessLtd is Trading as PrintWish. Copyright 2022. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794. | <Link href="#"
             className="">Term & Conditions</Link>
           </p>
         </div>
