@@ -8,7 +8,7 @@ const Category_Box = ({ data }: any) => {
             <Link href={`/${data?.link}`}>
                 <Image src={data?.img} alt="image" width={300} height={300} className='object-fill mx-auto mb-3' />
                 <div className=''>
-                    <p className='text-2xl font-semibold text-accent hover:text-secondary text-center'>
+                    <p className='text-2xl font-semibold text-accent hover:text-secondary text-center font-opensans'>
                         {data?.name}
                     </p>
                 </div>

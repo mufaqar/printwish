@@ -2,6 +2,7 @@ import { NavLinks, NavLinksType } from '@/const/navlinks'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { BsEnvelopeFill, BsFillTelephoneFill, BsPinMapFill } from 'react-icons/bs'
 
 const Footer = () => {
   return (
@@ -12,29 +13,31 @@ const Footer = () => {
             <h6 className='text-xl font-semibold text-accent uppercase mb-3'>
               About
             </h6>
-            <p className='text-base font-semibold text-accent'>
-              PrintWish:
-              6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS
-            </p>
             <ul className='grid gap-2'>
               <li className="">
-                <Link href="telto:08000510821" target='_blank' className="text-base font-semibold text-accent">
-                  0800 051 0821
+                <span className="text-base font-semibold text-accent flex gap-1">
+                  <BsPinMapFill size={20} className='text-secondary min-w-[20px]' /> PrintWish:
+                  6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS
+                </span>
+              </li>
+              <li className="">
+                <Link href="telto:08000510821" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                  <BsFillTelephoneFill size={20} className='text-secondary min-w-[20px]' /> 0800 051 0821
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-base font-semibold text-accent">
-                  sales@printwish.co.uk
+                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                  <BsEnvelopeFill size={20} className='text-secondary min-w-[20px]' /> sales@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-base font-semibold text-accent">
-                  enquiries@printwish.co.uk
+                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                  <BsEnvelopeFill size={20} className='text-secondary min-w-[20px]' /> enquiries@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-base font-semibold text-accent">
-                  printwish20@gmail.com
+                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-base font-semibold text-accent hover:text-secondary flex items-center gap-1">
+                  <BsEnvelopeFill size={20} className='text-secondary min-w-[20px]' /> printwish20@gmail.com
                 </Link>
               </li>
             </ul>
@@ -43,10 +46,10 @@ const Footer = () => {
             <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
               COMPANY
             </h6>
-            <ul className='grid gap-2'>
+            <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
-                return <li key={idx} className="">
-                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent">
+                return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
+                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -57,10 +60,10 @@ const Footer = () => {
             <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
               HELP CENTER
             </h6>
-            <ul className='grid gap-2'>
+            <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(5, 9).map((item: NavLinksType, idx: number) => {
-                return <li key={idx} className="">
-                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent">
+                return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
+                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -71,10 +74,10 @@ const Footer = () => {
             <h6 className='text-xl font-semibold text-accent uppercase mb-5'>
               LEGAL
             </h6>
-            <ul className='grid gap-2'>
+            <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(9, 12).map((item: NavLinksType, idx: number) => {
-                return <li key={idx} className="">
-                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent">
+                return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
+                  <Link href={`/${item.link}`} className="text-base font-semibold text-accent hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -88,7 +91,7 @@ const Footer = () => {
             <ul className='flex sm:gap-2 gap-1 items-center'>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-highlight">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">
                     <path
@@ -98,7 +101,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-highlight">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path
@@ -108,7 +111,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-highlight">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512">
                     <path
@@ -118,7 +121,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-highlight">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path

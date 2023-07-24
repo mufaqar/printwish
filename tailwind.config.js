@@ -24,6 +24,10 @@ module.exports = {
         'opensans': ['OpenSans'],
         'roboto': ['Roboto'],
       },
+      listStyleType: {
+        square: 'square',
+        roman: 'upper-roman',
+      }
     },
   },
   plugins: [

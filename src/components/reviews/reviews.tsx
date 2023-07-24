@@ -45,7 +45,7 @@ const Reviews = () => {
         <section className='py-16 relative'>
             <div className='max-w-screen-xl mx-auto px-4'>
                 <div className='w-fit mx-auto mb-10'>
-                    <h2 className='sm:text-4xl text-2xl font-semibold text-accent uppercase text-center mb-5'>
+                    <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                         WHAT OUR CLIENTS SAY ABOUT US
                     </h2>
                     <Image src="/images/reviews.webp" alt='reviews' height={300} width={700} className='mx-auto' />

@@ -45,10 +45,10 @@ const Brands_Slider = () => {
         <section className='py-16'>
             <div className='max-w-screen-xl mx-auto px-4'>
                 <div className='w-fit mx-auto mb-10'>
-                    <h2 className='sm:text-4xl text-2xl font-semibold text-accent uppercase text-center mb-5'>
+                    <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                         BRANDS WE WORK WITH
                     </h2>
-                    <p className='text-lg font-normal text-center text-highlight'>
+                    <p className='text-lg font-normal text-center text-highlight font-roboto'>
                         Here are some household names that trust PrintWish to supply their printed clothing:
                     </p>
                 </div>
