@@ -1,11 +1,14 @@
 import { GetStaticPaths } from 'next';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Posts } from '../../../public/data'
 import Image from 'next/image';
 import { BiCheck } from 'react-icons/bi'
 import { RxCross2 } from 'react-icons/rx'
-import { AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineLine } from 'react-icons/ai'
 import { SlBasketLoaded } from 'react-icons/sl'
+import CustomiztionProduct from '@/components/customiztionProduct/CustomiztionProduct';
+import { SettingsContext } from '@/context/global-context';
+import Artwork from '@/components/artwork/Artwork';
 
 interface IColor {
   code: string,
@@ -15,6 +18,9 @@ interface IColor {
 
 const ProductSlug = ({ post }: any) => {
   console.log("🚀 ~ file: [slug].tsx:6 ~ ProductSlug ~ post:", post)
+  const  { selectedCustomizedLayout } = useContext(SettingsContext)
+  console.log("🚀 ~ file: [slug].tsx:22 ~ ProductSlug ~ selectedCustomizedLayout:", selectedCustomizedLayout)
+
   const [color, setColor] = useState<any>([])
   const [size, setSize] = useState();
   const [productWithSizeAndQuantity, setProductWithSizeAndQuantity] = useState<any>([])
@@ -54,7 +60,6 @@ const ProductSlug = ({ post }: any) => {
 
   }
 
-
   // const handle product description tab and detail tab 
   const [DetailTab, setDetailTab] = useState('DESCRIPTION')
   const handleDetailsTabs = (e: string) => {
@@ -62,9 +67,12 @@ const ProductSlug = ({ post }: any) => {
   }
 
 
+  const [customizationButton, setCustomizationButton] = useState(false)
+
+
   return (
-    <main className='flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
-      <section className='w-[40%]'>
+    <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
+      <section className='md:w-[40%]'>
         <Image src={post.image} alt={post.title} width={600} height={600} className="w-full" />
         <section className='bg-background p-8 mt-10 rounded-lg'>
 
@@ -134,8 +142,8 @@ const ProductSlug = ({ post }: any) => {
         </section>
       </section>
 
-      <section className='w-[60%] text-accent'>
-        <h2 className=' text-2xl md:text-4xl font-bold'>{post.title}</h2>
+      <section className='md:w-[60%] text-accent'>
+        <h2 className=' text-2xl md:text-4xl font-bold mt-6 md:mt-0'>{post.title}</h2>
         <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{post?.ProductCode}</span></p>
         <div className="pt-[1px] w-full bg-gray-300 my-8" />
         <p className='text-lg text-accent font-roboto'>{post?.shortDescription}</p>
@@ -147,15 +155,15 @@ const ProductSlug = ({ post }: any) => {
           </div>
         </section>
         <div className="pt-[1px] w-full bg-gray-300 my-8" />
-        <section className='bg-background p-8 rounded-lg '>
+        <section className='bg-background p-3 md:p-8 rounded-lg '>
           <div>
             <h6 className='text-accent font-normal'>Choose Color:</h6>
-            <ul className='flex flex-wrap gap-4 mt-4'>
+            <ul className='flex flex-wrap gap-1 md:gap-3 mt-4'>
               {
                 post?.color?.map((clr: any, idx: number) => {
                   const colorExists = color.some((item: any) => item.code === clr.code);
                   return (
-                    <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-2 border-[3px] rounded-full`}  >
+                    <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
                       <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.code}` }} />
                     </li>
                   )
@@ -201,8 +209,11 @@ const ProductSlug = ({ post }: any) => {
             </div>
           </div>
         </section>
-        <button className='flex uppercase font-light items-center text-2xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
-          <AiOutlinePlus /> Add customization
+        { customizationButton && <CustomiztionProduct/> }
+        { selectedCustomizedLayout?.length > 1 && <Artwork/> }
+        
+        <button onClick={()=>setCustomizationButton(!customizationButton)} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
+          {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
         </button>
         <div className='text-3xl mt-10 flex items-center gap-2'>
           Total: <span className='font-semibold text-secondary text-5xl'>£{post?.price}</span>
