@@ -1,11 +1,12 @@
 import { NavLinks, NavLinksType } from '@/const/navlinks'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Product_Box from '../product-widgets/product-box'
 import { Products, ProductsType } from '@/const/products'
 
 const Header = () => {
+  const [mega, setMega] = useState(false)
   return (
     <>
       <header className="shadow-md">
@@ -136,7 +137,7 @@ const Header = () => {
                     aria-current="page">Home</Link>
                 </li>
                 <li>
-                  <button id="dropdown-button-megamenu" data-collapse-toggle="megamenu"
+                  <button onClick={() => { setMega(!mega) }}
                     className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Company
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg">
@@ -162,7 +163,7 @@ const Header = () => {
 
           </div>
         </nav>
-        <nav id="megamenu" className="bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0">
+        <nav id="megamenu" className={`bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${mega === true ? "block" : "hidden"}`}>
           <div
             className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
             <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
@@ -198,15 +199,15 @@ const Header = () => {
                 Featured Products
               </h6>
               <div className='grid grid-cols-3 gap-5'>
-              {Products?.slice(0, 3).map((item: ProductsType, idx: number) => {
-                            return <Product_Box key={idx} data={item} />
-                        })}
+                {Products?.slice(0, 3).map((item: ProductsType, idx: number) => {
+                  return <Product_Box key={idx} data={item} />
+                })}
               </div>
             </div>
           </div>
         </nav>
       </header>
-      <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+      {/* <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> */}
     </>
   )
 }
