@@ -163,7 +163,7 @@ const Header = () => {
 
           </div>
         </nav>
-        <nav id="megamenu" className={`bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${mega === true ? "block" : "hidden"}`}>
+        <nav id="megamenu" className={`bg-background border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${mega === true ? "block" : "hidden"}`}>
           <div
             className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
             <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
