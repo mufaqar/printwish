@@ -1,0 +1,83 @@
+export const Products = [
+    {
+        id: 1,
+        name: '5oz Premium Coloured Shopper',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/1.webp",
+        link: '#',
+    },
+    {
+        id: 2,
+        name: 'GILDAN Softstyle adult double piqué polo',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/2.webp",
+        link: '#',
+    },
+    {
+        id: 3,
+        name: 'FRUIT OF THE LOOM Childrens Valueweight T-Shirt',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/3.webp",
+        link: '#',
+    },
+    {
+        id: 4,
+        name: 'GILDAN Kids Ring Spun Soft Style T-Shirt',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/4.webp",
+        link: '#',
+    },
+    {
+        id: 5,
+        name: 'FRUIT OF THE LOOM Kid’s Original T',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/5.webp",
+        link: '#',
+    },
+    {
+        id: 6,
+        name: 'BEECHFIELD Original Pom Pom Beanie',
+        category: "Beanie/Caps",
+        price: "£0.75",
+        img: "/images/6.webp",
+        link: '#',
+    },
+    {
+        id: 7,
+        name: 'Small Tote Cotton Bags',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/7.png",
+        link: '#',
+    },
+    {
+        id: 8,
+        name: 'BEECHFIELD Heritage Beanie',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/8.webp",
+        link: '#',
+    },
+    {
+        id: 9,
+        name: '5oz Natural Tote bags with Trims',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/8.webp",
+        link: '#',
+    },
+]
+
+
+export type ProductsType = {
+    name: string,
+    img: any,
+    link: string,
+    category: string,
+    price: string,
+}

@@ -2,17 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Category_Box = () => {
+const Category_Box = ({ data }: any) => {
     return (
         <div className=''>
-           <Link href="#">
-           <Image src="/images/1.webp" alt="image" width={300} height={300} className='object-fill mx-auto mb-3' />
-            <div className=''>
-                <p className='text-2xl font-semibold text-accent hover:text-secondary text-center'>
-                    T-Shirt
-                </p>
-            </div>
-           </Link>
+            <Link href={`/${data?.link}`}>
+                <Image src={data?.img} alt="image" width={300} height={300} className='object-fill mx-auto mb-3' />
+                <div className=''>
+                    <p className='text-2xl font-semibold text-accent hover:text-secondary text-center font-opensans'>
+                        {data?.name}
+                    </p>
+                </div>
+            </Link>
         </div>
     )
 }
