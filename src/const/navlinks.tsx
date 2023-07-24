@@ -6,63 +6,73 @@ export const NavLinks = [
     },
     {
         id: 2,
-        name: 'T-SHIRTS',
+        name: 'Products',
         link: '#',
     },
     {
         id: 3,
-        name: 'HOODIES',
+        name: 'About us',
         link: '#',
     },
     {
         id: 4,
-        name: 'POLO',
+        name: 'Contact Us',
         link: '#',
     },
     {
         id: 5,
-        name: 'SWEAT SHIRTS',
+        name: 'Locations',
         link: '#',
+        sub_menu: [
+            {
+                name: 'London',
+                link: '#',
+            },
+            {
+                name: 'Manchester',
+                link: '#',
+            },
+            {
+                name: 'Bristol',
+                link: '#',
+            },
+            {
+                name: 'Glasgow',
+                link: '#',
+            },
+            {
+                name: 'Liverpool',
+                link: '#',
+            },
+            {
+                name: 'Birmingham',
+                link: '#',
+            },
+            {
+                name: 'Edinburgh',
+                link: '#',
+            },
+            {
+                name: 'All Locations',
+                link: '#',
+            },
+        ]
     },
     {
         id: 6,
-        name: 'HI-VIS',
+        name: 'Blog',
         link: '#',
     },
     {
         id: 7,
-        name: 'BEANIE/CAPS',
-        link: '#',
-    },
-    {
-        id: 8,
-        name: 'APRON',
-        link: '#',
-    },
-    {
-        id: 9,
-        name: 'BAGS',
-        link: '#',
-    },
-    {
-        id: 10,
-        name: 'COTTON BAGS',
-        link: '#',
-    },
-    {
-        id: 11,
-        name: 'ABOUT US',
-        link: '#',
-    },
-    {
-        id: 12,
-        name: 'LOCATIONS',
+        name: 'Delivery Information',
         link: '#',
     },
 ]
 
 
 export type NavLinksType = {
+    [x: string]: any;
     name: string,
     link: string
 }

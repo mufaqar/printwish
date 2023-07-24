@@ -9,7 +9,7 @@ export const Products = [
     },
     {
         id: 2,
-        name: 'Small Tote Cotton Bags',
+        name: 'GILDAN Softstyle adult double piqué polo',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/2.webp",

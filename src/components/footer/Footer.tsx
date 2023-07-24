@@ -16,7 +16,6 @@ const Footer = () => {
             <p className='text-sm font-semibold font-roboto text-accent'>
               PrintWish UK Printwish UK is a leading custom apparel provider and it is always here to inspire you with great customized things like T-shirts, tote bags, hoodies, sweatshirts, Hi-vis, apron, Wholesale Tote Bags, and many more. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794.
             </p>
-
           </div>
           <div>
             <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
@@ -37,7 +36,7 @@ const Footer = () => {
               Quick Links
             </h6>
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
-              {NavLinks.slice(9, 12).map((item: NavLinksType, idx: number) => {
+              {NavLinks.slice(4, 7).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
                   <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
                     {item.name}
@@ -81,7 +80,7 @@ const Footer = () => {
             <ul className='flex sm:gap-2 gap-1 items-center mt-7'>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
+                  className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">
                     <path
@@ -91,7 +90,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
+                  className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path
@@ -101,7 +100,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
+                  className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512">
                     <path
@@ -111,7 +110,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white bg-secondary rounded-lg hover:bg-primary">
+                  className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path
