@@ -1,10 +1,12 @@
 import { NavLinks, NavLinksType } from '@/const/navlinks'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Product_Box from '../product-widgets/product-box'
+import { CiShoppingBasket } from 'react-icons/ci'
 
 const Header = () => {
+  const [megaMenu, setMegaMenu] = useState(false)
   return (
     <>
       <header className="shadow-md">
@@ -24,9 +26,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-sm font-medium text-white hover:text-secondary hover:underline">
-                    Login
-                  </Link>
+                  <button className='text-white relative'>
+                    <CiShoppingBasket size="24"/>
+                    <span className='absolute text-sm bg-red-600 p-1 flex flex-col justify-center items-center w-6 h-6 rounded-full -right-4 -top-1'>12</span>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -34,7 +37,7 @@ const Header = () => {
         </nav>
         <nav className="bg-secondary">
           <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
-            <div className='flex justify-between mb-4 lg:order-2 lg:mb-0'>
+            <div className='flex justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
               <form className="flex md:w-[700px]">
                 <label htmlFor="search-dropdown"
                   className="mb-2 text-sm font-medium text-accent sr-only ">Your Email</label>
@@ -135,7 +138,7 @@ const Header = () => {
                     aria-current="page">Home</Link>
                 </li>
                 <li>
-                  <button id="dropdown-button-megamenu" data-collapse-toggle="megamenu"
+                  <button onClick={()=>setMegaMenu(!megaMenu)}
                     className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Company
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +164,8 @@ const Header = () => {
 
           </div>
         </nav>
-        <nav id="megamenu" className="bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0">
+        {/* mega menu  */}
+        <nav id="megamenu" className={`bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${megaMenu ? 'block' : 'hidden'}`}>
           <div
             className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
             <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
