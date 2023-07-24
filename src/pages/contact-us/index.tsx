@@ -8,7 +8,7 @@ export default function ContactUs() {
   return (
     <>
       
-      <section className='py-16 relative'>
+      <section className='py-16'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <div className='w-fit mx-auto'>
             <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>

@@ -157,7 +157,7 @@ const Header = () => {
             <div className="flex items-center lg:order-1">
               <ul className="flex flex-row mt-0 sm:space-x-8 space-x-2 text-sm font-medium">
                 <li>
-                  <Link href="#"
+                  <Link href="/"
                     className="text-white hover:text-primary"
                     aria-current="page">Home</Link>
                 </li>
@@ -176,11 +176,11 @@ const Header = () => {
                     className="text-white hover:text-primary">Marketplace</Link>
                 </li>
                 <li>
-                  <Link href="#"
-                    className="text-white hover:text-primary md:inline ">Resources</Link>
+                  <Link href="/product/1"
+                    className="text-white hover:text-primary md:inline ">Product</Link>
                 </li>
                 <li>
-                  <Link href="#"
+                  <Link href="/contact-us"
                     className="text-white hover:text-primary md:inline">Contact</Link>
                 </li>
               </ul>
