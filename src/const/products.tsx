@@ -1,0 +1,83 @@
+export const Products = [
+    {
+        id: 1,
+        name: '5oz Premium Coloured Shopper',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/1.webp",
+        link: '#',
+    },
+    {
+        id: 2,
+        name: 'HOODIES',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/2.webp",
+        link: '#',
+    },
+    {
+        id: 3,
+        name: 'POLO',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/3.webp",
+        link: '#',
+    },
+    {
+        id: 4,
+        name: 'SWEAT SHIRTS',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/4.webp",
+        link: '#',
+    },
+    {
+        id: 5,
+        name: 'HI-VIS',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/5.webp",
+        link: '#',
+    },
+    {
+        id: 6,
+        name: 'BEANIE/CAPS',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/6.webp",
+        link: '#',
+    },
+    {
+        id: 7,
+        name: 'APRON',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/7.png",
+        link: '#',
+    },
+    {
+        id: 8,
+        name: 'BAGS',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/8.webp",
+        link: '#',
+    },
+    {
+        id: 9,
+        name: 'COTTON BAGS',
+        category: "Cotton Tote Bags",
+        price: "£0.75",
+        img: "/images/8.webp",
+        link: '#',
+    },
+]
+
+
+export type ProductsType = {
+    name: string,
+    img: any,
+    link: string,
+    category: string,
+    price: string,
+}

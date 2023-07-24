@@ -45,6 +45,9 @@ const Reviews = () => {
         <section className='py-16 relative'>
             <div className='max-w-screen-xl mx-auto px-4'>
                 <div className='w-fit mx-auto mb-10'>
+                    <h2 className='sm:text-4xl text-2xl font-semibold text-accent uppercase text-center mb-5'>
+                        WHAT OUR CLIENTS SAY ABOUT US
+                    </h2>
                     <Image src="/images/reviews.webp" alt='reviews' height={300} width={700} className='mx-auto' />
                 </div>
                 <div className='mt-24'>
@@ -55,8 +58,8 @@ const Reviews = () => {
                             </div>
                         })}
                     </Slider>
-                    <button className="absolute top-1/2 right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
-                    <button className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
+                    <button className="absolute md:top-72 top-48 right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
+                    <button className="absolute md:top-72 top-48 right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
                 </div>
             </div>
         </section>

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Product_Box from '../product-widgets/product-box'
+import { Products, ProductsType } from '@/const/products'
 
 const Header = () => {
   return (
@@ -197,9 +198,9 @@ const Header = () => {
                 Featured Products
               </h6>
               <div className='grid grid-cols-3 gap-5'>
-                <Product_Box />
-                <Product_Box />
-                <Product_Box />
+              {Products?.slice(0, 3).map((item: ProductsType, idx: number) => {
+                            return <Product_Box key={idx} data={item} />
+                        })}
               </div>
             </div>
           </div>
