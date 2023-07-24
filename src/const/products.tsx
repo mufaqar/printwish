@@ -9,7 +9,7 @@ export const Products = [
     },
     {
         id: 2,
-        name: 'HOODIES',
+        name: 'Small Tote Cotton Bags',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/2.webp",
@@ -17,7 +17,7 @@ export const Products = [
     },
     {
         id: 3,
-        name: 'POLO',
+        name: 'FRUIT OF THE LOOM Childrens Valueweight T-Shirt',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/3.webp",
@@ -25,7 +25,7 @@ export const Products = [
     },
     {
         id: 4,
-        name: 'SWEAT SHIRTS',
+        name: 'GILDAN Kids Ring Spun Soft Style T-Shirt',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/4.webp",
@@ -33,7 +33,7 @@ export const Products = [
     },
     {
         id: 5,
-        name: 'HI-VIS',
+        name: 'FRUIT OF THE LOOM Kid’s Original T',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/5.webp",
@@ -41,15 +41,15 @@ export const Products = [
     },
     {
         id: 6,
-        name: 'BEANIE/CAPS',
-        category: "Cotton Tote Bags",
+        name: 'BEECHFIELD Original Pom Pom Beanie',
+        category: "Beanie/Caps",
         price: "£0.75",
         img: "/images/6.webp",
         link: '#',
     },
     {
         id: 7,
-        name: 'APRON',
+        name: 'Small Tote Cotton Bags',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/7.png",
@@ -57,7 +57,7 @@ export const Products = [
     },
     {
         id: 8,
-        name: 'BAGS',
+        name: 'BEECHFIELD Heritage Beanie',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/8.webp",
@@ -65,7 +65,7 @@ export const Products = [
     },
     {
         id: 9,
-        name: 'COTTON BAGS',
+        name: '5oz Natural Tote bags with Trims',
         category: "Cotton Tote Bags",
         price: "£0.75",
         img: "/images/8.webp",
