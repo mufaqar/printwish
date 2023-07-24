@@ -4,6 +4,8 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import Product_Box from '../product-widgets/product-box'
 import { CiShoppingBasket } from 'react-icons/ci'
+import { Products, ProductsType } from '@/const/products'
+import { Categories, CategoryType } from '@/const/categories'
 
 const Header = () => {
   const [megaMenu, setMegaMenu] = useState(false)
@@ -37,7 +39,7 @@ const Header = () => {
         </nav>
         <nav className="bg-secondary">
           <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
-            <div className='flex justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
+            <div className='flex gap-2 justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
               <form className="flex md:w-[700px]">
                 <label htmlFor="search-dropdown"
                   className="mb-2 text-sm font-medium text-accent sr-only ">Your Email</label>
@@ -169,27 +171,33 @@ const Header = () => {
           <div
             className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
             <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
+              {NavLinks.slice(4, 5).map((item: NavLinksType, idx: number) => {
+                return (
+                  <div key={idx}>
+                    <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
+                      {item?.name}
+                    </h6>
+                    <ul className='grid gap-2'>
+                      {item.sub_menu?.map((sub_item: any, _idx: any) => {
+                        return <li key={_idx} className="">
+                          <Link href={`${sub_item.link}`} className="text-xs font-semibold text-accent uppercase">
+                            {sub_item?.name}
+                          </Link>
+                        </li>
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
               <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
                 Categories
               </h6>
               <ul className='grid gap-2'>
-                {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
+                {Categories.slice(1, 5).map((item: CategoryType, idx: number) => {
                   return <li key={idx} className="">
-                    <Link href={`/${item.link}`} className="text-xs font-semibold text-accent">
-                      {item.name}
-                    </Link>
-                  </li>
-                })}
-              </ul>
-            </div>
-            <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
-              <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
-                COMPANY
-              </h6>
-              <ul className='grid gap-2'>
-                {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
-                  return <li key={idx} className="">
-                    <Link href={`/${item.link}`} className="text-xs font-semibold text-accent">
+                    <Link href={`/${item.link}`} className="text-xs font-semibold text-accent uppercase">
                       {item.name}
                     </Link>
                   </li>
@@ -201,9 +209,9 @@ const Header = () => {
                 Featured Products
               </h6>
               <div className='grid grid-cols-3 gap-5'>
-                <Product_Box />
-                <Product_Box />
-                <Product_Box />
+                {Products?.slice(0, 3).map((item: ProductsType, idx: number) => {
+                  return <Product_Box key={idx} data={item} />
+                })}
               </div>
             </div>
           </div>
