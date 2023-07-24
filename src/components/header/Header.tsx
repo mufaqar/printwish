@@ -4,11 +4,33 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import Product_Box from '../product-widgets/product-box'
 import { CiShoppingBasket } from 'react-icons/ci'
+import Head from 'next/head'
 
 const Header = () => {
   const [megaMenu, setMegaMenu] = useState(false)
   return (
     <>
+    <Head>      
+        <title>Cheap Bulk Custom T-Shirt Printing in London, UK - Wholesale Tshirt Printing</title>
+        <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+        <link rel="canonical" href="https://printwish.co.uk/" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Home" />
+        <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+        <meta property="og:url" content="https://printwish.co.uk/" />
+        <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
+        <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
+        <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
+        <meta property="og:image" content="https://printwish.co.uk/wp-content/uploads/2020/03/DTG-Printing-Image.-.jpg" />
+        <meta property="og:image:width" content="700" />
+        <meta property="og:image:height" content="467" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@PrintwishUk" />
+        <meta name="twitter:label1" content="Est. reading time" />
+        <meta name="twitter:data1" content="57 minutes" />
+    </Head>
       <header className="shadow-md">
         <nav className="bg-accent">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
