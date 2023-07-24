@@ -9,6 +9,7 @@ import { SlBasketLoaded } from 'react-icons/sl'
 import CustomiztionProduct from '@/components/customiztionProduct/CustomiztionProduct';
 import { SettingsContext } from '@/context/global-context';
 import Artwork from '@/components/artwork/Artwork';
+import FontsAndColor from '@/components/fonts-and-color/FontsAndColor'
 
 interface IColor {
   code: string,
@@ -17,14 +18,17 @@ interface IColor {
 
 
 const ProductSlug = ({ post }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:6 ~ ProductSlug ~ post:", post)
-  const  { selectedCustomizedLayout } = useContext(SettingsContext)
-  console.log("🚀 ~ file: [slug].tsx:22 ~ ProductSlug ~ selectedCustomizedLayout:", selectedCustomizedLayout)
+  // console.log("🚀 ~ file: [slug].tsx:6 ~ ProductSlug ~ post:", post)
+  const  { selectedCustomizedLayout, nameAndNumber } = useContext(SettingsContext)
 
-  const [color, setColor] = useState<any>([])
+ 
+  const [color, setColor] = useState<any>([])   // All selected color
   const [size, setSize] = useState();
+  const [customizationButton, setCustomizationButton] = useState(false)
   const [productWithSizeAndQuantity, setProductWithSizeAndQuantity] = useState<any>([])
+  console.log("🚀 ~ file: [slug].tsx:29 ~ ProductSlug ~ productWithSizeAndQuantity:", productWithSizeAndQuantity)
 
+  
   const HandleColor = (selectedColor: any) => {
     const colorExists = color.some((item: any) => item.code === selectedColor.code);
     if (!colorExists) {
@@ -36,25 +40,26 @@ const ProductSlug = ({ post }: any) => {
     setColor(RemaningItem)
   }
 
-  const handleSize = (e: any, colorName: any) => {
+  const handleSize = (e: any, colorName: any, ProductCode:any) => {
+    
     const size = e.target.name
     const quantity = e.target.value
 
     if (quantity > 0) {
       // here is we get size quantity and color name
       const sizeRes = {
-        size, quantity, colorName
+        size, quantity, colorName, ProductCode
       }
-
-
-      const SizeAndColorExists = productWithSizeAndQuantity.some((item: any) => item.size === size && item.colorName === colorName);
-      console.log("🚀 ~ file: [slug].tsx:43 ~ handleSize ~ SizeAndColorExists:", SizeAndColorExists)
+      // check if size color and product code exist in productWithSizeAndQuantity state 
+      const SizeAndColorExists = productWithSizeAndQuantity.some((item: any) => item.size === size && item.colorName === colorName && item?.ProductCode === ProductCode);
+      console.log("🚀 ~ file: [slug].tsx:55 ~ handleSize ~ SizeAndColorExists:", SizeAndColorExists)
+      
       if (SizeAndColorExists) {
-        // const findSize = productWithSizeAndQuantity.filter((item:any)=>{item.size !== size})
-        // console.log("🚀 ~ file: [slug].tsx:43 ~ handleSize ~ findSize:", findSize)
+        const findSize = productWithSizeAndQuantity.find((item:any)=>{item.size !== size && item.colorName !== colorName && item?.ProductCode !== ProductCode})
+        console.log("🚀 ~ file: [slug].tsx:43 ~ handleSize ~ findSize:", findSize)
         // setProductWithSizeAndQuantity([...findSize, sizeRes])
       } else {
-        // setProductWithSizeAndQuantity([...productWithSizeAndQuantity, sizeRes])
+        setProductWithSizeAndQuantity([...productWithSizeAndQuantity, sizeRes])
       }
     }
 
@@ -67,7 +72,7 @@ const ProductSlug = ({ post }: any) => {
   }
 
 
-  const [customizationButton, setCustomizationButton] = useState(false)
+  
 
 
   return (
@@ -192,7 +197,7 @@ const ProductSlug = ({ post }: any) => {
                                     <input type="number" name={item.type} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
                                       placeholder='0'
                                       value={size}
-                                      onChange={(e) => handleSize(e, c?.name)}
+                                      onChange={(e) => handleSize(e, c?.name, post.ProductCode)}
                                     />
                                   </div>
                                 </div>
@@ -211,6 +216,7 @@ const ProductSlug = ({ post }: any) => {
         </section>
         { customizationButton && <CustomiztionProduct/> }
         { selectedCustomizedLayout?.length > 1 && <Artwork/> }
+        { nameAndNumber?.length > 1 && <FontsAndColor/> }
         
         <button onClick={()=>setCustomizationButton(!customizationButton)} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
           {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
