@@ -1,3 +1,4 @@
+import { Categories, CategoryType } from '@/const/categories'
 import { NavLinks, NavLinksType } from '@/const/navlinks'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -13,8 +14,12 @@ const Footer = () => {
             <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               About
             </h6>
-            <p className='text-sm font-semibold font-roboto text-accent'>
+            <p className='text-sm font-semibold font-roboto text-accent mb-3'>
               PrintWish UK Printwish UK is a leading custom apparel provider and it is always here to inspire you with great customized things like T-shirts, tote bags, hoodies, sweatshirts, Hi-vis, apron, Wholesale Tote Bags, and many more. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794.
+            </p>
+            <p className='text-sm font-semibold font-roboto text-accent'>
+              WORKING DAYS/HOURS:
+              Monday to Friday | 9am to 5.30pm
             </p>
           </div>
           <div>
@@ -22,7 +27,7 @@ const Footer = () => {
               Categories
             </h6>
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
-              {NavLinks.slice(1, 5).map((item: NavLinksType, idx: number) => {
+              {Categories.slice(1, 5).map((item: CategoryType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
                   <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
                     {item.name}
@@ -36,7 +41,7 @@ const Footer = () => {
               Quick Links
             </h6>
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
-              {NavLinks.slice(4, 7).map((item: NavLinksType, idx: number) => {
+              {NavLinks.slice(4).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
                   <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
                     {item.name}
@@ -57,7 +62,7 @@ const Footer = () => {
                 </span>
               </li>
               <li className="">
-                <Link href="telto:08000510821" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="tel:08000510821" className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
                   <BsTelephone size={20} className='text-secondary min-w-[20px]' /> 0800 051 0821
                 </Link>
               </li>

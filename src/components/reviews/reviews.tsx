@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Slider from 'react-slick';
 import { BsArrowLeft, BsArrowRight, } from 'react-icons/bs';
+import { Feedback, FeedbackType } from '@/const/feedback';
 
 const Reviews = () => {
     const settings = {
@@ -52,9 +53,9 @@ const Reviews = () => {
                 </div>
                 <div className='mt-24'>
                     <Slider ref={slider} {...settings}>
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]?.map((item: any, idx: number) => {
+                    {Feedback?.map((item: FeedbackType, idx: number) => {
                             return <div key={idx}>
-                                <Image src="/images/feedback1.webp" alt="image" width={500} height={200} className='mx-auto' />
+                                <Image src={item?.img} alt="image" width={500} height={200} className='mx-auto' />
                             </div>
                         })}
                     </Slider>

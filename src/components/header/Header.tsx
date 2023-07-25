@@ -10,9 +10,10 @@ import { Products, ProductsType } from '@/const/products'
 
 const Header = () => {
   const [megaMenu, setMegaMenu] = useState(false)
+  const [dropdown, setDropdown] = useState(false)
   return (
     <>
-    <Head>      
+      <Head>
         <title>Cheap Bulk Custom T-Shirt Printing in London, UK - Wholesale Tshirt Printing</title>
         <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
         <link rel="canonical" href="https://printwish.co.uk/" />
@@ -32,7 +33,7 @@ const Header = () => {
         <meta name="twitter:site" content="@PrintwishUk" />
         <meta name="twitter:label1" content="Est. reading time" />
         <meta name="twitter:data1" content="57 minutes" />
-    </Head>
+      </Head>
       <header className="shadow-md">
         <nav className="bg-accent">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
@@ -45,13 +46,13 @@ const Header = () => {
             <div className="flex items-center justify-between">
               <ul className='flex gap-2 items-center'>
                 <li>
-                  <Link href="telto:08000510821" className='text-sm font-medium text-white hover:text-secondary hover:underline'>
-                     0800 051 0821
+                  <Link href="tel:08000510821" className='text-sm font-medium text-white hover:text-secondary hover:underline'>
+                    0800 051 0821
                   </Link>
                 </li>
                 <li>
                   <button className='text-white relative'>
-                    <CiShoppingBasket size="24"/>
+                    <CiShoppingBasket size="24" />
                     <span className='absolute text-sm bg-red-600 p-1 flex flex-col justify-center items-center w-6 h-6 rounded-full -right-4 -top-1'>12</span>
                   </button>
                 </li>
@@ -65,8 +66,8 @@ const Header = () => {
               <form className="flex md:w-[700px]">
                 <label htmlFor="search-dropdown"
                   className="mb-2 text-sm font-medium text-accent sr-only ">Your Email</label>
-                <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                  className="hidden md:inline-flex flex-shrink-0 z-10 items-center py-2.5 px-4 text-sm font-medium text-center text-accent bg-gray-100 border border-gray-200 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 "
+                <button onClick={() => setDropdown(!dropdown)}
+                  className={`hidden md:inline-flex flex-shrink-0 z-10 items-center py-2.5 px-4 text-sm font-medium text-center text-accent bg-gray-100 border border-gray-200 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 `}
                   type="button">All categories <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd"
@@ -74,25 +75,23 @@ const Header = () => {
                       clipRule="evenodd"></path>
                   </svg></button>
                 <div id="dropdown"
-                  className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow "
-                  data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top"
-                  style={{ position: "absolute", inset: "auto auto 0px 0px", margin: "0px,", transform: "translate3d(897px, 5637px, 0px)" }}>
+                  className={`${dropdown ? 'sm:block hidden' : 'hidden'} z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-[108px] `}>
                   <ul className="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
                     <li>
                       <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Mockups</button>
+                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Mockups</button>
                     </li>
                     <li>
                       <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Templates</button>
+                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Templates</button>
                     </li>
                     <li>
                       <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Design</button>
+                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Design</button>
                     </li>
                     <li>
                       <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Logos</button>
+                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Logos</button>
                     </li>
                   </ul>
                 </div>
@@ -162,8 +161,8 @@ const Header = () => {
                     aria-current="page">Home</Link>
                 </li>
                 <li>
-                  <button onClick={()=>setMegaMenu(!megaMenu)}
-                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Company
+                  <button onClick={() => setMegaMenu(!megaMenu)}
+                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Products
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd"
@@ -173,15 +172,24 @@ const Header = () => {
                 </li>
                 <li>
                   <Link href="#"
-                    className="text-white hover:text-primary">Marketplace</Link>
+                    className="text-white hover:text-primary">About Us</Link>
                 </li>
                 <li>
+
+                  <Link href="#"
+                    className="text-white hover:text-primary md:inline ">Contact Us</Link>
+                </li>
+                <li>
+                  <Link href="#"
+                    className="text-white hover:text-primary md:inline">Locations</Link>
+
                   <Link href="/product/1"
                     className="text-white hover:text-primary md:inline ">Product</Link>
                 </li>
                 <li>
                   <Link href="/contact-us"
                     className="text-white hover:text-primary md:inline">Contact</Link>
+
                 </li>
               </ul>
             </div>
@@ -238,7 +246,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-      </header> 
+      </header>
     </>
   )
 }
