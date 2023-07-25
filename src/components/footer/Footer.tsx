@@ -13,8 +13,12 @@ const Footer = () => {
             <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               About
             </h6>
-            <p className='text-sm font-semibold font-roboto text-accent'>
+            <p className='text-sm font-semibold font-roboto text-accent mb-3'>
               PrintWish UK Printwish UK is a leading custom apparel provider and it is always here to inspire you with great customized things like T-shirts, tote bags, hoodies, sweatshirts, Hi-vis, apron, Wholesale Tote Bags, and many more. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794.
+            </p>
+            <p className='text-sm font-semibold font-roboto text-accent'>
+              WORKING DAYS/HOURS:
+              Monday to Friday | 9am to 5.30pm
             </p>
           </div>
           <div>

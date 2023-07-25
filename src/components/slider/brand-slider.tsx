@@ -48,7 +48,7 @@ const Brands_Slider = () => {
                     <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                         BRANDS WE WORK WITH
                     </h2>
-                    <p className='text-lg font-normal text-center text-highlight font-roboto'>
+                    <p className='text-lg font-normal text-center text-accent font-roboto'>
                         Here are some household names that trust PrintWish to supply their printed clothing:
                     </p>
                 </div>

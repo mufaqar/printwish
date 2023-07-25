@@ -7,7 +7,7 @@ const Steps = () => {
                 <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                     Straightforward Steps To Perfect Promotional Products
                 </h2>
-                <p className='text-lg font-normal text-center text-highlight font-roboto'>
+                <p className='text-lg font-normal text-center text-accent font-roboto'>
                     Ensuring You Get Exactly What You Need When You Need It
                 </p>
                 <div className='grid md:grid-cols-5 grid-cols-1 md:gap-5 gap-10 mt-20'>
