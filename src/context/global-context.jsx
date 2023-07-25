@@ -38,7 +38,6 @@ export const SettingsProvider = ({ children }) => {
   // hide scroll when modelbox is open  
   HideScrollOnModelOpen(modalIsOpen)
   
-  
   return (
     <SettingsContext.Provider
       value={{
