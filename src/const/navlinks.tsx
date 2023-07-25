@@ -68,6 +68,11 @@ export const NavLinks = [
         name: 'Delivery Information',
         link: '#',
     },
+    {
+        id: 8,
+        name: 'Terms & Conditions',
+        link: '#',
+    },
 ]
 
 
