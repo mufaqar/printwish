@@ -1,7 +1,5 @@
 import { HideScrollOnModelOpen } from "@/utils";
 import { createContext, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form"
-
 
 export const SettingsContext = createContext();
 

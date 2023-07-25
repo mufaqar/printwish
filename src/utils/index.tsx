@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+
+// hide scrolling 
 export const HideScrollOnModelOpen = (modalIsOpen: any) => {
      // Use useEffect to apply CSS styles when state changes
      useEffect(() => {
