@@ -1,3 +1,4 @@
+import { HideScrollOnModelOpen } from "@/utils";
 import { createContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form"
 
@@ -34,8 +35,10 @@ export const SettingsProvider = ({ children }) => {
     });
   };
  
-  console.log("🚀 ~ file: global-context.jsx:20 ~ SettingsProvider ~ textCreatorLine1:", textCreatorLine)
-
+  // hide scroll when modelbox is open  
+  HideScrollOnModelOpen(modalIsOpen)
+  
+  
   return (
     <SettingsContext.Provider
       value={{

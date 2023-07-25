@@ -71,3 +71,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.ReactModal__Overlay{
+  background-color: rgb(0 0 0 / 50%) !important;
+}
