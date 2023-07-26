@@ -7,7 +7,7 @@ import BlogSidebar from '@/components/blogsidebar'
 function bloglay() {
   return (
     <>
-      <main className='space-y-12 items-center lg:ml-10 max-w-screen-xl px-6 md:px-6 py-5 '>
+      <main className='space-y-12 flex items-center lg:ml-10 max-w-screen-xl px-6 md:px-6 py-5 '>
         {Data.map((item, idx) => {
           return (
             <div key={idx} className="container lg:flex ">
