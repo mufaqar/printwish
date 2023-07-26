@@ -24,7 +24,7 @@ const AgeFilters = () => {
                         return <li key={idx} className='w-full flex items-center'>
                             <input id={item?.id} className="mr-2" type="checkbox" name="age" />
                             <label htmlFor={item?.id} className="text-base font-medium text-accent cursor-pointer w-full flex justify-between">
-                                {item?.age} 93
+                                {item?.age} (93)
                             </label>
                         </li>
                     })}
