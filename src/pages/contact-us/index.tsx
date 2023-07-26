@@ -1,27 +1,35 @@
+import React from 'react'
 
-
-
-
-export default function ContactUs() {
-
-
+function Contact() {
   return (
     <>
-      
-      <section className='py-16'>
-        <div className='max-w-screen-xl mx-auto px-4'>
-          <div className='w-fit mx-auto'>
-            <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
-              Know About PrintWish UK
-            </h2>
-            <p className='text-base font-normal text-accent text-center font-roboto'>
-              Know About PrintWish UK
-              Printwish UK is a leading custom apparel provider and it is always here to inspire you with great customized things like T-shirts, tote bags, hoodies, sweatshirts, Hi-vis, apron, Wholesale Tote Bags, and many more. The customized t-shirt trend is very popular among both teenagers in school and celebrities these shirts having a solid grip on the young fashion world. So if you are looking for a classy, customized T-shirt which can enhance your personality then you are in the right place because printwish UK customizes T-shirts as you like. Printwish t-shirt printing is better than others and you can also choose every element for your custom t-shirts like the color, the words, the images that will be printed on the shirts, and many more.
-            </p>
-          </div>
-        </div>
-      </section>
+    <main className='items-center lg:ml-10   max-w-screen-xl px-6 md:px-6 py-5'>
+<div className="lg:flex justify-between lg:ml-10 lg:mr-10">
+<div className="txt">
+<p className='text-[#7b858a] text-[14px] font-[400] leading-[27px]'>[contact-form-7 id="1690" title="Contact Form"]</p>
+</div>
+ <div className="cont mb-[20px]">
+<div className="img cursor-pointer mr-5 ">
+    <img className='w-[477px] h-[128px] ' src="images/rev.png" alt="" />
+    </div>
+    </div>
+</div>
+<div className="float-right  cursor-pointer">
+    <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-1'>Get in touch</h4>
+<h4 className='lg:w-[560px] text-[#000000] text-[16px] leading-[27px] pb-1'><strong>At PrintWish we want to provide you with awesome customer service. Please use the following methods of contact so we can attend your needs with the attention you deserve</strong></h4>
+   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-2'>Contact Info</h4>
+   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-[5px]'>Phone</h4>
+   <p className='text-[14px] font-[700] pb-[5px]'><a className='hover:underline' href="">0800 051 0821</a></p>
+   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-[5px]'>Email:</h4>
+   <p className='text-[14px] font-[700] pb-[10px]'><a className='hover:underline' href="">enquiries@printwish.co.uk</a></p>
+   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-[10px]'>The Office</h4>
+   <h4 className='pb-1 text-[14px] '><strong>PrintWish</strong></h4>
+   <p className='text-[14px]'><strong>6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS</strong>  </p>
+    </div>
+
+    </main>
     </>
   )
 }
 
+export default Contact
