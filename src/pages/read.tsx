@@ -1,5 +1,5 @@
 import React from 'react'
-import Data from './test'
+import Data from './readtest'
 import Link from 'next/link'
 import {FaRegUser} from 'react-icons/fa'
 import {FaRegFolder} from 'react-icons/fa'
@@ -13,7 +13,7 @@ import {FaPinterest} from 'react-icons/fa'
 import {MdEmail} from 'react-icons/md'
 import {FaRegClock} from 'react-icons/fa'
 import {BsFillPlayFill} from 'react-icons/bs'
-import Blogsli from '../blog-sidbar/blogsli'
+import Blogsli from './blogsli'
 function read() {
   return (
   <>

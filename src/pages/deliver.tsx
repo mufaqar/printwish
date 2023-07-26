@@ -1,5 +1,5 @@
 import   React from 'react'
-import Test from '@/components/Delivery/test'
+import DeliveryTest from './deliverytest'
 import {AiOutlineMinus} from 'react-icons/ai'
 import {AiOutlinePlus} from 'react-icons/ai'
 import { useState } from 'react'
@@ -66,7 +66,7 @@ function deliver() {
     <p className='text-[#7b858a] pb-[1.25rem] font-[400] '>We meet tough deadlines with speedy turn around & quick delivery</p>
 </div><div className="lg:flex lg:space-x-5 mb-[20px]">
 {
-    Test.map((item , idx)=>{
+    DeliveryTest.map((item , idx)=>{
         return(
 <div key={idx} className="box  lg:w-[33%] bg-[#0088CC] text-white rounded-[10px]">
 <div className=" text-center  ">
