@@ -82,7 +82,7 @@ export default function delivery_information() {
 
     return (
         <>
-            <main className='items-center lg:ml-10 lg:mr-10   max-w-screen-xl px-6 md:px-6 py-5'>
+            <main className='items-center mx-auto max-w-screen-xl px-6 md:px-6'>
                 <div className="container">
                     <div className="text-center">
                         <h2 className='text-[#0088cc] font-[400] leading-[40px] text-[30px] pb-[32px]'>Delivery Information</h2>
@@ -140,11 +140,11 @@ export default function delivery_information() {
 
                 <div className="footer text-center mt-5 ">
                     <h2 className='text-[30px] text-[#7b858a]  '>Our preferred couriers</h2>
-                    <div className="couriers lg:flex items-center m-auto  lg:ml-20 mt-3">
-                        <img className='lg:w-[118px] ' src="images/uk.png" alt="" />
-                        <img className='lg:w-[300px] lg:ml-20' src="images/mail.png" alt="" />
-                        <img className='lg:w-[300px] lg:ml-5' src="images/dp.png" alt="" />
-                        <img className='lg:w-[255px] lg:ml-5' src="images/exp.png" alt="" />
+                    <div className="couriers grid grid-cols-4  items-center m-auto  lg:ml-20 mt-3">
+                        <img className='lg:w-40 ' src="images/uk.png" alt="" />
+                        <img className='lg:w-52 lg:mr-12' src="images/mail.png" alt="" />
+                        <img className='lg:w-52' src="images/dp.png" alt="" />
+                        <img className='lg:w-52 ' src="images/exp.png" alt="" />
                     </div>
                 </div>
             </main>
