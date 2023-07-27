@@ -7,7 +7,8 @@ import BlogSidebar from '@/components/blogsidebar'
 function bloglay() {
   return (
     <>
-      <main className='space-y-12 items-center lg:ml-10 max-w-screen-xl px-6 md:px-6 py-5 '>
+      <main className=' lg:flex lg:flex-wrap justify-between items-center mx-auto max-w-screen-xl px-6 md:px-6  '>
+        <div className ="space-y-12 ">
         {Data.map((item, idx) => {
           return (
             <div key={idx} className="container lg:flex ">
@@ -44,9 +45,16 @@ function bloglay() {
 
           );
         })}
+</div>
 
-        <BlogSidebar />
-
+                   
+<div className="lg:top-28 relative">
+                <div className="sticky top-0 lg:ml-0 lg:w-[300px]">
+    <BlogSidebar />
+  </div>
+</div>
+                 
+                
       </main>
     </>
   )

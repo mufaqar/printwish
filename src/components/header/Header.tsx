@@ -36,7 +36,7 @@ const Header = () => {
       </Head>
       <header className="shadow-md">
         <nav className="bg-accent">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
+          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl  md:px-6 py-2.5">
             <Link href="/" className="flex items-center">
               <Image src="/images/logo.png" alt="logo" width={100} height={200} />
             </Link>
