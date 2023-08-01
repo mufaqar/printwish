@@ -1,24 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 0,
+  value: [],
 }
 
 export const AddToCart = createSlice({
-  name: 'counter',
+  name: 'addToCart',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    addItem: (state, action) => {
+      // Check Product exist or not 
+      const existingItemIndex = state.value.findIndex(item => item.id === action.payload.id);
+      if(existingItemIndex !== -1){
+        state.value[existingItemIndex].quantity = state?.value[existingItemIndex].quantity + 1;
+      }else{
+        state.value.push({...action.payload, quantity: 1})
+      }
     },
-    decrement: (state) => {
-      state.value -= 1
-    },
-  
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement } = AddToCart.actions
+export const { addItem } = AddToCart.actions
 
 export default AddToCart.reducer

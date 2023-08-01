@@ -5,7 +5,7 @@ import { BsArrowLeft, BsArrowRight, } from 'react-icons/bs';
 import Product_Box from './product-box';
 import { Products, ProductsType } from '@/const/products';
 
-const Product_Slider = () => {
+const Product_Slider = ({products}:any) => {
     const settings = {
         dots: false,
         arrows: false,
@@ -51,14 +51,15 @@ const Product_Slider = () => {
                         FEATURED PRODUCTS
                     </h2>
                 </div>
-                <div className='mt-24'>
+                <div className='mt-24 relative'>
                     <Slider ref={slider} {...settings}>
-                        {Products?.map((item: ProductsType, idx: number) => {
-                            return <Product_Box key={idx} data={item} />
+                        {products?.map((item:any, idx: number) => {
+                            const img = item?.images[0]?.src
+                            return <Product_Box key={idx} data={item} image={img} />
                         })}
                     </Slider>
-                    <button className="absolute top-32 right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
-                    <button className="absolute top-32 right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
+                    <button className="absolute -top-10 right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
+                    <button className="absolute -top-10 right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
                 </div>
             </div>
         </section>
