@@ -67,7 +67,7 @@ type Item = {
 type YourComponentProps = {
     Data: Item[];
 };
-export default function delivery_information() {
+export default function Delivery_information() {
     const [openItemIndex, setOpenItemIndex] = useState<number | null>(0);
 
     const handleToggleContent = (index: number) => {
