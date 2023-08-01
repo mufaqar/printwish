@@ -1,9 +1,11 @@
 import Product_Box from '@/components/product-widgets/product-box'
 import Product_Sidebar from '@/components/sidebar/product-sidebar'
+import { apiRequest } from '@/config/requests'
 import { Products, ProductsType } from '@/const/products'
+import { GetServerSideProps } from 'next'
 import React from 'react'
 
-const ProductsPage = () => {
+const ProductsPage = ({products}:any) => {
     return (
         <main>
             <section className='py-16 bg-background'>
@@ -20,8 +22,9 @@ const ProductsPage = () => {
                     </div>
                     <div className='sm:w-3/4 w-full'>
                         <div className='grid sm:grid-cols-4 grid-cols-1 gap-5'>
-                            {Products?.map((item: ProductsType, idx: number) => {
-                                return <Product_Box key={idx} data={item} />
+                            {products?.map((item:any, idx: number) => {
+                                const img = item?.images[0]?.src
+                                return <Product_Box key={idx} data={item} image={img}/>
                             })}
                         </div>
                     </div>
@@ -32,3 +35,14 @@ const ProductsPage = () => {
 }
 
 export default ProductsPage
+
+
+export const getServerSideProps: GetServerSideProps<any> = async () => {
+    const dataForProducts = {
+      per_page: 12,
+    };
+    const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    
+    
+    return { props: { products } }
+  }
+  
