@@ -9,10 +9,14 @@ import { Categories, CategoryType } from '@/const/categories'
 import Link from 'next/link'
 import Steps from '@/components/promotional-steps/steps'
 import Product_Slider from '@/components/product-widgets/product-slider'
+import { GetServerSideProps } from 'next'
+import {apiRequest} from '@/config/requests'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ products, caterogies }:any) {
+  
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
 
@@ -27,14 +31,14 @@ export default function Home() {
             BEST SELLING CATEGORIES
           </h2>
           <div className='grid md:grid-cols-3 grid-cols-1 gap-7 mt-10'>
-            {Categories?.map((item: CategoryType, idx: number) => {
+            {caterogies?.products?.map((item: CategoryType, idx: number) => {
               return <Category_Box key={idx} data={item} />
             })}
           </div>
         </div>
       </section>
       <Steps />
-      <Product_Slider />
+      <Product_Slider products={products}/>
       <section className='py-16 relative'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <div className='w-fit mx-auto'>
@@ -52,3 +56,19 @@ export default function Home() {
   )
 }
 
+
+
+
+  export const getServerSideProps: GetServerSideProps<any> = async () => {
+    const dataForCategory = {
+      per_page: 9,
+    };
+    const dataForProducts = {
+      per_page: 10,
+    };
+    const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    
+    const caterogies =  await apiRequest('POST', 'get-products-categories', dataForCategory)    
+    return { props: { products, caterogies} }
+  }
+  
+  
