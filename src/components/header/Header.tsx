@@ -36,7 +36,7 @@ const Header = () => {
         <meta name="twitter:data1" content="57 minutes" />
       </Head>
       <header className="shadow-md">
-        <TopBar/>
+        <TopBar />
         <nav className="bg-secondary">
           <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
             <div className='flex gap-2 justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
@@ -148,20 +148,14 @@ const Header = () => {
                     </svg></button>
                 </li>
                 <li>
-                  <Link href="#"
+                  <Link href="/about"
                     className="text-white hover:text-primary">About Us</Link>
                 </li>
+
                 <li>
 
-                  <Link href="#"
-                    className="text-white hover:text-primary md:inline ">Contact Us</Link>
-                </li>
-                <li>
-                  <Link href="#"
-                    className="text-white hover:text-primary md:inline">Locations</Link>
-
-                  <Link href="/product/1"
-                    className="text-white hover:text-primary md:inline ">Product</Link>
+                  <Link href="/product"
+                    className="text-white hover:text-primary md:inline ">Products</Link>
                 </li>
                 <li>
                   <Link href="/contact-us"
