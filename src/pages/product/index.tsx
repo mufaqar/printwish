@@ -1,3 +1,4 @@
+import PageBanner from '@/components/banner/page-banner'
 import Product_Box from '@/components/product-widgets/product-box'
 import Product_Sidebar from '@/components/sidebar/product-sidebar'
 import { apiRequest } from '@/config/requests'
@@ -7,13 +8,7 @@ import React from 'react'
 const ProductsPage = ({products}:any) => {
     return (
         <main>
-            <section className='py-16 bg-background'>
-                <div className='max-w-screen-xl mx-auto px-4'>
-                    <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
-                        Products
-                    </h2>
-                </div>
-            </section>
+            <PageBanner title="Products" />
             <section className='py-16 '>
                 <div className='max-w-screen-xl mx-auto px-4 flex md:flex-row flex-col gap-5'>
                     <div className='sm:w-1/4 w-full'>
