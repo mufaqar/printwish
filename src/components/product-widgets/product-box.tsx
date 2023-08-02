@@ -15,14 +15,17 @@ const Product_Box = ({ data, image }: any) => {
   const isProductIndex = cartItems.findIndex((item: any) => item.id === data.id)
 
   return (
-    <div className='px-4'>
+    <div>
       <div>
         <Image src={image} alt={data?.name} width={200} height={200} className='object-fill w-full h-full mb-3' />
       </div>
       <div className=''>
-        <Link href={`/${data?.link}`} className='text-sm font-semibold font-opensans text-accent hover:text-secondary'>
+        <h5 className="min-h-[52px]">
+
+        <Link href={`/${data?.link}`} className='text-sm  font-semibold font-opensans text-accent hover:text-secondary'>
           {data?.name}
         </Link>
+        </h5>
         <p className='text-base font-semibold font-opensans text-accent hover:text-secondary my-3'>
           {data?.price}
         </p>

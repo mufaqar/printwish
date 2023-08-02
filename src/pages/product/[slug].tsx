@@ -24,9 +24,7 @@ interface IColor {
 
 
 const ProductSlug = ({ post }: any) => {
-  // console.log("🚀 ~ file: [slug].tsx:6 ~ ProductSlug ~ post:", post)
   const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
-
 
   const [color, setColor] = useState<any>([])   // All selected color
   const [size, setSize] = useState();
@@ -292,8 +290,6 @@ const SelectNumberOfLogoColor = () => {
 const UploadImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState<any>(null);
-
-  console.log("🚀 ~ file: [slug].tsx:260 ~ UploadImage ~ selectedImage:", imagePreview)
 
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];

@@ -44,8 +44,6 @@ const Header = () => {
     if (productsJSON !== null) {
       const products:any = JSON.parse(productsJSON);
       cartItems.length === 0 && products?.length > 0 && dispatch(updateCardSession(products))
-    } else {
-      console.log("No products data found in sessionStorage.");
     }
   },[])
 
