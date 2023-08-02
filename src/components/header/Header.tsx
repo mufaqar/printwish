@@ -43,8 +43,18 @@ const Header = () => {
 
   
   useEffect(()=>{
-    var d  =  JSON.parse(sessionStorage.getItem("products"));
-    cartItems.length === 0 && d?.length > 0 && dispatch(updateCardSession(d))
+    /* The above code is checking if there is any "products" data stored in the sessionStorage. If
+    there is, it parses the data into an array called "products". Then, it checks if the "cartItems"
+    array is empty and the "products" array has items. If both conditions are true, it dispatches an
+    action called "updateCardSession" with the "products" array as the payload. If there is no
+    "products" data in the sessionStorage, it logs a message to the console. */
+    const productsJSON = sessionStorage.getItem("products");
+    if (productsJSON !== null) {
+      const products:any = JSON.parse(productsJSON);
+      cartItems.length === 0 && products?.length > 0 && dispatch(updateCardSession(products))
+    } else {
+      console.log("No products data found in sessionStorage.");
+    }
   },[])
 
 
