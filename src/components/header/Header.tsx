@@ -1,11 +1,8 @@
 import { NavLinks, NavLinksType } from '@/const/navlinks'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Product_Box from '../product-widgets/product-box'
 import Head from 'next/head'
-import { Categories, CategoryType } from '@/const/categories'
-import { Products, ProductsType } from '@/const/products'
 import TopBar from './topBar'
 import { apiRequest } from '@/config/requests'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,18 +11,13 @@ import { addItem, updateCardSession } from '@/features/AddToCart'
 const Header = () => {
 
   const cartItems = useSelector((state: any) => state.AddToCart.value)
-  console.log("🚀 ~ file: Header.tsx:17 ~ Header ~ cartItems:", cartItems.length)
+  const dispatch = useDispatch()
 
   const [megaMenu, setMegaMenu] = useState(false)
   const [dropdown, setDropdown] = useState(false)
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
-
-  // const [secssionProduct, setSessionProduct] = useState<any>([])
-  // console.log("🚀 ~ file: Header.tsx:21 ~ Header ~ secssionProduct:", secssionProduct)
-
-  const dispatch = useDispatch()
 
   useEffect(()=>{
     // fetch all product categories
