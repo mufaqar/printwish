@@ -1,7 +1,6 @@
 import Product_Box from '@/components/product-widgets/product-box'
 import Product_Sidebar from '@/components/sidebar/product-sidebar'
 import { apiRequest } from '@/config/requests'
-import { Products, ProductsType } from '@/const/products'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 
