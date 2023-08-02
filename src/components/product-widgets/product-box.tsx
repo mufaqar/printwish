@@ -1,7 +1,7 @@
 import { addItem } from '@/features/AddToCart'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Product_Box = ({ data, image }: any) => {

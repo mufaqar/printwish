@@ -1,17 +1,53 @@
 import { NavLinks, NavLinksType } from '@/const/navlinks'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Product_Box from '../product-widgets/product-box'
-import { CiShoppingBasket } from 'react-icons/ci'
 import Head from 'next/head'
 import { Categories, CategoryType } from '@/const/categories'
 import { Products, ProductsType } from '@/const/products'
 import TopBar from './topBar'
+import { apiRequest } from '@/config/requests'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem, updateCardSession } from '@/features/AddToCart'
 
 const Header = () => {
+
+  const cartItems = useSelector((state: any) => state.AddToCart.value)
+  console.log("🚀 ~ file: Header.tsx:17 ~ Header ~ cartItems:", cartItems.length)
+
   const [megaMenu, setMegaMenu] = useState(false)
   const [dropdown, setDropdown] = useState(false)
+  const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('')
+
+  // const [secssionProduct, setSessionProduct] = useState<any>([])
+  // console.log("🚀 ~ file: Header.tsx:21 ~ Header ~ secssionProduct:", secssionProduct)
+
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    // fetch all product categories
+    const fetchData = async () => {
+      const dataForProducts = {
+        per_page: 3,
+      };
+      const {products} =  await apiRequest('GET', 'get-products-categories')
+      const productData =  await apiRequest('POST', 'get-products', dataForProducts) 
+      setCategories(products)
+      setProducts(productData.products)
+    }
+    fetchData().catch(console.error);
+  },[])
+
+  
+  useEffect(()=>{
+    var d  =  JSON.parse(sessionStorage.getItem("products"));
+    cartItems.length === 0 && d?.length > 0 && dispatch(updateCardSession(d))
+  },[])
+
+
   return (
     <>
       <Head>
@@ -44,8 +80,8 @@ const Header = () => {
                 <label htmlFor="search-dropdown"
                   className="mb-2 text-sm font-medium text-accent sr-only ">Your Email</label>
                 <button onClick={() => setDropdown(!dropdown)}
-                  className={`hidden md:inline-flex flex-shrink-0 z-10 items-center py-2.5 px-4 text-sm font-medium text-center text-accent bg-gray-100 border border-gray-200 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 `}
-                  type="button">All categories <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                  className={`hidden md:inline-flex flex-shrink-0 z-10 items-center  py-2.5 px-4 text-sm font-medium text-center text-accent bg-gray-100 border border-gray-200 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 `}
+                  type="button">{selectedCategory ? selectedCategory : 'All categories'} <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd"
                       d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -54,22 +90,17 @@ const Header = () => {
                 <div id="dropdown"
                   className={`${dropdown ? 'sm:block hidden' : 'hidden'} z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-[108px] `}>
                   <ul className="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
-                    <li>
-                      <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Mockups</button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Templates</button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Design</button>
-                    </li>
-                    <li>
-                      <button type="button"
-                        className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">Logos</button>
-                    </li>
+                    {
+                      categories?.map(({name},idx)=>{
+                        return(
+                          <li key={idx} onClick={()=>{setSelectedCategory(name); setDropdown(!dropdown)}}>
+                          <button type="button" className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">{name}</button>
+                        </li>
+                        )
+                      })
+                    }
+                   
+                    
                   </ul>
                 </div>
                 <div className="relative w-full">
@@ -202,9 +233,9 @@ const Header = () => {
                 Categories
               </h6>
               <ul className='grid gap-2'>
-                {Categories.slice(1, 5).map((item: CategoryType, idx: number) => {
+                {categories?.map((item:any, idx:number) => {
                   return <li key={idx} className="">
-                    <Link href={`/${item.link}`} className="text-xs font-semibold text-accent uppercase">
+                    <Link href={`/${item.slug}`} className="text-xs font-semibold text-accent uppercase">
                       {item.name}
                     </Link>
                   </li>
@@ -216,8 +247,9 @@ const Header = () => {
                 Featured Products
               </h6>
               <div className='grid grid-cols-3 gap-5'>
-                {Products?.slice(0, 3).map((item: ProductsType, idx: number) => {
-                  return <Product_Box key={idx} data={item} />
+                {products?.slice(0, 3).map((item: any, idx: number) => {
+                  const img = item?.images[0]?.src
+                  return <Product_Box key={idx} data={item}  image={img}/>
                 })}
               </div>
             </div>
