@@ -45,7 +45,7 @@ export const AddToCart = createSlice({
           toast.info("Product Quantity Updated");
         }else{
           state.value[existingItemIndex].quantity = 1
-          toast.info("Not Decrease Product Quantity!");
+          toast.error("Not Decrease Product Quantity!");
         }
         
       }
@@ -56,12 +56,12 @@ export const AddToCart = createSlice({
       const items = current(state.value)
       const getItems = items.filter(item => item.id !== action.payload);
       state.value = getItems;
-      toast.info("Item Deleted From Cart");
+      toast.warn("Item Deleted From Cart");
       sessionStorage.setItem("products", JSON.stringify(state.value))
     },
     clearAll: (state) => {
       state.value = [];
-      toast.info("Cart Empty");
+      toast.warn("Cart Empty");
       sessionStorage.setItem("products", JSON.stringify(state.value))
     }
   },
