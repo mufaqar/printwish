@@ -73,7 +73,7 @@ const Header = () => {
       </Head>
       <header className="shadow-md">
         <TopBar />
-        <nav className="bg-secondary">
+        <nav className="bg-secondary z-50">
           <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
             <div className='flex gap-2 justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
               <form className="flex md:w-[700px]">
@@ -99,8 +99,6 @@ const Header = () => {
                         )
                       })
                     }
-                   
-                    
                   </ul>
                 </div>
                 <div className="relative w-full">
@@ -199,7 +197,7 @@ const Header = () => {
           </div>
         </nav>
         {/* mega menu  */}
-        <nav id="megamenu" className={`bg-white border-b border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${megaMenu ? 'block' : 'hidden'}`}>
+        <nav id="megamenu" className={`bg-white border-b z-50 border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${megaMenu ? 'block' : 'hidden'}`}>
           <div
             className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
             <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
