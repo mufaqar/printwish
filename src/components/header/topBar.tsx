@@ -23,10 +23,10 @@ const TopBar = () => {
              </Link>
            </li>
            <li>
-             <button className='text-white relative'>
+             <Link href="/cart" className='text-white relative'>
                <CiShoppingBasket size="24" />
                <span className='absolute text-sm bg-red-600 p-1 flex flex-col justify-center items-center w-6 h-6 rounded-full -right-4 -top-1'>{cartItems.length || 0}</span>
-             </button>
+             </Link>
            </li>
          </ul>
        </div>
