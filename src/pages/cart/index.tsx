@@ -1,11 +1,15 @@
 import PageBanner from '@/components/banner/page-banner'
 import { clearAll, decreaseCartItem, increseCartItem, removeProductFromCart } from '@/features/AddToCart'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 const Cart = () => {
      const cartItems = useSelector((state: any) => state.AddToCart.value)
      const dispatch = useDispatch()
+     const router = useRouter()
 
      const IncreaseCartItemHandler = (product: any) => {
           dispatch(increseCartItem(product))
@@ -14,6 +18,13 @@ const Cart = () => {
           dispatch(decreaseCartItem(product))
      }
 
+     const handleCheckout = () => {
+          if(cartItems.length > 0){
+               router.push('/checkout')
+          }else{
+               toast.info("Checkout not working your cart is empty!");
+          }
+     }
 
      return (
           <>
@@ -38,7 +49,7 @@ const Cart = () => {
                                                                  <button className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => IncreaseCartItemHandler(item)}> + </button>
                                                             </div>
                                                             <p className="text-sm">{item?.price} £</p>
-                                                            <button className="absolute -left-5 -top-5" onClick={()=>dispatch(removeProductFromCart(item.id))}>
+                                                            <button className="absolute -left-5 -top-5" onClick={() => dispatch(removeProductFromCart(item.id))}>
                                                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
                                                                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                                                  </svg>
@@ -49,7 +60,7 @@ const Cart = () => {
                                         )
                                    })
                               }
-                              { cartItems.length > 0 ? <button onClick={()=>dispatch(clearAll())} className="mt-6 w-full rounded-md bg-primary py-1.5 font-medium text-blue-50 hover:bg-secondary">Clear All</button> : <p className='text-accent'>Cart Empty</p> }
+                              {cartItems.length > 0 ? <button onClick={() => dispatch(clearAll())} className="mt-6 w-full rounded-md bg-primary py-1.5 font-medium text-blue-50 hover:bg-secondary">Clear All</button> : <p className='text-accent'>Cart Empty</p>}
                          </div>
 
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
@@ -69,7 +80,9 @@ const Cart = () => {
                                         <p className="text-sm text-gray-700">including VAT</p>
                                    </div>
                               </div>
-                              <button className="mt-6 w-full rounded-md bg-primary py-1.5 font-medium text-blue-50 hover:bg-secondary">Check out</button>
+
+                              <button onClick={()=>handleCheckout()} className="mt-6 w-full rounded-md bg-primary py-1.5 font-medium text-blue-50 hover:bg-secondary">Check out</button>
+                          
                          </div>
                     </div>
                </section>
