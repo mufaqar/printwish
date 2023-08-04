@@ -15,8 +15,10 @@ import { TiTick } from 'react-icons/ti'
 import { TbTruckDelivery } from 'react-icons/tb'
 import Link from 'next/link';
 import TextCreator from '@/components/textcreator/TextCreator';
-import {GET_PRODUCT} from '@/config/query'
-import {client} from '@/config/client'
+import { GET_PRODUCT } from '@/config/query'
+import { client } from '@/config/client'
+import { useDispatch } from 'react-redux';
+import { addItem } from '@/features/AddToCart';
 
 
 interface IColor {
@@ -26,6 +28,7 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product, _images }: any) => {
+  console.log("🚀 ~ file: [slug].tsx:29 ~ ProductSlug ~ product:", product)
 
   const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
 
@@ -61,7 +64,7 @@ const ProductSlug = ({ post, product, _images }: any) => {
       if (SizeAndColorExists) {
         // const findSize = productWithSizeAndQuantity.filter((item: any) => item.colorName !== colorName || item?.size !== size || item?.ProductCode !== ProductCode)
         const findSize = productWithSizeAndQuantity.filter(
-          (item:any) => !(item.size === size && item.colorName === colorName && item.ProductCode === ProductCode)
+          (item: any) => !(item.size === size && item.colorName === colorName && item.ProductCode === ProductCode)
         );
         setProductWithSizeAndQuantity([...findSize, sizeRes])
       } else {
@@ -83,6 +86,12 @@ const ProductSlug = ({ post, product, _images }: any) => {
     setSelectArt('')
   }
 
+  const isPrintable = product?.productCategories.nodes.some((i: any) => i.name === "Medical Equipments")
+
+  const dispatch = useDispatch()
+  const handleAddToCart = (data: any) => {
+    dispatch(addItem(data))
+  }
 
 
   return (
@@ -183,13 +192,17 @@ const ProductSlug = ({ post, product, _images }: any) => {
           <h2 className=' text-2xl md:text-4xl font-bold mt-6 md:mt-0'>{product?.title}</h2>
           <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
-          <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{__html: product?.content}}/>
-          <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
-            <p className='font-normal text-accent'>Customisations Available:</p>
-            <div className='flex gap-8 '>
-              <i className='flex items-center text-lg'><BiCheck size={28} className='text-green-500' /> Print</i>
-            </div>
-          </section>
+          <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.content }} />
+          {
+            isPrintable &&
+            <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
+              <p className='font-normal text-accent'>Customisations Available:</p>
+              <div className='flex gap-8 '>
+                <i className='flex items-center text-lg'><BiCheck size={28} className='text-green-500' /> Print</i>
+              </div>
+            </section>
+          }
+
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
           <section className='bg-background p-3 md:p-8 rounded-lg '>
             <div>
@@ -245,22 +258,28 @@ const ProductSlug = ({ post, product, _images }: any) => {
               </div>
             </div>
           </section>
-          <button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline flex justify-end items-end w-full'>Size Guide</button>
-          {customizationButton && <CustomiztionProduct />}
-          {selectedCustomizedLayout?.length > 1 && <Artwork />}
-          {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
-          {typeof colorsInLogo === 'number' && <UploadImage />}
-          {selectArt === 'Text creator' && <TextCreator />}
+          {
+            isPrintable &&
+            <>
+              <button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline flex justify-end items-end w-full'>Size Guide</button>
+              {customizationButton && <CustomiztionProduct />}
+              {selectedCustomizedLayout?.length > 1 && <Artwork />}
+              {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
+              {typeof colorsInLogo === 'number' && <UploadImage />}
+              {selectArt === 'Text creator' && <TextCreator />}
+              <SizeGuide />
+              <button onClick={() => handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
+                {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
+              </button>
+            </>
+          }
 
-          <SizeGuide />
 
-          <button onClick={() => handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
-            {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
-          </button>
+
           <div className='text-3xl mt-10 flex items-center gap-2'>
             Total: <span className='font-semibold text-secondary text-5xl'>£{product?.price}</span>
           </div>
-          <button className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
+          <button onClick={() => handleAddToCart(product)} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
           <Image src="/images/clothing-are-rated-excellent-on-trustpilot1.png" alt="start rating" width={500} height={500} className='w-80 mt-10' />
@@ -335,14 +354,14 @@ const UploadImage = () => {
 
 export async function getStaticProps({ params }: any) {
   const slug = params.slug
-  
+
   const response = await client.query({
     query: GET_PRODUCT,
     variables: {
       id: slug,
     },
   });
- 
+
   const product = response?.data?.product;
   return {
     props: {
