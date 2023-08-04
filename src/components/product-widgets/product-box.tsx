@@ -1,7 +1,7 @@
 import { addItem } from '@/features/AddToCart'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Product_Box = ({ data, image }: any) => {
@@ -22,7 +22,7 @@ const Product_Box = ({ data, image }: any) => {
       <div className=''>
         <h5 className="min-h-[52px]">
 
-        <Link href={`/product/${data?.slug}`} className='text-sm  font-semibold font-opensans text-accent hover:text-secondary'>
+        <Link href={`/product/${data?.slug}`} className='text-sm font-semibold font-opensans text-accent hover:text-secondary'>
           {data?.title || data?.name}
         </Link>
         </h5>
