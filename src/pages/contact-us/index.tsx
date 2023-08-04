@@ -6,7 +6,7 @@ function Contact() {
     <main className='items-center mx-auto max-w-screen-xl px-6 md:px-6 py-2.5'>
 <div className="lg:flex justify-between ">
 <div className="txt">
-<p className='text-[#7b858a] text-[20px] font-[400] leading-[27px]'>[contact-form-7 id="1690" title="Contact Form"]</p>
+<p className='text-[#7b858a] text-[20px] font-[400] leading-[27px]'>Contact Form</p>
 </div>
  <div className="cont mb-[20px]">
 <div className="img cursor-pointer mr-5 ">

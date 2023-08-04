@@ -86,7 +86,7 @@ const ProductSlug = ({ post, product, _images }: any) => {
     setSelectArt('')
   }
 
-  const isPrintable = product?.productCategories.nodes.some((i: any) => i.name === "Medical Equipments")
+  const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "men-tshirt")
 
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
