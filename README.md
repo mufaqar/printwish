@@ -2,6 +2,7 @@
 #Woo
 #Next
 #WordPress
+#Live
 
 #Backend WordPress Site URL.
 NEXT_PUBLIC_WORDPRESS_SITE_URL

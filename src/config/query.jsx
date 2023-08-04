@@ -7,10 +7,7 @@ export const GET_PRODUCT = gql`
         id
         slug
         content
-        sku
-        seo {
-          fullHead
-        }
+        sku    
         featuredImage {
           node {
             mediaItemUrl
