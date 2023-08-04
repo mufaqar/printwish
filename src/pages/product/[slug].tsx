@@ -15,6 +15,8 @@ import { TiTick } from 'react-icons/ti'
 import { TbTruckDelivery } from 'react-icons/tb'
 import Link from 'next/link';
 import TextCreator from '@/components/textcreator/TextCreator';
+import {GET_PRODUCT} from '@/config/query'
+import {client} from '@/config/client'
 
 
 interface IColor {
@@ -23,7 +25,8 @@ interface IColor {
 }
 
 
-const ProductSlug = ({ post }: any) => {
+const ProductSlug = ({ post, product, _images }: any) => {
+
   const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
 
   const [color, setColor] = useState<any>([])   // All selected color
@@ -107,7 +110,7 @@ const ProductSlug = ({ post }: any) => {
 
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%]'>
-          <Image src={post.image} alt={post.title} width={600} height={600} className="w-full" />
+          <Image src={product?.featuredImage?.node?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full" />
           <section className='bg-background p-8 mt-10 rounded-lg'>
 
             <div className='font-bold text-xl uppercase flex font-roboto gap-5 text-secondary'>
@@ -153,9 +156,9 @@ const ProductSlug = ({ post }: any) => {
                   </div>
                   <div className='border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Imprint Area:</h6>
-                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`LeftBreast:`}</span> {post.ImprintArea.LeftBreast}</p>
-                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Front:`}</span> {post.ImprintArea.Front}</p>
-                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Back:`}</span> {post.ImprintArea.Back}</p>
+                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`LeftBreast:`}</span> {post?.ImprintArea.LeftBreast}</p>
+                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Front:`}</span> {post?.ImprintArea.Front}</p>
+                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Back:`}</span> {post?.ImprintArea.Back}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Imprint Method:</h6>
@@ -177,10 +180,10 @@ const ProductSlug = ({ post }: any) => {
         </section>
 
         <section className='md:w-[60%] text-accent'>
-          <h2 className=' text-2xl md:text-4xl font-bold mt-6 md:mt-0'>{post.title}</h2>
-          <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{post?.ProductCode}</span></p>
+          <h2 className=' text-2xl md:text-4xl font-bold mt-6 md:mt-0'>{product?.title}</h2>
+          <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
-          <p className='text-lg text-accent font-roboto'>{post?.shortDescription}</p>
+          <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{__html: product?.content}}/>
           <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
             <p className='font-normal text-accent'>Customisations Available:</p>
             <div className='flex gap-8 '>
@@ -217,7 +220,7 @@ const ProductSlug = ({ post }: any) => {
                           {/* map all size that are accociated to this product  */}
                           <ul className='flex flex-wrap items-center gap-4 mt-3 '>
                             {
-                              post.sizeDescription.map((item: any, idx: number) => {
+                              post?.sizeDescription.map((item: any, idx: number) => {
                                 return (
                                   <div key={idx} className='flex flex-col items-center justify-center'>
                                     <p className='text-lg text-accent font-bold'>{item.type}</p>
@@ -225,7 +228,7 @@ const ProductSlug = ({ post }: any) => {
                                       <input type="number" name={item.type} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
                                         placeholder='0'
                                         value={size}
-                                        onChange={(e) => handleSize(e, c?.name, post.ProductCode)}
+                                        onChange={(e) => handleSize(e, c?.name, post?.ProductCode)}
                                       />
                                     </div>
                                   </div>
@@ -255,7 +258,7 @@ const ProductSlug = ({ post }: any) => {
             {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
           </button>
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{post?.price}</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{product?.price}</span>
           </div>
           <button className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
@@ -332,10 +335,18 @@ const UploadImage = () => {
 
 export async function getStaticProps({ params }: any) {
   const slug = params.slug
-  const post = Posts.find(item => item.slug === slug)
+  
+  const response = await client.query({
+    query: GET_PRODUCT,
+    variables: {
+      id: slug,
+    },
+  });
+ 
+  const product = response?.data?.product;
   return {
     props: {
-      post,
+      product,
     },
   };
 }

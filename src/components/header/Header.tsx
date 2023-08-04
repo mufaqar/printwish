@@ -7,17 +7,20 @@ import TopBar from './topBar'
 import { apiRequest } from '@/config/requests'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, updateCardSession } from '@/features/AddToCart'
+import { useRouter } from 'next/router'
 
 const Header = () => {
 
   const cartItems = useSelector((state: any) => state.AddToCart.value)
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const [megaMenu, setMegaMenu] = useState(false)
   const [dropdown, setDropdown] = useState(false)
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(()=>{
     // fetch all product categories
@@ -47,6 +50,10 @@ const Header = () => {
     }
   },[])
 
+  const HandleSearchQuery = ({selectedCategory, searchQuery}:any) => {
+    const c = selectedCategory.toLowerCase().replace(/ /g,"-");
+    router.push(`/search?c=${c}&q=${searchQuery.toLowerCase()}`)
+  }
 
   return (
     <>
@@ -76,7 +83,7 @@ const Header = () => {
         <nav className="bg-secondary z-50">
           <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
             <div className='flex gap-2 justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
-              <form className="flex md:w-[700px]">
+              <div className="flex md:w-[700px]">
                 <label htmlFor="search-dropdown"
                   className="mb-2 text-sm font-medium text-accent sr-only ">Your Email</label>
                 <button onClick={() => setDropdown(!dropdown)}
@@ -94,7 +101,7 @@ const Header = () => {
                       categories?.map(({name},idx)=>{
                         return(
                           <li key={idx} onClick={()=>{setSelectedCategory(name); setDropdown(!dropdown)}}>
-                          <button type="button" className="inline-flex py-2 px-4 w-full hover:bg-gray-100 font-roboto">{name}</button>
+                          <button type="button" className="inline-flex py-2 px-4 w-full text-left hover:bg-gray-100 font-roboto">{name}</button>
                         </li>
                         )
                       })
@@ -104,8 +111,12 @@ const Header = () => {
                 <div className="relative w-full">
                   <input type="search" id="search-dropdown"
                     className="block p-2.5 w-full z-20 text-sm text-accent bg-gray-50 rounded-lg md:rounded-l-none md:border-l-gray-50 border-l-1 md:border-l-6 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-                    placeholder="Search anything..." required />
+                    placeholder="Search anything..." required 
+                    value={searchQuery}
+                    onChange={(e)=>setSearchQuery(e.target.value)} 
+                    />
                   <button type="submit"
+                    onClick={()=>HandleSearchQuery({selectedCategory, searchQuery})}
                     className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary rounded-r-lg border border-primary hover:bg-primary/90 focus:ring-4 focus:outline-none focus:ring-primary "><svg
                       className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +124,7 @@ const Header = () => {
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg></button>
                 </div>
-              </form>
+              </div>
               <div className="">
                 <ul className='flex sm:gap-2 gap-1 items-center'>
                   <li>
