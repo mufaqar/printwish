@@ -23,59 +23,84 @@ import { AnyARecord } from 'dns';
 
 
 interface IColor {
-  description: string,
+  code: string,
   name: string
 }
 
 
 const ProductSlug = ({ post, product }: any) => {
-console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
-  var productPrice = product.price.replace('£','')
+  var productPrice = product.price.replace('£', '')
 
   const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
-
-  const [color, setColor] = useState<any>([])   // All selected color
-  const [size, setSize] = useState();
   const [customizationButton, setCustomizationButton] = useState(false)
-  const [productWithSizeAndQuantity, setProductWithSizeAndQuantity] = useState<any>([])
-  console.log("🚀 ~ file: [slug].tsx:40 ~ ProductSlug ~ productWithSizeAndQuantity:", productWithSizeAndQuantity)
 
-  const HandleColor = (selectedColor: any) => {
-    const colorExists = color.some((item: any) => item.description === selectedColor.description);
+  const [selectedProduct, setSelectedProduct] = useState<any>({
+    productId: product.id,
+    title: product.title,
+    colors: []
+  })
+
+
+  const HandleColor = (clr: any) => {
+    const colorExists = selectedProduct.colors.some((color: any) => color.name === clr.name);
     if (!colorExists) {
-      setColor([...color, selectedColor])
+      const newColor = {
+        name: clr.name,
+        code: clr.description,
+        selectedSize: []
+      };
+      setSelectedProduct((prevState: any) => ({
+        ...prevState,
+        colors: [...prevState.colors, newColor]
+      }));
     }
   }
-  const RemoveColorFromSelectedList = (getRemoveColor: any) => {
-    const RemaningItem = color?.filter((item: any) => item.description !== getRemoveColor.description)
-    console.log("🚀 ~ file: [slug].tsx:51 ~ RemoveColorFromSelectedList ~ RemaningItem:", RemaningItem)
-    setColor(RemaningItem)
-  }
 
-  const handleSize = (e: any, colorName: any, ProductCode: any) => {
-    const size = e.target.name
-    const quantity = e.target.value
-    
-    if (quantity > 0) {
-      // here is we get size quantity and color name
-      const sizeRes = {
-        size, quantity, colorName, ProductCode
-      }
-      // check if size color and product code exist in productWithSizeAndQuantity state 
-      const SizeAndColorExists = productWithSizeAndQuantity.some((item: any) => item.size === size && item.colorName === colorName && item?.ProductCode === ProductCode);
 
-      if (SizeAndColorExists) {
-        // const findSize = productWithSizeAndQuantity.filter((item: any) => item.colorName !== colorName || item?.size !== size || item?.ProductCode !== ProductCode)
-        const findSize = productWithSizeAndQuantity.filter(
-          (item: any) => !(item.size === size && item.colorName === colorName && item.ProductCode === ProductCode)
-        );
-        setProductWithSizeAndQuantity([...findSize, sizeRes])
+
+  const handleSize = (e: any, colorName: any, size: any) => {
+    const colorIndex = selectedProduct.colors.findIndex((color: any) => color.name === colorName);
+    const sizes = {
+      name: size,
+      quantity: e.target.value
+    };
+
+    setSelectedProduct((prevProduct: any) => {
+      const updatedColors = [...prevProduct.colors];
+      const updatedColor = { ...updatedColors[colorIndex] };
+
+      // Check if the size already exists in the selectedSize array
+      const existingSizeIndex = updatedColor.selectedSize.findIndex((existingSize: any) => existingSize.name === size);
+
+      if (existingSizeIndex !== -1) {
+        // If the size exists, update the quantity
+        updatedColor.selectedSize[existingSizeIndex].quantity = e.target.value;
       } else {
-        setProductWithSizeAndQuantity([...productWithSizeAndQuantity, sizeRes])
+        // If the size doesn't exist, add the new sizes object
+        updatedColor.selectedSize.push(sizes);
       }
-    }
+      updatedColors[colorIndex] = updatedColor;
+      return {
+        ...prevProduct,
+        colors: updatedColors
+      };
+    });
+
+
 
   }
+
+  const handleColorRemoval = (colorName: any) => {
+    setSelectedProduct((prevProduct: any) => {
+      const updatedColors = prevProduct.colors.filter((color: any) => color.name !== colorName);
+      return {
+        ...prevProduct,
+        colors: updatedColors
+      };
+    });
+  }
+
+
 
   // const handle product description tab and detail tab 
   const [DetailTab, setDetailTab] = useState('DESCRIPTION')
@@ -96,10 +121,14 @@ console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
     dispatch(addItem(data))
   }
 
-  let totalSum = 0;
-  for (const item of productWithSizeAndQuantity) {
-    totalSum += parseInt(item.quantity);
-  }
+  let totalQuantity = 0;
+  
+  selectedProduct?.colors?.forEach((color:any) => {
+    color.selectedSize?.forEach((size:any) => {
+      totalQuantity += parseInt(size.quantity);
+    });
+  });
+
 
   return (
     <>
@@ -217,7 +246,7 @@ console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
               <ul className='flex flex-wrap gap-1 md:gap-3 mt-4'>
                 {
                   product?.allPaColor.nodes?.map((clr: any, idx: number) => {
-                    const colorExists = color.some((item: any) => item.description === clr.description);
+                    const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                     return (
                       <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
                         <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
@@ -227,28 +256,34 @@ console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
                 }
               </ul>
               {/* selected color and show all sizes with each selcted color */}
+
               <div>
                 {
-                  color?.map((c: IColor, idx: number) => {
+                  selectedProduct?.colors?.map((c: IColor, idx: number) => {
+
                     return (
                       <div key={idx} className='mt-6 flex justify-between '>
                         <div>
                           <div className='flex items-center gap-2'>
-                            <div className="p-6 rounded-full" style={{ backgroundColor: `#${c?.description}` }} />
+                            <div className="p-6 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
                             <p className='text-lg uppercase'>{c?.name}</p>
                           </div>
                           {/* map all size that are accociated to this product  */}
                           <ul className='flex flex-wrap items-center gap-4 mt-3 '>
                             {
                               product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
+
+                                const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
+                                const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
+
                                 return (
                                   <div key={idx} className='flex flex-col items-center justify-center'>
                                     <p className='text-lg text-accent font-bold'>{item.name}</p>
                                     <div className='mt-1'>
                                       <input type="number" name={item.name} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
                                         placeholder='0'
-                                        value={size}
-                                        onChange={(e) => handleSize(e, c?.name, post?.ProductCode)}
+                                        value={quantity}
+                                        onChange={(e) => handleSize(e, c?.name, item.name)}
                                       />
                                     </div>
                                   </div>
@@ -257,7 +292,7 @@ console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
                             }
                           </ul>
                         </div>
-                        <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => RemoveColorFromSelectedList(c)} /></i>
+                        <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
                       </div>
                     )
                   })
@@ -282,9 +317,9 @@ console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
           }
 
 
-          
+
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{ totalSum > 0 ? productPrice*totalSum : productPrice }</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{totalQuantity > 0 ? productPrice * totalQuantity : productPrice}</span>
           </div>
 
           <button onClick={() => handleAddToCart(product)} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
