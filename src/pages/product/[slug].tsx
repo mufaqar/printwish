@@ -19,16 +19,18 @@ import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
+import { AnyARecord } from 'dns';
 
 
 interface IColor {
-  code: string,
+  description: string,
   name: string
 }
 
 
-const ProductSlug = ({ post, product, _images }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:29 ~ ProductSlug ~ product:", product)
+const ProductSlug = ({ post, product }: any) => {
+console.log("🚀 ~ file: [slug].tsx:31 ~ ProductSlug ~ product:", product)
+  var productPrice = product.price.replace('£','')
 
   const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
 
@@ -36,23 +38,24 @@ const ProductSlug = ({ post, product, _images }: any) => {
   const [size, setSize] = useState();
   const [customizationButton, setCustomizationButton] = useState(false)
   const [productWithSizeAndQuantity, setProductWithSizeAndQuantity] = useState<any>([])
+  console.log("🚀 ~ file: [slug].tsx:40 ~ ProductSlug ~ productWithSizeAndQuantity:", productWithSizeAndQuantity)
 
   const HandleColor = (selectedColor: any) => {
-    const colorExists = color.some((item: any) => item.code === selectedColor.code);
+    const colorExists = color.some((item: any) => item.description === selectedColor.description);
     if (!colorExists) {
       setColor([...color, selectedColor])
     }
   }
   const RemoveColorFromSelectedList = (getRemoveColor: any) => {
-    const RemaningItem = color?.filter((item: any) => item.code !== getRemoveColor.code)
+    const RemaningItem = color?.filter((item: any) => item.description !== getRemoveColor.description)
+    console.log("🚀 ~ file: [slug].tsx:51 ~ RemoveColorFromSelectedList ~ RemaningItem:", RemaningItem)
     setColor(RemaningItem)
   }
 
   const handleSize = (e: any, colorName: any, ProductCode: any) => {
-
     const size = e.target.name
     const quantity = e.target.value
-
+    
     if (quantity > 0) {
       // here is we get size quantity and color name
       const sizeRes = {
@@ -93,6 +96,10 @@ const ProductSlug = ({ post, product, _images }: any) => {
     dispatch(addItem(data))
   }
 
+  let totalSum = 0;
+  for (const item of productWithSizeAndQuantity) {
+    totalSum += parseInt(item.quantity);
+  }
 
   return (
     <>
@@ -209,11 +216,11 @@ const ProductSlug = ({ post, product, _images }: any) => {
               <h6 className='text-accent font-normal'>Choose Color:</h6>
               <ul className='flex flex-wrap gap-1 md:gap-3 mt-4'>
                 {
-                  post?.color?.map((clr: any, idx: number) => {
-                    const colorExists = color.some((item: any) => item.code === clr.code);
+                  product?.allPaColor.nodes?.map((clr: any, idx: number) => {
+                    const colorExists = color.some((item: any) => item.description === clr.description);
                     return (
                       <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
-                        <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.code}` }} />
+                        <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
                       </li>
                     )
                   })
@@ -227,18 +234,18 @@ const ProductSlug = ({ post, product, _images }: any) => {
                       <div key={idx} className='mt-6 flex justify-between '>
                         <div>
                           <div className='flex items-center gap-2'>
-                            <div className="p-6 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
+                            <div className="p-6 rounded-full" style={{ backgroundColor: `#${c?.description}` }} />
                             <p className='text-lg uppercase'>{c?.name}</p>
                           </div>
                           {/* map all size that are accociated to this product  */}
                           <ul className='flex flex-wrap items-center gap-4 mt-3 '>
                             {
-                              post?.sizeDescription.map((item: any, idx: number) => {
+                              product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
                                 return (
                                   <div key={idx} className='flex flex-col items-center justify-center'>
-                                    <p className='text-lg text-accent font-bold'>{item.type}</p>
+                                    <p className='text-lg text-accent font-bold'>{item.name}</p>
                                     <div className='mt-1'>
-                                      <input type="number" name={item.type} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
+                                      <input type="number" name={item.name} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
                                         placeholder='0'
                                         value={size}
                                         onChange={(e) => handleSize(e, c?.name, post?.ProductCode)}
@@ -261,7 +268,7 @@ const ProductSlug = ({ post, product, _images }: any) => {
           {
             isPrintable &&
             <>
-              <button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline flex justify-end items-end w-full'>Size Guide</button>
+              <div className='flex justify-end items-end w-full'><button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline '>Size Guide</button></div>
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
               {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
@@ -275,10 +282,11 @@ const ProductSlug = ({ post, product, _images }: any) => {
           }
 
 
-
+          
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{product?.price}</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{ totalSum > 0 ? productPrice*totalSum : productPrice }</span>
           </div>
+
           <button onClick={() => handleAddToCart(product)} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
