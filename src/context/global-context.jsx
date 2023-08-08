@@ -6,9 +6,13 @@ export const SettingsContext = createContext();
 export const SettingsProvider = ({ children }) => {
   const [selectedCustomizedLayout, setSelectedCustomizedLayout] = useState('');
   const [selectArt, setSelectArt] = useState('')
-  const [colorsInLogo, setColorsInLogo] = useState()
+  const [colorsInLogo, setColorsInLogo] = useState(0)
   const [modalIsOpen, setIsOpen] = useState(false);
   const [designWidth, setDesignWidth] = useState('');
+
+  const [selectedProduct, setSelectedProduct] = useState({
+    colors: []
+  })
 
   // Text creator form states
   const [textCreatorLine, setCreatorStateLine] = useState({
@@ -33,6 +37,7 @@ export const SettingsProvider = ({ children }) => {
     });
   };
  
+
   // hide scroll when modelbox is open  
   HideScrollOnModelOpen(modalIsOpen)
   
@@ -46,7 +51,8 @@ export const SettingsProvider = ({ children }) => {
         colorsInLogo, setColorsInLogo,
         modalIsOpen, setIsOpen,
         textCreatorLine, setCreatorStateLine, handleChangeTextCreatorLine,
-        designWidth, setDesignWidth
+        designWidth, setDesignWidth,
+        selectedProduct, setSelectedProduct
       }}
     >
       {children}

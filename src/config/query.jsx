@@ -7,7 +7,7 @@ export const GET_PRODUCT = gql`
         id
         slug
         content
-        sku    
+        sku
         featuredImage {
           node {
             mediaItemUrl
@@ -25,12 +25,26 @@ export const GET_PRODUCT = gql`
             mediaItemUrl
           }
         }
+        ... on SimpleProduct {
+          price
+        }
+        allPaColor {
+          nodes {
+            name
+            description
+          }
+        }
+        allPaSizes(where: {order: DESC}) {
+          nodes {
+            name
+          }
+        }
       }
     }
   `;
 
 
-  export const SEARCH_PRODUCTS = gql`
+export const SEARCH_PRODUCTS = gql`
   query GetProducts($category: String!, $search: String!) {
     products(where: {category: $category, search:  $search}) {
       nodes {
@@ -47,7 +61,7 @@ export const GET_PRODUCT = gql`
   }
   `;
 
-  export const SEARCH_PRODUCTS_WITHOUT_CAREGORY = gql`
+export const SEARCH_PRODUCTS_WITHOUT_CAREGORY = gql`
   query GetProducts( $search: String!) {
     products(where: { search:  $search}) {
       nodes {

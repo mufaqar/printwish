@@ -1,5 +1,5 @@
 import { GetStaticPaths } from 'next';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Posts } from '../../../public/data'
 import Image from 'next/image';
 import { BiCheck } from 'react-icons/bi'
@@ -19,6 +19,8 @@ import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
+import { AnyARecord } from 'dns';
+import { calculatePrice } from '@/utils';
 
 
 interface IColor {
@@ -27,52 +29,79 @@ interface IColor {
 }
 
 
-const ProductSlug = ({ post, product, _images }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:29 ~ ProductSlug ~ product:", product)
+const ProductSlug = ({ post, product }: any) => {
 
-  const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+  console.log("🚀 ~ file: [slug].tsx:35 ~ ProductSlug ~ selectArt:", selectArt)
+  
+  useEffect(() => {
+    setSelectedProduct({
+      ...selectedProduct,
+      productId: product.id,
+      title: product.title
+    })
+  }, [])
 
-  const [color, setColor] = useState<any>([])   // All selected color
-  const [size, setSize] = useState();
   const [customizationButton, setCustomizationButton] = useState(false)
-  const [productWithSizeAndQuantity, setProductWithSizeAndQuantity] = useState<any>([])
 
-  const HandleColor = (selectedColor: any) => {
-    const colorExists = color.some((item: any) => item.code === selectedColor.code);
+  const HandleColor = (clr: any) => {
+    const colorExists = selectedProduct.colors.some((color: any) => color.name === clr.name);
     if (!colorExists) {
-      setColor([...color, selectedColor])
+      const newColor = {
+        name: clr.name,
+        code: clr.description,
+        selectedSize: []
+      };
+      setSelectedProduct((prevState: any) => ({
+        ...prevState,
+        colors: [...prevState.colors, newColor]
+      }));
     }
   }
-  const RemoveColorFromSelectedList = (getRemoveColor: any) => {
-    const RemaningItem = color?.filter((item: any) => item.code !== getRemoveColor.code)
-    setColor(RemaningItem)
-  }
 
-  const handleSize = (e: any, colorName: any, ProductCode: any) => {
+  const handleSize = (e: any, colorName: any, size: any) => {
+    const colorIndex = selectedProduct.colors.findIndex((color: any) => color.name === colorName);
+    const sizes = {
+      name: size,
+      quantity: e.target.value
+    };
 
-    const size = e.target.name
-    const quantity = e.target.value
+    setSelectedProduct((prevProduct: any) => {
+      const updatedColors = [...prevProduct.colors];
+      const updatedColor = { ...updatedColors[colorIndex] };
 
-    if (quantity > 0) {
-      // here is we get size quantity and color name
-      const sizeRes = {
-        size, quantity, colorName, ProductCode
-      }
-      // check if size color and product code exist in productWithSizeAndQuantity state 
-      const SizeAndColorExists = productWithSizeAndQuantity.some((item: any) => item.size === size && item.colorName === colorName && item?.ProductCode === ProductCode);
+      // Check if the size already exists in the selectedSize array
+      const existingSizeIndex = updatedColor.selectedSize.findIndex((existingSize: any) => existingSize.name === size);
 
-      if (SizeAndColorExists) {
-        // const findSize = productWithSizeAndQuantity.filter((item: any) => item.colorName !== colorName || item?.size !== size || item?.ProductCode !== ProductCode)
-        const findSize = productWithSizeAndQuantity.filter(
-          (item: any) => !(item.size === size && item.colorName === colorName && item.ProductCode === ProductCode)
-        );
-        setProductWithSizeAndQuantity([...findSize, sizeRes])
+      if (existingSizeIndex !== -1) {
+        // If the size exists, update the quantity
+        updatedColor.selectedSize[existingSizeIndex].quantity = e.target.value;
       } else {
-        setProductWithSizeAndQuantity([...productWithSizeAndQuantity, sizeRes])
+        // If the size doesn't exist, add the new sizes object
+        updatedColor.selectedSize.push(sizes);
       }
-    }
+      updatedColors[colorIndex] = updatedColor;
+      return {
+        ...prevProduct,
+        colors: updatedColors
+      };
+    });
+
+
 
   }
+
+  const handleColorRemoval = (colorName: any) => {
+    setSelectedProduct((prevProduct: any) => {
+      const updatedColors = prevProduct.colors.filter((color: any) => color.name !== colorName);
+      return {
+        ...prevProduct,
+        colors: updatedColors
+      };
+    });
+  }
+
+
 
   // const handle product description tab and detail tab 
   const [DetailTab, setDetailTab] = useState('DESCRIPTION')
@@ -82,8 +111,10 @@ const ProductSlug = ({ post, product, _images }: any) => {
 
 
   const handleCustomization = () => {
-    setCustomizationButton(!customizationButton)
     setSelectArt('')
+    setCustomizationButton(!customizationButton)
+    setColorsInLogo()
+    setSelectedCustomizedLayout()
   }
 
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "men-tshirt")
@@ -92,6 +123,14 @@ const ProductSlug = ({ post, product, _images }: any) => {
   const handleAddToCart = (data: any) => {
     dispatch(addItem(data))
   }
+
+  let totalQuantity = 0;
+
+  selectedProduct?.colors?.forEach((color: any) => {
+    color.selectedSize?.forEach((size: any) => {
+      totalQuantity += parseInt(size.quantity);
+    });
+  });
 
 
   return (
@@ -209,20 +248,22 @@ const ProductSlug = ({ post, product, _images }: any) => {
               <h6 className='text-accent font-normal'>Choose Color:</h6>
               <ul className='flex flex-wrap gap-1 md:gap-3 mt-4'>
                 {
-                  post?.color?.map((clr: any, idx: number) => {
-                    const colorExists = color.some((item: any) => item.code === clr.code);
+                  product?.allPaColor.nodes?.map((clr: any, idx: number) => {
+                    const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                     return (
                       <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
-                        <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.code}` }} />
+                        <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
                       </li>
                     )
                   })
                 }
               </ul>
               {/* selected color and show all sizes with each selcted color */}
+
               <div>
                 {
-                  color?.map((c: IColor, idx: number) => {
+                  selectedProduct?.colors?.map((c: IColor, idx: number) => {
+
                     return (
                       <div key={idx} className='mt-6 flex justify-between '>
                         <div>
@@ -233,15 +274,19 @@ const ProductSlug = ({ post, product, _images }: any) => {
                           {/* map all size that are accociated to this product  */}
                           <ul className='flex flex-wrap items-center gap-4 mt-3 '>
                             {
-                              post?.sizeDescription.map((item: any, idx: number) => {
+                              product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
+
+                                const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
+                                const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
+
                                 return (
                                   <div key={idx} className='flex flex-col items-center justify-center'>
-                                    <p className='text-lg text-accent font-bold'>{item.type}</p>
+                                    <p className='text-lg text-accent font-bold'>{item.name}</p>
                                     <div className='mt-1'>
-                                      <input type="number" name={item.type} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
+                                      <input type="number" name={item.name} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
                                         placeholder='0'
-                                        value={size}
-                                        onChange={(e) => handleSize(e, c?.name, post?.ProductCode)}
+                                        value={quantity}
+                                        onChange={(e) => handleSize(e, c?.name, item.name)}
                                       />
                                     </div>
                                   </div>
@@ -250,7 +295,7 @@ const ProductSlug = ({ post, product, _images }: any) => {
                             }
                           </ul>
                         </div>
-                        <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => RemoveColorFromSelectedList(c)} /></i>
+                        <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
                       </div>
                     )
                   })
@@ -261,11 +306,11 @@ const ProductSlug = ({ post, product, _images }: any) => {
           {
             isPrintable &&
             <>
-              <button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline flex justify-end items-end w-full'>Size Guide</button>
+              <div className='flex justify-end items-end w-full'><button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline '>Size Guide</button></div>
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
               {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
-              {typeof colorsInLogo === 'number' && <UploadImage />}
+              {colorsInLogo > 0  && <UploadImage />}
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
               <button onClick={() => handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
@@ -277,8 +322,9 @@ const ProductSlug = ({ post, product, _images }: any) => {
 
 
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{product?.price}</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)}</span>
           </div>
+
           <button onClick={() => handleAddToCart(product)} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
@@ -294,14 +340,19 @@ export default ProductSlug
 
 
 const SelectNumberOfLogoColor = () => {
-  const { colorsInLogo, setColorsInLogo } = useContext(SettingsContext)
+  const { colorsInLogo, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+
+  const handleNumberOfColorInLogo = (no:any) => {
+    setColorsInLogo(no)
+    setSelectedProduct({...selectedProduct, numberOfColorInLogo:no})
+  }
   return (
     <section className='mt-4 bg-background p-8 gap-6 rounded-lg'>
       <h5 className='text-xl font-semibold text-accent capitalize font-roboto'>Select number of color contain logo:</h5>
       <ul className='flex flex-wrap items-center mt-5'>
         {
           [1, 2, 3, 4, 5].map((no, idx) => (
-            <li key={idx} onClick={() => setColorsInLogo(no)} className={`p-1 cursor-pointer hover:scale-105 rounded-full border-[2px] ${colorsInLogo === no ? 'border-secondary' : 'border-transparent'}`}> <div className={`w-[52px] h-[52px] text-white font-bold text-xl flex flex-col justify-center items-center rounded-full  ${colorsInLogo === no ? 'bg-accent' : 'bg-black/40'}`}>{no}</div></li>
+            <li key={idx} onClick={() => handleNumberOfColorInLogo(no)} className={`p-1 cursor-pointer hover:scale-105 rounded-full border-[2px] ${colorsInLogo === no ? 'border-secondary' : 'border-transparent'}`}> <div className={`w-[52px] h-[52px] text-white font-bold text-xl flex flex-col justify-center items-center rounded-full  ${colorsInLogo === no ? 'bg-accent' : 'bg-black/40'}`}>{no}</div></li>
           ))
         }
       </ul>
@@ -317,7 +368,6 @@ const UploadImage = () => {
     const file = event.target.files[0];
     setSelectedImage(file);
     setImagePreview(URL.createObjectURL(file));
-
   };
 
   return (

@@ -7,7 +7,7 @@ import { SettingsContext } from '@/context/global-context';
 
 const CustomiztionProduct = () => {
 
-     const { selectedCustomizedLayout, setSelectedCustomizedLayout } = useContext(SettingsContext)
+     const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
 
      const settings = {
           dots: false,
@@ -48,6 +48,11 @@ const CustomiztionProduct = () => {
              ]
      };
 
+     const handleDesignPosition = ((designPosition:any) => {
+          setSelectedCustomizedLayout(designPosition);
+          setSelectedProduct({...selectedProduct, designPosition})
+     })
+
      return (
           <>
                <section className='mt-4 bg-background p-8 rounded-lg'>
@@ -56,7 +61,7 @@ const CustomiztionProduct = () => {
                          <Slider {...settings}>
                               {designVarient.map((item, idx) => {
                                    return (
-                                        <button className='p-2' key={idx} onClick={() => setSelectedCustomizedLayout(item.position)}>
+                                        <button className='p-2' key={idx} onClick={() => handleDesignPosition(item.position)}>
                                              <div className={`bg-white flex flex-col jus items-center gap-2 border-[3px] rounded-lg p-3 ${selectedCustomizedLayout === item.position ? 'border-secondary' : 'border-transparent'}`}>
                                                   <h5 className="uppercase font-light font-roboto text-center">{item?.placement}</h5>
                                                   <Image src={item.image} alt={item.position} width={400} height={400} className='w-20' />
