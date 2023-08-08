@@ -27,6 +27,11 @@ export const GET_PRODUCT = gql`
         }
         ... on SimpleProduct {
           price
+          galleryImages {
+            nodes {
+              mediaItemUrl
+            }
+          }
         }
         allPaColor {
           nodes {
