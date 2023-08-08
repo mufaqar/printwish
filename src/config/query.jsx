@@ -34,7 +34,7 @@ export const GET_PRODUCT = gql`
             }
           }
         }
-        allPaColor {
+        allPaColor(first: 100) {
           nodes {
             name
             description
