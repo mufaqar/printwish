@@ -170,3 +170,6 @@ input[type=number] {
   position: relative;
 }
 
+._features ul li{
+  list-style: disc;
+}

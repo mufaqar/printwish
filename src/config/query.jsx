@@ -6,6 +6,7 @@ export const GET_PRODUCT = gql`
         title
         id
         slug
+        excerpt
         content
         sku
         featuredImage {
@@ -42,7 +43,23 @@ export const GET_PRODUCT = gql`
         allPaSizes(where: {order: DESC}) {
           nodes {
             name
+            description
           }
+        }
+        poductInfo {
+          fabric
+          gender
+          imprintArea {
+            back
+            front
+            leftbreast
+          }
+          imprintMethod
+          minimumOrder
+          packaging
+          readyToShip
+          washingInstructions
+          weight
         }
       }
     }

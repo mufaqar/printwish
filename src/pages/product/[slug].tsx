@@ -19,7 +19,6 @@ import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
-import { AnyARecord } from 'dns';
 import { calculatePrice } from '@/utils';
 
 
@@ -30,11 +29,12 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
+console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
-  
-  
+  const { selectedCustomizedLayout, textCreatorLine, designWidth, specialInstruction, customisationName,
+    setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo,
+    selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+
   useEffect(() => {
     setSelectedProduct({
       ...selectedProduct,
@@ -103,8 +103,6 @@ console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
     });
   }
 
-
-
   // const handle product description tab and detail tab 
   const [DetailTab, setDetailTab] = useState('DESCRIPTION')
   const handleDetailsTabs = (e: string) => {
@@ -123,6 +121,36 @@ console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
 
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
+    // selectedProduct, setSelectedProduct
+    const updatedState = { ...selectedProduct };
+    if (textCreatorLine.text1.length > 0) {
+      updatedState.line.push({
+        name: 'line-1',
+        text: textCreatorLine.text1,
+        font: textCreatorLine.font1,
+        color: textCreatorLine.color1,
+        size: textCreatorLine.size1,
+      })
+    }
+    if (textCreatorLine.text2.length > 0) {
+      updatedState.line.push({
+        name: 'line-2',
+        text: textCreatorLine.text2,
+        font: textCreatorLine.font2,
+        color: textCreatorLine.color2,
+        size: textCreatorLine.size2,
+      })
+    }
+    if (textCreatorLine.text3.length > 0) {
+      updatedState.line.push({
+        name: 'line-3',
+        text: textCreatorLine.text3,
+        font: textCreatorLine.font3,
+        color: textCreatorLine.color3,
+        size: textCreatorLine.size3,
+      })
+    }
+    setSelectedProduct({ ...updatedState, designWidth, specialInstruction, customisationName })
     dispatch(addItem(data))
   }
 
@@ -161,78 +189,81 @@ console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%]'>
           <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
-          <div className='grid grid-cols-4 gap-2 mt-12'>
+          <div className='grid grid-cols-4 gap-2 mt-4'>
             {
-              product?.galleryImages?.nodes.map((item:any,idx:number)=>{
-                return(
-                  <Image key={idx} onClick={()=>setImagePath(item?.mediaItemUrl)} src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full border border-gray-200 h-32 object-cover p-3 rounded-lg hover:scale-105 cursor-pointer" />
+              product?.galleryImages?.nodes.map((item: any, idx: number) => {
+                return (
+                  <Image key={idx} onClick={() => setImagePath(item?.mediaItemUrl)} src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full border border-gray-200 h-32 object-cover p-3 rounded-lg hover:scale-105 cursor-pointer" />
                 )
               })
             }
-            
+
           </div>
           <section className='bg-background p-8 mt-10 rounded-lg'>
 
             <div className='font-bold text-xl uppercase flex font-roboto gap-5 text-secondary'>
               <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>
               <button className={DetailTab === 'DETAILS' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DETAILS')}>DETAILS</button>
+              <button className={DetailTab === 'FAQS' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('FAQS')}>FAQ'S</button>
             </div>
 
             <div>
               {
-                DetailTab === 'DESCRIPTION' ? <div>
+                DetailTab === 'DESCRIPTION' && <div>
                   {/* description tab  */}
                   <h6 className='capitalize text-lg font-bold text-gray-600 mt-3 font-roboto'>features:</h6>
-                  <ul className='mt-2 pl-8'>
-                    {
-                      post?.features?.map((item: any, idx: number) => (
-                        <li key={idx} className='text-accent list-disc mb-1'>{item}</li>
-                      ))
-                    }
-                  </ul>
+                  <div className='mt-2 pl-4 text-accent _features' dangerouslySetInnerHTML={{ __html: product?.content }}/>
+                    
                   <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Fabric:</h6>
-                  <p className='text-accent'>{post?.fabric}</p>
+                  <p className='text-accent'>{product?.poductInfo?.fabric}</p>
                   <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Weight:</h6>
-                  <p className='text-accent'>{post?.Weight}</p>
+                  <p className='text-accent'>{product?.poductInfo?.weight}</p>
                   <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Size Description:</h6>
                   <ul className='mt-2 flex flex-wrap gap-x-2'>
                     {
-                      post?.sizeDescription?.map((item: any, idx: number) => (
-                        <li key={idx} className='text-accent mb-1'><span className='font-bold'>{item.type}</span> {item?.size}",</li>
+                      product?.allPaSizes?.nodes?.map((item: any, idx: number) => (
+                        <li key={idx} className='text-accent mb-1'><span className='font-bold'>{item.name}</span> {item?.description}",</li>
                       ))
                     }
                   </ul>
                   <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Washing Instructions:</h6>
-                  <p className='text-accent'>{post?.WashingInstructions}</p>
-                </div> : <div>
+                  <p className='text-accent'>{product?.poductInfo?.washingInstructions}</p>
+                </div>
+              }
+              {DetailTab === 'DETAILS' &&
+                <div>
                   {/* detail tab  */}
                   <div className='flex justify-between items-center border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Gender:</h6>
-                    <p className='text-accent'>{post?.Gender}</p>
+                    <p className='text-accent'>{product?.poductInfo?.gender}</p>
                   </div>
                   <div className='flex justify-between items-center border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Minimum Order:</h6>
-                    <p className='text-accent'>{post?.MinimumOrderQuantity}</p>
+                    <p className='text-accent'>{product?.poductInfo?.minimumOrder}</p>
                   </div>
                   <div className='border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Imprint Area:</h6>
-                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`LeftBreast:`}</span> {post?.ImprintArea.LeftBreast}</p>
-                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Front:`}</span> {post?.ImprintArea.Front}</p>
-                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Back:`}</span> {post?.ImprintArea.Back}</p>
+                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`LeftBreast:`}</span> {product?.poductInfo?.imprintArea?.leftbreast}</p>
+                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Front:`}</span> {product?.poductInfo?.imprintArea?.front}</p>
+                    <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Back:`}</span> {product?.poductInfo?.imprintArea?.back}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Imprint Method:</h6>
-                    <p className='text-accent'>{post?.ImprintMethod}</p>
+                    <p className='text-accent'>{product?.poductInfo?.imprintMethod}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Ready To Ship:</h6>
-                    <p className='text-accent'>{post?.ReadyToShip}</p>
+                    <p className='text-accent'>{product?.poductInfo?.readyToShip}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Packaging:</h6>
-                    <p className='text-accent'>{post?.Packaging}</p>
+                    <p className='text-accent'>{product?.poductInfo?.packaging}</p>
                   </div>
-
+                </div>
+              }
+              {
+                DetailTab === 'FAQS' && <div>
+                  faqs
                 </div>
               }
             </div>
@@ -243,7 +274,7 @@ console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
           <h2 className=' text-2xl md:text-4xl font-bold mt-6 md:mt-0'>{product?.title}</h2>
           <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
-          <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.content }} />
+          <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
           {
             isPrintable &&
             <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
@@ -322,7 +353,7 @@ console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
               {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
-              {colorsInLogo > 0  && <UploadImage />}
+              {colorsInLogo > 0 && <UploadImage />}
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
               <button onClick={() => handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
@@ -354,9 +385,9 @@ export default ProductSlug
 const SelectNumberOfLogoColor = () => {
   const { colorsInLogo, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
 
-  const handleNumberOfColorInLogo = (no:any) => {
+  const handleNumberOfColorInLogo = (no: any) => {
     setColorsInLogo(no)
-    setSelectedProduct({...selectedProduct, numberOfColorInLogo:no})
+    setSelectedProduct({ ...selectedProduct, numberOfColorInLogo: no })
   }
   return (
     <section className='mt-4 bg-background p-8 gap-6 rounded-lg'>
@@ -375,11 +406,15 @@ const SelectNumberOfLogoColor = () => {
 const UploadImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState<any>(null);
+  const { selectedProduct, setSelectedProduct } = useContext(SettingsContext)
 
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];
     setSelectedImage(file);
     setImagePreview(URL.createObjectURL(file));
+    if (URL.createObjectURL(file).length > 6) {
+      setSelectedProduct({ ...selectedProduct, imageURL: URL.createObjectURL(file) })
+    }
   };
 
   return (

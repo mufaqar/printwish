@@ -1,13 +1,23 @@
 import Image from 'next/image';
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { customizedIcon, textIcon } from '../../../public/data';
 import { SettingsContext } from '@/context/global-context';
 
 const Artwork = () => {
-     const { selectArt, setSelectArt, setColorsInLogo } = useContext(SettingsContext)
+     const { selectArt, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
      const handleSelectArt = (e:string) =>{
+          var line:any[] = []
+          var imageURL
           if(e === 'Text creator'){
                setColorsInLogo()
+               const updatedState = { ...selectedProduct };
+               delete updatedState.imageURL;
+               delete updatedState.numberOfColorInLogo
+               setSelectedProduct({...updatedState, line})
+          }else{
+               const updatedState = { ...selectedProduct };
+               delete updatedState.line;
+               setSelectedProduct({...updatedState, imageURL})
           }
           setSelectArt(e)
      }
