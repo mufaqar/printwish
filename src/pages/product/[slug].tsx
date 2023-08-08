@@ -31,7 +31,8 @@ interface IColor {
 
 const ProductSlug = ({ post, product }: any) => {
 
-  const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+  console.log("🚀 ~ file: [slug].tsx:35 ~ ProductSlug ~ selectArt:", selectArt)
   
   useEffect(() => {
     setSelectedProduct({
@@ -110,8 +111,10 @@ const ProductSlug = ({ post, product }: any) => {
 
 
   const handleCustomization = () => {
-    setCustomizationButton(!customizationButton)
     setSelectArt('')
+    setCustomizationButton(!customizationButton)
+    setColorsInLogo()
+    setSelectedCustomizedLayout()
   }
 
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "men-tshirt")
@@ -307,7 +310,7 @@ const ProductSlug = ({ post, product }: any) => {
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
               {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
-              {typeof colorsInLogo === 'number' && <UploadImage />}
+              {colorsInLogo > 0  && <UploadImage />}
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
               <button onClick={() => handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
@@ -338,6 +341,7 @@ export default ProductSlug
 
 const SelectNumberOfLogoColor = () => {
   const { colorsInLogo, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+
   const handleNumberOfColorInLogo = (no:any) => {
     setColorsInLogo(no)
     setSelectedProduct({...selectedProduct, numberOfColorInLogo:no})
