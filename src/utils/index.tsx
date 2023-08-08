@@ -20,3 +20,14 @@ export const HideScrollOnModelOpen = (modalIsOpen: any) => {
           };
      }, [modalIsOpen]);
 }
+
+
+export const calculatePrice =(productPrice:any, totalQuantity:any, numberOfColorInLogo:any) => {
+     productPrice = +productPrice.replace('£', '')
+     var price = productPrice
+     price = totalQuantity > 0 ? productPrice * totalQuantity : productPrice
+     if (numberOfColorInLogo > 0){
+          price = price * numberOfColorInLogo
+     }
+     return price
+}

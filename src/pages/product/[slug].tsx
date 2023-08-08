@@ -1,5 +1,5 @@
 import { GetStaticPaths } from 'next';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Posts } from '../../../public/data'
 import Image from 'next/image';
 import { BiCheck } from 'react-icons/bi'
@@ -20,6 +20,7 @@ import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
 import { AnyARecord } from 'dns';
+import { calculatePrice } from '@/utils';
 
 
 interface IColor {
@@ -29,17 +30,18 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-  var productPrice = product.price.replace('£', '')
 
-  const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt } = useContext(SettingsContext)
+  const { selectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+  
+  useEffect(() => {
+    setSelectedProduct({
+      ...selectedProduct,
+      productId: product.id,
+      title: product.title
+    })
+  }, [])
+
   const [customizationButton, setCustomizationButton] = useState(false)
-
-  const [selectedProduct, setSelectedProduct] = useState<any>({
-    productId: product.id,
-    title: product.title,
-    colors: []
-  })
-
 
   const HandleColor = (clr: any) => {
     const colorExists = selectedProduct.colors.some((color: any) => color.name === clr.name);
@@ -55,8 +57,6 @@ const ProductSlug = ({ post, product }: any) => {
       }));
     }
   }
-
-
 
   const handleSize = (e: any, colorName: any, size: any) => {
     const colorIndex = selectedProduct.colors.findIndex((color: any) => color.name === colorName);
@@ -122,9 +122,9 @@ const ProductSlug = ({ post, product }: any) => {
   }
 
   let totalQuantity = 0;
-  
-  selectedProduct?.colors?.forEach((color:any) => {
-    color.selectedSize?.forEach((size:any) => {
+
+  selectedProduct?.colors?.forEach((color: any) => {
+    color.selectedSize?.forEach((size: any) => {
       totalQuantity += parseInt(size.quantity);
     });
   });
@@ -319,7 +319,7 @@ const ProductSlug = ({ post, product }: any) => {
 
 
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{totalQuantity > 0 ? productPrice * totalQuantity : productPrice}</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)}</span>
           </div>
 
           <button onClick={() => handleAddToCart(product)} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
@@ -337,14 +337,18 @@ export default ProductSlug
 
 
 const SelectNumberOfLogoColor = () => {
-  const { colorsInLogo, setColorsInLogo } = useContext(SettingsContext)
+  const { colorsInLogo, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+  const handleNumberOfColorInLogo = (no:any) => {
+    setColorsInLogo(no)
+    setSelectedProduct({...selectedProduct, numberOfColorInLogo:no})
+  }
   return (
     <section className='mt-4 bg-background p-8 gap-6 rounded-lg'>
       <h5 className='text-xl font-semibold text-accent capitalize font-roboto'>Select number of color contain logo:</h5>
       <ul className='flex flex-wrap items-center mt-5'>
         {
           [1, 2, 3, 4, 5].map((no, idx) => (
-            <li key={idx} onClick={() => setColorsInLogo(no)} className={`p-1 cursor-pointer hover:scale-105 rounded-full border-[2px] ${colorsInLogo === no ? 'border-secondary' : 'border-transparent'}`}> <div className={`w-[52px] h-[52px] text-white font-bold text-xl flex flex-col justify-center items-center rounded-full  ${colorsInLogo === no ? 'bg-accent' : 'bg-black/40'}`}>{no}</div></li>
+            <li key={idx} onClick={() => handleNumberOfColorInLogo(no)} className={`p-1 cursor-pointer hover:scale-105 rounded-full border-[2px] ${colorsInLogo === no ? 'border-secondary' : 'border-transparent'}`}> <div className={`w-[52px] h-[52px] text-white font-bold text-xl flex flex-col justify-center items-center rounded-full  ${colorsInLogo === no ? 'bg-accent' : 'bg-black/40'}`}>{no}</div></li>
           ))
         }
       </ul>
@@ -360,7 +364,6 @@ const UploadImage = () => {
     const file = event.target.files[0];
     setSelectedImage(file);
     setImagePreview(URL.createObjectURL(file));
-
   };
 
   return (
