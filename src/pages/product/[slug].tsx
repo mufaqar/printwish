@@ -30,9 +30,10 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
+console.log("🚀 ~ file: [slug].tsx:33 ~ ProductSlug ~ product:", product)
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
-  console.log("🚀 ~ file: [slug].tsx:35 ~ ProductSlug ~ selectArt:", selectArt)
+  
   
   useEffect(() => {
     setSelectedProduct({
@@ -43,6 +44,7 @@ const ProductSlug = ({ post, product }: any) => {
   }, [])
 
   const [customizationButton, setCustomizationButton] = useState(false)
+  const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
   const HandleColor = (clr: any) => {
     const colorExists = selectedProduct.colors.some((color: any) => color.name === clr.name);
@@ -158,7 +160,17 @@ const ProductSlug = ({ post, product }: any) => {
 
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%]'>
-          <Image src={product?.featuredImage?.node?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full" />
+          <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
+          <div className='grid grid-cols-4 gap-2 mt-12'>
+            {
+              product?.galleryImages?.nodes.map((item:any,idx:number)=>{
+                return(
+                  <Image key={idx} onClick={()=>setImagePath(item?.mediaItemUrl)} src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full border border-gray-200 h-32 object-cover p-3 rounded-lg hover:scale-105 cursor-pointer" />
+                )
+              })
+            }
+            
+          </div>
           <section className='bg-background p-8 mt-10 rounded-lg'>
 
             <div className='font-bold text-xl uppercase flex font-roboto gap-5 text-secondary'>
