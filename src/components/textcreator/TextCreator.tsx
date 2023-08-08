@@ -2,7 +2,8 @@ import { SettingsContext } from '@/context/global-context'
 import React, { useContext } from 'react'
 
 const TextCreator = () => {
-     const { textCreatorLine, handleChangeTextCreatorLine, designWidth, setDesignWidth } = useContext(SettingsContext)
+     const { textCreatorLine, handleChangeTextCreatorLine, specialInstruction, setSpecialInstruction,
+          customisationName, setcustomisationName, designWidth, setDesignWidth } = useContext(SettingsContext)
 
 
      return (
@@ -165,12 +166,16 @@ const TextCreator = () => {
                <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Notes or special instructions:</h5>
                <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
                          name="Notes"
+                         value={specialInstruction}
                          placeholder='Please let us know if you have any special requirements'
+                         onChange={(e)=>setSpecialInstruction(e.target.value)}
                     />
                     <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Customisation name:</h5>
                     <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
                          name="Notes"
+                         value={customisationName}
                          placeholder='Enter the name of your customisation here'
+                         onChange={(e)=>setcustomisationName(e.target.value)}
                     />
                </div>
           </section>

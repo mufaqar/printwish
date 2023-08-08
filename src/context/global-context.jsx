@@ -9,6 +9,8 @@ export const SettingsProvider = ({ children }) => {
   const [colorsInLogo, setColorsInLogo] = useState(0)
   const [modalIsOpen, setIsOpen] = useState(false);
   const [designWidth, setDesignWidth] = useState('');
+  const [specialInstruction, setSpecialInstruction] = useState('');
+  const [customisationName, setcustomisationName] = useState('');
 
   const [selectedProduct, setSelectedProduct] = useState({
     colors: []
@@ -52,7 +54,9 @@ export const SettingsProvider = ({ children }) => {
         modalIsOpen, setIsOpen,
         textCreatorLine, setCreatorStateLine, handleChangeTextCreatorLine,
         designWidth, setDesignWidth,
-        selectedProduct, setSelectedProduct
+        selectedProduct, setSelectedProduct,
+        specialInstruction, setSpecialInstruction,
+        customisationName, setcustomisationName
       }}
     >
       {children}
