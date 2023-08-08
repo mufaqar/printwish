@@ -183,9 +183,9 @@ export const textIcon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3d
 export const penIcon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNjQgMjcybDEyOC00MEwzODYuMiAyMy40IDQwOCAwbDIyLjYgMjIuNiA1OC43IDU4LjdMNTEyIDEwNGwtMjMuNCAyMS44TDI4MCAzMjAgMjQwIDQ0OCAzMiA1MTIgMCA0ODAgNjQgMjcyem0xNTEuNC0xOC4ybC0xLjQgMS41TDI1Ni42IDI5OGwxLjUtMS40TDQ2NS45IDEwMy4yIDQwOC44IDQ2LjEgMjE1LjQgMjUzLjh6TTE4MiAyNjguNkw4OS42IDI5Ny41IDQ0LjIgNDQ1LjIgMTEyIDM3Ny4zYzAtLjQgMC0uOSAwLTEuM2MwLTEzLjMgMTAuNy0yNCAyNC0yNHMyNCAxMC43IDI0IDI0cy0xMC43IDI0LTI0IDI0Yy0uNCAwLS45IDAtMS4zIDBMNjYuOCA0NjcuOGwxNDcuNy00NS40TDI0My40IDMzMCAxODIgMjY4LjZ6Ii8+PC9zdmc+"
 
 
-export const faqs = [
-     {
-          question: 'Washing Instructions',
-          answer: "<h5>Advice on the best way to look after your customised garments</h5><p>You want your customised garments to last and to look good for as long as possible. Following these guidelines will help you to get the most out of your clothing.</p>"
-     }
-]
+// export const faqs = [
+//      {
+//           question: 'Washing Instructions',
+//           answer: "<h5>Advice on the best way to look after your customised garments</h5><p>You want your customised garments to last and to look good for as long as possible. Following these guidelines will help you to get the most out of your clothing.</p>"
+//      }
+// ]
