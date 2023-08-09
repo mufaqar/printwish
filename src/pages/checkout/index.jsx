@@ -12,20 +12,20 @@ const Checkout = () => {
      // const router = useRouter()
 
      const PlaceOrder = async (cartItems) => {
-          // cartItems.map(({name,id,quantity})=>{
-          //      const lineItem = {
-          //           name: name,
-          //           product_id: id,
-          //           quantity: quantity
-          //      };
-          //      orderData.line_items.push(lineItem)
-          // })
-          // const responce =  await apiRequest('POST', 'create-order', orderData) 
-          // if(responce.success === true){
-          //      toast.info("Order Marked");
-          //      dispatch(clearAll())
-          //      router.push('/')
-          // }
+          cartItems.map(({name,id,quantity})=>{
+               const lineItem = {
+                    name: name,
+                    product_id: id,
+                    quantity: quantity
+               };
+               orderData.line_items.push(lineItem)
+          })
+          const responce =  await apiRequest('POST', 'create-order', orderData) 
+          if(responce.success === true){
+               toast.info("Order Marked");
+               dispatch(clearAll())
+               router.push('/')
+          }
      }
 
      return (
