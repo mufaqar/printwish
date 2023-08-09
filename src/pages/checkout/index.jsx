@@ -7,9 +7,9 @@ import { clearAll } from '@/features/AddToCart'
 import { useRouter } from 'next/router'
 
 const Checkout = () => {
-     const cartItems = useSelector((state) => state.AddToCart.value)
-     const dispatch = useDispatch()
-     const router = useRouter()
+     // const cartItems = useSelector((state) => state.AddToCart.value)
+     // const dispatch = useDispatch()
+     // const router = useRouter()
 
      const PlaceOrder = async (cartItems) => {
           // cartItems.map(({name,id,quantity})=>{
@@ -70,22 +70,21 @@ const Checkout = () => {
                               </div>
                               <div className="relative">
                                    <ul className="space-y-5">
-
                                         {
-                                             cartItems?.map((item, idx) => {
-                                                  return (
-                                                       <li className="flex justify-between" key={idx}>
-                                                            <div className="inline-flex">
-                                                                 <img src={item.images[0]?.src} alt={item?.name} className="max-h-16 rounded-md" />
-                                                                 <div className="ml-3">
-                                                                      <p className="text-base font-semibold text-white">{item?.name}</p>
-                                                                      <p className="text-sm font-medium text-white text-opacity-80">Pdf, doc Kindle</p>
-                                                                 </div>
-                                                            </div>
-                                                            <p className="text-sm font-semibold text-white">£ {item?.price}</p>
-                                                       </li>
-                                                  )
-                                             })
+                                             // cartItems?.map((item, idx) => {
+                                             //      return (
+                                             //           <li className="flex justify-between" key={idx}>
+                                             //                <div className="inline-flex">
+                                             //                     <img src={item.images[0]?.src} alt={item?.name} className="max-h-16 rounded-md" />
+                                             //                     <div className="ml-3">
+                                             //                          <p className="text-base font-semibold text-white">{item?.name}</p>
+                                             //                          <p className="text-sm font-medium text-white text-opacity-80">Pdf, doc Kindle</p>
+                                             //                     </div>
+                                             //                </div>
+                                             //                <p className="text-sm font-semibold text-white">£ {item?.price}</p>
+                                             //           </li>
+                                             //      )
+                                             // })
                                         }
                                    </ul>
                                    <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
