@@ -1,6 +1,5 @@
 import { GetStaticPaths } from 'next';
 import React, { useContext, useEffect, useState } from 'react'
-import { Posts } from '../../../public/data'
 import Image from 'next/image';
 import { BiCheck } from 'react-icons/bi'
 import { RxCross2 } from 'react-icons/rx'
@@ -20,6 +19,9 @@ import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
 import { calculatePrice } from '@/utils';
+import { BsCartDash } from 'react-icons/bs';
+import Faqs from '@/components/faqs/faqs';
+import { toast } from 'react-toastify';
 
 
 interface IColor {
@@ -29,7 +31,7 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
+  console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
   const { selectedCustomizedLayout, textCreatorLine, designWidth, specialInstruction, customisationName,
     setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo,
@@ -88,9 +90,6 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
         colors: updatedColors
       };
     });
-
-
-
   }
 
   const handleColorRemoval = (colorName: any) => {
@@ -102,6 +101,7 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
       };
     });
   }
+
 
   // const handle product description tab and detail tab 
   const [DetailTab, setDetailTab] = useState('DESCRIPTION')
@@ -166,7 +166,7 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
   return (
     <>
       {/* top bar with some content  */}
-      <section className='shadow-lg p-3'>
+      <section className='shadow-lg p-3 hidden md:block'>
         <div className='container mx-auto px-4 flex flex-wrap justify-center items-center gap-5'>
           <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
             <LuShirt className="text-2xl text-secondary" />
@@ -212,8 +212,8 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
                 DetailTab === 'DESCRIPTION' && <div>
                   {/* description tab  */}
                   <h6 className='capitalize text-lg font-bold text-gray-600 mt-3 font-roboto'>features:</h6>
-                  <div className='mt-2 pl-4 text-accent _features' dangerouslySetInnerHTML={{ __html: product?.content }}/>
-                    
+                  <div className='mt-2 pl-4 text-accent _features' dangerouslySetInnerHTML={{ __html: product?.content }} />
+
                   <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Fabric:</h6>
                   <p className='text-accent'>{product?.poductInfo?.fabric}</p>
                   <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Weight:</h6>
@@ -262,9 +262,7 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
                 </div>
               }
               {
-                DetailTab === 'FAQS' && <div>
-                  faqs
-                </div>
+                DetailTab === 'FAQS' && <Faqs/>
               }
             </div>
           </section>
@@ -288,14 +286,14 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
           <section className='bg-background p-3 md:p-8 rounded-lg '>
             <div>
-              <h6 className='text-accent font-normal'>Choose Color:</h6>
-              <ul className='flex flex-wrap gap-1 md:gap-3 mt-4'>
+              <h5 className='text-xl font-semibold text-accent font-roboto'>Choose Color:</h5>
+              <ul className='flex flex-wrap gap-[2px] md:gap-3 mt-4'>
                 {
                   product?.allPaColor.nodes?.map((clr: any, idx: number) => {
                     const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                     return (
                       <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
-                        <div className='p-6 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
+                        <div className='p-5 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
                       </li>
                     )
                   })
@@ -311,7 +309,7 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
                       <div key={idx} className='mt-6 flex justify-between '>
                         <div>
                           <div className='flex items-center gap-2'>
-                            <div className="p-6 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
+                            <div className="p-5 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
                             <p className='text-lg uppercase'>{c?.name}</p>
                           </div>
                           {/* map all size that are accociated to this product  */}
@@ -362,24 +360,37 @@ console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
             </>
           }
 
-
-
           <div className='text-3xl mt-10 flex items-center gap-2'>
             Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)}</span>
           </div>
 
-          <button onClick={() => handleAddToCart(product)} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
+          <button onClick={() => {totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product)}} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
           <Image src="/images/clothing-are-rated-excellent-on-trustpilot1.png" alt="start rating" width={500} height={500} className='w-80 mt-10' />
         </section>
       </main>
+
+      {/* floating price */}
+      <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[300px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
+        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)}</span></h5>
+        <p className='text-gray-500 font-light'>VAT excl.</p>
+      </section>
+      <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
+        <div className='flex-1 p-2 px-5'>
+          <h5 className='font-semibold'>Total</h5>
+          <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)}.00 <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
+        </div>
+        <div onClick={() => {totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product)}} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
+          <BsCartDash /> Add to cart
+        </div>
+      </section>
+
     </>
   )
 }
 
 export default ProductSlug
-
 
 
 const SelectNumberOfLogoColor = () => {

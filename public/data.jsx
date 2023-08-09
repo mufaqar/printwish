@@ -183,9 +183,21 @@ export const textIcon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3d
 export const penIcon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuNC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIzIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNjQgMjcybDEyOC00MEwzODYuMiAyMy40IDQwOCAwbDIyLjYgMjIuNiA1OC43IDU4LjdMNTEyIDEwNGwtMjMuNCAyMS44TDI4MCAzMjAgMjQwIDQ0OCAzMiA1MTIgMCA0ODAgNjQgMjcyem0xNTEuNC0xOC4ybC0xLjQgMS41TDI1Ni42IDI5OGwxLjUtMS40TDQ2NS45IDEwMy4yIDQwOC44IDQ2LjEgMjE1LjQgMjUzLjh6TTE4MiAyNjguNkw4OS42IDI5Ny41IDQ0LjIgNDQ1LjIgMTEyIDM3Ny4zYzAtLjQgMC0uOSAwLTEuM2MwLTEzLjMgMTAuNy0yNCAyNC0yNHMyNCAxMC43IDI0IDI0cy0xMC43IDI0LTI0IDI0Yy0uNCAwLS45IDAtMS4zIDBMNjYuOCA0NjcuOGwxNDcuNy00NS40TDI0My40IDMzMCAxODIgMjY4LjZ6Ii8+PC9zdmc+"
 
 
-// export const faqs = [
-//      {
-//           question: 'Washing Instructions',
-//           answer: "<h5>Advice on the best way to look after your customised garments</h5><p>You want your customised garments to last and to look good for as long as possible. Following these guidelines will help you to get the most out of your clothing.</p>"
-//      }
-// ]
+export const faqs = [
+     {
+          question: 'Washing Instructions',
+          answer: "Advice on the best way to look after your customised garments. You want your customised garments to last and to look good for as long as possible. Following these guidelines will help you to get the most out of your clothing."
+     },
+     {
+          question: 'Can I add more than 1 customisation?',
+          answer: "For most garments, you can add up to 3 separate customisations using the website. If you need 4 or more customisations please contact the office and the team will be happy to assist you."
+     },
+     {
+          question: 'Ordering Samples',
+          answer: "You may wish to view samples of garments in order to find the right size or assess the quality of the material. This is especially useful as you are not able to return customised garments if they are the wrong size (see full Terms and Conditions) To obtain samples you will need to place an order for the plain garments you wish to view. We are not able to supply free samples for online orders. You can then either keep the garments or return them to us for a refund within 14 days. We reserve the right not to accept samples returned without either an invoice or order reference. A refund will not be issued if the garments are returned tarnished or not in their original packaging. "
+     },
+     {
+          question: 'How much does it cost?',
+          answer: "At GoCustom, we offer FREE DELIVERY on all UK mainland orders over £100 For UK Mainland orders under £100 we charge just £5.95 for plain item orders and £6.95 for orders with customisations. For European and International Delivery Charges, please visit our main delivery page."
+     },   
+]
