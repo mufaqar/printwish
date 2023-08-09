@@ -1,6 +1,5 @@
 import PageBanner from '@/components/banner/page-banner'
 import { clearAll, decreaseCartItem, increseCartItem, removeProductFromCart } from '@/features/AddToCart'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
