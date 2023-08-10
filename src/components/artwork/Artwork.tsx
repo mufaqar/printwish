@@ -6,25 +6,26 @@ import { SettingsContext } from '@/context/global-context';
 const Artwork = () => {
      const { selectArt, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
      const handleSelectArt = (e:string) =>{
-          var line:any[] = []
-          var imageURL
+          var textCreator:any[] = []
+          var designArtWork:any[] = []
+
           if(e === 'Text creator'){
                setColorsInLogo()
                const updatedState = { ...selectedProduct };
-               delete updatedState.imageURL;
+               // delete updatedState.designArtWork;
                delete updatedState.numberOfColorInLogo
-               setSelectedProduct({...updatedState, line})
+               setSelectedProduct({...updatedState, textCreator})
           }else{
                const updatedState = { ...selectedProduct };
-               delete updatedState.line;
-               setSelectedProduct({...updatedState, imageURL})
+               // delete updatedState.textCreator;
+               !selectedProduct.designArtWork && setSelectedProduct({...updatedState, designArtWork})
           }
           setSelectArt(e)
      }
 
      return (
           <section className='mt-4 bg-background p-8 rounded-lg'>
-               <h5 className='text-xl font-semibold text-accent font-roboto'>Step 5 - Artwork:</h5>
+               <h5 className='text-xl font-semibold text-accent font-roboto'>Step 3 - Artwork:</h5>
                <div className='mt-5 md:flex item-center gap-6'>
                     <button onClick={()=>handleSelectArt('Upload image')} className={`bg-white flex items-center gap-3 p-2 hover:scale-105 active:scale-100 mt-3 md:mt-0 w-full md:w-60 text-xl border-[2px] rounded-full ${selectArt === 'Upload image' ? 'border-secondary' : ' border-transparent'}`}>
                          <figure className='bg-accent p-2 rounded-full'>

@@ -7,7 +7,7 @@ import { SettingsContext } from '@/context/global-context';
 
 const CustomiztionProduct = () => {
 
-     const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+     const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectedProduct, } = useContext(SettingsContext)
 
      const settings = {
           dots: false,
@@ -50,13 +50,13 @@ const CustomiztionProduct = () => {
 
      const handleDesignPosition = ((designPosition:any) => {
           setSelectedCustomizedLayout(designPosition);
-          setSelectedProduct({...selectedProduct, designPosition})
+          // setSelectedProduct({...selectedProduct, designPosition})
      })
 
      return (
           <>
                <section className='mt-4 bg-background p-8 rounded-lg'>
-                    <h5 className='text-xl font-semibold text-accent font-roboto'>Design Position:</h5>
+                    <h5 className='text-xl font-semibold text-accent font-roboto'>Step 2 - Design Position:</h5>
                     <div className='mt-5'>
                          <Slider {...settings}>
                               {designVarient.map((item, idx) => {

@@ -22,6 +22,9 @@ import { calculatePrice } from '@/utils';
 import { BsCartDash } from 'react-icons/bs';
 import Faqs from '@/components/faqs/faqs';
 import { toast } from 'react-toastify';
+import SizeAndInstruction from '@/components/sizeAndInstruction/SizeAndInstruction';
+import UploadImage from '@/components/uploadImage/UploadImage';
+import SelectedCustmizedLayout from '@/components/selectedCustmizedLayout/selectedCustmizedLayout';
 
 
 interface IColor {
@@ -31,11 +34,12 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
+  // console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
   const { selectedCustomizedLayout, textCreatorLine, designWidth, specialInstruction, customisationName,
     setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo,
-    selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+    selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
+  console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   useEffect(() => {
     setSelectedProduct({
@@ -45,7 +49,7 @@ const ProductSlug = ({ post, product }: any) => {
     })
   }, [])
 
-  const [customizationButton, setCustomizationButton] = useState(false)
+  
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
   const HandleColor = (clr: any) => {
@@ -124,7 +128,7 @@ const ProductSlug = ({ post, product }: any) => {
     // selectedProduct, setSelectedProduct
     const updatedState = { ...selectedProduct };
     if (textCreatorLine.text1.length > 0) {
-      updatedState.line.push({
+      updatedState.textCreator.push({
         name: 'line-1',
         text: textCreatorLine.text1,
         font: textCreatorLine.font1,
@@ -133,7 +137,7 @@ const ProductSlug = ({ post, product }: any) => {
       })
     }
     if (textCreatorLine.text2.length > 0) {
-      updatedState.line.push({
+      updatedState.textCreator.push({
         name: 'line-2',
         text: textCreatorLine.text2,
         font: textCreatorLine.font2,
@@ -142,7 +146,7 @@ const ProductSlug = ({ post, product }: any) => {
       })
     }
     if (textCreatorLine.text3.length > 0) {
-      updatedState.line.push({
+      updatedState.textCreator.push({
         name: 'line-3',
         text: textCreatorLine.text3,
         font: textCreatorLine.font3,
@@ -262,7 +266,7 @@ const ProductSlug = ({ post, product }: any) => {
                 </div>
               }
               {
-                DetailTab === 'FAQS' && <Faqs/>
+                DetailTab === 'FAQS' && <Faqs />
               }
             </div>
           </section>
@@ -276,9 +280,9 @@ const ProductSlug = ({ post, product }: any) => {
           {
             isPrintable &&
             <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
-              <p className='font-normal text-accent'>Customisations Available:</p>
+              <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
               <div className='flex gap-8 '>
-                <i className='flex items-center text-lg'><BiCheck size={28} className='text-green-500' /> Print</i>
+                <i className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</i>
               </div>
             </section>
           }
@@ -286,7 +290,7 @@ const ProductSlug = ({ post, product }: any) => {
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
           <section className='bg-background p-3 md:p-8 rounded-lg '>
             <div>
-              <h5 className='text-xl font-semibold text-accent font-roboto'>Choose Color:</h5>
+              <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose Color:</h5>
               <ul className='flex flex-wrap gap-[2px] md:gap-3 mt-4'>
                 {
                   product?.allPaColor.nodes?.map((clr: any, idx: number) => {
@@ -344,17 +348,29 @@ const ProductSlug = ({ post, product }: any) => {
               </div>
             </div>
           </section>
+
           {
             isPrintable &&
             <>
               <div className='flex justify-end items-end w-full'><button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline '>Size Guide</button></div>
+              {
+                selectedProduct?.designArtWork?.map((item:any,idx:number)=>(<SelectedCustmizedLayout item={item} id={idx+1} key={idx}/>))
+              }
+              
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
               {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
-              {colorsInLogo > 0 && <UploadImage />}
+              {
+                colorsInLogo > 0 && <>
+                  <section className='mt-4 bg-background p-8 rounded-lg'>
+                    <UploadImage />
+                    <SizeAndInstruction />
+                  </section>
+                </>
+              }
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
-              <button onClick={() => handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
+              <button onClick={() =>  selectedProduct.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!")} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
                 {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
               </button>
             </>
@@ -364,7 +380,7 @@ const ProductSlug = ({ post, product }: any) => {
             Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)}</span>
           </div>
 
-          <button onClick={() => {totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product)}} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
+          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
           <Image src="/images/clothing-are-rated-excellent-on-trustpilot1.png" alt="start rating" width={500} height={500} className='w-80 mt-10' />
@@ -381,7 +397,7 @@ const ProductSlug = ({ post, product }: any) => {
           <h5 className='font-semibold'>Total</h5>
           <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(product.price, totalQuantity, selectedProduct?.numberOfColorInLogo)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
-        <div onClick={() => {totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product)}} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
+        <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
           <BsCartDash /> Add to cart
         </div>
       </section>
@@ -398,11 +414,11 @@ const SelectNumberOfLogoColor = () => {
 
   const handleNumberOfColorInLogo = (no: any) => {
     setColorsInLogo(no)
-    setSelectedProduct({ ...selectedProduct, numberOfColorInLogo: no })
+    // setSelectedProduct({ ...selectedProduct, numberOfColorInLogo: no })
   }
   return (
     <section className='mt-4 bg-background p-8 gap-6 rounded-lg'>
-      <h5 className='text-xl font-semibold text-accent capitalize font-roboto'>Select number of color contain logo:</h5>
+      <h5 className='text-xl font-semibold text-accent capitalize font-roboto'>Step 4 - Select number of color contain logo:</h5>
       <ul className='flex flex-wrap items-center mt-5'>
         {
           [1, 2, 3, 4, 5].map((no, idx) => (
@@ -414,46 +430,7 @@ const SelectNumberOfLogoColor = () => {
   )
 }
 
-const UploadImage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState<any>(null);
-  const { selectedProduct, setSelectedProduct } = useContext(SettingsContext)
 
-  const handleImageChange = (event: any) => {
-    const file = event.target.files[0];
-    setSelectedImage(file);
-    setImagePreview(URL.createObjectURL(file));
-    if (URL.createObjectURL(file).length > 6) {
-      setSelectedProduct({ ...selectedProduct, imageURL: URL.createObjectURL(file) })
-    }
-  };
-
-  return (
-    <section className='mt-4 bg-background p-8 grid gap-10 grid-cols-2 rounded-lg'>
-      <div className="flex items-center justify-center w-full">
-        <label className="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-            <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-            </svg>
-            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-          </div>
-          <input id="dropzone-file" type="file" className="hidden" onChange={handleImageChange} />
-        </label>
-      </div>
-      <div>
-        <Image
-          src={imagePreview || '/images/image.png'}
-          alt="Selected Preview"
-          width={500}
-          height={500}
-          className='max-w-60 rounded-lg'
-        />
-      </div>
-    </section>
-  )
-}
 
 
 

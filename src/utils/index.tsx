@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { SettingsContext } from "@/context/global-context";
+import { useContext, useEffect } from "react";
 
 
 // hide scrolling 
@@ -31,3 +32,5 @@ export const calculatePrice =(productPrice:any, totalQuantity:any, numberOfColor
      }
      return price
 }
+
+

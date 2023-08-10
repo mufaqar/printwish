@@ -1,9 +1,10 @@
 import { SettingsContext } from '@/context/global-context'
 import React, { useContext } from 'react'
+import { FaThumbsUp } from 'react-icons/fa'
+import SizeAndInstruction from '../sizeAndInstruction/SizeAndInstruction'
 
 const TextCreator = () => {
-     const { textCreatorLine, handleChangeTextCreatorLine, specialInstruction, setSpecialInstruction,
-          customisationName, setcustomisationName, designWidth, setDesignWidth } = useContext(SettingsContext)
+     const { textCreatorLine, handleChangeTextCreatorLine } = useContext(SettingsContext)
 
 
      return (
@@ -142,42 +143,9 @@ const TextCreator = () => {
                     </div>
                </div>
 
+               <SizeAndInstruction />
 
-               {/* Choose design width: */}
-               <div>
-                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6'>Choose design width:</h5>
-                    <ul className='flex gap-4 mt-5 flex-wrap items-center'>
-                         {
-                              designWidthData.map((item:any,idx:number)=>{
-                                   return(
-                                        <li key={idx} onClick={()=>setDesignWidth(item.value)} className={` p-2.5 cursor-pointer px-8 text-lg bg-white rounded-full border-[2px] ${designWidth === item.value ? ' border-secondary' : 'border-transparent'}`}>{item?.name}</li>
-                                   )
-                              })
-                         }
-                         <span className='text-lg'>Custom width:</span>
-                         <li className={`flex items-center p-1.5 cursor-pointer px-8 text-lg bg-white rounded-full border-[2px] ${ designWidth === '10' || designWidth === '20' || designWidth === '30'  ?  'border-transparent' : "border-secondary"}`}>
-                              <input type="number" className='w-20 border-none  focus:ring-0 focus:outline-none' name="number" value={designWidth} onChange={(e)=>setDesignWidth(e.target.value)}/>
-                              <span className='border-l-[1.5px] pl-4 border-gray-200'>cm</span>
-                         </li>
-                    </ul>
-               </div>
 
-               <div>
-               <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Notes or special instructions:</h5>
-               <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
-                         name="Notes"
-                         value={specialInstruction}
-                         placeholder='Please let us know if you have any special requirements'
-                         onChange={(e)=>setSpecialInstruction(e.target.value)}
-                    />
-                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Customisation name:</h5>
-                    <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
-                         name="Notes"
-                         value={customisationName}
-                         placeholder='Enter the name of your customisation here'
-                         onChange={(e)=>setcustomisationName(e.target.value)}
-                    />
-               </div>
           </section>
      )
 }
@@ -185,18 +153,3 @@ const TextCreator = () => {
 export default TextCreator
 
 
-
-const designWidthData = [
-     {
-          name: "Small (10cm)",
-          value: '10'
-     },
-     {
-          name: "Medium (20cm)",
-          value: '20'
-     },
-     {
-          name: "Large (30cm)",
-          value: '30'
-     }
-]

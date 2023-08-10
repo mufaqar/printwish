@@ -11,6 +11,8 @@ export const SettingsProvider = ({ children }) => {
   const [designWidth, setDesignWidth] = useState('');
   const [specialInstruction, setSpecialInstruction] = useState('');
   const [customisationName, setcustomisationName] = useState('');
+  const [imageURL, setImageURL] = useState(null);
+  const [customizationButton, setCustomizationButton] = useState(false)
 
   const [selectedProduct, setSelectedProduct] = useState({
     colors: []
@@ -56,7 +58,9 @@ export const SettingsProvider = ({ children }) => {
         designWidth, setDesignWidth,
         selectedProduct, setSelectedProduct,
         specialInstruction, setSpecialInstruction,
-        customisationName, setcustomisationName
+        customisationName, setcustomisationName,
+        imageURL, setImageURL,
+        customizationButton, setCustomizationButton
       }}
     >
       {children}
