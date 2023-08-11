@@ -125,36 +125,6 @@ const ProductSlug = ({ post, product }: any) => {
 
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
-    // selectedProduct, setSelectedProduct
-    const updatedState = { ...selectedProduct };
-    if (textCreatorLine.text1.length > 0) {
-      updatedState.textCreator.push({
-        name: 'line-1',
-        text: textCreatorLine.text1,
-        font: textCreatorLine.font1,
-        color: textCreatorLine.color1,
-        size: textCreatorLine.size1,
-      })
-    }
-    if (textCreatorLine.text2.length > 0) {
-      updatedState.textCreator.push({
-        name: 'line-2',
-        text: textCreatorLine.text2,
-        font: textCreatorLine.font2,
-        color: textCreatorLine.color2,
-        size: textCreatorLine.size2,
-      })
-    }
-    if (textCreatorLine.text3.length > 0) {
-      updatedState.textCreator.push({
-        name: 'line-3',
-        text: textCreatorLine.text3,
-        font: textCreatorLine.font3,
-        color: textCreatorLine.color3,
-        size: textCreatorLine.size3,
-      })
-    }
-    setSelectedProduct({ ...updatedState, designWidth, specialInstruction, customisationName })
     dispatch(addItem(data))
   }
 
@@ -166,7 +136,12 @@ const ProductSlug = ({ post, product }: any) => {
     });
   });
 
-
+  // here array concatct 
+  const dd = selectedProduct?.designArtWork?.concat(selectedProduct?.textCreator);
+  // here remove undefined item from dd list becase we concat two array if one array are empty then its
+  // responce as a undfined in array!
+  var customizedMergeData = dd?.filter((x:any) => x !== undefined);
+ 
   return (
     <>
       {/* top bar with some content  */}
@@ -354,7 +329,7 @@ const ProductSlug = ({ post, product }: any) => {
             <>
               <div className='flex justify-end items-end w-full'><button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline '>Size Guide</button></div>
               {
-                selectedProduct?.designArtWork?.map((item:any,idx:number)=>(<SelectedCustmizedLayout item={item} id={idx+1} key={idx}/>))
+                customizedMergeData?.map((item:any,idx:number)=>(<SelectedCustmizedLayout item={item} id={idx+1} key={idx}/>))
               }
               
               {customizationButton && <CustomiztionProduct />}

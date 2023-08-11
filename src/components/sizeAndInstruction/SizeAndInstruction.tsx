@@ -7,37 +7,108 @@ import { toast } from "react-toastify"
 const SizeAndInstruction = () => {
      const { specialInstruction, setSpecialInstruction, customisationName, setSelectedCustomizedLayout,
           setcustomisationName, designWidth, setDesignWidth, colorsInLogo, selectedProduct, setSelectArt,
-           selectedCustomizedLayout, setSelectedProduct, imageURL, setCustomizationButton,
-           setColorsInLogo, setImageURL } = useContext(SettingsContext)
+          selectedCustomizedLayout, setSelectedProduct, imageURL, setCustomizationButton, textCreatorLine,
+          setColorsInLogo, setImageURL, setCreatorStateLine } = useContext(SettingsContext)
 
      const addCustomization = () => {
-          if (!customisationName || !colorsInLogo || !imageURL || !designWidth) {
-               toast.warn("Customization Not Added Please Fill All Fields!")
-          } else {
-               var artwork = [...selectedProduct.designArtWork]
-               var artWorkData = {
-                    numberOfColorInLogo: colorsInLogo,
-                    imageURL,
-                    designWidth,
-                    specialInstruction,
-                    customisationName,
-                    designPosition: selectedCustomizedLayout,
-               }
-               artwork.push(artWorkData)
-               setSelectedProduct({ ...selectedProduct, designArtWork: artwork })
-               
-               // customization states reset 
-               setCustomizationButton(false)
-               setSelectedCustomizedLayout()
-               setSelectArt('')
-               setColorsInLogo()
 
-               // reset fields
-               setImageURL('')
-               setDesignWidth()
-               setSpecialInstruction()
-               setcustomisationName()
+          // here are two option 1- Upload Image and 2nd one is Text creator so 
+          // i can saprate with one field with colorsInLogo
+          if (colorsInLogo > 0) {
+               if (!customisationName || !colorsInLogo || !imageURL || !designWidth) {
+                    toast.warn("Customization Not Added Please Fill All Fields!")
+               } else {
+                    var artwork = [...selectedProduct.designArtWork]
+                    var artWorkData = {
+                         numberOfColorInLogo: colorsInLogo,
+                         imageURL,
+                         designWidth,
+                         specialInstruction,
+                         customisationName,
+                         designPosition: selectedCustomizedLayout,
+                    }
+                    artwork.push(artWorkData)
+                    setSelectedProduct({ ...selectedProduct, designArtWork: artwork })
+                    // customization states reset 
+                    setCustomizationButton(false)
+                    setSelectedCustomizedLayout()
+                    setSelectArt('')
+                    setColorsInLogo()
+                    // reset fields
+                    setImageURL('')
+                    setDesignWidth()
+                    setSpecialInstruction()
+                    setcustomisationName()
+               }
+          } else {
+
+               if (!customisationName || !textCreatorLine.text1 || !designWidth) {
+                    toast.warn("Customization Not Added Please Fill All Fields!")
+               } else {
+                    var textCreator = [...selectedProduct.textCreator]
+                    var textCreatorData = {
+                         designWidth,
+                         specialInstruction,
+                         customisationName,
+                         designPosition: selectedCustomizedLayout,
+                         lines: []
+                    }
+
+                    if (textCreatorLine.text1.length > 0) {
+                         textCreatorData?.lines.push({
+                              name: 'line-1',
+                              text: textCreatorLine.text1,
+                              font: textCreatorLine.font1,
+                              color: textCreatorLine.color1,
+                              size: textCreatorLine.size1,
+                         })
+                    }
+                    if (textCreatorLine.text2.length > 0) {
+                         textCreatorData?.lines.push({
+                              name: 'line-2',
+                              text: textCreatorLine.text2,
+                              font: textCreatorLine.font2,
+                              color: textCreatorLine.color2,
+                              size: textCreatorLine.size2,
+                         })
+                    }
+                    if (textCreatorLine.text3.length > 0) {
+                         textCreatorData?.lines.push({
+                              name: 'line-3',
+                              text: textCreatorLine.text3,
+                              font: textCreatorLine.font3,
+                              color: textCreatorLine.color3,
+                              size: textCreatorLine.size3,
+                         })
+                    }
+
+                    textCreator.push(textCreatorData)
+                    setSelectedProduct({ ...selectedProduct, textCreator: textCreator })
+                    setCreatorStateLine({
+                         text1: '',
+                         color1: '',
+                         size1: '',
+                         font1: '',
+                         text2: '',
+                         color2: '',
+                         size2: '',
+                         font2: '',
+                         text3: '',
+                         color3: '',
+                         size3: '',
+                         font3: '',
+                       })
+                       // customization states reset 
+                         setCustomizationButton(false)
+                         setSelectedCustomizedLayout()
+                         setSelectArt('')
+                         // reset fields
+                         setDesignWidth()
+                         setSpecialInstruction()
+                         setcustomisationName()
+               }
           }
+
      }
 
      return (

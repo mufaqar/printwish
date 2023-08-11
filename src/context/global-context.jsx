@@ -15,7 +15,9 @@ export const SettingsProvider = ({ children }) => {
   const [customizationButton, setCustomizationButton] = useState(false)
 
   const [selectedProduct, setSelectedProduct] = useState({
-    colors: []
+    colors: [],
+    textCreator: [],
+    designArtWork: []
   })
 
   // Text creator form states

@@ -4,21 +4,10 @@ import { customizedIcon, textIcon } from '../../../public/data';
 import { SettingsContext } from '@/context/global-context';
 
 const Artwork = () => {
-     const { selectArt, setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
+     const { selectArt, setSelectArt, setColorsInLogo } = useContext(SettingsContext)
      const handleSelectArt = (e:string) =>{
-          var textCreator:any[] = []
-          var designArtWork:any[] = []
-
           if(e === 'Text creator'){
                setColorsInLogo()
-               const updatedState = { ...selectedProduct };
-               // delete updatedState.designArtWork;
-               delete updatedState.numberOfColorInLogo
-               setSelectedProduct({...updatedState, textCreator})
-          }else{
-               const updatedState = { ...selectedProduct };
-               // delete updatedState.textCreator;
-               !selectedProduct.designArtWork && setSelectedProduct({...updatedState, designArtWork})
           }
           setSelectArt(e)
      }
