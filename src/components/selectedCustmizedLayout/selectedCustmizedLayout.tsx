@@ -20,15 +20,17 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
 
      // here delete customization from the selectedProduct.designArtWork 
      const deleteCustomization = ({ id, uploadImage }: any) => {
+          console.log("🚀 ~ file: selectedCustmizedLayout.tsx:23 ~ deleteCustomization ~ id:", id, uploadImage)
           if (uploadImage) {
                const destractureDesignArt = { ...selectedProduct }
                const getDesignArtWork = [...destractureDesignArt.designArtWork]
                // remove Item from designArtWork
-               const remaningItem = getDesignArtWork.filter((item, idx) => idx !== id)
+               const remaningItem = getDesignArtWork.filter((item) => item.id !== id)
                setSelectedProduct({ ...selectedProduct, designArtWork: remaningItem })
           } else {
                const destractureTextCreator = [...selectedProduct.textCreator]
-               const remaningItem = destractureTextCreator?.filter((item:any,idx:any)=>idx !== id)
+               console.log("🚀 ~ file: selectedCustmizedLayout.tsx:32 ~ deleteCustomization ~ destractureTextCreator:", destractureTextCreator)
+               const remaningItem = destractureTextCreator?.filter((item:any) => item.id !== id)
                setSelectedProduct({ ...selectedProduct, textCreator: remaningItem })
           }
      }
@@ -38,7 +40,7 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
                <div className='flex flex-col-reverse md:flex-row justify-between gap-4'>
                     <h4 className='text-xl uppercase font-opensans'>CUSTOMISATION {id} - <span className='text-secondary'>{item?.customisationName}</span></h4>
                     <div className='flex justify-end'>
-                         <button onClick={() => deleteCustomization({ id: id - 1, uploadImage: item?.imageURL?.length > 4 })} className='flex items-center text-xl hover:text-secondary'><MdDelete /> Delete</button>
+                         <button onClick={() => deleteCustomization({ id: item?.id, uploadImage: item?.imageURL?.length > 4 })} className='flex items-center text-xl hover:text-secondary'><MdDelete /> Delete</button>
                     </div>
                </div>
                <button onClick={() => setDetails(!details)} className='flex md:hidden items-center mt-4 text-secondary'>View detail

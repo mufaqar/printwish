@@ -33,4 +33,7 @@ export const calculatePrice =(productPrice:any, totalQuantity:any, numberOfColor
      return price
 }
 
-
+export const uid = function(){
+     return Date.now().toString(36) + Math.random().toString(36).substr(2);
+ }
+ 

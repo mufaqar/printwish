@@ -18,7 +18,7 @@ import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
-import { calculatePrice } from '@/utils';
+import { calculatePrice, uid } from '@/utils';
 import { BsCartDash } from 'react-icons/bs';
 import Faqs from '@/components/faqs/faqs';
 import { toast } from 'react-toastify';
@@ -36,9 +36,8 @@ interface IColor {
 const ProductSlug = ({ post, product }: any) => {
   // console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
-  const { selectedCustomizedLayout, textCreatorLine, designWidth, specialInstruction, customisationName,
-    setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, setSelectArt, setColorsInLogo,
-    selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, 
+    setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
   console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   useEffect(() => {
@@ -142,6 +141,7 @@ const ProductSlug = ({ post, product }: any) => {
   // responce as a undfined in array!
   var customizedMergeData = dd?.filter((x:any) => x !== undefined);
  
+
   return (
     <>
       {/* top bar with some content  */}
