@@ -21,14 +21,14 @@ export const GET_PRODUCT = gql`
           }
         }
         shortDescription
-        galleryImages {
+        galleryImages(first: 100) {
           nodes {
             mediaItemUrl
           }
         }
         ... on SimpleProduct {
           price
-          galleryImages {
+          gallery : galleryImages {
             nodes {
               mediaItemUrl
             }

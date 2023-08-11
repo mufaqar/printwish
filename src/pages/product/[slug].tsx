@@ -168,7 +168,7 @@ const ProductSlug = ({ post, product }: any) => {
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%]'>
           <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
-          <div className='grid grid-cols-4 gap-2 mt-4'>
+          <div className='grid grid-cols-4 xl:grid-cols-5 gap-2 mt-4'>
             {
               product?.galleryImages?.nodes.map((item: any, idx: number) => {
                 return (
