@@ -28,7 +28,6 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
                setSelectedProduct({ ...selectedProduct, designArtWork: remaningItem })
           } else {
                const destractureTextCreator = [...selectedProduct.textCreator]
-               console.log("🚀 ~ file: selectedCustmizedLayout.tsx:32 ~ deleteCustomization ~ destractureTextCreator:", destractureTextCreator)
                const remaningItem = destractureTextCreator?.filter((item:any) => item.id !== id)
                setSelectedProduct({ ...selectedProduct, textCreator: remaningItem })
           }
