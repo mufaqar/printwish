@@ -4,12 +4,35 @@ import { FaThumbsUp } from "react-icons/fa"
 import { toast } from "react-toastify"
 
 
+
 const SizeAndInstruction = () => {
      const { specialInstruction, setSpecialInstruction, customisationName, setSelectedCustomizedLayout,
           setcustomisationName, designWidth, setDesignWidth, colorsInLogo, selectedProduct, setSelectArt,
           selectedCustomizedLayout, setSelectedProduct, imageURL, setCustomizationButton, textCreatorLine,
-          setColorsInLogo, setImageURL, setCreatorStateLine } = useContext(SettingsContext)
+          setColorsInLogo, setImageURL, setCreatorStateLine } = useContext(SettingsContext)          
 
+          const lineOne: any = {
+               name: 'line-1',
+               text: textCreatorLine.text1,
+               font: textCreatorLine.font1,
+               color: textCreatorLine.color1,
+               size: textCreatorLine.size1,
+           };
+           const lineTwo:any = {
+               name: 'line-2',
+               text: textCreatorLine.text2,
+               font: textCreatorLine.font2,
+               color: textCreatorLine.color2,
+               size: textCreatorLine.size2,
+          }
+          const lineThree:any = {
+               name: 'line-3',
+               text: textCreatorLine.text3,
+               font: textCreatorLine.font3,
+               color: textCreatorLine.color3,
+               size: textCreatorLine.size3,
+          }
+          
      const addCustomization = () => {
 
           // here are two option 1- Upload Image and 2nd one is Text creator so 
@@ -46,40 +69,22 @@ const SizeAndInstruction = () => {
                     toast.warn("Customization Not Added Please Fill All Fields!")
                } else {
                     var textCreator = [...selectedProduct.textCreator]
-                    var textCreatorData = {
+                    var textCreatorData:any = {
                          designWidth,
                          specialInstruction,
                          customisationName,
                          designPosition: selectedCustomizedLayout,
                          lines: []
                     }
-
+                    
                     if (textCreatorLine.text1.length > 0) {
-                         textCreatorData?.lines.push({
-                              name: 'line-1',
-                              text: textCreatorLine.text1,
-                              font: textCreatorLine.font1,
-                              color: textCreatorLine.color1,
-                              size: textCreatorLine.size1,
-                         })
+                         textCreatorData?.lines.push(lineOne)
                     }
                     if (textCreatorLine.text2.length > 0) {
-                         textCreatorData?.lines.push({
-                              name: 'line-2',
-                              text: textCreatorLine.text2,
-                              font: textCreatorLine.font2,
-                              color: textCreatorLine.color2,
-                              size: textCreatorLine.size2,
-                         })
+                         textCreatorData?.lines.push(lineTwo)
                     }
                     if (textCreatorLine.text3.length > 0) {
-                         textCreatorData?.lines.push({
-                              name: 'line-3',
-                              text: textCreatorLine.text3,
-                              font: textCreatorLine.font3,
-                              color: textCreatorLine.color3,
-                              size: textCreatorLine.size3,
-                         })
+                         textCreatorData?.lines.push(lineThree)
                     }
 
                     textCreator.push(textCreatorData)
@@ -97,15 +102,15 @@ const SizeAndInstruction = () => {
                          color3: '',
                          size3: '',
                          font3: '',
-                       })
-                       // customization states reset 
-                         setCustomizationButton(false)
-                         setSelectedCustomizedLayout()
-                         setSelectArt('')
-                         // reset fields
-                         setDesignWidth()
-                         setSpecialInstruction()
-                         setcustomisationName()
+                    })
+                    // customization states reset 
+                    setCustomizationButton(false)
+                    setSelectedCustomizedLayout()
+                    setSelectArt('')
+                    // reset fields
+                    setDesignWidth()
+                    setSpecialInstruction()
+                    setcustomisationName()
                }
           }
 
@@ -173,3 +178,4 @@ const designWidthData = [
           value: '30'
      }
 ]
+
