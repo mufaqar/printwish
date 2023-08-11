@@ -20,7 +20,6 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
 
      // here delete customization from the selectedProduct.designArtWork 
      const deleteCustomization = ({ id, uploadImage }: any) => {
-          console.log("🚀 ~ file: selectedCustmizedLayout.tsx:23 ~ deleteCustomization ~ id:", id, uploadImage)
           if (uploadImage) {
                const destractureDesignArt = { ...selectedProduct }
                const getDesignArtWork = [...destractureDesignArt.designArtWork]
