@@ -59,8 +59,8 @@ const Reviews = () => {
                             </div>
                         })}
                     </Slider>
-                    <button className="absolute md:top-72 top-48 right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
-                    <button className="absolute md:top-72 top-48 right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
+                    <button className="absolute top-72 sm:top-[340px] right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
+                    <button className="absolute top-72 sm:top-[340px] right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
                 </div>
             </div>
         </section>
