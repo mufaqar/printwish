@@ -182,7 +182,7 @@ const ProductSlug = ({ post, product }: any) => {
 
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%] image-slider'>
-          <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg'>
+          <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg p-1'>
             {
               product?.galleryImages?.nodes.length > 0 ? product?.galleryImages?.nodes.map((item: any, idx: number) => {
                 return (
