@@ -16,7 +16,7 @@ const Product_Box = ({ data, image }: any) => {
 
   return (
     <div className='px-1'>
-      <Link href={`/product/${data?.slug}`} className='border border-gray-100 md:h-[300px] cursor-pointer mb-2 flex flex-col justify-center items-center group'>
+      <Link href={`/product/${data?.slug}`} className='border border-gray-100 p-2 md:h-[300px] cursor-pointer mb-2 flex flex-col justify-center items-center group'>
         <Image src={image} alt={data?.title || data?.name} width={200} height={200} className='transition-all duration-200 ease-in-out object-fill w-full mb-3 group-hover:scale-95' />
         </Link>
       <div className='flex flex-col justify-center items-center'>

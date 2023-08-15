@@ -11,11 +11,11 @@ const ProductsPage = ({products}:any) => {
             <PageBanner title="Products" />
             <section className='py-16 '>
                 <div className='max-w-screen-xl mx-auto px-4 flex md:flex-row flex-col gap-5'>
-                    <div className='sm:w-1/4 w-full'>
+                    {/* <div className='sm:w-1/4 w-full'>
                         <Product_Sidebar />
-                    </div>
-                    <div className='sm:w-3/4 w-full'>
-                        <div className='grid sm:grid-cols-4 grid-cols-1 gap-5'>
+                    </div> */}
+                    <div className=' w-full'> {/* sm:w-3/4 */}
+                        <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 grid-cols-1 gap-5'>
                             {products?.map((item:any, idx: number) => {
                                 const img = item?.images[0]?.src
                                 return <Product_Box key={idx} data={item} image={img}/>
