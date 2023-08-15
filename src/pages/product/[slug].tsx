@@ -148,6 +148,8 @@ const ProductSlug = ({ post, product }: any) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
   };
 
   const slider = useRef<any>(null);
@@ -271,7 +273,7 @@ const ProductSlug = ({ post, product }: any) => {
             <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
               <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
               <div className='flex gap-8 '>
-                <i className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</i>
+                <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
               </div>
             </section>
           }
