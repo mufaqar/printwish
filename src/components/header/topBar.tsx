@@ -8,7 +8,7 @@ const TopBar = () => {
   const cartItems = useSelector((state: any) => state.AddToCart.value)
   return (
     <nav className="bg-accent">
-      <div className="flex justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
+      <div className="flex justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
         <Link href="/" className="flex items-center">
           <Image src="/images/logo.png" alt="logo" width={100} height={200} />
         </Link>

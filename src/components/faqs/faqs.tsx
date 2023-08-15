@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { faqs } from '../../../public/data'
 
-const Faqs = () => {
+const Faqs = ({data}:any) => {
      const [openFaq,setOpenFaq] = useState<any>()
      const handleFaqs = (id:number) => {
           if(openFaq === id){
@@ -13,7 +12,7 @@ const Faqs = () => {
      return (
           <div className='mt-5 flex flex-col gap-2'>
                {
-                    faqs.map((item: any, idx: number) => {
+                    data?.map((item: any, idx: number) => {
                          return (
                               <div onClick={()=>handleFaqs(idx)} key={idx} className='bg-white p-3 px-5 border border-gray-200 font-opensans cursor-pointer'>
                                    <h4 className='hover:text-secondary'>{item.question}</h4>

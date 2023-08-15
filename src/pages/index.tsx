@@ -30,7 +30,7 @@ export default function Home({ products, caterogies }:any) {
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-          <div className='grid md:grid-cols-3 grid-cols-1 gap-7 mt-10'>
+          <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
             {caterogies?.products?.map((item: CategoryType, idx: number) => {
               return <Category_Box key={idx} data={item} />
             })}
@@ -60,8 +60,9 @@ export default function Home({ products, caterogies }:any) {
 
 
   export const getServerSideProps: GetServerSideProps<any> = async () => {
+    
     const dataForCategory = {
-      per_page: 9,
+      per_page: 8,
     };
     const dataForProducts = {
       per_page: 10,

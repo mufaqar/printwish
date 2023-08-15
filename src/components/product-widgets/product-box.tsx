@@ -16,20 +16,19 @@ const Product_Box = ({ data, image }: any) => {
 
   return (
     <div className='px-1'>
-      <div>
-        <Image src={image} alt={data?.title || data?.name} width={200} height={200} className='object-fill w-full h-full mb-3' />
-      </div>
-      <div className=''>
+      <Link href={`/product/${data?.slug}`} className='border border-gray-100 md:h-[300px] cursor-pointer mb-2 flex flex-col justify-center items-center group'>
+        <Image src={image} alt={data?.title || data?.name} width={200} height={200} className='transition-all duration-200 ease-in-out object-fill w-full mb-3 group-hover:scale-95' />
+        </Link>
+      <div className='flex flex-col justify-center items-center'>
         <h5 className="min-h-[52px]">
-
-        <Link href={`/product/${data?.slug}`} className='text-sm font-semibold font-opensans text-accent hover:text-secondary'>
-          {data?.title || data?.name}
+        <Link href={`/product/${data?.slug}`} className='text-sm font-bold flex font-roboto text-accent hover:text-secondary'>
+          <span className='text-center'>{data?.title || data?.name}</span>
         </Link>
         </h5>
-        <p className='text-base font-semibold font-opensans text-accent hover:text-secondary my-3'>
-          {data?.price}
+        <p className='text-2xl text-center font-bold font-roboto text-secondary hover:text-secondary mb-3'>
+        £ {data?.price}
         </p>
-        <button className='text-base relative font-semibold font-roboto uppercase bg-primary text-white px-6 py-1 hover:bg-transparent hover:text-primary border-primary border-2 hover:border-primary'
+        <button className='text-base relative font-semibold flex justify-center font-roboto uppercase bg-primary text-white px-6 py-1 hover:bg-transparent hover:text-primary border-primary border-2 hover:border-primary'
           onClick={() => handleAddToCart(data)}
         >
           Add to cart

@@ -201,3 +201,31 @@ export const faqs = [
           answer: "At GoCustom, we offer FREE DELIVERY on all UK mainland orders over £100 For UK Mainland orders under £100 we charge just £5.95 for plain item orders and £6.95 for orders with customisations. For European and International Delivery Charges, please visit our main delivery page."
      },   
 ]
+
+
+export const locationFaqs = [
+     {
+          question: 'What is the average price of a printed t-shirt?',
+          answer: "At Printwish, the minimum order quantity is 25 and the maximum limit exceeds 1000+. The price of custom t-shirts differs vary significantly depending on multiple factors like t-shirt quality, design, color, print, etc. However, the average price of a printed t-shirt ranges from £3.53 / each to £5.10"
+     }, 
+     {
+          question: 'Is it cheaper to make your own t-shirts?',
+          answer: "Yes, it is. Instead of buying t-shirts from retail stores, having one custom-made is better for style and is lowly priced. When you purchase off-the-rack t-shirts, the options are limited in terms of color, style, and design. On the contrary, making your own t-shirts allows one to have their unique design printed at reasonable costs."
+     }, 
+     {
+          question: 'What material is best for T-shirt printing?',
+          answer: "While different materials are used for t-shirt printing in London, cotton is the most preferred because of its soft and comfortable feel. At Printwish, all our t-shirts are made of 100% cotton, making them soft and comfortable. Also, cotton as a material has a high absorbency rate, making them ideally suited for printing."
+     },
+     {
+          question: 'How do you print professional t-shirts?',
+          answer: "Screen printing is the most common method used for printing t-shirts in bulk. As compared to digital printing, the ink used in screen printing is typically thicker and assures brighter prints, even on dark-coloured t-shirts. Moreover, screen printing is the highest-quality printing method that is also affordable"
+     },
+     {
+          question: 'What kind of t-shirts sells the most?',
+          answer: "As one of the most popular selling clothing items, t-shirts are the most comfortable and easy to wear, making them fit for all social and casual occasions. While there are innumerable t-shirt options, custom-printed ones sell the most. At Printwish, all our t-shirts are equally in-demand."
+     },
+     {
+          question: 'Are your T-shirts washable?',
+          answer: "Available in an array of colours, designs, and prints, all t-shirts at Printwish are made of fine materials, are easy to wash, and continue to serve for years without fading or discolouring."
+     },
+]

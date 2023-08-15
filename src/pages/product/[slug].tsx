@@ -26,6 +26,7 @@ import SizeAndInstruction from '@/components/sizeAndInstruction/SizeAndInstructi
 import UploadImage from '@/components/uploadImage/UploadImage';
 import SelectedCustmizedLayout from '@/components/selectedCustmizedLayout/selectedCustmizedLayout';
 import Slider from 'react-slick';
+import { faqs } from '../../../public/data';
 
 
 interface IColor {
@@ -183,16 +184,15 @@ const ProductSlug = ({ post, product }: any) => {
         <section className='md:w-[40%] image-slider'>
           <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg'>
             {
-              product?.galleryImages?.nodes.map((item: any, idx: number) => {
+              product?.galleryImages?.nodes.length > 0 ? product?.galleryImages?.nodes.map((item: any, idx: number) => {
                 return (
                   <div key={idx}>
                     <Image src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
                     <h5 className='text-center font-semibold text-lg capitalize mb-3'>{item?.altText}</h5>
                   </div>
                 )
-              })
+              }) : <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
             }
-            
           </Slider>
 
           <section className='bg-background p-8 mt-10 rounded-lg'>
@@ -257,7 +257,7 @@ const ProductSlug = ({ post, product }: any) => {
                 </div>
               }
               {
-                DetailTab === 'FAQS' && <Faqs />
+                DetailTab === 'FAQS' && <Faqs data={faqs} />
               }
             </div>
           </section>

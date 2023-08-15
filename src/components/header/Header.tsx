@@ -12,7 +12,7 @@ import { CiShoppingBasket } from 'react-icons/ci'
 import { BiSearch } from 'react-icons/bi'
 import { GrClose } from 'react-icons/gr'
 import Image from 'next/image'
-import { HiOutlineMenuAlt1 } from 'react-icons/hi'
+import { HiOutlineMenuAlt1, HiX } from 'react-icons/hi'
 import { AiOutlinePhone } from 'react-icons/ai'
 
 const Header = () => {
@@ -62,6 +62,7 @@ const Header = () => {
   }
 
   const [openMobileSearch, setOpenMobileSearch] = useState(false)
+  const [mobileMenu, setMobileMenu] = useState(false)
 
   return (
     <>
@@ -89,10 +90,14 @@ const Header = () => {
       <header className="shadow-md">
         <TopBar />
         <nav className="bg-secondary z-50">
-          <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6 gap-4">
-            <div className='flex justify-between mb-4 lg:order-2 lg:mb-0 items-center'>
+          <div className="grid py-4 px-4 mx-auto container lg:grid-cols-2 md:px-6 gap-4 items-center">
+            <div className='flex justify-between lg:order-2 lg:mb-0 items-center'>
               <div className="md:hidden flex items-center gap-2 text-white">
-                <HiOutlineMenuAlt1 size={24} />
+                <button onClick={() => setMobileMenu(!mobileMenu)} className='cursor-pointer'>
+                  {
+                    mobileMenu ? <HiX size={24} /> : <HiOutlineMenuAlt1 size={24} />
+                  }
+                </button>
                 <AiOutlinePhone size={24} />
               </div>
 
@@ -148,8 +153,8 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className='flex items-center gap-2 mr-4'>
-                <button onClick={() => setOpenMobileSearch(true)}>
+              <div className='flex items-center gap-2 mr-4 md:ml-12'>
+                <button onClick={() => setOpenMobileSearch(true)} className='md:hidden'>
                   <BiSearch size={24} className='text-white' />
                 </button>
                 <Link href="/cart" className='text-white relative'>
@@ -159,8 +164,8 @@ const Header = () => {
               </div>
 
             </div>
-            <div className="flex items-center lg:order-1">
-              <ul className="flex flex-row mt-0 sm:space-x-8 space-x-2 text-sm font-medium">
+            <div className={`flex items-center lg:order-1 ${mobileMenu ? 'block' : 'hidden md:block'}`}>
+              <ul className={`flex flex-col md:flex-row mt-0 gap-6 md:gap-8 text-sm font-medium `}>
                 <li>
                   <Link href="/"
                     className="text-white hover:text-primary"
@@ -208,7 +213,7 @@ const Header = () => {
                     <ul className='grid gap-2'>
                       {item.sub_menu?.map((sub_item: any, _idx: any) => {
                         return <li key={_idx} className="">
-                          <Link href={`${sub_item.link}`} className="text-xs font-semibold text-accent uppercase">
+                          <Link href={`/location/${sub_item?.name.toLowerCase().replace(' ', '-')}`} className="text-xs cursor-pointer font-semibold text-accent uppercase">
                             {sub_item?.name}
                           </Link>
                         </li>

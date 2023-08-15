@@ -8,13 +8,13 @@ import { BsEnvelopeAt, BsTelephone, BsPinMap } from 'react-icons/bs'
 const Footer = () => {
   return (
     <footer className='bg-background pt-16 border-t'>
-      <div className='max-w-screen-xl mx-auto px-4'>
+      <div className='container mx-auto px-4'>
         <div className='grid md:grid-cols-4 grid-cols-1 gap-7'>
           <div>
             <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               About
             </h6>
-            <p className='text-sm font-semibold font-roboto text-accent mb-3'>
+            <p className='text-accent font-roboto mb-3'>
               PrintWish UK Printwish UK is a leading custom apparel provider and it is always here to inspire you with great customized things like T-shirts, tote bags, hoodies, sweatshirts, Hi-vis, apron, Wholesale Tote Bags, and many more. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794.
             </p>
             <p className='text-sm font-semibold font-roboto text-accent'>
@@ -29,7 +29,7 @@ const Footer = () => {
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {Categories.slice(1, 5).map((item: CategoryType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-accent font-roboto hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -43,7 +43,7 @@ const Footer = () => {
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(4).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`/${item.link}`} className="text-sm font-semibold font-roboto text-accent hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-accent font-roboto hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -56,28 +56,28 @@ const Footer = () => {
             </h6>
             <ul className='grid gap-2'>
               <li className="">
-                <span className="text-sm font-semibold font-roboto text-accent flex gap-1">
+                <span className="text-accent font-roboto flex gap-1">
                   <BsPinMap size={20} className='text-secondary min-w-[20px]' /> PrintWish:
                   6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS
                 </span>
               </li>
               <li className="">
-                <Link href="tel:08000510821" className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="tel:08000510821" className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsTelephone size={20} className='text-secondary min-w-[20px]' /> 0800 051 0821
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeAt size={20} className='text-secondary min-w-[20px]' /> sales@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeAt size={20} className='text-secondary min-w-[20px]' /> enquiries@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-sm font-semibold font-roboto text-accent hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeAt size={20} className='text-secondary min-w-[20px]' /> printwish20@gmail.com
                 </Link>
               </li>
