@@ -1,5 +1,5 @@
 import { GetStaticPaths } from 'next';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Image from 'next/image';
 import { BiCheck } from 'react-icons/bi'
 import { RxCross2 } from 'react-icons/rx'
@@ -25,6 +25,7 @@ import { toast } from 'react-toastify';
 import SizeAndInstruction from '@/components/sizeAndInstruction/SizeAndInstruction';
 import UploadImage from '@/components/uploadImage/UploadImage';
 import SelectedCustmizedLayout from '@/components/selectedCustmizedLayout/selectedCustmizedLayout';
+import Slider from 'react-slick';
 
 
 interface IColor {
@@ -36,7 +37,7 @@ interface IColor {
 const ProductSlug = ({ post, product }: any) => {
   // console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen, 
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
   console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
@@ -48,7 +49,7 @@ const ProductSlug = ({ post, product }: any) => {
     })
   }, [])
 
-  
+
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
   const HandleColor = (clr: any) => {
@@ -139,8 +140,19 @@ const ProductSlug = ({ post, product }: any) => {
   const dd = selectedProduct?.designArtWork?.concat(selectedProduct?.textCreator);
   // here remove undefined item from dd list becase we concat two array if one array are empty then its
   // responce as a undfined in array!
-  var customizedMergeData = dd?.filter((x:any) => x !== undefined);
- 
+  var customizedMergeData = dd?.filter((x: any) => x !== undefined);
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  const slider = useRef<any>(null);
+
+
 
   return (
     <>
@@ -166,20 +178,22 @@ const ProductSlug = ({ post, product }: any) => {
       </section>
 
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
-        <section className='md:w-[40%]'>
-          <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
-          <div className='grid grid-cols-4 xl:grid-cols-5 gap-2 mt-4'>
+        <section className='md:w-[40%] image-slider'>
+          <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg'>
             {
               product?.galleryImages?.nodes.map((item: any, idx: number) => {
                 return (
-                  <Image key={idx} onClick={() => setImagePath(item?.mediaItemUrl)} src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full border border-gray-200 h-32 object-cover p-3 rounded-lg hover:scale-105 cursor-pointer" />
+                  <div key={idx}>
+                    <Image src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
+                    <h5 className='text-center font-semibold text-lg capitalize mb-3'>{item?.altText}</h5>
+                  </div>
                 )
               })
             }
+            
+          </Slider>
 
-          </div>
           <section className='bg-background p-8 mt-10 rounded-lg'>
-
             <div className='font-bold text-xl uppercase flex font-roboto gap-5 text-secondary'>
               <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>
               <button className={DetailTab === 'DETAILS' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DETAILS')}>DETAILS</button>
@@ -329,9 +343,9 @@ const ProductSlug = ({ post, product }: any) => {
             <>
               <div className='flex justify-end items-end w-full'><button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline '>Size Guide</button></div>
               {
-                customizedMergeData?.map((item:any,idx:number)=>(<SelectedCustmizedLayout item={item} id={idx+1} key={idx}/>))
+                customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
               }
-              
+
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
               {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
@@ -345,7 +359,7 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
-              <button onClick={() =>  selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4  ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization() } className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
+              <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
                 {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
               </button>
             </>

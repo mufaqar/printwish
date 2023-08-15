@@ -24,6 +24,7 @@ export const GET_PRODUCT = gql`
         galleryImages(first: 100) {
           nodes {
             mediaItemUrl
+            altText
           }
         }
         ... on SimpleProduct {
