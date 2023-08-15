@@ -98,7 +98,7 @@ const Header = () => {
                     mobileMenu ? <HiX size={24} /> : <HiOutlineMenuAlt1 size={24} />
                   }
                 </button>
-                <AiOutlinePhone size={24} />
+                <Link href="tel:08000510821"><AiOutlinePhone size={24} /></Link>
               </div>
 
               <div className="flex md:w-[700px]">
@@ -139,7 +139,7 @@ const Header = () => {
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <button type="submit"
-                    onClick={() => HandleSearchQuery({ selectedCategory, searchQuery })}
+                    onClick={() => {HandleSearchQuery({ selectedCategory, searchQuery }); setOpenMobileSearch(false)}}
                     className="absolute right-4 top-10 md:top-0 md:right-0 p-2.5 text-sm font-medium text-white bg-primary rounded-r-lg border border-primary hover:bg-primary/90 focus:ring-4 focus:outline-none focus:ring-primary "><svg
                       className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg">
