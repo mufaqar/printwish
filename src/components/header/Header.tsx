@@ -139,7 +139,7 @@ const Header = () => {
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                   <button type="submit"
-                    onClick={() => {HandleSearchQuery({ selectedCategory, searchQuery }); setOpenMobileSearch(false)}}
+                    onClick={() => { HandleSearchQuery({ selectedCategory, searchQuery }); setOpenMobileSearch(false) }}
                     className="absolute right-4 top-10 md:top-0 md:right-0 p-2.5 text-sm font-medium text-white bg-primary rounded-r-lg border border-primary hover:bg-primary/90 focus:ring-4 focus:outline-none focus:ring-primary "><svg
                       className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +213,7 @@ const Header = () => {
                     <ul className='grid gap-2'>
                       {item.sub_menu?.map((sub_item: any, _idx: any) => {
                         return <li key={_idx} className="">
-                          <Link href={`/location/${sub_item?.name.toLowerCase().replace(' ', '-')}`} className="text-xs cursor-pointer font-semibold text-accent uppercase">
+                          <Link href={`/location/${sub_item?.name.toLowerCase().replace(' ', '-')}`} onClick={()=>setMegaMenu(!megaMenu)} className="text-xs cursor-pointer font-semibold text-accent uppercase">
                             {sub_item?.name}
                           </Link>
                         </li>
@@ -230,7 +230,7 @@ const Header = () => {
               <ul className='grid gap-2'>
                 {categories?.map((item: any, idx: number) => {
                   return <li key={idx} className="">
-                    <Link href={`/${item.slug}`} className="text-xs font-semibold text-accent uppercase">
+                    <Link href={`/${item.slug}`} onClick={()=>setMegaMenu(!megaMenu)} className="text-xs font-semibold text-accent uppercase">
                       {item.name}
                     </Link>
                   </li>
