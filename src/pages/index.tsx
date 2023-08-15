@@ -13,12 +13,14 @@ import { GetServerSideProps } from 'next'
 import {apiRequest} from '@/config/requests'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ products, caterogies }:any) {
+export default function Home(props:any) {
   
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
+  
 
   return (
     <>
@@ -30,15 +32,21 @@ export default function Home({ products, caterogies }:any) {
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-          <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
-            {caterogies?.products?.map((item: CategoryType, idx: number) => {
+          {
+            props ? <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
+            {props?.caterogies?.products?.map((item: CategoryType, idx: number) => {
               return <Category_Box key={idx} data={item} />
             })}
-          </div>
+          </div> : <p>loading...</p>
+          }
+          
         </div>
       </section>
       <Steps />
-      <Product_Slider products={products}/>
+      {
+        props ? <Product_Slider products={props?.products}/> : <p>loading...</p>
+      }
+      
       <section className='py-16 relative'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <div className='w-fit mx-auto'>
