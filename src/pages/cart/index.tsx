@@ -7,15 +7,16 @@ import { toast } from 'react-toastify'
 
 const Cart = () => {
      const cartItems = useSelector((state: any) => state.AddToCart.value)
+     console.log("🚀 ~ file: index.tsx:10 ~ Cart ~ cartItems:", cartItems)
      const dispatch = useDispatch()
      const router = useRouter()
 
-     const IncreaseCartItemHandler = (product: any) => {
-          dispatch(increseCartItem(product))
-     }
-     const DecreaseCartItemHandler = (product: any) => {
-          dispatch(decreaseCartItem(product))
-     }
+     // const IncreaseCartItemHandler = (product: any) => {
+     //      dispatch(increseCartItem(product))
+     // }
+     // const DecreaseCartItemHandler = (product: any) => {
+     //      dispatch(decreaseCartItem(product))
+     // }
 
      const handleCheckout = () => {
           if(cartItems.length > 0){
@@ -42,11 +43,11 @@ const Cart = () => {
                                                             <p className="mt-1 text-xs text-gray-700">36EU - 4US</p>
                                                        </div>
                                                        <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                                                            <div className="flex items-center border-gray-100">
+                                                            {/* <div className="flex items-center border-gray-100">
                                                                  <button className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => DecreaseCartItemHandler(item)}> - </button>
                                                                  <input className="h-8 w-12 border border-gray-300 bg-white text-center text-xs outline-none" type="number" value={item.quantity} min="1" />
                                                                  <button className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={() => IncreaseCartItemHandler(item)}> + </button>
-                                                            </div>
+                                                            </div> */}
                                                             <p className="text-sm">{item?.price} £</p>
                                                             <button className="absolute -left-5 -top-5" onClick={() => dispatch(removeProductFromCart(item.id))}>
                                                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">

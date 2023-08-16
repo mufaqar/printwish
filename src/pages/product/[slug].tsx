@@ -148,6 +148,8 @@ const ProductSlug = ({ post, product }: any) => {
 
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
+    data = {...data, price: calculatePrice(selectedProduct, totalPrice ), extra: selectedProduct}
+    console.log("🚀 ~ file: [slug].tsx:152 ~ handleAddToCart ~ data:", data)
     dispatch(addItem(data))
   }
 
