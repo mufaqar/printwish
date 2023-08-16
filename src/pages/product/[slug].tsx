@@ -40,7 +40,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
-  console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
+  // console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -78,6 +78,12 @@ const ProductSlug = ({ post, product }: any) => {
       price: 0
     };
 
+    /* The above code is calculating the price based on the color and size of a product. If the color
+    is 'WHITE' and the size is '3XL', '4XL', or '5XL', the price is calculated by multiplying the
+    value of the target element by the variable 'whitelarge'. If the size is not '3XL', '4XL', or
+    '5XL', the price is calculated by multiplying the value of the target element by the variable
+    'whitesmall'. If the color is not 'WHITE', the same logic is applied using the variables
+    'colorlarge' */
     if(colorName === 'WHITE'){
       if(size === '3XL' || size === '4XL' || size === '5XL'){
         sizes.price = e.target.value * whitelarge
@@ -92,8 +98,6 @@ const ProductSlug = ({ post, product }: any) => {
       }
     }
 
-    console.log("🚀 ~ file: [slug].tsx:79 ~ handleSize ~ sizes:", sizes)
-
     setSelectedProduct((prevProduct: any) => {
       const updatedColors = [...prevProduct.colors];
       const updatedColor = { ...updatedColors[colorIndex] };
@@ -105,7 +109,6 @@ const ProductSlug = ({ post, product }: any) => {
         // If the size exists, update the quantity
         updatedColor.selectedSize[existingSizeIndex].quantity = e.target.value;
         updatedColor.selectedSize[existingSizeIndex].price = sizes?.price;
-
       } else {
         // If the size doesn't exist, add the new sizes object
         updatedColor.selectedSize.push(sizes);
@@ -128,13 +131,11 @@ const ProductSlug = ({ post, product }: any) => {
     });
   }
 
-
   // const handle product description tab and detail tab 
   const [DetailTab, setDetailTab] = useState('DESCRIPTION')
   const handleDetailsTabs = (e: string) => {
     setDetailTab(e)
   }
-
 
   const handleCustomization = () => {
     setSelectArt('')
@@ -310,13 +311,13 @@ const ProductSlug = ({ post, product }: any) => {
           <section className='bg-background p-3 md:p-8 rounded-lg '>
             <div>
               <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose Color:</h5>
-              <ul className='flex flex-wrap gap-[2px] md:gap-3 mt-4'>
+              <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
                 {
                   product?.allPaColor.nodes?.map((clr: any, idx: number) => {
                     const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                     return (
                       <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
-                        <div className='p-5 cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
+                        <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
                       </li>
                     )
                   })
