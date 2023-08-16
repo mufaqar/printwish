@@ -61,6 +61,10 @@ export const GET_PRODUCT = gql`
           readyToShip
           washingInstructions
           weight
+          whitelarge
+          whitesmall
+          colorsmall
+          colorlarge
         }
       }
     }
@@ -100,3 +104,13 @@ export const SEARCH_PRODUCTS_WITHOUT_CAREGORY = gql`
     }
   }
   `;
+
+
+export const LOCATION_PAGE = gql`
+  query locationPage($slug : ID!) {
+    page(id: $slug,  idType: URI) {
+      title
+      slug
+    }
+  }  
+`;

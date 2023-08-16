@@ -23,17 +23,16 @@ export const HideScrollOnModelOpen = (modalIsOpen: any) => {
 }
 
 
-export const calculatePrice =(productPrice:any, totalQuantity:any, numberOfColorInLogo:any) => {
-     productPrice = +productPrice?.replace('£', '')
-     var price = productPrice
-     price = totalQuantity > 0 ? productPrice * totalQuantity : productPrice
-     if (numberOfColorInLogo > 0){
-          price = price * numberOfColorInLogo
+export const calculatePrice = ( selectedProduct: any, totalPrice:number) => {
+
+     var price = totalPrice
+     if (selectedProduct?.numberOfColorInLogo > 0){
+          price = price * selectedProduct?.numberOfColorInLogo
      }
-     return price
+     return price.toFixed(2)
 }
 
-export const uid = function(){
+export const uid = function () {
      return Date.now().toString(36) + Math.random().toString(36).substr(2);
- }
- 
+}
+

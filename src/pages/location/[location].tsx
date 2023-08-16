@@ -2,13 +2,16 @@ import Product_Box from '@/components/product-widgets/product-box'
 import Reviews from '@/components/reviews/reviews'
 import Brands_Slider from '@/components/slider/brand-slider'
 import { apiRequest } from '@/config/requests'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { locationFaqs } from '../../../public/data'
 import Faqs from '@/components/faqs/faqs'
+import { LOCATION_PAGE } from '@/config/query'
+import { client } from '@/config/client'
 
-const Location = ({ products }: any) => {
+const Location = ({ products, pages }: any) => {
+  console.log("🚀 ~ file: [location].tsx:14 ~ Location ~ pages:", pages)
   return (
     <section className='container mx-auto px-4 my-10'>
       <figure className='flex justify-center'><Image src="/images/flag.webp" width={300} height={300} className='w-40' alt="flag" /></figure>
@@ -49,11 +52,30 @@ export default Location
 
 
 
-export const getServerSideProps: GetServerSideProps<any> = async () => {
+export async function getStaticProps({ params }: any) {
+  const slug = params.location
+  const response = await client.query({
+    query: LOCATION_PAGE,
+    variables: {
+      slug,
+    },
+  });
+
+  const pages = response?.data?.page;
+
   const dataForProducts = {
     per_page: 30,
   };
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
 
-  return { props: { products } }
+
+  return { props: { products, pages } }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths: any = [];
+  return {
+    paths,
+    fallback: 'blocking',
+  };
 }

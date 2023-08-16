@@ -18,6 +18,9 @@ const CategorySlug = ({ products }: any) => {
                          })}
                     </div>
                </div>
+
+
+
           </>
      )
 }
@@ -36,11 +39,10 @@ export async function getStaticProps({ params }: any) {
 
      const dataForProducts = {
           per_page: 12,
-          category: `${getID.id}`,
+          category: `${getID?.id}`,
      }
 
      const { products } = await apiRequest('POST', 'get-products', dataForProducts)
-
      return {
           props: {
                products: products,
