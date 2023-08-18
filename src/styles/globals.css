@@ -201,3 +201,43 @@ input[type=number] {
 .image-slider .slick-prev:before, .image-slider .slick-next:before{
   color: #1F375D !important;
 }
+
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  z-index: 2;
+  min-width: 100px;
+  color: white;
+  font-size: 12px;
+  background-color: #192733;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+}
+
+.tooltip-text::before {
+  content: "";
+  position: absolute;
+  transform: rotate(45deg);
+  background-color: #192733;
+  padding: 5px;
+  z-index: 1;
+}
+
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+#top {
+  top: -42px;
+  left: 50%;
+  transform:  translateX(-50%);
+}
+
+#top::before {
+  top: 80%;
+  left: 45%;
+}
+
+.hover-text {
+  position: relative;
+}

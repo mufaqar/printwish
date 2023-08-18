@@ -131,8 +131,22 @@ const ProductSlug = ({ post, product }: any) => {
     });
   }
 
+  const [innerWidth, setInnerWidth] = useState(0);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setInnerWidth(window.innerWidth);
+      const handleResize = () => {
+        setInnerWidth(window.innerWidth);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
   // const handle product description tab and detail tab 
-  const [DetailTab, setDetailTab] = useState('DESCRIPTION')
+  const [DetailTab, setDetailTab] = useState('')
   const handleDetailsTabs = (e: string) => {
     setDetailTab(e)
   }
@@ -144,12 +158,17 @@ const ProductSlug = ({ post, product }: any) => {
     setSelectedCustomizedLayout()
   }
 
+  useEffect(()=>{
+    if(innerWidth > 768){
+       setDetailTab('DESCRIPTION')
+    }
+  }, [innerWidth])
+
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "t-shirts")
 
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
     data = {...data, price: calculatePrice(selectedProduct, totalPrice ), extra: selectedProduct}
-    console.log("🚀 ~ file: [slug].tsx:152 ~ handleAddToCart ~ data:", data)
     dispatch(addItem(data))
   }
 
@@ -318,8 +337,9 @@ const ProductSlug = ({ post, product }: any) => {
                   product?.allPaColor.nodes?.map((clr: any, idx: number) => {
                     const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                     return (
-                      <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 border-[3px] rounded-full`}  >
-                        <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
+                      <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
+                        <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }}/>
+                        <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
                       </li>
                     )
                   })
