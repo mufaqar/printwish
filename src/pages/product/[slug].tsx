@@ -202,7 +202,7 @@ const ProductSlug = ({ post, product }: any) => {
   const slider = useRef<any>(null);
 
   const handleAddToCart = (data: any) => {
-    data = {...data, price: calculatePrice(selectedProduct, totalPrice, totalQuantity ), extra: selectedProduct}
+    data = {...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity ), extra: selectedProduct}
     dispatch(addItem(data))
   }
 
@@ -418,7 +418,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
 
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(selectedProduct, totalPrice, totalQuantity)}</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span>
           </div>
 
           <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
@@ -430,13 +430,13 @@ const ProductSlug = ({ post, product }: any) => {
 
       {/* floating price */}
       <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[300px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
-        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(selectedProduct, totalPrice, totalQuantity )}</span></h5>
+        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity )}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section>
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
         <div className='flex-1 p-2 px-5'>
           <h5 className='font-semibold'>Total</h5>
-          <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(selectedProduct, totalPrice, totalQuantity)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
+          <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
         <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
           <BsCartDash /> Add to cart

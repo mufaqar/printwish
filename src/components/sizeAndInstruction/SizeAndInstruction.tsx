@@ -38,8 +38,8 @@ const SizeAndInstruction = () => {
 
           // here are two option 1- Upload Image and 2nd one is Text creator so 
           // i can saprate with one field with colorsInLogo
-          if (colorsInLogo > 0) {
-               if (!customisationName || !colorsInLogo || !imageURL || !designWidth) {
+          if (imageURL) {
+               if (!customisationName || !imageURL || !designWidth) {
                     toast.warn("Customization Not Added Please Fill All Fields!")
                } else {
                     var artwork = [...selectedProduct.designArtWork]

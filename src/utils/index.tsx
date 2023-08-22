@@ -23,7 +23,8 @@ export const HideScrollOnModelOpen = (modalIsOpen: any) => {
 }
 
 
-export const calculatePrice = ( selectedProduct: any, totalPrice:number, totalQuantity:any) => {
+export const calculatePrice = ( customizedMergeData: any, totalPrice:number, totalQuantity:any) => {
+
      var priceWithQuantity = 0
      
      if(totalQuantity >= 25 && totalQuantity <= 49){
@@ -42,8 +43,8 @@ export const calculatePrice = ( selectedProduct: any, totalPrice:number, totalQu
           priceWithQuantity = totalQuantity * 0.85
      }
 
-     var price = totalPrice + priceWithQuantity
-     
+     var price = customizedMergeData.length > 0 ? totalPrice + priceWithQuantity : totalPrice
+
      return price.toFixed(2)
 }
 
