@@ -167,10 +167,7 @@ const ProductSlug = ({ post, product }: any) => {
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "t-shirts")
 
   const dispatch = useDispatch()
-  const handleAddToCart = (data: any) => {
-    data = {...data, price: calculatePrice(selectedProduct, totalPrice ), extra: selectedProduct}
-    dispatch(addItem(data))
-  }
+  
 
   let totalQuantity = 0;
   selectedProduct?.colors?.forEach((color: any) => {
@@ -204,7 +201,10 @@ const ProductSlug = ({ post, product }: any) => {
 
   const slider = useRef<any>(null);
 
-  
+  const handleAddToCart = (data: any) => {
+    data = {...data, price: calculatePrice(selectedProduct, totalPrice, totalQuantity ), extra: selectedProduct}
+    dispatch(addItem(data))
+  }
 
 
   return (
@@ -400,9 +400,9 @@ const ProductSlug = ({ post, product }: any) => {
 
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
-              {selectArt === 'Upload image' && <SelectNumberOfLogoColor />}
+              
               {
-                colorsInLogo > 0 && <>
+                selectArt === 'Upload image' && <>
                   <section className='mt-4 bg-background p-8 rounded-lg'>
                     <UploadImage />
                     <SizeAndInstruction />
@@ -418,7 +418,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
 
           <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(selectedProduct, totalPrice)}</span>
+            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(selectedProduct, totalPrice, totalQuantity)}</span>
           </div>
 
           <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
@@ -430,13 +430,13 @@ const ProductSlug = ({ post, product }: any) => {
 
       {/* floating price */}
       <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[300px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
-        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(selectedProduct, totalPrice )}</span></h5>
+        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(selectedProduct, totalPrice, totalQuantity )}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section>
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
         <div className='flex-1 p-2 px-5'>
           <h5 className='font-semibold'>Total</h5>
-          <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(selectedProduct, totalPrice)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
+          <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(selectedProduct, totalPrice, totalQuantity)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
         <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
           <BsCartDash /> Add to cart
@@ -448,32 +448,6 @@ const ProductSlug = ({ post, product }: any) => {
 }
 
 export default ProductSlug
-
-
-const SelectNumberOfLogoColor = () => {
-  const { colorsInLogo, setColorsInLogo, selectedProduct, setSelectedProduct } = useContext(SettingsContext)
-
-  const handleNumberOfColorInLogo = (no: any) => {
-    setColorsInLogo(no)
-    setSelectedProduct({ ...selectedProduct, numberOfColorInLogo: no })
-  }
-  return (
-    <section className='mt-4 bg-background p-8 gap-6 rounded-lg'>
-      <h5 className='text-xl font-semibold text-accent capitalize font-roboto'>Step 4 - Select number of color contain logo:</h5>
-      <ul className='flex flex-wrap items-center mt-5'>
-        {
-          [1, 2, 3, 4, 5].map((no, idx) => (
-            <li key={idx} onClick={() => handleNumberOfColorInLogo(no)} className={`p-1 cursor-pointer hover:scale-105 rounded-full border-[2px] ${colorsInLogo === no ? 'border-secondary' : 'border-transparent'}`}> <div className={`w-[52px] h-[52px] text-white font-bold text-xl flex flex-col justify-center items-center rounded-full  ${colorsInLogo === no ? 'bg-accent' : 'bg-black/40'}`}>{no}</div></li>
-          ))
-        }
-      </ul>
-    </section>
-  )
-}
-
-
-
-
 
 
 
