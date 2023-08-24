@@ -40,7 +40,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
-  // console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
+  console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -50,7 +50,7 @@ const ProductSlug = ({ post, product }: any) => {
       productId: product.id,
       title: product.title
     })
-  }, [])
+  }, [calculatePrice])
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
@@ -114,6 +114,14 @@ const ProductSlug = ({ post, product }: any) => {
         updatedColor.selectedSize.push(sizes);
       }
       updatedColors[colorIndex] = updatedColor;
+
+      // if reduce quantity or remove quantity then item from selectedSize array
+      if(sizes.quantity < 1){
+        const remaningItem = updatedColor.selectedSize.filter((item:any) => item?.quantity !== '')
+        console.log("🚀 ~ file: [slug].tsx:121 ~ setSelectedProduct ~ remaningItem: ******", remaningItem)
+        updatedColor.selectedSize = remaningItem
+      }
+
       return {
         ...prevProduct,
         colors: updatedColors
@@ -169,12 +177,24 @@ const ProductSlug = ({ post, product }: any) => {
   const dispatch = useDispatch()
   
 
-  let totalQuantity = 0;
-  selectedProduct?.colors?.forEach((color: any) => {
-    color.selectedSize?.forEach((size: any) => {
-      totalQuantity += parseInt(size.quantity);
-    });
-  });
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  useEffect(() => {
+    if (selectedProduct) {
+      let newTotalQuantity = 0;
+
+      selectedProduct.colors?.forEach((color:any) => {
+        color.selectedSize?.forEach((size:any) => {
+          const quantity = parseInt(size.quantity);
+          if (quantity >= 1) {
+            newTotalQuantity += quantity;
+          }
+        });
+      });
+
+      setTotalQuantity(newTotalQuantity);
+    }
+  }, [selectedProduct]);
 
   let totalPrice = 0;
   selectedProduct?.colors?.forEach((color: any) => {

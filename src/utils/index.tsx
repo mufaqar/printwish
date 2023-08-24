@@ -28,19 +28,19 @@ export const calculatePrice = ( customizedMergeData: any, totalPrice:number, tot
      var priceWithQuantity = 0
      
      if(totalQuantity >= 25 && totalQuantity <= 49){
-          priceWithQuantity = totalQuantity * 5.88
+          priceWithQuantity = totalQuantity * (5.88 * customizedMergeData.length)
      }else if(totalQuantity >= 50 && totalQuantity <= 99){
-          priceWithQuantity = totalQuantity * 3.80
+          priceWithQuantity = totalQuantity * ( 3.80  * customizedMergeData.length )
      }else if(totalQuantity >= 100 && totalQuantity <= 249){
-          priceWithQuantity = totalQuantity * 2.00
+          priceWithQuantity = totalQuantity * ( 2.00 * customizedMergeData.length )
      }else if(totalQuantity >= 250 && totalQuantity <= 499){
-          priceWithQuantity = totalQuantity * 1.80
+          priceWithQuantity = totalQuantity * ( 1.80 * customizedMergeData.length )
      }else if(totalQuantity >= 500 && totalQuantity <= 999){
-          priceWithQuantity = totalQuantity * 1.20
+          priceWithQuantity = totalQuantity * ( 1.20 * customizedMergeData.length )
      }else if(totalQuantity >= 1000 && totalQuantity <= 2499){
-          priceWithQuantity = totalQuantity * 0.98
+          priceWithQuantity = totalQuantity * ( 0.98 * customizedMergeData.length )
      }else if(totalQuantity >= 2500){
-          priceWithQuantity = totalQuantity * 0.85
+          priceWithQuantity = totalQuantity * ( 0.85 * customizedMergeData.length )
      }
 
      var price = customizedMergeData.length > 0 ? totalPrice + priceWithQuantity : totalPrice
