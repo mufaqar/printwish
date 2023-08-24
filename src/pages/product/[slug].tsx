@@ -84,16 +84,16 @@ const ProductSlug = ({ post, product }: any) => {
     '5XL', the price is calculated by multiplying the value of the target element by the variable
     'whitesmall'. If the color is not 'WHITE', the same logic is applied using the variables
     'colorlarge' */
-    if(colorName === 'WHITE'){
-      if(size === '3XL' || size === '4XL' || size === '5XL'){
+    if (colorName === 'WHITE') {
+      if (size === '3XL' || size === '4XL' || size === '5XL') {
         sizes.price = e.target.value * whitelarge
-      }else{
+      } else {
         sizes.price = e.target.value * whitesmall
       }
-    }else{
-      if(size === '3XL' || size === '4XL' || size === '5XL'){
+    } else {
+      if (size === '3XL' || size === '4XL' || size === '5XL') {
         sizes.price = e.target.value * colorlarge
-      }else{
+      } else {
         sizes.price = e.target.value * colorsmall
       }
     }
@@ -116,9 +116,8 @@ const ProductSlug = ({ post, product }: any) => {
       updatedColors[colorIndex] = updatedColor;
 
       // if reduce quantity or remove quantity then item from selectedSize array
-      if(sizes.quantity < 1){
-        const remaningItem = updatedColor.selectedSize.filter((item:any) => item?.quantity !== '')
-        console.log("🚀 ~ file: [slug].tsx:121 ~ setSelectedProduct ~ remaningItem: ******", remaningItem)
+      if (sizes.quantity < 1) {
+        const remaningItem = updatedColor.selectedSize.filter((item: any) => item?.quantity !== '')
         updatedColor.selectedSize = remaningItem
       }
 
@@ -166,16 +165,16 @@ const ProductSlug = ({ post, product }: any) => {
     setSelectedCustomizedLayout()
   }
 
-  useEffect(()=>{
-    if(innerWidth > 768){
-       setDetailTab('DESCRIPTION')
+  useEffect(() => {
+    if (innerWidth > 768) {
+      setDetailTab('DESCRIPTION')
     }
   }, [innerWidth])
 
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "t-shirts")
 
   const dispatch = useDispatch()
-  
+
 
   const [totalQuantity, setTotalQuantity] = useState(0);
 
@@ -183,8 +182,8 @@ const ProductSlug = ({ post, product }: any) => {
     if (selectedProduct) {
       let newTotalQuantity = 0;
 
-      selectedProduct.colors?.forEach((color:any) => {
-        color.selectedSize?.forEach((size:any) => {
+      selectedProduct.colors?.forEach((color: any) => {
+        color.selectedSize?.forEach((size: any) => {
           const quantity = parseInt(size.quantity);
           if (quantity >= 1) {
             newTotalQuantity += quantity;
@@ -222,7 +221,7 @@ const ProductSlug = ({ post, product }: any) => {
   const slider = useRef<any>(null);
 
   const handleAddToCart = (data: any) => {
-    data = {...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity ), extra: selectedProduct}
+    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
     dispatch(addItem(data))
   }
 
@@ -358,7 +357,7 @@ const ProductSlug = ({ post, product }: any) => {
                     const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                     return (
                       <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
-                        <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }}/>
+                        <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
                         <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
                       </li>
                     )
@@ -420,7 +419,7 @@ const ProductSlug = ({ post, product }: any) => {
 
               {customizationButton && <CustomiztionProduct />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
-              
+
               {
                 selectArt === 'Upload image' && <>
                   <section className='mt-4 bg-background p-8 rounded-lg'>
@@ -431,9 +430,12 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
-              <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
-                {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
-              </button>
+              {
+                customizedMergeData.length < 4 &&
+                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
+                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
+                </button>
+              }
             </>
           }
 
@@ -450,7 +452,7 @@ const ProductSlug = ({ post, product }: any) => {
 
       {/* floating price */}
       <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[300px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
-        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity )}</span></h5>
+        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section>
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
@@ -458,6 +460,7 @@ const ProductSlug = ({ post, product }: any) => {
           <h5 className='font-semibold'>Total</h5>
           <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
+
         <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
           <BsCartDash /> Add to cart
         </div>
