@@ -40,7 +40,6 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
-  console.log("🚀 ~ file: [slug].tsx:39 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -210,7 +209,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -224,7 +223,6 @@ const ProductSlug = ({ post, product }: any) => {
     data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
     dispatch(addItem(data))
   }
-
 
   return (
     <>
@@ -443,7 +441,7 @@ const ProductSlug = ({ post, product }: any) => {
             Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span>
           </div>
 
-          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-secondary gap-2 py-3 bg-secondary text-white px-8 hover:text-secondary hover:bg-transparent rounded-full'>
+          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-primary gap-2 py-3 bg-primary text-white px-8 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
           <Image src="/images/clothing-are-rated-excellent-on-trustpilot1.png" alt="start rating" width={500} height={500} className='w-80 mt-10' />
@@ -461,7 +459,7 @@ const ProductSlug = ({ post, product }: any) => {
           <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
 
-        <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-secondary uppercase text-white gap-2 p-2 flex items-center justify-center'>
+        <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-primary uppercase text-white gap-2 p-2 flex items-center justify-center'>
           <BsCartDash /> Add to cart
         </div>
       </section>
