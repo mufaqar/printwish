@@ -6,7 +6,7 @@ import { apiRequest } from '@/config/requests'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 
-const ProductsPage = ({products}:any) => {
+const PageNumber = ({products}:any) => {
     return (
         <main>
             <PageBanner title="Products" />
@@ -30,12 +30,14 @@ const ProductsPage = ({products}:any) => {
     )
 }
 
-export default ProductsPage
+export default PageNumber
 
 
-export const getServerSideProps: GetServerSideProps<any> = async () => {
+export const getServerSideProps: GetServerSideProps<any> = async ({params}) => {
+    const pagenumber = params?.number
     const dataForProducts = {
       per_page: 12,
+      page : pagenumber
     };
     const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    
     
