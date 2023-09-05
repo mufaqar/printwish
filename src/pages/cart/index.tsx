@@ -38,7 +38,7 @@ const Cart = () => {
                               {
                                    cartItems.map((item: any, idx: number) => {
                                         return (
-                                             <div className='border rounded-lg hover:shadow p-6'>
+                                             <div key={idx} className='border rounded-lg hover:shadow p-6'>
                                                   <div key={idx} className="justify-between mb-4 relative bg-white sm:flex sm:justify-start">
                                                        <img src={item?.featuredImage?.node?.mediaItemUrl || item?.images[0]?.src} alt={item?.name} className="w-full rounded-lg sm:w-40" />
                                                        <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
@@ -83,59 +83,59 @@ const Cart = () => {
                                                   </div>
                                                   {
                                                        item?.extra?.designArtWork.length > 0 && <ul className='mt-3 border-t-[1px] border-gray-200 pt-4 pb-2 border-b-[1px]'>
-                                                       {
-                                                            item?.extra?.designArtWork?.map((d: any, i: number) => (
-                                                                 <li key={i} className="md:flex justify-between items-center">
-                                                                      <div className='flex-1'>
-                                                                           <p>Customization Name : <span className='text-gray-600'>{d?.customisationName}</span></p>
-                                                                           <p>Design Position : <span className='text-gray-600'>{d?.designPosition}</span></p>
-                                                                           <p>Design Width : <span className='text-gray-600'>{d?.designWidth} <sup>cm</sup></span></p>
-                                                                           <p>Special Instruction : <span className='text-gray-600'>{d?.specialInstruction}</span></p>
-                                                                      </div>
-                                                                      <img src={d?.imageURL} alt="logo" className="w-52 mt-3 md:mt-0" />
-                                                                 </li>
-                                                            ))
-                                                       }
-                                                  </ul>
+                                                            {
+                                                                 item?.extra?.designArtWork?.map((d: any, i: number) => (
+                                                                      <li key={i} className="md:flex justify-between items-center">
+                                                                           <div className='flex-1'>
+                                                                                <p>Customization Name : <span className='text-gray-600'>{d?.customisationName}</span></p>
+                                                                                <p>Design Position : <span className='text-gray-600'>{d?.designPosition}</span></p>
+                                                                                <p>Design Width : <span className='text-gray-600'>{d?.designWidth} <sup>cm</sup></span></p>
+                                                                                <p>Special Instruction : <span className='text-gray-600'>{d?.specialInstruction}</span></p>
+                                                                           </div>
+                                                                           <img src={d?.imageURL} alt="logo" className="w-52 mt-3 md:mt-0" />
+                                                                      </li>
+                                                                 ))
+                                                            }
+                                                       </ul>
                                                   }
                                                   {
                                                        item?.extra?.textCreator.length > 0 && <ul className='border-gray-200 pt-4 pb-4 border-b-[1px]'>
-                                                       {
-                                                            item?.extra?.textCreator?.map((d: any, i: number) => (
-                                                                 <li key={i} className="md:flex justify-between items-center">
-                                                                      <div className='flex-1'>
-                                                                           <p>Customization Name : <span className='text-gray-600'>{d?.customisationName}</span></p>
-                                                                           <p>Design Position : <span className='text-gray-600'>{d?.designPosition}</span></p>
-                                                                           <p>Design Width : <span className='text-gray-600'>{d?.designWidth} <sup>cm</sup></span></p>
-                                                                           <p>Special Instruction : <span className='text-gray-600'>{d?.specialInstruction}</span></p>
-                                                                           {
-                                                                                d?.lines?.map((line: any, idx: number) => (
-                                                                                     <div key={idx}>
-                                                                                          <p>Text Color : <span className='text-gray-600'>{line?.color}</span></p>
-                                                                                          <p>Text font : <span className='text-gray-600'>{line?.font}</span></p>
-                                                                                          <p>Text size : <span className='text-gray-600'>{line?.size}</span></p>
-                                                                                     </div>
-                                                                                ))
-                                                                           }
-                                                                      </div>
-                                                                      <div className='bg-gray-100 h-full p-5 flex flex-col mt-3 md:mt-0 justify-center items-center'>
-                                                                           {
-                                                                                d?.lines?.map((line: any, idx: number) => (
-                                                                                     <h3 key={idx} className={` font-semibold uppercase
+                                                            {
+                                                                 item?.extra?.textCreator?.map((d: any, i: number) => (
+                                                                      <li key={i} className="md:flex justify-between items-center">
+                                                                           <div className='flex-1'>
+                                                                                <p>Customization Name : <span className='text-gray-600'>{d?.customisationName}</span></p>
+                                                                                <p>Design Position : <span className='text-gray-600'>{d?.designPosition}</span></p>
+                                                                                <p>Design Width : <span className='text-gray-600'>{d?.designWidth} <sup>cm</sup></span></p>
+                                                                                <p>Special Instruction : <span className='text-gray-600'>{d?.specialInstruction}</span></p>
+                                                                                {
+                                                                                     d?.lines?.map((line: any, idx: number) => (
+                                                                                          <div key={idx}>
+                                                                                               <p>Text Color : <span className='text-gray-600'>{line?.color}</span></p>
+                                                                                               <p>Text font : <span className='text-gray-600'>{line?.font}</span></p>
+                                                                                               <p>Text size : <span className='text-gray-600'>{line?.size}</span></p>
+                                                                                          </div>
+                                                                                     ))
+                                                                                }
+                                                                           </div>
+                                                                           <div className='bg-gray-100 h-full p-5 flex flex-col mt-3 md:mt-0 justify-center items-center'>
+                                                                                {
+                                                                                     d?.lines?.map((line: any, idx: number) => (
+                                                                                          <h3 key={idx} className={` font-semibold uppercase
                                                                                           ${line.size === "small" && 'text-sm'}
                                                                                           ${line.size === "Medium" && 'text-base'}
                                                                                           ${line.size === "Large" && 'text-lg'}
                                                                                           ${line.size === "X-Large" && 'text-xl'}
                                                                                           `}>{line.text}</h3>
-                                                                                ))
-                                                                           }
-                                                                      </div>
-                                                                 </li>
-                                                            ))
-                                                       }
-                                                  </ul>
+                                                                                     ))
+                                                                                }
+                                                                           </div>
+                                                                      </li>
+                                                                 ))
+                                                            }
+                                                       </ul>
                                                   }
-                                                  
+
                                              </div>
                                         )
                                    })
