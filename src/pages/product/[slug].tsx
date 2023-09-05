@@ -261,8 +261,11 @@ const ProductSlug = ({ post, product }: any) => {
               }) : <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
             }
           </Slider>
-
-          <section className='bg-background p-8 mt-10 rounded-lg'>
+          <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
+            <h6>Lead Time : <span className='text-gray-500'>5 days</span></h6>
+            <h6>Minimum Order : <span className='text-gray-500'>25 units</span></h6>
+          </div>
+          <section className='bg-background p-8 mt-5 rounded-lg'>
             <div className='font-bold text-xl uppercase flex font-roboto gap-5 text-secondary'>
               <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>
               <button className={DetailTab === 'DETAILS' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DETAILS')}>DETAILS</button>
