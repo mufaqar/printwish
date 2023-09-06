@@ -76,8 +76,7 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   };
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
   const caterogies = await apiRequest('POST', 'get-products-categories', dataForCategory)
-  console.log("🚀 ~ file: index.tsx:79 ~ constgetStaticProps:GetStaticProps<any>= ~ caterogies:", caterogies)
-
+  //console.log("🚀 ~ file: index.tsx:79 ~ constgetStaticProps:GetStaticProps<any>= ~ caterogies:", caterogies)
   return { props: { products, caterogies } }
 }
 

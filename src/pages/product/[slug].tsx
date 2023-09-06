@@ -171,12 +171,8 @@ const ProductSlug = ({ post, product }: any) => {
   }, [innerWidth])
 
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "t-shirts")
-
   const dispatch = useDispatch()
-
-
   const [totalQuantity, setTotalQuantity] = useState(0);
-
   useEffect(() => {
     if (selectedProduct) {
       let newTotalQuantity = 0;
