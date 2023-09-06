@@ -5,12 +5,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Product_Box = ({ data, image }: any) => {
-//console.log("🚀 ~ file: product-box.tsx:8 ~ data:", data)
-
+//console.log("🚀 ~ file: product-box.tsx:8 ~ data:", data
   const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')  )
-  //console.log("Lenght:", colors_lenght.options.length)
-
-
   const cartItems = useSelector((state: any) => state.AddToCart.value)
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
@@ -31,7 +27,7 @@ const Product_Box = ({ data, image }: any) => {
           </Link>
         </h5>
         <p className='text-base'>
-          <strong>{colors_lenght.options.length}</strong> Colors available        
+          <strong>{colors_lenght?.options?.length}</strong> Colors available        
         </p>
 
         <p className='text-center font-bold font-roboto mb-3 text-primary'>
