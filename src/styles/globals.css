@@ -1,16 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "slick-carousel/slick/slick.css"; 
-@import "slick-carousel/slick/slick-theme.css";
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
 
 @layer base {
   :root {
-    --primary-color: #04f8c5;
-    --secondary-color: #0088CC;
+    --primary-color: #1f375d;
+    --secondary-color: #0088cc;
     --accent-color: #1d2127e4;
     --highlight-color: #cbcbcb;
-    --background-color: #F2F2F2;
+    --background-color: #f2f2f2;
   }
 }
 
@@ -68,14 +68,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.ReactModal__Overlay{
+.ReactModal__Overlay {
   background-color: rgb(0 0 0 / 50%) !important;
 }
-
 
 .slider {
   position: relative;
@@ -170,15 +169,15 @@ input[type=number] {
   position: relative;
 }
 
-._features ul li{
+._features ul li {
   list-style: disc;
 }
 
-._shadow{
-  box-shadow: rgba(0,0,0,.16) 0 3px 6px;
+._shadow {
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px;
 }
 
-.image-slider .slick-arrow.slick-next{
+.image-slider .slick-arrow.slick-next {
   position: absolute;
   right: 10px;
   padding-top: 1.5px;
@@ -186,7 +185,7 @@ input[type=number] {
   scale: 1.5;
 }
 
-.image-slider .slick-arrow.slick-prev{
+.image-slider .slick-arrow.slick-prev {
   position: absolute;
   left: 10px;
   padding-top: 1.5px;
@@ -195,11 +194,12 @@ input[type=number] {
   scale: 1.5;
 }
 .image-slider .slick-arrow.slick-next:hover,
-.image-slider .slick-arrow.slick-prev:hover{
+.image-slider .slick-arrow.slick-prev:hover {
   scale: 1.4;
 }
-.image-slider .slick-prev:before, .image-slider .slick-next:before{
-  color: #1F375D !important;
+.image-slider .slick-prev:before,
+.image-slider .slick-next:before {
+  color: #1f375d !important;
 }
 
 .tooltip-text {
@@ -215,7 +215,7 @@ input[type=number] {
 }
 
 .tooltip-text::before {
-  content: "";
+  content: '';
   position: absolute;
   transform: rotate(45deg);
   background-color: #192733;
@@ -230,7 +230,7 @@ input[type=number] {
 #top {
   top: -42px;
   left: 50%;
-  transform:  translateX(-50%);
+  transform: translateX(-50%);
 }
 
 #top::before {

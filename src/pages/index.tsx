@@ -9,18 +9,18 @@ import { Categories, CategoryType } from '@/const/categories'
 import Link from 'next/link'
 import Steps from '@/components/promotional-steps/steps'
 import Product_Slider from '@/components/product-widgets/product-slider'
-import { GetServerSideProps } from 'next'
-import {apiRequest} from '@/config/requests'
+import { GetStaticProps } from 'next'
+import { apiRequest } from '@/config/requests'
 
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home(props:any) {
-  
+export default function Home(props: any) {
+
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
-  
+
 
   return (
     <>
@@ -32,21 +32,19 @@ export default function Home(props:any) {
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-          {
-            props ? <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
-            {props?.caterogies?.products?.map((item: CategoryType, idx: number) => {
-              return <Category_Box key={idx} data={item} />
-            })}
-          </div> : <p>loading...</p>
-          }
-          
+           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
+              {Categories?.map((item: CategoryType, idx: number) => {
+                return <Category_Box key={idx} data={item} />
+              })}
+            </div>
+
         </div>
       </section>
       <Steps />
       {
-        props ? <Product_Slider products={props?.products}/> : <p>loading...</p>
+        props ? <Product_Slider products={props?.products} /> : <p>loading...</p>
       }
-      
+
       <section className='py-16 relative'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <div className='w-fit mx-auto'>
@@ -67,17 +65,19 @@ export default function Home(props:any) {
 
 
 
-  export const getServerSideProps: GetServerSideProps<any> = async () => {
-    
-    const dataForCategory = {
-      per_page: 8,
-    };
-    const dataForProducts = {
-      per_page: 10,
-    };
-    const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    
-    const caterogies =  await apiRequest('POST', 'get-products-categories', dataForCategory)    
-    return { props: { products, caterogies} }
-  }
-  
-  
+export const getStaticProps: GetStaticProps<any> = async () => {
+  const dataForCategory = {
+    per_page: 8,
+    orderby: "count"
+  };
+  const dataForProducts = {
+    per_page: 10,
+  };
+  const { products } = await apiRequest('POST', 'get-products', dataForProducts)
+  const caterogies = await apiRequest('POST', 'get-products-categories', dataForCategory)
+  console.log("🚀 ~ file: index.tsx:79 ~ constgetStaticProps:GetStaticProps<any>= ~ caterogies:", caterogies)
+
+  return { props: { products, caterogies } }
+}
+
+
