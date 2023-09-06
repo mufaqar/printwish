@@ -11,7 +11,7 @@ const CategorySlug = ({ products }: any) => {
           <>
                <PageBanner title={query.category} />
                <div className='container mx-auto px-3 my-20 w-full'>
-                    <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-1 gap-5'>
+                    <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 gap-5'>
                          {products?.map((item: any, idx: number) => {
                               const img = item?.images[0]?.src
                               return <Product_Box key={idx} data={item} image={img} />

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Steps = () => {
     return (
-        <section className='py-16 bg-background'>
+        <section className="py-16 bg-[url('/images/steps-bg.png')]">
             <div className='max-w-screen-xl mx-auto px-4'>
                 <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                     Straightforward Steps To Perfect Promotional Products

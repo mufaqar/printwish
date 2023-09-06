@@ -5,6 +5,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Product_Box = ({ data, image }: any) => {
+//console.log("🚀 ~ file: product-box.tsx:8 ~ data:", data)
+
+  const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')  )
+  //console.log("Lenght:", colors_lenght.options.length)
 
 
   const cartItems = useSelector((state: any) => state.AddToCart.value)
@@ -16,7 +20,7 @@ const Product_Box = ({ data, image }: any) => {
   const isProductIndex = cartItems.findIndex((item: any) => item.id === data.id)
 
   return (
-    <div className='px-1'>
+    <div className='p-1 border border-gray-200 '>
       <Link href={`/product/${data?.slug}`} className='border border-gray-100 p-2 md:h-[300px] cursor-pointer mb-2 flex flex-col justify-center items-center group'>
         <Image src={image} alt={data?.title || data?.name} width={200} height={200} className='transition-all duration-200 ease-in-out object-fill w-full mb-3 group-hover:scale-95' />
       </Link>
@@ -27,11 +31,11 @@ const Product_Box = ({ data, image }: any) => {
           </Link>
         </h5>
         <p className='text-base'>
-          14 colours available
+          <strong>{colors_lenght.options.length}</strong> Colors available        
         </p>
 
-        <p className='text-2xl text-center font-bold font-roboto text-secondary hover:text-secondary mb-3'>
-          From £{data?.price}
+        <p className='text-center font-bold font-roboto mb-3 text-primary'>
+          From <span className='text-secondary  hover:text-secondary'>£{data?.price}</span>
         </p>
         <button className='text-base relative font-semibold flex justify-center font-roboto uppercase bg-primary text-white px-6 py-1 hover:bg-transparent hover:text-primary border-primary border-2 hover:border-primary'
           onClick={() => handleAddToCart(data)}
