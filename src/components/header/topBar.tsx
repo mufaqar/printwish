@@ -10,7 +10,7 @@ const TopBar = () => {
     <nav className="bg-accent">
       <div className="flex justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
         <Link href="/" className="flex items-center">
-          <Image src="/images/logo.png" alt="logo" width={100} height={200} />
+        <Image src="/images/logo.png" alt="logo" width={140} height={37} />
         </Link>
         <p className='text-xl hidden lg:block font-medium uppercase text-white text-center'>
           The UK's leading personalised clothing company

@@ -129,7 +129,7 @@ const Header = () => {
 
 
                 <Link href="/" className="flex items-center md:hidden">
-                  <Image src="/images/logo.png" alt="logo" width={100} height={200} />
+                <Image src="/images/logo.png" alt="logo" width={140} height={37} />
                 </Link>
                 <div className={` md:bg-transparent z-50 w-full md:relative ${openMobileSearch ? 'w-full fixed top-0 bg-white p-4 pt-10 inset-0 block' : 'hidden md:block'}`}>
                   <input type="search" id="search-dropdown"
