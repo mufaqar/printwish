@@ -2,12 +2,12 @@ import React from 'react'
 
 const Steps = () => {
     return (
-        <section className="py-16 bg-[url('/images/steps-bg.png')]">
+        <section className="py-16 bg-[url('/images/steps-bg.webP')]">
             <div className='max-w-screen-xl mx-auto px-4'>
-                <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
+                <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5 text-white '>
                     Straightforward Steps To Perfect Promotional Products
                 </h2>
-                <p className='text-lg font-normal text-center text-accent font-roboto'>
+                <p className='text-lg font-normal text-center text-accent font-roboto text-white'>
                     Ensuring You Get Exactly What You Need When You Need It
                 </p>
                 <div className='grid md:grid-cols-5 grid-cols-1 md:gap-5 gap-10 mt-20'>
