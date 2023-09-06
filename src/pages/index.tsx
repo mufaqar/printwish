@@ -58,6 +58,7 @@ export default function Home(props: any) {
           </div>
         </div>
       </section>
+      <Reviews />
     </>
   )
 }

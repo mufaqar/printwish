@@ -43,7 +43,7 @@ const Reviews = () => {
     };
     const slider = React.useRef<Slider>(null);
     return (
-        <section className='py-16 relative'>
+        <section className='py-16 pb-0 relative'>
             <div className='max-w-screen-xl mx-auto px-4'>
                 <div className='w-fit mx-auto mb-10'>
                     <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
