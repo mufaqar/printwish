@@ -32,12 +32,11 @@ export default function Home(props: any) {
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
+           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-7 mt-10'>
               {Categories?.map((item: CategoryType, idx: number) => {
                 return <Category_Box key={idx} data={item} />
               })}
             </div>
-
         </div>
       </section>
       <Steps />
@@ -67,17 +66,11 @@ export default function Home(props: any) {
 
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const dataForCategory = {
-    per_page: 8,
-    orderby: "count"
-  };
-  const dataForProducts = {
+   const dataForProducts = {
     per_page: 10,
   };
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
-  const caterogies = await apiRequest('POST', 'get-products-categories', dataForCategory)
-  //console.log("🚀 ~ file: index.tsx:79 ~ constgetStaticProps:GetStaticProps<any>= ~ caterogies:", caterogies)
-  return { props: { products, caterogies } }
+  return { props: { products} }
 }
 
 

@@ -5,16 +5,19 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Product_Box = ({ data, image }: any) => {
-//console.log("🚀 ~ file: product-box.tsx:8 ~ data:", data
+  //console.log("🚀 ~ file: product-box.tsx:8 ~ data:", data)
+
+  //var { whitesmall, whitelarge, colorsmall, colorlarge } = data.poductInfo;
+
+
+
   const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')  )
   const cartItems = useSelector((state: any) => state.AddToCart.value)
   const dispatch = useDispatch()
   const handleAddToCart = (data: any) => {
     dispatch(addItem(data))
   }
-
   const isProductIndex = cartItems.findIndex((item: any) => item.id === data.id)
-
   return (
     <div className='p-1 border border-gray-200 '>
       <Link href={`/product/${data?.slug}`} className='border border-gray-100 p-2 md:h-[300px] cursor-pointer mb-2 flex flex-col justify-center items-center group'>
