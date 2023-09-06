@@ -1,9 +1,9 @@
 import PageBanner from '@/components/banner/page-banner'
 import Pagination from '@/components/pagination/pagination'
 import Product_Box from '@/components/product-widgets/product-box'
-import Product_Sidebar from '@/components/sidebar/product-sidebar'
+//import Product_Sidebar from '@/components/sidebar/product-sidebar'
 import { apiRequest } from '@/config/requests'
-import { GetServerSideProps } from 'next'
+import {  GetStaticProps } from 'next'
 import React from 'react'
 
 const ProductsPage = ({products}:any) => {
@@ -32,13 +32,11 @@ const ProductsPage = ({products}:any) => {
 
 export default ProductsPage
 
-
-export const getServerSideProps: GetServerSideProps<any> = async () => {
+export const getStaticProps: GetStaticProps<any> = async () => {
     const dataForProducts = {
-      per_page: 12,
+      per_page: 30,
     };
-    const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    
-    
+    const {products} =  await apiRequest('POST', 'get-products', dataForProducts)  
     return { props: { products } }
   }
   

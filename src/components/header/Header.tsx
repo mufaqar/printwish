@@ -173,7 +173,7 @@ const Header = () => {
                 </li>
                 <li>
                   <button onClick={() => setMegaMenu(!megaMenu)}
-                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Products
+                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Products By
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd"
