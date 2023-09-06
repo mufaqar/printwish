@@ -11,7 +11,7 @@ import { LOCATION_PAGE } from '@/config/query'
 import { client } from '@/config/client'
 
 const Location = ({ products, pages }: any) => {
-  console.log("🚀 ~ file: [location].tsx:14 ~ Location ~ pages:", pages)
+
   return (
     <section className='container mx-auto px-4 my-10'>
       <figure className='flex justify-center'><Image src="/images/flag.webp" width={300} height={300} className='w-40' alt="flag" /></figure>
@@ -70,12 +70,4 @@ export async function getStaticProps({ params }: any) {
 
 
   return { props: { products, pages } }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: any = [];
-  return {
-    paths,
-    fallback: 'blocking',
-  };
 }
