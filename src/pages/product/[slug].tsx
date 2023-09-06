@@ -258,7 +258,6 @@ const ProductSlug = ({ post, product }: any) => {
             }
           </Slider>
           <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
-
             <h6>from <strong className='text-gray-500'>£{colorsmall}</strong> per unit</h6>
             <h6>Lead Time : <span className='text-gray-500'>5 days</span></h6>
             <h6>Minimum Order : <span className='text-gray-500'>25 units</span></h6>
