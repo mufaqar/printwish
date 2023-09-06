@@ -12,16 +12,9 @@ import Product_Slider from '@/components/product-widgets/product-slider'
 import { GetStaticProps } from 'next'
 import { apiRequest } from '@/config/requests'
 
-
-
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home(props: any) {
-
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
-
-
   return (
     <>
       <Main_Banner />
