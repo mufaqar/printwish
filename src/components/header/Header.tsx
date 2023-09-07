@@ -171,12 +171,15 @@ const Header = () => {
             </div>
             <div className={`flex items-center lg:order-1 ${mobileMenu ? 'block' : 'hidden md:block'}`}>
               <ul className={`flex flex-col md:flex-row mt-0 gap-6 md:gap-8 text-sm font-medium `}>
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/"
                     className="text-white hover:text-primary"
                     aria-current="page">Home</Link>
                 </li>
-                <li className='relative' onClick={()=>setCatSubMenu(!catSubMenu)} onMouseLeave={()=>setCatSubMenu(false)} onMouseEnter={()=>setCatSubMenu(true)}>
+                <li className='relative' 
+                  onClick={()=>{setCatSubMenu(!catSubMenu); setMobileMenu(false)}} 
+                  onMouseLeave={()=>setCatSubMenu(false)} 
+                  onMouseEnter={()=>setCatSubMenu(true)}>
                   <button
                     className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Categories
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
@@ -187,20 +190,20 @@ const Header = () => {
                   </button>
                   {catSubMenu && <CategoriesSubMenu categories={categories}/>}
                 </li>
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/about"
                     className="text-white hover:text-primary">About Us</Link>
                 </li>
 
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/product"
                     className="text-white hover:text-primary md:inline ">Products</Link>
                 </li>
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/contact-us"
                     className="text-white hover:text-primary md:inline">Contact</Link>
                 </li>
-                <li className='relative' onClick={()=>setLocSubMenu(!locSubMenu)} onMouseLeave={()=>setLocSubMenu(false)} onMouseEnter={()=>setLocSubMenu(true)}>
+                <li className='relative' onClick={()=>{setLocSubMenu(!locSubMenu); setMobileMenu(false)}} onMouseLeave={()=>setLocSubMenu(false)} onMouseEnter={()=>setLocSubMenu(true)}>
                   <button
                     className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Locations
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
