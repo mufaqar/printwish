@@ -7,9 +7,9 @@ import React from 'react'
 import Location from '../location'
 import { client } from '@/config/client'
 import { LOCATION_PAGE } from '@/config/query'
+import Pagination from '@/components/pagination/pagination'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage }: any) => {
-     console.log("🚀 ~ file: index.tsx:12 ~ CategorySlug ~ pages:", pages)
      const { query } = useRouter()
      return (
           <>
@@ -27,6 +27,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage }: any) =
                          </div>
                     </> 
                }
+               <Pagination perPage="3" endpoint={`woocommerce-category-api/v1/product-count/${slug}`}/>
           </>
 
      )

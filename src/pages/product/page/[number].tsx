@@ -22,7 +22,7 @@ const PageNumber = ({products}:any) => {
                                 return <Product_Box key={idx} data={item} image={img}/>
                             })}
                         </div>
-                        <Pagination perPage="30"/>
+                        <Pagination perPage="30" endpoint="custom-post-api/v1/post-count"/>
                     </div>
                 </div>
             </section>

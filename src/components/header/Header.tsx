@@ -177,7 +177,7 @@ const Header = () => {
                     aria-current="page">Home</Link>
                 </li>
                 <li className='relative' 
-                  onClick={()=>{setCatSubMenu(!catSubMenu); setMobileMenu(false)}} 
+                  onClick={()=>{setCatSubMenu(!catSubMenu)}} 
                   onMouseLeave={()=>setCatSubMenu(false)} 
                   onMouseEnter={()=>setCatSubMenu(true)}>
                   <button
@@ -188,7 +188,7 @@ const Header = () => {
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                         clipRule="evenodd"></path></svg>
                   </button>
-                  {catSubMenu && <CategoriesSubMenu categories={categories}/>}
+                  {catSubMenu && <CategoriesSubMenu setMobileMenu={setMobileMenu} categories={categories}/>}
                 </li>
                 <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/about"
@@ -203,7 +203,7 @@ const Header = () => {
                   <Link href="/contact-us"
                     className="text-white hover:text-primary md:inline">Contact</Link>
                 </li>
-                <li className='relative' onClick={()=>{setLocSubMenu(!locSubMenu); setMobileMenu(false)}} onMouseLeave={()=>setLocSubMenu(false)} onMouseEnter={()=>setLocSubMenu(true)}>
+                <li className='relative' onClick={()=>{setLocSubMenu(!locSubMenu)}} onMouseLeave={()=>setLocSubMenu(false)} onMouseEnter={()=>setLocSubMenu(true)}>
                   <button
                     className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Locations
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
@@ -212,7 +212,7 @@ const Header = () => {
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                         clipRule="evenodd"></path></svg>
                   </button>
-                  {locSubMenu && <LocationSubMenu/>}
+                  {locSubMenu && <LocationSubMenu setMobileMenu={setMobileMenu}/>}
                 </li>
               </ul>
             </div>

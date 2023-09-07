@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from "next/router";
 
 
-const Pagination = ({perPage}:any) => {
+const Pagination = ({perPage, endpoint}:any) => {
+     console.log("🚀 ~ file: pagination.tsx:9 ~ Pagination ~ perPage:", perPage, endpoint)
      const [pageNumber, setPageNumber] = useState<any>()
      const { query } = useRouter()
      const params = useRouter()
@@ -14,7 +15,7 @@ const Pagination = ({perPage}:any) => {
 
      useEffect(() => {
           const f = async () => {
-               const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/custom-post-api/v1/post-count`);
+               const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/wp-json/${endpoint}`);
                const totalCount = await response.json();
                const c = Math.ceil(totalCount.post_count/perPage)
                const numberArray = Array.from({ length: c }, (_, index) => index + 1);
@@ -77,6 +78,7 @@ const Pagination = ({perPage}:any) => {
                                    </li>
                               ))
                          }
+                         ... <li className={`relative block rounded-full  px-3 py-1.5 text-sm text-white transition-all duration-300 bg-secondary` }> {pageNumber}  </li>
                          <li
                               onClick={NextPage}
                               className="relative block rounded-full cursor-pointer bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-secondary hover:text-white bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
