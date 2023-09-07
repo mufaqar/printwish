@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const LocationSubMenu = () => {
   return (
-    <div className="md:absolute md:mr-5 !bg-[#4288CC] !w-44 pt-4 md:pt-7">
+    <div className="md:absolute md:mr-5 !bg-secondary !w-44 pt-4 md:pt-7">
       {NavLinks.slice(4, 5).map((item: NavLinksType, idx: number) => {
         return (
           <div key={idx}>
