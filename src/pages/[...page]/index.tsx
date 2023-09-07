@@ -37,7 +37,9 @@ export default CategorySlug
 
 
 export async function getStaticProps({ params }: any) {
-     const slug = params.page
+     const p = params.page
+     const slug = p[0]
+     
      if(slug.includes("t-shirt-printing")){
           const response = await client.query({
                query: LOCATION_PAGE,

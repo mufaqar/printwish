@@ -78,7 +78,7 @@ const Pagination = ({perPage, endpoint}:any) => {
                                    </li>
                               ))
                          }
-                         ... <li className={`relative block rounded-full  px-3 py-1.5 text-sm text-white transition-all duration-300 bg-secondary` }> {pageNumber}  </li>
+                         ... <li className={`relative block rounded-full  px-3 py-1.5 text-sm text-white transition-all duration-300 bg-secondary` }> {pageNumber | 1}  </li>
                          <li
                               onClick={NextPage}
                               className="relative block rounded-full cursor-pointer bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-secondary hover:text-white bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
