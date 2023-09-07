@@ -36,7 +36,7 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-  // console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
+  console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)

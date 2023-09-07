@@ -14,6 +14,8 @@ import { GrClose } from 'react-icons/gr'
 import Image from 'next/image'
 import { HiOutlineMenuAlt1, HiX } from 'react-icons/hi'
 import { AiOutlinePhone } from 'react-icons/ai'
+import CategoriesSubMenu from './categoriesSubMenu'
+import LocationSubMenu from './locationSubMenu'
 
 const Header = () => {
 
@@ -63,6 +65,9 @@ const Header = () => {
 
   const [openMobileSearch, setOpenMobileSearch] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
+
+  const [catSubMenu, setCatSubMenu] = useState(false)
+  const [locSubMenu, setLocSubMenu] = useState(false)
 
   return (
     <>
@@ -131,9 +136,9 @@ const Header = () => {
                 <Link href="/" className="flex items-center md:hidden">
                 <Image src="/images/logo.png" alt="logo" width={140} height={37} />
                 </Link>
-                <div className={` md:bg-transparent z-50 w-full md:relative ${openMobileSearch ? 'w-full fixed top-0 bg-white p-4 pt-10 inset-0 block' : 'hidden md:block'}`}>
+                <div className={` md:bg-transparent  w-full md:relative ${openMobileSearch ? 'w-full fixed top-0 bg-white p-4 pt-10 inset-0 block' : 'hidden md:block'}`}>
                   <input type="search" id="search-dropdown"
-                    className="block p-2.5 w-full z-20 text-sm text-accent bg-gray-50 rounded-lg md:rounded-l-none md:border-l-gray-50 border-l-1 md:border-l-6 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                    className="block p-2.5 w-full text-sm text-accent bg-gray-50 rounded-lg md:rounded-l-none md:border-l-gray-50 border-l-1 md:border-l-6 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
                     placeholder="Search anything..." required
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -166,40 +171,55 @@ const Header = () => {
             </div>
             <div className={`flex items-center lg:order-1 ${mobileMenu ? 'block' : 'hidden md:block'}`}>
               <ul className={`flex flex-col md:flex-row mt-0 gap-6 md:gap-8 text-sm font-medium `}>
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/"
                     className="text-white hover:text-primary"
                     aria-current="page">Home</Link>
                 </li>
-                <li>
-                  <button onClick={() => setMegaMenu(!megaMenu)}
-                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Products By
+                <li className='relative' 
+                  onClick={()=>{setCatSubMenu(!catSubMenu)}} 
+                  onMouseLeave={()=>setCatSubMenu(false)} 
+                  onMouseEnter={()=>setCatSubMenu(true)}>
+                  <button
+                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Categories
                     <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"></path>
-                    </svg></button>
+                        clipRule="evenodd"></path></svg>
+                  </button>
+                  {catSubMenu && <CategoriesSubMenu setMobileMenu={setMobileMenu} categories={categories}/>}
                 </li>
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/about"
                     className="text-white hover:text-primary">About Us</Link>
                 </li>
 
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/product"
                     className="text-white hover:text-primary md:inline ">Products</Link>
                 </li>
-                <li>
+                <li onClick={()=>setMobileMenu(false)}>
                   <Link href="/contact-us"
                     className="text-white hover:text-primary md:inline">Contact</Link>
+                </li>
+                <li className='relative' onClick={()=>{setLocSubMenu(!locSubMenu)}} onMouseLeave={()=>setLocSubMenu(false)} onMouseEnter={()=>setLocSubMenu(true)}>
+                  <button
+                    className="flex justify-between items-center w-full font-medium md:p-0 md:w-auto text-white hover:text-primary">Locations
+                    <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"></path></svg>
+                  </button>
+                  {locSubMenu && <LocationSubMenu setMobileMenu={setMobileMenu}/>}
                 </li>
               </ul>
             </div>
 
           </div>
         </nav>
-        {/* mega menu  */}
+        {/* mega menu 
         <nav id="megamenu" className={`bg-white border-b z-50 border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${megaMenu ? 'block' : 'hidden'}`}>
           <div
             className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
@@ -249,7 +269,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-        </nav>
+        </nav> */}
       </header>
     </>
   )

@@ -8,14 +8,14 @@ const TopBar = () => {
   const cartItems = useSelector((state: any) => state.AddToCart.value)
   return (
     <nav className="bg-accent">
-      <div className="flex justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
-        <Link href="/" className="flex items-center">
+      <div className="flex justify-center lg:justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
+        <Link href="/" className="lg:flex items-center hidden">
         <Image src="/images/logo.png" alt="logo" width={140} height={37} />
         </Link>
-        <p className='text-xl hidden lg:block font-medium uppercase text-white text-center'>
+        <p className='text-xs sm:text-base md:text-xl font-medium uppercase text-white text-center'>
           The UK's leading personalised clothing company
         </p>
-        <div className="flex items-center justify-between">
+        <div className="hidden items-center lg:flex justify-between">
           <ul className='flex gap-2 items-center'>
             <li className='hidden sm:block'>
               <Link href="tel:08000510821" className='text-sm font-medium text-white hover:text-secondary hover:underline'>

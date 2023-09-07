@@ -42,7 +42,6 @@ export const SettingsProvider = ({ children }) => {
       [name]: value,
     });
   };
- 
 
   // hide scroll when modelbox is open  
   HideScrollOnModelOpen(modalIsOpen)

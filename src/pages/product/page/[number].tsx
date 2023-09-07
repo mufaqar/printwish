@@ -16,13 +16,13 @@ const PageNumber = ({products}:any) => {
                         <Product_Sidebar />
                     </div> */}
                     <div className=' w-full'> {/* sm:w-3/4 */}
-                        <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-5'>
+                        <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-1 sm:gap-2 md:gap-4'>
                             {products?.map((item:any, idx: number) => {
                                 const img = item?.images[0]?.src
                                 return <Product_Box key={idx} data={item} image={img}/>
                             })}
                         </div>
-                        <Pagination/>
+                        <Pagination perPage="30" endpoint="custom-post-api/v1/post-count"/>
                     </div>
                 </div>
             </section>
@@ -36,7 +36,7 @@ export default PageNumber
 export const getServerSideProps: GetServerSideProps<any> = async ({params}) => {
     const pagenumber = params?.number
     const dataForProducts = {
-      per_page: 12,
+      per_page: 30,
       page : pagenumber
     };
     const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    

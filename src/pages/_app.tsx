@@ -2,7 +2,6 @@ import Header from '@/components/header/Header'
 import Footer from '@/components/footer/Footer'
 import { store } from '@/store/store'
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { SettingsProvider } from '../context/global-context'
 import { ToastContainer } from 'react-toastify';
@@ -11,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { Router } from 'next/router'
 import Loader from '@/components/loader'
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -27,6 +26,8 @@ export default function App({ Component, pageProps }: AppProps) {
       setIsLoading(false)
     });
   }, [Router])
+
+  
 
   return (
     <>
