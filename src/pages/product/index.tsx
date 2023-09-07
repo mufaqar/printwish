@@ -22,7 +22,7 @@ const ProductsPage = ({products}:any) => {
                                 return <Product_Box key={idx} data={item} image={img}/>
                             })}
                         </div>
-                        <Pagination/>
+                        <Pagination perPage="30"/>
                     </div>
                 </div>
             </section>

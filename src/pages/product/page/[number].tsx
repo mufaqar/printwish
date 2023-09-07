@@ -22,7 +22,7 @@ const PageNumber = ({products}:any) => {
                                 return <Product_Box key={idx} data={item} image={img}/>
                             })}
                         </div>
-                        <Pagination/>
+                        <Pagination perPage="30"/>
                     </div>
                 </div>
             </section>
@@ -36,7 +36,7 @@ export default PageNumber
 export const getServerSideProps: GetServerSideProps<any> = async ({params}) => {
     const pagenumber = params?.number
     const dataForProducts = {
-      per_page: 12,
+      per_page: 30,
       page : pagenumber
     };
     const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    

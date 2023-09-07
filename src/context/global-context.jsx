@@ -42,8 +42,6 @@ export const SettingsProvider = ({ children }) => {
       [name]: value,
     });
   };
- 
-  const [allProducts, setAllProducts] = useState()
 
   // hide scroll when modelbox is open  
   HideScrollOnModelOpen(modalIsOpen)

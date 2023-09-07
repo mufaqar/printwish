@@ -2,7 +2,6 @@ import Header from '@/components/header/Header'
 import Footer from '@/components/footer/Footer'
 import { store } from '@/store/store'
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { SettingsProvider } from '../context/global-context'
 import { ToastContainer } from 'react-toastify';
@@ -10,10 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react'
 import { Router } from 'next/router'
 import Loader from '@/components/loader'
-import { GetStaticProps } from 'next'
-import { apiRequest } from '@/config/requests'
 
-export default function App({ Component, pageProps, AllProduct }: any) {
+export default function App({ Component, pageProps }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -30,16 +27,7 @@ export default function App({ Component, pageProps, AllProduct }: any) {
     });
   }, [Router])
 
-  useEffect(()=>{
-    const f = async () =>{
-      const dataForProducts = {
-        per_page: 999,
-      };
-      const { products } = await apiRequest('POST', 'get-products', dataForProducts)
-      console.log("🚀 ~ file: _app.tsx:37 ~ f ~ products:", products)
-    }
-    f()
-  })
+  
 
   return (
     <>
