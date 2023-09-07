@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 
 const Pagination = () => {
      const [pageNumber, setPageNumber] = useState<any>()
-     console.log("🚀 ~ file: pagination.tsx:10 ~ Pagination ~ pageNumber:", pageNumber)
      const { query } = useRouter()
      const params = useRouter()
 
@@ -29,9 +28,10 @@ const Pagination = () => {
           params.push(`/product/page/${+pageNumber + 1}`)
           setPageNumber(+pageNumber + 1)
      }
+     
      return (
           <>
-               <nav aria-label="Page navigation" className='flex justify-center items-center mt-10'>
+               <nav aria-label="Page navigation" className='flex justify-center items-center mt-20'>
                     <ul className="list-style-none gap-2 flex">
 
                          <li

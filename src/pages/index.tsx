@@ -62,8 +62,11 @@ export const getStaticProps: GetStaticProps<any> = async () => {
    const dataForProducts = {
     per_page: 10,
   };
+
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
+
   return { props: { products} }
 }
+
 
 

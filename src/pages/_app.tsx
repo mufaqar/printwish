@@ -10,8 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react'
 import { Router } from 'next/router'
 import Loader from '@/components/loader'
+import { GetStaticProps } from 'next'
+import { apiRequest } from '@/config/requests'
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, AllProduct }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -27,6 +29,17 @@ export default function App({ Component, pageProps }: AppProps) {
       setIsLoading(false)
     });
   }, [Router])
+
+  useEffect(()=>{
+    const f = async () =>{
+      const dataForProducts = {
+        per_page: 999,
+      };
+      const { products } = await apiRequest('POST', 'get-products', dataForProducts)
+      console.log("🚀 ~ file: _app.tsx:37 ~ f ~ products:", products)
+    }
+    f()
+  })
 
   return (
     <>
