@@ -107,11 +107,11 @@ export const SEARCH_PRODUCTS_WITHOUT_CAREGORY = gql`
 
 
 export const LOCATION_PAGE = gql`
-query GetLocation($id: ID!) {
-  location(id: $id, idType: DATABASE_ID) {
+query GetLocation($slug: String!) {
+  locationBy(uri: $slug) {
     title
-    excerpt
     content
+    excerpt
   }
 }
 `;

@@ -8,13 +8,14 @@ import Location from '../location'
 import { client } from '@/config/client'
 import { LOCATION_PAGE } from '@/config/query'
 
-const CategorySlug = ({ products, slug, pages }: any) => {
+const CategorySlug = ({ products, slug, pages, productsForLocationPage }: any) => {
      console.log("🚀 ~ file: index.tsx:12 ~ CategorySlug ~ pages:", pages)
      const { query } = useRouter()
      return (
           <>
                {
-                    slug?.includes("t-shirt-printing") ? <Location /> : <>
+                    slug?.includes("t-shirt-printing") ? <Location pages={pages} products={productsForLocationPage}/> : <>
+                         {/* CATEGORY PAGE DATA ↓ */}    
                          <PageBanner title={query.page} />
                          <div className='container mx-auto px-3 my-20 w-full'>
                               <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-1 gap-5'>
@@ -40,10 +41,10 @@ export async function getStaticProps({ params }: any) {
           const response = await client.query({
                query: LOCATION_PAGE,
                variables: {
-                    id: `/locations/${slug}/`,
+                    slug: `/locations/${slug}/`,
                },
           });
-          const pages = response?.data;
+          const pages = response?.data?.locationBy;
      
           const dataForLocationPageProducts = {
                per_page: 30,
