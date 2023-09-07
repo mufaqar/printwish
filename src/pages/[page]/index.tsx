@@ -51,12 +51,23 @@ export async function getStaticProps({ params }: any) {
           };
           const res = await apiRequest('POST', 'get-products', dataForLocationPageProducts)
 
+          /* The code `if(!pages) { return { notFound: true } }` is checking if the `pages` variable is
+          falsy. If it is, it means that the requested location page does not exist or could not be
+          found. In this case, the function returns `{ notFound: true }`, which tells Next.js to
+          return a 404 page for this specific route. */
+          if(!pages) {
+               return {
+                    notFound: true
+               }
+          }
+
           return {
                props: {
                     productsForLocationPage: res.products,
                     slug,
                     pages
                },
+               revalidate: 10,
           };
      }
      
@@ -73,11 +84,18 @@ export async function getStaticProps({ params }: any) {
           category: `${getID?.id}`,
      }
      const { products } = await apiRequest('POST', 'get-products', dataForProducts)
+
+     if(!products) {
+          return {
+               notFound: true
+          }
+     }
      return {
           props: {
                products: products,
                slug,
           },
+          revalidate: 10,
      };
      
 }

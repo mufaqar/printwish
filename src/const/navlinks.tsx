@@ -52,10 +52,6 @@ export const NavLinks = [
                 name: 'Edinburgh',
                 link: '#',
             },
-            {
-                name: 'All Locations',
-                link: '#',
-            },
         ]
     },
     {
