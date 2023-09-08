@@ -1,5 +1,7 @@
+import { client } from "@/config/client";
+import { ALL_LOCATIONS } from "@/config/query";
 import { HideScrollOnModelOpen } from "@/utils";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const SettingsContext = createContext();
 
@@ -19,6 +21,18 @@ export const SettingsProvider = ({ children }) => {
     textCreator: [],
     designArtWork: []
   })
+
+  const [locations, setLocations] = useState();
+  useEffect(()=>{
+    const f = async () => {
+      const response = await client.query({
+        query: ALL_LOCATIONS,
+      });
+      const location = response?.data?.locations.nodes      ;
+      setLocations(location)
+    }
+    f()
+  },[])
 
   // Text creator form states
   const [textCreatorLine, setCreatorStateLine] = useState({
@@ -61,7 +75,8 @@ export const SettingsProvider = ({ children }) => {
         specialInstruction, setSpecialInstruction,
         customisationName, setcustomisationName,
         imageURL, setImageURL,
-        customizationButton, setCustomizationButton
+        customizationButton, setCustomizationButton,
+        locations
       }}
     >
       {children}

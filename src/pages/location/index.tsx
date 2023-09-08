@@ -31,8 +31,13 @@ const Location = ({ products, pages }: any) => {
         dangerouslySetInnerHTML={{ __html: pages?.content }}
         className='locationContent'
       />
-      <h3 className='font-bold text-2xl md:text-3xl mt-4 mb-3 capitalize'>Frequently Asked Questions</h3>
-      <Faqs data={locationFaqs} />
+      {
+        pages?.locationinfo?.faqs?.length > 0 && <>
+        <h3 className='font-bold text-2xl md:text-3xl mt-4 mb-3 capitalize'>Frequently Asked Questions</h3>
+        <Faqs data={pages.locationinfo.faqs} />
+        </>
+      }
+      
       <Reviews />
     </section>
   )

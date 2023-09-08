@@ -219,57 +219,7 @@ const Header = () => {
 
           </div>
         </nav>
-        {/* mega menu 
-        <nav id="megamenu" className={`bg-white border-b z-50 border-gray-200 absolute sm:top-[120px] top-[230px] left-0 right-0 ${megaMenu ? 'block' : 'hidden'}`}>
-          <div
-            className="grid py-4 px-4 mx-auto max-w-screen-xl text-accent md:grid-cols-2 lg:grid-cols-5 md:px-6">
-            <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
-              {NavLinks.slice(4, 5).map((item: NavLinksType, idx: number) => {
-                return (
-                  <div key={idx}>
-                    <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
-                      {item?.name}
-                    </h6>
-                    <ul className='grid gap-2'>
-                      {item.sub_menu?.map((sub_item: any, _idx: any) => {
-                        return <li key={_idx} className="">
-                          <Link href={`/location/${sub_item?.name.toLowerCase().replace(' ', '-')}`} onClick={()=>setMegaMenu(!megaMenu)} className="text-xs cursor-pointer font-semibold text-accent uppercase">
-                            {sub_item?.name}
-                          </Link>
-                        </li>
-                      })}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="col-span-2 md:col-span-1 md:border-r border-dashed md:mr-5">
-              <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
-                Categories
-              </h6>
-              <ul className='grid gap-2'>
-                {categories?.map((item: any, idx: number) => {
-                  return <li key={idx} className="">
-                    <Link href={`/${item.slug}`} onClick={()=>setMegaMenu(!megaMenu)} className="text-xs font-semibold text-accent uppercase">
-                      {item.name}
-                    </Link>
-                  </li>
-                })}
-              </ul>
-            </div>
-            <div className="col-span-2 md:col-span-3 md:block hidden">
-              <h6 className='text-lg font-semibold text-accent uppercase mb-5'>
-                Featured Products
-              </h6>
-              <div className='grid grid-cols-3 gap-5'>
-                {products?.slice(0, 3).map((item: any, idx: number) => {
-                  const img = item?.images[0]?.src
-                  return <Product_Box key={idx} data={item} image={img} />
-                })}
-              </div>
-            </div>
-          </div>
-        </nav> */}
+        
       </header>
     </>
   )
