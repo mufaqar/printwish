@@ -20,7 +20,7 @@ export default function Home(props: any) {
       <Main_Banner />
       <Brands_Slider />
       <Reviews />
-      <section className='py-16'>
+      <section className='pb-10'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
@@ -37,7 +37,7 @@ export default function Home(props: any) {
         props ? <Product_Slider products={props?.products} /> : <p>loading...</p>
       }
 
-      <section className='py-16 relative'>
+      <section className='py-6 pt-0 relative'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <div className='w-fit mx-auto'>
             <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
