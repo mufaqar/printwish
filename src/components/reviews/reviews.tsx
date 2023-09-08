@@ -21,7 +21,6 @@ const Reviews = () => {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
                 }
             },
             {
@@ -43,15 +42,15 @@ const Reviews = () => {
     };
     const slider = React.useRef<Slider>(null);
     return (
-        <section className='py-16 pb-0 relative'>
+        <section className='py-5 pb-0 relative'>
             <div className='max-w-screen-xl mx-auto px-4'>
-                <div className='w-fit mx-auto mb-10'>
-                    <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
+                <div className='w-fit mx-auto '>
+                    <h2 className='sm:text-4xl hidden md:block text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                         WHAT OUR CLIENTS SAY ABOUT US
                     </h2>
                     <Image src="/images/reviews.webp" alt='reviews' height={300} width={700} className='mx-auto' />
                 </div>
-                <div className='mt-24'>
+                <div className=' mt-7 md:mt-24'>
                     <Slider ref={slider} {...settings}>
                     {Feedback?.map((item: FeedbackType, idx: number) => {
                             return <div key={idx}>
@@ -59,8 +58,8 @@ const Reviews = () => {
                             </div>
                         })}
                     </Slider>
-                    <button className="absolute top-72 sm:top-[340px] right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
-                    <button className="absolute top-72 sm:top-[340px] right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
+                    <button className="absolute  sm:top-[320px] right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
+                    <button className="absolute  sm:top-[320px] right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
                 </div>
             </div>
         </section>

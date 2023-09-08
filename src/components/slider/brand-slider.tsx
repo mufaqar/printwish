@@ -42,17 +42,17 @@ const Brands_Slider = () => {
         ]
     };
     return (
-        <section className='pt-16 '>
+        <section className='pt-4'>
             <div className='max-w-screen-xl mx-auto px-4'>
-                <div className='w-fit mx-auto mb-10'>
-                    <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
+                <div className='w-fit mx-auto'>
+                    <h2 className='sm:text-4xl text-2xl leading-6 font-bold font-opensans text-black uppercase text-center mb-5'>
                         BRANDS WE WORK WITH
                     </h2>
                     <p className='text-lg font-normal text-center text-accent font-roboto'>
                         Here are some household names that trust PrintWish to supply their printed clothing:
                     </p>
                 </div>
-                <div className='mt-10'>
+                <div className='mt-6'>
                     <Slider {...settings}>
                         {Logos?.map((item: LogosType, idx: number) => {
                             return <div key={idx} className='p-2'>

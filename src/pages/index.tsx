@@ -25,7 +25,7 @@ export default function Home(props: any) {
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-7 mt-10'>
+           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-7 mt-10'>
               {Categories?.map((item: CategoryType, idx: number) => {
                 return <Category_Box key={idx} data={item} />
               })}
