@@ -48,11 +48,12 @@ export async function getStaticProps({ params }: any) {
                },
           });
           const pages = response?.data?.locationBy;
-     
-          const dataForLocationPageProducts = {
+
+          const dataForProducts = {
                per_page: 30,
-          };
-          const res = await apiRequest('POST', 'get-products', dataForLocationPageProducts)
+               category: 149,
+          }
+          const { products } = await apiRequest('POST', 'get-products', dataForProducts)
 
           /* The code `if(!pages) { return { notFound: true } }` is checking if the `pages` variable is
           falsy. If it is, it means that the requested location page does not exist or could not be
@@ -66,7 +67,7 @@ export async function getStaticProps({ params }: any) {
 
           return {
                props: {
-                    productsForLocationPage: res.products,
+                    productsForLocationPage: products,
                     slug,
                     pages
                },
@@ -81,6 +82,7 @@ export async function getStaticProps({ params }: any) {
 
      const caterogies = await apiRequest('POST', 'get-products-categories', dataForCategory)
      const getID = caterogies.products.find((item: any) => item.slug === slug)
+     console.log("🚀 ~ file: index.tsx:89 ~ getStaticProps ~ getID:", getID)
 
      const dataForProducts = {
           per_page: 12,

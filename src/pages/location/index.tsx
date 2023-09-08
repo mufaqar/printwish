@@ -4,7 +4,6 @@ import Reviews from '@/components/reviews/reviews'
 import Brands_Slider from '@/components/slider/brand-slider'
 import Image from 'next/image'
 import React from 'react'
-import { locationFaqs } from '../../../public/data'
 import Faqs from '@/components/faqs/faqs'
 
 const Location = ({ products, pages }: any) => {
@@ -21,7 +20,7 @@ const Location = ({ products, pages }: any) => {
         <h5 className='text-center font-bold md:text-2xl'>Place Your Orders To Us And Get Upto 20% Off Prices With Free UK Shipping And Logo Setups.</h5>
       </div>
       <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>BRANDED T-SHIRTS</h4>
-      <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 grid-cols-1 gap-5 mt-7'>
+      <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
         {products?.map((item: any, idx: number) => {
           const img = item?.images[0]?.src
           return <Product_Box key={idx} data={item} image={img} />
