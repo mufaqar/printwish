@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 
 const Pagination = ({perPage, endpoint}:any) => {
-     console.log("🚀 ~ file: pagination.tsx:9 ~ Pagination ~ perPage:", perPage, endpoint)
      const [pageNumber, setPageNumber] = useState<any>()
      const { query } = useRouter()
      const params = useRouter()
