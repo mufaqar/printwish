@@ -112,6 +112,23 @@ query GetLocation($slug: String!) {
     title
     content
     excerpt
+    locationinfo {
+      faqs {
+        answer
+        question
+      }
+    }
   }
 }
 `;
+
+export const ALL_LOCATIONS = gql`
+query GetLocations {
+  locations(first: 20, where: {orderby: {field: DATE, order: ASC}}) {
+    nodes {
+      title
+      uri
+      slug
+    }
+  }
+}`;

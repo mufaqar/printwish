@@ -15,8 +15,8 @@ const Faqs = ({data}:any) => {
                     data?.map((item: any, idx: number) => {
                          return (
                               <div onClick={()=>handleFaqs(idx)} key={idx} className='bg-white p-3 px-5 border border-gray-200 font-opensans cursor-pointer'>
-                                   <h4 className='hover:text-secondary'>{item.question}</h4>
-                                   <p className={openFaq === idx ? 'block mt-4 text-gray-500' : 'hidden'}>{item.answer}</p>
+                                   <h4 className='hover:text-secondary'>{item?.question}</h4>
+                                   <p className={openFaq === idx ? 'block mt-4 text-gray-500' : 'hidden'}>{item?.answer}</p>
                               </div>
                          )
                     })
