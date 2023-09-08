@@ -55,7 +55,7 @@ const Brands_Slider = () => {
                 <div className='mt-6'>
                     <Slider {...settings}>
                         {Logos?.map((item: LogosType, idx: number) => {
-                            return <div key={idx} className='p-2'>
+                            return <div key={idx} className='p-1 sm:p-2'>
                                 <Image src={item.img} alt="image" width={200} height={200} className='mx-auto border border-gray-800 rounded-full' />
                             </div>
                         })}
