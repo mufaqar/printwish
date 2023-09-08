@@ -28,6 +28,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage }: any) =
                     </> 
                }
                <Pagination perPage="3" endpoint={`woocommerce-category-api/v1/product-count/${slug}`}/>
+               <div className='mb-16'/>
           </>
 
      )
