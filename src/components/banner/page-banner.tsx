@@ -6,10 +6,10 @@ const PageBanner = ({ title, category }: any) => {
     <section className='p-3 md:p-0'>
       <div className='py-6 md:py-16 bg-cover bg-no-repeat bg-center' style={{ backgroundImage: `url(${ img })` }}>
         <div className='max-w-screen-xl mx-auto px-4 text-white'>
-          <h2 className='sm:text-4xl text-2xl font-semibold font-opensans uppercase mb-5'>
+          <h2 className='sm:text-4xl text-2xl font-semibold font-opensans uppercase mb-2'>
             {title}
           </h2>
-          <p>{category?.description}</p>
+          <p className='text-sm md:text-base'>{category?.description}</p>
         </div>
       </div>
     </section>
