@@ -245,7 +245,7 @@ const ProductSlug = ({ post, product }: any) => {
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
             <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
             <div className="pt-[1px] w-full bg-gray-300 my-8" />
-            <div className='text-lg text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
+            <div className='text-sm md:text-base text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
             {
               isPrintable &&
               <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
@@ -348,7 +348,7 @@ const ProductSlug = ({ post, product }: any) => {
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
             <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
             <div className="pt-[1px] w-full bg-gray-300 my-8" />
-            <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
+            <div className='text-sm md:text-base text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
             {
               isPrintable &&
               <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
