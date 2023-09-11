@@ -36,7 +36,6 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:32 ~ ProductSlug ~ product:", product)
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
@@ -242,7 +241,21 @@ const ProductSlug = ({ post, product }: any) => {
           </Link>
         </div>
       </section>
-
+      <div className='block md:hidden px-3 container mx-auto'>
+            <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
+            <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
+            <div className="pt-[1px] w-full bg-gray-300 my-8" />
+            <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
+            {
+              isPrintable &&
+              <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
+                <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
+                <div className='flex gap-8 '>
+                  <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
+                </div>
+              </section>
+            }
+          </div>
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%] image-slider'>
           <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg p-1'>
@@ -254,7 +267,7 @@ const ProductSlug = ({ post, product }: any) => {
                     <h5 className='text-center font-semibold text-lg capitalize mb-3'>{item?.altText}</h5>
                   </div>
                 )
-              }) : <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full border border-gray-200 rounded-lg" />
+              }) : <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
             }
           </Slider>
           <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
@@ -331,19 +344,21 @@ const ProductSlug = ({ post, product }: any) => {
         </section>
 
         <section className='md:w-[60%] text-accent'>
-          <h2 className=' text-2xl md:text-4xl font-bold mt-6 md:mt-0'>{product?.title}</h2>
-          <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
-          <div className="pt-[1px] w-full bg-gray-300 my-8" />
-          <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
-          {
-            isPrintable &&
-            <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
-              <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
-              <div className='flex gap-8 '>
-                <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
-              </div>
-            </section>
-          }
+          <div className='hidden md:block'>
+            <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
+            <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
+            <div className="pt-[1px] w-full bg-gray-300 my-8" />
+            <div className='text-lg text-accent font-roboto' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
+            {
+              isPrintable &&
+              <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
+                <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
+                <div className='flex gap-8 '>
+                  <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
+                </div>
+              </section>
+            }
+          </div>
 
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
           <section className='bg-background p-3 md:p-8 rounded-lg '>
@@ -444,7 +459,7 @@ const ProductSlug = ({ post, product }: any) => {
           <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-primary gap-2 py-3 bg-primary text-white px-8 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
-        
+
         </section>
       </main>
 
