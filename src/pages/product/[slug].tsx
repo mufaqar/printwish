@@ -289,11 +289,11 @@ const ProductSlug = ({ post, product }: any) => {
                   <h6 className='capitalize text-lg font-bold text-gray-600 mt-3 font-roboto'>features:</h6>
                   <div className='mt-2 pl-4 text-accent _features' dangerouslySetInnerHTML={{ __html: product?.content }} />
 
-                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Fabric:</h6>
+                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Fabric:</h6>
                   <p className='text-accent'>{product?.poductInfo?.fabric}</p>
-                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Weight:</h6>
+                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Weight:</h6>
                   <p className='text-accent'>{product?.poductInfo?.weight}</p>
-                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Size Description:</h6>
+                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Size Description:</h6>
                   <ul className='mt-2 flex flex-wrap gap-x-2'>
                     {
                       product?.allPaSizes?.nodes?.map((item: any, idx: number) => (
@@ -301,7 +301,7 @@ const ProductSlug = ({ post, product }: any) => {
                       ))
                     }
                   </ul>
-                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Washing Instructions:</h6>
+                  <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Washing Instructions:</h6>
                   <p className='text-accent'>{product?.poductInfo?.washingInstructions}</p>
                 </div>
               }
@@ -309,29 +309,29 @@ const ProductSlug = ({ post, product }: any) => {
                 <div>
                   {/* detail tab  */}
                   <div className='flex justify-between items-center border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Gender:</h6>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Gender:</h6>
                     <p className='text-accent'>{product?.poductInfo?.gender}</p>
                   </div>
                   <div className='flex justify-between items-center border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Minimum Order:</h6>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Minimum Order:</h6>
                     <p className='text-accent'>{product?.poductInfo?.minimumOrder}</p>
                   </div>
                   <div className='border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Imprint Area:</h6>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Imprint Area:</h6>
                     <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`LeftBreast:`}</span> {product?.poductInfo?.imprintArea?.leftbreast}</p>
                     <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Front:`}</span> {product?.poductInfo?.imprintArea?.front}</p>
                     <p className='text-accent mb-1 flex justify-between items-center'><span className='font-bold text-gray-600 '>{`Back:`}</span> {product?.poductInfo?.imprintArea?.back}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Imprint Method:</h6>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Imprint Method:</h6>
                     <p className='text-accent'>{product?.poductInfo?.imprintMethod}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Ready To Ship:</h6>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Ready To Ship:</h6>
                     <p className='text-accent'>{product?.poductInfo?.readyToShip}</p>
                   </div>
                   <div className=' border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-bold mt-3 font-roboto'>Packaging:</h6>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Packaging:</h6>
                     <p className='text-accent'>{product?.poductInfo?.packaging}</p>
                   </div>
                 </div>
