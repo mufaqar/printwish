@@ -90,7 +90,7 @@ export async function getStaticProps({ params }: any) {
      const getID = caterogies.products.find((item: any) => item.slug === slug)
 
      const dataForProducts = {
-          per_page: 12,
+          per_page: 100,
           category: `${getID?.id}`,
      }
      const { products } = await apiRequest('POST', 'get-products', dataForProducts)
