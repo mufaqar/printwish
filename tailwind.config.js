@@ -22,7 +22,7 @@ module.exports = {
       },
       fontFamily: {
         'opensans': ['OpenSans'],
-        'roboto': ['Roboto'],
+        'roboto': ['Sora'],
       },
       listStyleType: {
         square: 'square',

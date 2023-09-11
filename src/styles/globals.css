@@ -59,7 +59,40 @@
   src: url('../../public/fonts/Roboto-Regular.ttf');
   font-weight: 400;
 }
+@font-face {
+  font-family: Sora;
+  src: url('../../public/fonts/sora/Sora-Bold.ttf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: Sora;
+  src: url('../../public/fonts/sora/Sora-Light.ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: Sora;
+  src: url('../../public/fonts/sora/Sora-Medium.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: Sora;
+  src: url('../../public/fonts/sora/Sora-Regular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: Sora;
+  src: url('../../public/fonts/sora/Sora-SemiBold.ttf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: Sora;
+  src: url('../../public/fonts/sora/Sora-ExtraLight.ttf');
+  font-weight: 200;
+}
 
+body{
+  font-family: Sora;
+}
 /* hide input number arrowa   */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
