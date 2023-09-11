@@ -41,7 +41,7 @@ export const getStaticProps = async ({params}:any) => {
     };
     const {products} =  await apiRequest('POST', 'get-products', dataForProducts)    
     
-    return { props: { products } }
+    return { props: { products }, revalidate: 10 }
   }
   
   export const getStaticPaths: GetStaticPaths = async () => {
