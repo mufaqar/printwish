@@ -277,9 +277,9 @@ const ProductSlug = ({ post, product }: any) => {
           </div>
           <section className='bg-background p-8 mt-5 rounded-lg'>
             <div className='font-bold text-xl uppercase flex font-roboto gap-5 text-secondary'>
-              <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>
-              <button className={DetailTab === 'DETAILS' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('DETAILS')}>DETAILS</button>
-              <button className={DetailTab === 'FAQS' ? 'opacity-100' : 'opacity-50'} onClick={() => handleDetailsTabs('FAQS')}>FAQ'S</button>
+              <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>
+              <button className={DetailTab === 'DETAILS' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('DETAILS')}>DETAILS</button>
+              <button className={DetailTab === 'FAQS' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('FAQS')}>FAQ'S</button>
             </div>
 
             <div>
