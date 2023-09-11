@@ -78,7 +78,6 @@ export async function getStaticProps({ params }: any) {
                     slug,
                     pages
                },
-               revalidate: 10
           };
      }
      
@@ -106,7 +105,6 @@ export async function getStaticProps({ params }: any) {
                products: products,
                slug,
           },
-          revalidate: 10
      };
      
 }
