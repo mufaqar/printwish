@@ -131,7 +131,7 @@ const Footer = () => {
         <div className='py-8  grid md:grid-cols-2 grid-cols-1 gap-7 max-w-screen-xl mx-auto px-4 items-center'>
           <div className="flex items-center">
             <Link href="/">
-              <Image src="/images/logo.png" alt="logo" width={200} height={200} className='mx-auto' />
+              <Image src="/images/logo.png" alt="logo" width={200} height={54} className='mx-auto' />
             </Link>
           </div>
           <p className="block text-sm md:text-right text-highlight font-roboto">Print4LessLtd is Trading as PrintWish. Copyright 2022.
