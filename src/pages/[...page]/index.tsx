@@ -30,9 +30,9 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage }: any) =
                          
                     </> 
                }
-               {
+               {/* {
                     products?.length > 12 && <Pagination perPage="3" endpoint={`woocommerce-category-api/v1/product-count/${slug}`}/>
-               }
+               } */}
                
                <div className='mb-16'/>
           </>
