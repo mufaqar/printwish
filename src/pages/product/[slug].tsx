@@ -275,8 +275,8 @@ const ProductSlug = ({ post, product }: any) => {
             <h6>Lead Time : <span className='text-gray-500'>5 days</span></h6>
             <h6>Minimum Order : <span className='text-gray-500'>25 units</span></h6>
           </div>
-          <section className='bg-background p-8 mt-5 rounded-lg'>
-            <div className='font-semibold text-xl uppercase flex font-roboto gap-5 text-secondary'>
+          <section className='bg-background p-6 md:p-8 mt-5 rounded-lg'>
+            <div className='font-semibold text-lg uppercase flex font-roboto gap-5 text-secondary'>
               <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>
               <button className={DetailTab === 'DETAILS' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('DETAILS')}>DETAILS</button>
               <button className={DetailTab === 'FAQS' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('FAQS')}>FAQ'S</button>
