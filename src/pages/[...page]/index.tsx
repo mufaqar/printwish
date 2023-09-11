@@ -17,17 +17,23 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage }: any) =
                     slug?.includes("t-shirt-printing") ? <Location pages={pages} products={productsForLocationPage}/> : <>
                          {/* CATEGORY PAGE DATA ↓ */}    
                          <PageBanner title={query.page} />
-                         <div className='container mx-auto px-3 my-20 w-full'>
+                         {
+                              products.length > 0 ? <div className='container mx-auto px-3 my-20 w-full'>
                               <div className='grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 gap-1 sm:gap-2 md:gap-4'>
                                    {products?.map((item: any, idx: number) => {
                                         const img = item?.images[0]?.src
                                         return <Product_Box key={idx} data={item} image={img} />
                                    })}
                               </div>
-                         </div>
+                         </div> : <p className='container mx-auto px-3 my-20 w-full text-center'>Result Not Found!</p>
+                         }
+                         
                     </> 
                }
-               <Pagination perPage="3" endpoint={`woocommerce-category-api/v1/product-count/${slug}`}/>
+               {
+                    products?.length > 12 && <Pagination perPage="3" endpoint={`woocommerce-category-api/v1/product-count/${slug}`}/>
+               }
+               
                <div className='mb-16'/>
           </>
 
@@ -72,7 +78,6 @@ export async function getStaticProps({ params }: any) {
                     slug,
                     pages
                },
-               revalidate: 10,
           };
      }
      
@@ -83,7 +88,6 @@ export async function getStaticProps({ params }: any) {
 
      const caterogies = await apiRequest('POST', 'get-products-categories', dataForCategory)
      const getID = caterogies.products.find((item: any) => item.slug === slug)
-     console.log("🚀 ~ file: index.tsx:89 ~ getStaticProps ~ getID:", getID)
 
      const dataForProducts = {
           per_page: 12,
@@ -101,7 +105,6 @@ export async function getStaticProps({ params }: any) {
                products: products,
                slug,
           },
-          revalidate: 10,
      };
      
 }
@@ -112,4 +115,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
           paths,
           fallback: 'blocking',
      };
+     
 }

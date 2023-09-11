@@ -9,28 +9,31 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react'
 import { Router } from 'next/router'
 import Loader from '@/components/loader'
+import NextNProgress from 'nextjs-progressbar';
+
 
 export default function App({ Component, pageProps }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    Router.events.on("routeChangeStart", (url) => {
-      setIsLoading(true)
-    });
+  // useEffect(() => {
+  //   Router.events.on("routeChangeStart", (url) => {
+  //     setIsLoading(true)
+  //   });
 
-    Router.events.on("routeChangeComplete", (url) => {
-      setIsLoading(false)
-    });
+  //   Router.events.on("routeChangeComplete", (url) => {
+  //     setIsLoading(false)
+  //   });
 
-    Router.events.on("routeChangeError", (url) => {
-      setIsLoading(false)
-    });
-  }, [Router])
+  //   Router.events.on("routeChangeError", (url) => {
+  //     setIsLoading(false)
+  //   });
+  // }, [Router])
 
   
 
   return (
     <>
+      <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} />
       <Provider store={store}>
         {isLoading && <Loader isLoading={isLoading}/>}
         <SettingsProvider>
