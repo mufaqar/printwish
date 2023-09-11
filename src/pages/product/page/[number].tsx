@@ -3,7 +3,7 @@ import Pagination from '@/components/pagination/pagination'
 import Product_Box from '@/components/product-widgets/product-box'
 import Product_Sidebar from '@/components/sidebar/product-sidebar'
 import { apiRequest } from '@/config/requests'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticPaths } from 'next'
 import React from 'react'
 
 const PageNumber = ({products}:any) => {
@@ -33,7 +33,7 @@ const PageNumber = ({products}:any) => {
 export default PageNumber
 
 
-export const getServerSideProps: GetServerSideProps<any> = async ({params}) => {
+export const getStaticProps = async ({params}:any) => {
     const pagenumber = params?.number
     const dataForProducts = {
       per_page: 30,
@@ -44,3 +44,11 @@ export const getServerSideProps: GetServerSideProps<any> = async ({params}) => {
     return { props: { products } }
   }
   
+  export const getStaticPaths: GetStaticPaths = async () => {
+    const paths: any = [];
+    return {
+         paths,
+         fallback: 'blocking',
+    };
+    
+}
