@@ -9,7 +9,7 @@ export const Categories = [
         id: 2,
         name: 'Polo Shirts',
         img: "/images/2.webp",
-        link: '/polo/',
+        link: '/polo-shirts/',
     },
     {
         id: 3,
