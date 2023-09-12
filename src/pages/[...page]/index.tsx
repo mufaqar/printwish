@@ -11,6 +11,7 @@ import Pagination from '@/components/pagination/pagination'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category }: any) => {
      const { query } = useRouter()
+     const page = query?.page?.[0] ?? null;
 
      return (
           <>
@@ -19,7 +20,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          {/* CATEGORY PAGE DATA ↓ */}
                          <PageBanner title={query.page} category={category} />
                          {
-                             query?.page[0]  === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
+                             page  === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='border-[2px] text-lg md:text-2xl p-2 text-center font-bold border-[#FF00FF]'>Place Your Orders To Us And Get Upto 20% Off Prices With Free UK Shipping And Logo Setups.</div>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
