@@ -43,7 +43,7 @@ export const calculatePrice = ( customizedMergeData: any, totalPrice:number, tot
           priceWithQuantity = totalQuantity * ( 0.85 * customizedMergeData.length )
      }
 
-     var price = customizedMergeData.length > 0 ? totalPrice + priceWithQuantity : totalPrice
+     var price = customizedMergeData?.length > 0 ? totalPrice + priceWithQuantity : totalPrice
 
      return price.toFixed(2)
 }

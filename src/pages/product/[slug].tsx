@@ -37,7 +37,7 @@ interface IColor {
 
 const ProductSlug = ({ post, product }: any) => {
 
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, colorsInLogo, setIsOpen,
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
@@ -52,8 +52,10 @@ const ProductSlug = ({ post, product }: any) => {
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
+  const [reset,setRest] = useState(false)
+
   const HandleColor = (clr: any) => {
-    const colorExists = selectedProduct.colors.some((color: any) => color.name === clr.name);
+    const colorExists = selectedProduct?.colors?.some((color: any) => color.name === clr.name);
     if (!colorExists) {
       const newColor = {
         name: clr.name,
@@ -435,7 +437,7 @@ const ProductSlug = ({ post, product }: any) => {
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
               {
-                customizedMergeData.length < 4 &&
+                customizedMergeData?.length < 4 &&
                 <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
                   {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
                 </button>
