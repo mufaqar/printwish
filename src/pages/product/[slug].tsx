@@ -237,7 +237,7 @@ const ProductSlug = ({ post, product }: any) => {
             <p>FREE DELIVERY OVER £100</p>
           </Link>
           <Link href="#" className='flex px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <Image src="/images/rating.png" alt="rating" width={300} height={300} className="w-56" />
+            <Image src="/images/rating.png" alt="rating" width={300} height={32} className="w-56" />
           </Link>
         </div>
       </section>
