@@ -16,7 +16,7 @@ const TextCreator = () => {
                          value={textCreatorLine.text1}
                          onChange={handleChangeTextCreatorLine}
                     />
-                    <div className='mt-5 flex gap-4'>
+                    <div className='mt-5 flex md:flex-row flex-col gap-4 '>
                          <select id="large" className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               name="size1"
                               value={textCreatorLine.size1}
@@ -57,7 +57,7 @@ const TextCreator = () => {
                     <input type="text" id="large-input" name="text2"
                          value={textCreatorLine.text2}
                          onChange={handleChangeTextCreatorLine} className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  " />
-                    <div className='mt-5 flex gap-4'>
+                    <div className='mt-5 flex md:flex-row flex-col gap-4 '>
                          <select id="large" className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               name="size2"
                               value={textCreatorLine.size2}
@@ -97,7 +97,7 @@ const TextCreator = () => {
                     <input type="text" id="large-input" name="text3"
                          value={textCreatorLine.text3}
                          onChange={handleChangeTextCreatorLine} className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  " />
-                    <div className='mt-5 flex gap-4'>
+                    <div className='mt-5 flex md:flex-row flex-col gap-4 '>
                          <select id="large" className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               name="size3"
                               value={textCreatorLine.size3}
