@@ -509,6 +509,7 @@ export async function getStaticProps({ params }: any) {
   };
 }
 
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: any = [];
   return {

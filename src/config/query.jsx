@@ -41,7 +41,7 @@ export const GET_PRODUCT = gql`
             description
           }
         }
-        allPaSizes(where: {order: DESC}) {
+        allPaSizes(where: {orderby: TERM_ORDER}) {
           nodes {
             name
             description
@@ -132,3 +132,5 @@ query GetLocations {
     }
   }
 }`;
+
+
