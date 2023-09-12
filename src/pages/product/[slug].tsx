@@ -244,18 +244,8 @@ const ProductSlug = ({ post, product }: any) => {
       <div className='block md:hidden px-3 container mx-auto'>
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
             <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
-            <div className="pt-[1px] w-full bg-gray-300 my-8" />
-            <div className='text-sm md:text-base text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
-            {
-              isPrintable &&
-              <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
-                <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
-                <div className='flex gap-8 '>
-                  <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
-                </div>
-              </section>
-            }
-          </div>
+      </div>
+          
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%] image-slider'>
           <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg p-1'>
@@ -347,6 +337,7 @@ const ProductSlug = ({ post, product }: any) => {
           <div className='hidden md:block'>
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
             <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
+          </div>
             <div className="pt-[1px] w-full bg-gray-300 my-8" />
             <div className='text-sm md:text-base text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
             {
@@ -358,7 +349,7 @@ const ProductSlug = ({ post, product }: any) => {
                 </div>
               </section>
             }
-          </div>
+          
 
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
           <section className='bg-background p-3 md:p-8 rounded-lg '>
