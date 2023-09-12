@@ -27,6 +27,7 @@ import UploadImage from '@/components/uploadImage/UploadImage';
 import SelectedCustmizedLayout from '@/components/selectedCustmizedLayout/selectedCustmizedLayout';
 import Slider from 'react-slick';
 import { faqs } from '../../../public/data';
+import { useRouter } from 'next/router';
 
 
 interface IColor {
@@ -39,6 +40,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
+    console.log("🚀 ~ file: [slug].tsx:42 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -215,10 +217,18 @@ const ProductSlug = ({ post, product }: any) => {
   };
 
   const slider = useRef<any>(null);
-
+  const router = useRouter()
   const handleAddToCart = (data: any) => {
     data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
     dispatch(addItem(data))
+    setSelectedProduct({
+      textCreator:[],
+      designArtWork:[],
+      colors:[],
+      productId: product.id,
+      title: product.title
+    })
+    router.push('/cart')
   }
 
   return (
