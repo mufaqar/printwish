@@ -11,7 +11,7 @@ const CategoriesSubMenu = ({categories, setMobileMenu}:any) => {
           <div key={idx}>
             <ul className='md:pb-2'>
               {Categories?.map((sub_item: any, _idx: any) => {
-                return <li key={_idx} className="px-5 py-1.5 relative group" onClick={()=>setMobileMenu(false)}>
+                return <li key={_idx} className="px-5 py-1.5 relative cursor-pointer group" onClick={()=>setMobileMenu(false)}>
                   <Link href={`${sub_item.link}`} className="text-xs  cursor-pointer w-full hover:!text-gray-700 !text-white font-semibold text-accent uppercase">
                     {sub_item?.name}
                   </Link>
