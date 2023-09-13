@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Slider from 'react-slick';
-import { BsArrowLeft, BsArrowRight, } from 'react-icons/bs';
+import { IoIosArrowBack, IoIosArrowForward, } from 'react-icons/io';
 import { Feedback, FeedbackType } from '@/const/feedback';
 
 const Reviews = () => {
@@ -50,7 +50,7 @@ const Reviews = () => {
                     </h2>
                     <Image src="/images/reviews.webp" alt='reviews' height={300} width={700} className='mx-auto' />
                 </div>
-                <div className=' mt-7 md:mt-24'>
+                <div className='relative mt-7 md:mt-24'>
                     <Slider ref={slider} {...settings}>
                     {Feedback?.map((item: FeedbackType, idx: number) => {
                             return <div key={idx}>
@@ -58,8 +58,8 @@ const Reviews = () => {
                             </div>
                         })}
                     </Slider>
-                    <button className="absolute  sm:top-[320px] right-20 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickPrev()}><BsArrowLeft /></button>
-                    <button className="absolute  sm:top-[320px] right-4 transform -translate-y-1/2 bg-primary rounded-lg hover:bg-secondary text-white p-3 text-2xl " onClick={() => slider?.current?.slickNext()}><BsArrowRight /></button>
+                    <button className="absolute -left-10 top-1/2 -mt-6 transform -translate-y-1/2 rounded-lg  text-secondary p-3 text-3xl " onClick={() => slider?.current?.slickPrev()}><IoIosArrowBack /></button>
+                    <button className="absolute  -right-10 top-1/2 -mt-6 transform -translate-y-1/2 rounded-lg  text-secondary p-3 text-3xl " onClick={() => slider?.current?.slickNext()}><IoIosArrowForward /></button>
                 </div>
             </div>
         </section>
