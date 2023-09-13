@@ -21,7 +21,6 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          <PageBanner title={query.page} category={category} />
                          {
                              page  === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
-                                   <div className='border-[2px] text-lg md:text-2xl p-2 text-center font-bold border-[#FF00FF]'> Prices With Free UK Shipping And Logo Setups.</div>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }

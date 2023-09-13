@@ -3,14 +3,16 @@ import { uid } from "@/utils"
 import { useContext } from "react"
 import { FaThumbsUp } from "react-icons/fa"
 import { toast } from "react-toastify"
-
+import designWidthData from '../../const/designWidth'
 
 
 const SizeAndInstruction = () => {
      const { specialInstruction, setSpecialInstruction, customisationName, setSelectedCustomizedLayout,
           setcustomisationName, designWidth, setDesignWidth, colorsInLogo, selectedProduct, setSelectArt,
           selectedCustomizedLayout, setSelectedProduct, imageURL, setCustomizationButton, textCreatorLine,
-          setColorsInLogo, setImageURL, setCreatorStateLine } = useContext(SettingsContext)
+          setColorsInLogo, setImageURL, setCreatorStateLine, designPosition } = useContext(SettingsContext)
+
+     console.log("🚀 ~ file: SizeAndInstruction.tsx:14 ~ SizeAndInstruction ~ designPosition:", designPosition)
 
      const lineOne: any = {
           name: 'line-1',
@@ -119,6 +121,8 @@ const SizeAndInstruction = () => {
 
      }
 
+     const designWidthSizes = designWidthData.find(i=>i.type === designPosition)
+
      return (
           <>
                {/* Choose design width: */}
@@ -126,7 +130,7 @@ const SizeAndInstruction = () => {
                     <h5 className='text-xl font-semibold text-accent font-roboto mt-6'>Choose design width:</h5>
                     <ul className='flex gap-4 mt-5 flex-wrap items-center'>
                          {
-                              designWidthData.map((item: any, idx: number) => {
+                              designWidthSizes?.sizes?.map((item: any, idx: number) => {
                                    return (
                                         <li key={idx} onClick={() => setDesignWidth(item.value)} className={` p-2.5 cursor-pointer px-8 text-lg bg-white rounded-full border-[2px] ${designWidth === item.value ? ' border-secondary' : 'border-transparent'}`}>{item?.name}</li>
                                    )
@@ -167,18 +171,5 @@ const SizeAndInstruction = () => {
 
 export default SizeAndInstruction
 
-const designWidthData = [
-     {
-          name: "Small (10cm)",
-          value: '10'
-     },
-     {
-          name: "Medium (20cm)",
-          value: '20'
-     },
-     {
-          name: "Large (30cm)",
-          value: '30'
-     }
-]
+
 

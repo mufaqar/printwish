@@ -40,7 +40,6 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
-    console.log("🚀 ~ file: [slug].tsx:42 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 

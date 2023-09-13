@@ -18,7 +18,7 @@ const Product_Box = ({ data, image }: any) => {
             <span className='text-center'>{data?.title || data?.name}</span>
           </Link>
         </h5>
-        <p className='text-xs text-center sm:text-base'>
+        <p className='text-xs text-center text-secondary sm:text-base'>
           <strong>{colors_lenght?.options?.length}</strong> Colors available        
         </p>
 

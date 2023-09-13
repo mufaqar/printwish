@@ -21,11 +21,11 @@ export default function Home(props: any) {
       <Brands_Slider />
       <Reviews />
       <section className='pb-10'>
-        <div className='max-w-screen-xl mx-auto px-4'>
+        <div className='max-w-screen-xl mx-auto'>
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-7 mt-10'>
+           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-7 mt-10 p-4 md:p-8 bg-gray-100'>
               {Categories?.map((item: CategoryType, idx: number) => {
                 return <Category_Box key={idx} data={item} />
               })}
