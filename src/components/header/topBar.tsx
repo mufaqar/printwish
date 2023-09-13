@@ -1,20 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { CiShoppingBasket } from 'react-icons/ci'
 import { useSelector } from 'react-redux'
 
 const TopBar = () => {
   const cartItems = useSelector((state: any) => state.AddToCart.value)
   return (
-    <nav className="bg-accent">
+    <nav className="bg-primary">
       <div className="flex justify-center lg:justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
         <Link href="/" className="lg:flex items-center hidden">
         <Image src="/images/logo.png" alt="logo" width={140} height={37} />
         </Link>
-        <p className='text-xs sm:text-base md:text-xl font-medium uppercase text-white text-center'>
+        <h6 className='text-xs sm:text-base md:text-xl font-semibold uppercase text-white text-center'>
           The UK's leading personalised clothing company
-        </p>
+        </h6>
         <div className="hidden items-center lg:flex justify-between">
           <ul className='flex gap-2 items-center'>
             <li className='hidden sm:block'>

@@ -119,7 +119,7 @@ export const designVarient = [
      },
      {
           placement: 'Front',
-          image: '/images/tshirt-varients/front_Right Chest.png',
+          image: '/images/tshirt-varients/front_Right_Sleeve.png',
           position: 'Right Sleeve',
      },
      {

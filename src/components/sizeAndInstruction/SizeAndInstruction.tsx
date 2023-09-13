@@ -12,7 +12,6 @@ const SizeAndInstruction = () => {
           selectedCustomizedLayout, setSelectedProduct, imageURL, setCustomizationButton, textCreatorLine,
           setColorsInLogo, setImageURL, setCreatorStateLine, designPosition } = useContext(SettingsContext)
 
-     console.log("🚀 ~ file: SizeAndInstruction.tsx:14 ~ SizeAndInstruction ~ designPosition:", designPosition)
 
      const lineOne: any = {
           name: 'line-1',
