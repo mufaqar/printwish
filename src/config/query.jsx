@@ -133,4 +133,57 @@ query GetLocations {
   }
 }`;
 
+export const GetGallery = gql`
+query GetGallery {
+  allGallery(first: 100) {
+    nodes {
+      image {
+        image {
+          mediaItemUrl
+        }
+      }
+    }
+  }
+}`;
 
+export const ALLBAGS = gql`
+query ALLBAGS {
+  bags {
+    nodes {
+      featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
+      bagsInfo {
+        price
+      }
+      title
+      slug
+    }
+  }
+}`;
+
+export const SINGLEBAG = gql`
+query SINGLEBAG($id: ID!) {
+  bag(id: $id, idType: URI) {
+    title
+    bagsInfo {
+      price
+      capacity
+      carryShoulderStrapsSize
+      fieldGroupName
+      leadTime
+      material
+      printArea
+      printOptions
+      productSize
+      weight
+    }
+    featuredImage {
+      node {
+        mediaItemUrl
+      }
+    }
+  }
+}`;

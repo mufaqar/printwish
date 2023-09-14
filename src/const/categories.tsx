@@ -45,7 +45,7 @@ export const Categories = [
         id: 8,
         name: 'Cotton Bags',
         img: "/images/8.webp",
-        link: '/cotton-bag',
+        link: '/cotton-bags',
     },
    
 ]

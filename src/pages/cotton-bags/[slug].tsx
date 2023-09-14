@@ -1,8 +1,13 @@
 import PageBanner from '@/components/banner/page-banner'
+import { client } from '@/config/client'
+import { SINGLEBAG } from '@/config/query'
+import { GetStaticPaths } from 'next'
 import Image from 'next/image'
 import React from 'react'
 
-export default function Cotton_Bag() {
+export default function Cotton_Bag({bag}:any) {
+    console.log("🚀 ~ file: [slug].tsx:9 ~ Cotton_Bag ~ bag:", bag)
+
     return (
         <main>
             <PageBanner title="Cotton Bag" />
@@ -10,43 +15,43 @@ export default function Cotton_Bag() {
                 <div className='max-w-screen-xl mx-auto px-4 flex md:flex-row flex-col gap-5'>
                     <div className='md:w-1/4 w-full'>
                         <h2 className='text-2xl font-bold'>
-                            5oz Natural Cotton Shopper Long Handles
+                            {bag?.title}
                         </h2>
                         <Image src="/images/cotton.jpg" alt='cotton' width={665} height={665} />
                         <ul>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Lead time:</strong> 3-5 Working Days from proof approval.
+                                <strong>Lead time:</strong> {bag?.bagsInfo?.leadTime}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Material:</strong> 100% Premium Cotton
+                                <strong>Material:</strong> {bag?.bagsInfo?.material}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Product Size:</strong> 380 X 420mm (approx.)
+                                <strong>Product Size:</strong> {bag?.bagsInfo?.productSize}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Print Area:</strong> 280 X 320mm (Spot colour.)
+                                <strong>Print Area:</strong> {bag?.bagsInfo?.printArea}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Carry Shoulder Straps size:</strong> 67cms long
+                                <strong>Carry Shoulder Straps size:</strong> {bag?.bagsInfo?.carryShoulderStrapsSize}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Weight:</strong> 155gsm
+                                <strong>Weight:</strong> {bag?.bagsInfo?.weight}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Capacity:</strong> 15 Litres
+                                <strong>Capacity:</strong> {bag?.bagsInfo?.capacity}
                             </li>
                             <li className='capitalize mb-1 text-base text-gray-600 font-roboto'>
-                                <strong>Print Options:</strong> Spot Colours
+                                <strong>Print Options:</strong> {bag?.bagsInfo?.printOptions}
                             </li>
                         </ul>
                     </div>
                     <div className='md:w-2/4 w-full'>
                         <Image src="/images/stars.png" alt='stars' width={1024} height={315} />
                         <h2 className='font-semibold bg-primary text-white text-2xl text-center py-1.5 px-4'>
-                            Printed From £0.55 Each Ex Vat
+                            Printed From £{bag?.bagsInfo?.price} Each Ex Vat
                         </h2>
                         <p className='text-lg text-gray-600 font-roboto'>
-                            Note: We have flexible pricing options that can be customised to suit your order volume and the number of colors in your design. This allows us to offer more affordable and competitive rates to our valued customers. Unfortunately, we cannot disclose prices on our website. To receive the most advantageous and competitive quote, please send us your order inquiry and we will respond promptly with our best pricing offer.
+                            <span className='!font-semibold !text-secondary'>Note:</span> We have flexible pricing options that can be customised to suit your order volume and the number of colors in your design. This allows us to offer more affordable and competitive rates to our valued customers. Unfortunately, we cannot disclose prices on our website. To receive the most advantageous and competitive quote, please send us your order inquiry and we will respond promptly with our best pricing offer.
                         </p>
                         <Image src="/images/order.jpg" alt='order' width={1920} height={1007} className='my-5' />
                         <p className='text-lg text-gray-600 font-roboto'>
@@ -123,3 +128,32 @@ export default function Cotton_Bag() {
         </main>
     )
 }
+
+
+
+export async function getStaticProps({ params }: any) {
+    const slug = params.slug
+  
+    const response = await client.query({
+      query: SINGLEBAG,
+      variables: {
+        id: `/bags/${slug}`,
+      },
+    });
+  
+    const bag = response?.data?.bag;
+    return {
+      props: {
+        bag,
+      },
+    };
+  }
+  
+  
+  export const getStaticPaths: GetStaticPaths = async () => {
+    const paths: any = [];
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  }
