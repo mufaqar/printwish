@@ -55,7 +55,6 @@ export default CategorySlug
 export async function getStaticProps({ params }: any) {
      const p = params.page
      const slug = p[0]
-     console.log("🚀 ~ file: index.tsx:58 ~ getStaticProps ~ slug:", slug.replace('t-shirt-printing-',''))
 
      if (slug.includes("t-shirt-printing")) {
           const response = await client.query({
