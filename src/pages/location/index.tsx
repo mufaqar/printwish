@@ -11,7 +11,7 @@ const Location = ({ products, pages }: any) => {
   return (
     <section className='container mx-auto px-4 my-10'>
       <div className='mb-10'>
-        <h2 className='font-bold text-secondary text-4xl capitalize my-4'>Custom Apparel {pages?.title}</h2>
+        <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Custom Apparel {pages?.title}</h2>
         <p className='font-bold text-xl text-gray-600'>Desire a distinctive addition to your {pages?.title} closet? At PrintWish, we showcase a
           diverse array, ready for your personal touch. Dive into a world where your fashion
           aspirations meet our expertise. This includes advanced techniques in printing,
@@ -34,7 +34,7 @@ const Location = ({ products, pages }: any) => {
             <h5>Printwish Clothing</h5>
             <p className='mt-2'>0800 051 0821</p>
             <h6 className='mt-7 font-semibold underline'>enquiries@printwish.co.uk</h6>
-            <button className='mt-5 bg-secondary text-white p-2 px-16 hover:scale-105 rounded-full shadow-xl'>Enquire</button>
+            <button className='mt-5 bg-[#D1DE8B]  p-2 px-16 hover:scale-105 rounded-full shadow-xl'>Enquire</button>
           </div>
           <div className='md:mt-0 mt-6'>
             <div className='grid grid-cols-2 p-4 shadow-xl border font-semibold border-gray-100'>
@@ -59,7 +59,7 @@ const Location = ({ products, pages }: any) => {
             </div>
           </div>
         </div>
-        <h2 className='font-bold text-xl mt-10 text-secondary capitalize my-4'>ORDER DELIVERY TIMELINE?</h2>
+        <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'>ORDER DELIVERY TIMELINE?</h2>
         <p className='font-bold text-xl text-gray-600'>We are committed to timely deliveries. With complimentary UK Shipping on every
           order, you can expect your curated pieces within 5-7 business days post payment.
           Should you have urgent needs or special requests, our dedicated team is
