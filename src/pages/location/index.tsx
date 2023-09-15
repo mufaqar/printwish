@@ -5,8 +5,11 @@ import Brands_Slider from '@/components/slider/brand-slider'
 import Image from 'next/image'
 import React from 'react'
 import Faqs from '@/components/faqs/faqs'
+import { GetProductByTag } from '@/config/query'
+import { client } from '@/config/client'
 
 const Location = ({ products, pages }: any) => {
+console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
 
   return (
     <section className='container mx-auto px-4 my-10'>
@@ -87,7 +90,7 @@ const Location = ({ products, pages }: any) => {
       <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>BRANDED T-SHIRTS</h4>
       <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
         {products?.map((item: any, idx: number) => {
-          const img = item?.images[0]?.src
+          const img = item?.featuredImage?.node.mediaItemUrl
           return <Product_Box key={idx} data={item} image={img} />
         })}
       </div>
@@ -109,6 +112,10 @@ const Location = ({ products, pages }: any) => {
 
 export default Location
 
+
+
+
+
 const list1 = [
   {
     name: "T-Shirt Customisation in London",
@@ -116,7 +123,7 @@ const list1 = [
     image: "/images/T-shirt Printing London Image.jpg"
   },
   {
-    name: "Gender-Neutral T-Shirts",
+    name: "Uni-Sex T-Shirts",
     text: "We boast an extensive collection of bespoke unisex t-shirts, perfect for any event, sourced from top-tier brands. Whether you're dressing up for a special occasion or seeking everyday comfort, our tees are tailored to meet diverse needs.",
     image: "/images/Image for T-shirts Category Page and Unisex.jpg"
   },

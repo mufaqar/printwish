@@ -187,3 +187,37 @@ query SINGLEBAG($id: ID!) {
     }
   }
 }`;
+
+export const GetProductByTag = gql`
+query GetProductByTag($tag: ID = "") {
+  productTag(id: $tag, idType: SLUG) {
+    products {
+      nodes {
+        title
+        slug
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+        ... on SimpleProduct {
+          price
+          gallery : galleryImages {
+            nodes {
+              mediaItemUrl
+            }
+          }
+        }
+        poductInfo {
+          whitesmall
+        }
+        allPaColor(first: 100) {
+          nodes {
+            name
+            description
+          }
+        }
+      }
+    }
+  }
+}`;

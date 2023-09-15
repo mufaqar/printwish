@@ -6,10 +6,11 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Location from '../location'
 import { client } from '@/config/client'
-import { LOCATION_PAGE } from '@/config/query'
+import { GetProductByTag, LOCATION_PAGE } from '@/config/query'
 import Pagination from '@/components/pagination/pagination'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category }: any) => {
+
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
 
@@ -54,6 +55,7 @@ export default CategorySlug
 export async function getStaticProps({ params }: any) {
      const p = params.page
      const slug = p[0]
+     console.log("🚀 ~ file: index.tsx:58 ~ getStaticProps ~ slug:", slug.replace('t-shirt-printing-',''))
 
      if (slug.includes("t-shirt-printing")) {
           const response = await client.query({
@@ -64,11 +66,14 @@ export async function getStaticProps({ params }: any) {
           });
           const pages = response?.data?.locationBy;
 
-          const dataForProducts = {
-               per_page: 30,
-               category: 149,
-          }
-          const { products } = await apiRequest('POST', 'get-products', dataForProducts)
+          const {data} = await client.query({
+            query: GetProductByTag,
+            variables: {
+              tag: slug.replace('t-shirt-printing-',''),
+            },
+          });
+
+          const products = data.productTag.products.nodes;
 
           /* The code `if(!pages) { return { notFound: true } }` is checking if the `pages` variable is
           falsy. If it is, it means that the requested location page does not exist or could not be
@@ -84,7 +89,7 @@ export async function getStaticProps({ params }: any) {
                props: {
                     productsForLocationPage: products,
                     slug,
-                    pages
+                    pages,
                },
           };
      }
