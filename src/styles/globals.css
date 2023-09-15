@@ -301,3 +301,7 @@ input[type='number'] {
 .locationContent ul li{
   list-style: disc;
 }
+
+.t_shadow{
+  box-shadow: 0 3px 6px rgba(0,0,0,.29);
+}

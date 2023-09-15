@@ -34,25 +34,25 @@ const Location = ({ products, pages }: any) => {
             <h5>Printwish Clothing</h5>
             <p className='mt-2'>0800 051 0821</p>
             <h6 className='mt-7 font-semibold underline'>enquiries@printwish.co.uk</h6>
-            <button className='mt-5 bg-[#D1DE8B]  p-2 px-16 hover:scale-105 rounded-full shadow-xl'>Enquire</button>
+            <button className='mt-5 bg-[#D1DE8B] p-2 px-16 hover:scale-105 rounded-full shadow-xl'>Enquire</button>
           </div>
           <div className='md:mt-0 mt-6'>
-            <div className='grid grid-cols-2 p-4 shadow-xl border font-semibold border-gray-100'>
+            <div className='grid grid-cols-2 p-4 t_shadow font-semibold'>
               <div />
-              <div className='text-center text-lg'> Opening Times </div>
+              <div className='text-center sm:text-lg'> Opening Times </div>
             </div>
-            <div className='grid grid-cols-2 p-4 text-gray-600'>
+            <div className='grid grid-cols-2 text-gray-600'>
               <ul className='text-center border-r-[1px] border-black'>
                 {
                   openSchdule.map((d, i) => (
-                    <li key={i} className='my-4'>{d.day}</li>
+                    <li key={i} className='my-6'>{d.day}</li>
                   ))
                 }
               </ul>
               <ul className='text-center '>
                 {
                   openSchdule.map((d, i) => (
-                    <li key={i} className='my-4'>{d.time}</li>
+                    <li key={i} className='my-6'>{d.time}</li>
                   ))
                 }
               </ul>
