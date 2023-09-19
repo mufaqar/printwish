@@ -27,7 +27,8 @@ const Cart = () => {
      }
 
      const totalPrice = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0);
-     const shipping = 4.22
+     const shipping = cartItems.length > 0 ? 4.22 : 0.00
+     const vat = parseInt(((10 / 100) * totalPrice).toFixed(2))
 
      return (
           <>
@@ -143,7 +144,7 @@ const Cart = () => {
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
                               <div className="mb-2 flex justify-between">
                                    <p className="text-gray-700">Subtotal</p>
-                                   <p className="text-gray-700">£{totalPrice}</p>
+                                   <p className="text-gray-700">£{totalPrice+shipping+vat}</p>
                               </div>
                               <div className="flex justify-between">
                                    <p className="text-gray-700">Shipping</p>
@@ -151,7 +152,7 @@ const Cart = () => {
                               </div>
                               <div className="flex justify-between mt-2">
                                    <p className="text-gray-700">VAT</p>
-                                   <p className="text-gray-700">£{shipping}</p>
+                                   <p className="text-gray-700">£{vat}</p>
                               </div>
                               <hr className="my-4" />
                               <div className="flex justify-between">

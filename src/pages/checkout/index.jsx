@@ -1,32 +1,29 @@
 import { apiRequest } from '@/config/requests'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { orderData } from '../../../public/data'
 import { toast } from 'react-toastify'
 import { clearAll } from '@/features/AddToCart'
 import { useRouter } from 'next/router'
+import CraditCard from '@/components/paymentOption/CraditCard'
+import { FaArrowLeft } from 'react-icons/fa'
 
 const Checkout = () => {
-     // const cartItems = useSelector((state) => state.AddToCart.value)
+     const cartItems = useSelector((state) => state.AddToCart.value)
      // const dispatch = useDispatch()
      // const router = useRouter()
+     const [proceed, setProceed] = useState(false)
 
      const PlaceOrder = async (cartItems) => {
-          cartItems.map(({name,id,quantity})=>{
-               const lineItem = {
-                    name: name,
-                    product_id: id,
-                    quantity: quantity
-               };
-               orderData.line_items.push(lineItem)
-          })
-          const responce =  await apiRequest('POST', 'create-order', orderData) 
-          if(responce.success === true){
-               toast.info("Order Marked");
-               dispatch(clearAll())
-               router.push('/')
-          }
+          setProceed(true)
      }
+
+     const price = cartItems.reduce((sum, product) => sum + +product.price, 0);
+     const shipping = cartItems.length > 0 ? 4.22 : 0.00
+     const vat = parseInt(((10 / 100) * price).toFixed(2))
+
+     const totalPrice = price+shipping+vat
+
 
      return (
           <>
@@ -34,32 +31,22 @@ const Checkout = () => {
                     <div className="grid min-h-screen grid-cols-2">
                          <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">
                               <div className="mx-auto w-full max-w-lg">
+                                   {proceed && <FaArrowLeft className='text-gray-500 hover:text-black text-2xl mb-5' onClick={()=>setProceed(!proceed)}/>}
                                    <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">Secure Checkout<span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span></h1>
-                                   <form action="" className="mt-10 flex flex-col space-y-4">
-                                        <div><label className="text-xs font-semibold text-gray-500">Email</label><input type="email" id="email" name="email" placeholder="john.capler@fang.com" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
-                                        <div className="relative"><label className="text-xs font-semibold text-gray-500">Card number</label><input type="text" id="card-number" name="card-number" placeholder="1234-5678-XXXX-XXXX" className="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 pr-10 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /><img src="/images/uQUFIfCYVYcLK0qVJF5Yw.png" alt="" className="absolute bottom-3 right-3 max-h-4" /></div>
-                                        <div>
-                                             <p className="text-xs font-semibold text-gray-500">Expiration date</p>
-                                             <div className="mr-6 flex flex-wrap">
-                                                  <div className="my-1">
-                                                       <p className="sr-only">Select expiration month</p>
-                                                       <select name="month" id="month" className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500">
-                                                            <option value="">Month</option>
-                                                       </select>
-                                                  </div>
-                                                  <div className="my-1 ml-3 mr-6">
-                                                       <label className="sr-only">Select expiration year</label
-                                                       ><select name="year" id="year" className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500">
-                                                            <option value="">Year</option>
-                                                       </select>
-                                                  </div>
-                                                  <div className="relative my-1"><label className="sr-only">Security code</label><input type="text" id="security-code" name="security-code" placeholder="Security code" className="block w-36 rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
-                                             </div>
-                                        </div>
-                                        <div><label className="sr-only">Card name</label><input type="text" id="card-name" name="card-name" placeholder="Name on the card" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
-                                   </form>
-                                   <p className="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <a href="#" className="whitespace-nowrap text-secondary underline hover:text-primary">Terms and Conditions</a></p>
-                                   <button type="submit" onClick={()=>PlaceOrder(cartItems)} className="mt-4 inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg">Place Order</button>
+                                   {
+                                        !proceed &&
+                                        <>
+                                             <form action="" className="mt-10 flex flex-col space-y-4">
+                                                  <div><label className="text-xs font-semibold text-gray-500">Name</label><input type="text" id="card-name" name="name" placeholder="name" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
+                                                  <div><label className="text-xs font-semibold text-gray-500">Email</label><input type="email" id="email" name="email" placeholder="john.capler@fang.com" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
+                                                  <div><label className="text-xs font-semibold text-gray-500">Mobile Number</label><input type="text" id="card-name" name="mobile-number" placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
+                                                  <div><label className="text-xs font-semibold text-gray-500">Address</label><textarea placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"></textarea>     </div>
+                                             </form>
+                                             <p className="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <a href="#" className="whitespace-nowrap text-secondary underline hover:text-primary">Terms and Conditions</a></p>
+                                             <button type="submit" onClick={() => PlaceOrder(cartItems)} className="mt-4 inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg">Proceed</button>
+                                        </>
+                                   }
+                                   {proceed && <CraditCard totalPrice={totalPrice}/>}
                               </div>
                          </div>
                          <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
@@ -71,26 +58,26 @@ const Checkout = () => {
                               <div className="relative">
                                    <ul className="space-y-5">
                                         {
-                                             // cartItems?.map((item, idx) => {
-                                             //      return (
-                                             //           <li className="flex justify-between" key={idx}>
-                                             //                <div className="inline-flex">
-                                             //                     <img src={item.images[0]?.src} alt={item?.name} className="max-h-16 rounded-md" />
-                                             //                     <div className="ml-3">
-                                             //                          <p className="text-base font-semibold text-white">{item?.name}</p>
-                                             //                          <p className="text-sm font-medium text-white text-opacity-80">Pdf, doc Kindle</p>
-                                             //                     </div>
-                                             //                </div>
-                                             //                <p className="text-sm font-semibold text-white">£ {item?.price}</p>
-                                             //           </li>
-                                             //      )
-                                             // })
+                                             cartItems?.map((item, idx) => {
+                                                  return (
+                                                       <li className="flex justify-between" key={idx}>
+                                                            <div className="inline-flex">
+                                                                 <div className="ml-3">
+                                                                      <p className="text-base font-semibold text-white">{item?.name}</p>
+                                                                      <p className="text-sm font-medium text-white text-opacity-80">Price</p>
+                                                                 </div>
+                                                            </div>
+                                                            <p className="text-sm font-semibold text-white">£ {item?.price}</p>
+                                                       </li>
+                                                  )
+                                             })
                                         }
                                    </ul>
                                    <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
                                    <div className="space-y-2">
-                                        <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>$510.00</span></p>
-                                        <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 10%</span><span>$55.00</span></p>
+                                        <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>£{totalPrice}</span></p>
+                                        <p className="flex justify-between text-sm font-medium text-white"><span>Shipping</span><span>£{shipping}</span></p>
+                                        <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 10%</span><span>£{vat}</span></p>
                                    </div>
                               </div>
                               <div className="relative mt-10 text-white">
