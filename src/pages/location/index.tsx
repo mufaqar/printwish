@@ -7,6 +7,7 @@ import React from 'react'
 import Faqs from '@/components/faqs/faqs'
 import { GetProductByTag } from '@/config/query'
 import { client } from '@/config/client'
+import Link from 'next/link'
 
 const Location = ({ products, pages }: any) => {
 console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
@@ -28,11 +29,22 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
                 <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
                 <h5 className='text-center mt-4 font-bold text-gray-700 min-h-[57px] text-lg'>{item?.name.replace(/London/g, pages?.title)}</h5>
                 <h6 className='text-center font-light mt-1 text-gray-800'>{item.text.replace(/London/g, pages?.title)}</h6>
-                <button className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'>View Products</button>
+                <button  className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'><Link href="/t-shirts" >View Products</Link></button>
               </div>
             ))
           }
         </div>
+
+        <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>BRANDED T-SHIRTS</h4>
+      <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
+        {products?.map((item: any, idx: number) => {
+          const img = item?.featuredImage?.node.mediaItemUrl
+          return <Product_Box key={idx} data={item} image={img} />
+        })}
+      </div>
+
+
+
         <div className='grid grid-cols-1 items-center md:grid-cols-2 mt-12'>
           <div className='text-lg text-gray-600'>
             <h5>Printwish Clothing</h5>
@@ -83,18 +95,8 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
 
       </div>
 
-      {/* <Brands_Slider />
-      <Reviews /> */}
-      {/* <div className='border-[3px] border-[#FF00FF] p-2'>
-        <h5 className='text-center font-bold md:text-2xl'>Place Your Orders To Us And Get Upto 20% Off Prices With Free UK Shipping And Logo Setups.</h5>
-      </div> */}
-      <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>BRANDED T-SHIRTS</h4>
-      <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
-        {products?.map((item: any, idx: number) => {
-          const img = item?.featuredImage?.node.mediaItemUrl
-          return <Product_Box key={idx} data={item} image={img} />
-        })}
-      </div>
+    
+      
       <div
         dangerouslySetInnerHTML={{ __html: pages?.content }}
         className='locationContent'

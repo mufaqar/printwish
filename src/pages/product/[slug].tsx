@@ -237,15 +237,15 @@ const ProductSlug = ({ post, product }: any) => {
         <div className='container mx-auto px-4 flex flex-wrap justify-center items-center gap-5'>
           <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
             <LuShirt className="text-2xl text-secondary" />
-            <p>No Minimum Order</p>
+            <p>25 MINIMUM ORDER VALUE</p>
           </Link>
           <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
             <TiTick className="text-2xl text-secondary" />
-            <p>PRICE MATCH PROMISEr</p>
+            <p>PRICE MATCH PROMISE</p>
           </Link>
           <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
             <TbTruckDelivery className="text-2xl text-secondary" />
-            <p>FREE DELIVERY OVER £100</p>
+            <p>FREE UK DELIVERY.</p>
           </Link>
           <Link href="#" className='flex px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
             <Image src="/images/rating.png" alt="rating" width={300} height={32} className="w-56" />

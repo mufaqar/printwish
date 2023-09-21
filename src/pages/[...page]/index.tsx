@@ -103,6 +103,7 @@ export async function getStaticProps({ params }: any) {
 
      const dataForProducts = {
           per_page: 100,
+          orderby: "menu_order",
           category: `${getID?.id}`,
      }
      const { products } = await apiRequest('POST', 'get-products', dataForProducts)
