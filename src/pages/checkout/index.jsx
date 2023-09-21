@@ -7,6 +7,7 @@ import { clearAll } from '@/features/AddToCart'
 import { useRouter } from 'next/router'
 import CraditCard from '@/components/paymentOption/CraditCard'
 import { FaArrowLeft } from 'react-icons/fa'
+import Link from 'next/link'
 
 const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
@@ -41,7 +42,7 @@ const Checkout = () => {
                                                   <div><label className="text-xs font-semibold text-gray-500">Mobile Number</label><input type="text" id="card-name" name="mobile-number" placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
                                                   <div><label className="text-xs font-semibold text-gray-500">Address</label><textarea placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"></textarea>     </div>
                                              </form>
-                                             <p className="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <a href="#" className="whitespace-nowrap text-secondary underline hover:text-primary">Terms and Conditions</a></p>
+                                             <p className="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <Link href="/terms-and-conditions" className="whitespace-nowrap text-secondary underline hover:text-primary">Terms and Conditions</Link></p>
                                              <button type="submit" onClick={() => PlaceOrder(cartItems)} className="mt-4 inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg">Proceed</button>
                                         </>
                                    }
