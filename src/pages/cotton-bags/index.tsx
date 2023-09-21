@@ -32,7 +32,11 @@ const Bags = ({ gallery, bags }: any) => {
                     </Link>
                   </h5>
                   <p className='text-center font-bold font-roboto mb-3 text-primary'>
-                    <span className='text-secondary font-semibold text-lg hover:text-secondary'>£{data?.bagsInfo?.price} / Each</span>
+                    {
+                      data?.bagsInfo?.price ? <span className='text-secondary font-semibold text-lg hover:text-secondary'>£{data?.bagsInfo?.price} / Each</span> :
+                      <span className='text-red-500 font-bold text-lg hover:text-secondary'>Out of Stock</span>
+                    }
+                    
                   </p>
                   <Link href={`/cotton-bags/${data?.slug}`} className='text-xs sm:text-base relative font-semibold flex justify-center text-center font-roboto uppercase bg-primary text-white px-2 md:px-6 py-1 hover:bg-transparent hover:text-primary border-primary border-2 hover:border-primary'
                   >

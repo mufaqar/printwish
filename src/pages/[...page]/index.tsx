@@ -10,6 +10,7 @@ import { GetProductByTag, LOCATION_PAGE } from '@/config/query'
 import Pagination from '@/components/pagination/pagination'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category }: any) => {
+console.log("🚀 ~ file: index.tsx:13 ~ CategorySlug ~ products:", products)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;

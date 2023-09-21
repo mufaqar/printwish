@@ -445,6 +445,8 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
+              { !customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto'>Step 2 - Select Customization:</h5> }
+              
               {
                 customizedMergeData?.length < 4 &&
                 <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>

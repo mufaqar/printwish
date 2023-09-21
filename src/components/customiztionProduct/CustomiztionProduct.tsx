@@ -58,7 +58,7 @@ const CustomiztionProduct = () => {
      return (
           <>
                <section className='mt-4 bg-background p-8 rounded-lg'>
-                    <h5 className='text-xl font-semibold text-accent font-roboto'>Step 2 - Design Position:</h5>
+                    <h5 className='text-xl font-semibold text-accent font-roboto'>Step 3 - Design Position:</h5>
                     <div className='mt-5'>
                          <Slider {...settings}>
                               {designVarient.map((item, idx) => {
