@@ -3,14 +3,21 @@ import { client } from '@/config/client'
 import { SINGLEBAG } from '@/config/query'
 import { GetStaticPaths } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export default function Cotton_Bag({ bag }: any) {
-    console.log("🚀 ~ file: [slug].tsx:9 ~ Cotton_Bag ~ bag:", bag)
 
     return (
-        <main>
-            <PageBanner title="Cotton Bag" />
+        <div>
+            {/* top bar with some content  */}
+            <section className='shadow-lg p-3 hidden md:block'>
+                <div className='container mx-auto px-4 flex flex-wrap justify-between items-center gap-5'>
+                    <Image src="/images/freeukdelivery-1.png.webp" alt="image" width={190} height={48}/>
+                    <Image src="/images/nosetup-1.png.webp" alt="image" width={120} height={48}/>
+                    <Image src="/images/pricemat-1.png.webp" alt="image" width={135} height={48}/>
+                </div>
+            </section>
             <section className='py-16'>
                 <div className='max-w-screen-xl mx-auto px-4 flex md:flex-row flex-col gap-5'>
                     <div className='md:w-1/4 w-full'>
@@ -135,20 +142,20 @@ export default function Cotton_Bag({ bag }: any) {
                 </div>
                 <div className="grid lg:grid-cols-4 text-center gap-14 font-[500] md:grid-cols-2 px-5">
                     <div className="border w-full border-none flex flex-col items-center ">
-                        <Image width={166} height={166} src="/images/Group-237469-1.png.webp" alt="" className=""/>
-                            <p className="">Pick your items, select the quantity and sizes.</p>
+                        <Image width={166} height={166} src="/images/Group-237469-1.png.webp" alt="" className="" />
+                        <p className="">Pick your items, select the quantity and sizes.</p>
                     </div>
                     <div className="border w-full border-none flex flex-col items-center">
-                        <Image width={166} height={166} src="/images/Group-237468-1.png.webp" alt="" className=""/>
-                            <p className="">Complete the quote form with your details, choose your print positions, attach your logo, and press submit.</p>
+                        <Image width={166} height={166} src="/images/Group-237468-1.png.webp" alt="" className="" />
+                        <p className="">Complete the quote form with your details, choose your print positions, attach your logo, and press submit.</p>
                     </div>
                     <div className="border w-full border-none flex flex-col items-center">
-                        <Image width={166} height={166} src="/images/PIC-03.png.webp" alt="" className=""/>
-                            <p className="">We'll create a FREE digital proof of your design for your approval.</p>
+                        <Image width={166} height={166} src="/images/PIC-03.png.webp" alt="" className="" />
+                        <p className="">We'll create a FREE digital proof of your design for your approval.</p>
                     </div>
                     <div className="border w-full border-none flex flex-col items-center">
-                        <Image width={166} height={166} src="/images/PIC-01-1.png.webp" alt="" className=""/>
-                            <p className="">We guarantee to deliver your order by your specified date.</p>
+                        <Image width={166} height={166} src="/images/PIC-01-1.png.webp" alt="" className="" />
+                        <p className="">We guarantee to deliver your order by your specified date.</p>
                     </div>
                 </div>
                 <div >
@@ -178,7 +185,7 @@ export default function Cotton_Bag({ bag }: any) {
                 </div>
 
             </section>
-        </main>
+        </div>
     )
 }
 
