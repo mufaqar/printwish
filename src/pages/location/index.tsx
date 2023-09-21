@@ -85,9 +85,9 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
 
       {/* <Brands_Slider />
       <Reviews /> */}
-      <div className='border-[3px] border-[#FF00FF] p-2'>
+      {/* <div className='border-[3px] border-[#FF00FF] p-2'>
         <h5 className='text-center font-bold md:text-2xl'>Place Your Orders To Us And Get Upto 20% Off Prices With Free UK Shipping And Logo Setups.</h5>
-      </div>
+      </div> */}
       <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>BRANDED T-SHIRTS</h4>
       <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
         {products?.map((item: any, idx: number) => {
@@ -124,7 +124,7 @@ const list1 = [
     image: "/images/T-shirt Printing London Image.jpg"
   },
   {
-    name: "Uni-Sex T-Shirts",
+    name: "UniSex T-Shirts",
     text: "We boast an extensive collection of bespoke unisex t-shirts, perfect for any event, sourced from top-tier brands. Whether you're dressing up for a special occasion or seeking everyday comfort, our tees are tailored to meet diverse needs.",
     image: "/images/Image for T-shirts Category Page and Unisex.jpg"
   },
