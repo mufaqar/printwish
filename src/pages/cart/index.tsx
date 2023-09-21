@@ -31,7 +31,10 @@ const Cart = () => {
 
      return (
           <>
-               <PageBanner title="Shopping Cart" />
+
+               <h2 className='sm:text-4xl text-2xl font-bold font-opensans text-center container mx-auto px-2 my-20 capitalize mb-2'>
+                    Shopping Cart
+               </h2>
                <section className='container mx-auto px-2 my-20'>
                     <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
                          <div className="rounded-lg md:w-2/3">
@@ -89,7 +92,7 @@ const Cart = () => {
                                                                                 <p>Design Width : <span className='text-gray-600'>{d?.designWidth} <sup>cm</sup></span></p>
                                                                                 <p>Special Instruction : <span className='text-gray-600'>{d?.specialInstruction}</span></p>
                                                                            </div>
-                                                                           <Image src={d?.imageURL} alt="logo" width={112} height={200} className="md:w-28 mt-3 md:mt-0" />
+                                                                           <img src={d?.imageURL} alt="logo" width={112} height={200} className="md:w-28 mt-3 md:mt-0" />
                                                                       </li>
                                                                  ))
                                                             }
@@ -142,7 +145,7 @@ const Cart = () => {
 
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
                               <div className="mb-2 flex justify-between">
-                                   <p className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></p>
+                                   <div className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></div>
                                    <p className="text-gray-700">£{totalPrice+vat}</p>
                               </div>
                               <div className="flex justify-between">
