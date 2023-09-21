@@ -13,11 +13,12 @@ import { MdEmail } from 'react-icons/md'
 import { FaRegClock } from 'react-icons/fa'
 import { BsFillPlayFill } from 'react-icons/bs'
 import BlogSidebar from '@/components/blogsidebar'
+import Image from 'next/image'
 
 function SingleBlog() {
     return (
         <>
-            <main className=' lg:flex lg:flex-wrap justify-between items-center mx-auto max-w-screen-xl md:px-6  px-6   '>
+            <main className='my-20 lg:flex lg:flex-wrap justify-between items-center mx-auto max-w-screen-xl md:px-6  px-6   '>
 
                 <div className=" container lg:w-[800px] ">
                     <div className=" border-b-[1px]">
@@ -96,9 +97,9 @@ function SingleBlog() {
                         </div>
                     </div>
                     <div className="print mb-[4rem]">
-                        <div className="flex space-x-5 mt-5 pb-5 border-b-[1px]">
+                        <div className="flex items-center space-x-5 mt-5 pb-5 border-b-[1px]">
                             <div className="img">
-                                <img src="images/pw.png" alt="" />
+                                <Image width={20} height={20} src="/images/pw.png" alt="" />
                             </div>
                             <div className="pw ">
                                 <p className=''>

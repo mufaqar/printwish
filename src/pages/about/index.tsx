@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 function about() {
   return (
@@ -37,7 +38,7 @@ function about() {
         </div>
 
         <div className="foeter pt-5">
-          <img className='w-[65%] m-auto' src="images/review.png" alt="" />
+          <Image className='w-[65%] m-auto' width={400} height={150} src="/images/review.png" alt="" />
         </div>
 
       </main>

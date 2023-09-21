@@ -2,6 +2,7 @@ import React from 'react'
 import { AiOutlineMinus } from 'react-icons/ai'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useState } from 'react'
+import Image from 'next/image'
 const Data = [
 
     {
@@ -83,7 +84,7 @@ export default function Delivery_information() {
     return (
         <>
             <main className='items-center mx-auto max-w-screen-xl px-6 md:px-6'>
-                <div className="container">
+                <div className="container mx-auto">
                     <div className="text-center">
                         <h2 className='text-[#0088cc] font-[400] leading-[40px] text-[30px] pb-[32px]'>Delivery Information</h2>
                         <p className='text-[#7b858a] pb-[1.25rem] font-[400] '>We meet tough deadlines with speedy turn around & quick delivery</p>
@@ -133,7 +134,7 @@ export default function Delivery_information() {
 
                         </div>
                         <div className="ml-5 ">
-                            <img className='w-[530px]' src="images/bg.png" alt="" />
+                            <Image className='w-[530px]' width={528} height={622} src="/images/bg.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -141,10 +142,10 @@ export default function Delivery_information() {
                 <div className="footer text-center mt-5 ">
                     <h2 className='text-[30px] text-[#7b858a]  '>Our preferred couriers</h2>
                     <div className="couriers grid grid-cols-4  items-center m-auto  lg:ml-20 mt-3">
-                        <img className='lg:w-40 ' src="images/uk.png" alt="" />
-                        <img className='lg:w-52 lg:mr-12' src="images/mail.png" alt="" />
-                        <img className='lg:w-52' src="images/dp.png" alt="" />
-                        <img className='lg:w-52 ' src="images/exp.png" alt="" />
+                        <Image width={166} height={166} className='lg:w-40 ' src="/images/uk.png" alt="" />
+                        <Image width={166} height={166} className='lg:w-52 lg:mr-12' src="/images/mail.png" alt="" />
+                        <Image width={166} height={166} className='lg:w-52' src="/images/dp.png" alt="" />
+                        <Image width={166} height={166} className='lg:w-52 ' src="/images/exp.png" alt="" />
                     </div>
                 </div>
             </main>

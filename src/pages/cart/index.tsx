@@ -1,5 +1,6 @@
 import PageBanner from '@/components/banner/page-banner'
 import { clearAll, decreaseCartItem, increseCartItem, removeProductFromCart } from '@/features/AddToCart'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -39,7 +40,7 @@ const Cart = () => {
                                         return (
                                              <div key={idx} className='border rounded-lg hover:shadow p-6'>
                                                   <div key={idx} className="justify-between mb-4 relative bg-white sm:flex sm:justify-start items-start">
-                                                       <img src={item?.featuredImage?.node?.mediaItemUrl || item?.images[0]?.src} alt={item?.name} className="w-full rounded-lg sm:w-28" />
+                                                       <Image src={item?.featuredImage?.node?.mediaItemUrl || item?.images[0]?.src} alt={item?.name} width={112} height={200} className="w-full rounded-lg sm:w-28" />
                                                        <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                                             <div className="mt-5 sm:mt-0 pr-4">
                                                                  <h2 className="text-lg font-bold text-gray-900">{item?.name || item?.title}</h2>
@@ -88,7 +89,7 @@ const Cart = () => {
                                                                                 <p>Design Width : <span className='text-gray-600'>{d?.designWidth} <sup>cm</sup></span></p>
                                                                                 <p>Special Instruction : <span className='text-gray-600'>{d?.specialInstruction}</span></p>
                                                                            </div>
-                                                                           <img src={d?.imageURL} alt="logo" className="md:w-28 mt-3 md:mt-0" />
+                                                                           <Image src={d?.imageURL} alt="logo" width={112} height={200} className="md:w-28 mt-3 md:mt-0" />
                                                                       </li>
                                                                  ))
                                                             }

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Contact() {
@@ -20,7 +21,7 @@ function Contact() {
 </div>
  <div className="cont mb-[20px] ">
 <div className="img cursor-pointer lg:mr-5 mt-11">
-    <img className='w-full h-[128px] ' src="images/Review.png" alt="" />
+    <Image className='w-full h-[128px]' width={300} height={200} src="/images/Review.png" alt="" />
     </div>
     </div>
 </div>

@@ -3,11 +3,13 @@ import { FaRegUser } from 'react-icons/fa'
 import { GoFileDirectory } from 'react-icons/go'
 import { FaRegComments } from 'react-icons/fa'
 import BlogSidebar from '@/components/blogsidebar'
+import PageBanner from '@/components/banner/page-banner'
 
 function bloglay() {
   return (
     <>
-      <main className=' lg:flex lg:flex-wrap justify-between items-center mx-auto max-w-screen-xl px-6 md:px-6  '>
+      <PageBanner title="Blogs"/>
+      <main className='my-20 lg:flex lg:flex-wrap justify-between items-center mx-auto max-w-screen-xl px-6 md:px-6  '>
         <div className="space-y-12 ">
           {Data.map((item, idx) => {
             return (
