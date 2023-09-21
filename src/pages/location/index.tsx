@@ -35,7 +35,7 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
           }
         </div>
 
-        <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>BRANDED T-SHIRTS</h4>
+        <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
       <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
         {products?.map((item: any, idx: number) => {
           const img = item?.featuredImage?.node.mediaItemUrl
