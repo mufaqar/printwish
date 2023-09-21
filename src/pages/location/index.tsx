@@ -1,16 +1,13 @@
 
 import Product_Box from '@/components/product-widgets/product-box'
 import Reviews from '@/components/reviews/reviews'
-import Brands_Slider from '@/components/slider/brand-slider'
 import Image from 'next/image'
 import React from 'react'
 import Faqs from '@/components/faqs/faqs'
-import { GetProductByTag } from '@/config/query'
-import { client } from '@/config/client'
 import Link from 'next/link'
 
 const Location = ({ products, pages }: any) => {
-console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
+  // console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
 
   return (
     <section className='container mx-auto px-4 my-10'>
@@ -29,21 +26,19 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
                 <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
                 <h5 className='text-center mt-4 font-bold text-gray-700 min-h-[57px] text-lg'>{item?.name.replace(/London/g, pages?.title)}</h5>
                 <h6 className='text-center font-light mt-1 text-gray-800'>{item.text.replace(/London/g, pages?.title)}</h6>
-                <button  className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'><Link href="/t-shirts" >View Products</Link></button>
+                <button className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'><Link href="/t-shirts" >View Products</Link></button>
               </div>
             ))
           }
         </div>
 
         <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
-      <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
-        {products?.map((item: any, idx: number) => {
-          const img = item?.featuredImage?.node.mediaItemUrl
-          return <Product_Box key={idx} data={item} image={img} />
-        })}
-      </div>
-
-
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
+          {products?.map((item: any, idx: number) => {
+            const img = item?.featuredImage?.node.mediaItemUrl
+            return <Product_Box key={idx} data={item} image={img} />
+          })}
+        </div>
 
         <div className='grid grid-cols-1 items-center md:grid-cols-2 mt-12'>
           <div className='text-lg text-gray-600'>
@@ -81,7 +76,7 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
           Should you have urgent needs or special requests, our dedicated team is
           available at sales@printwish.co.uk.</p>
 
-          <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
+        <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
           {
             list2.map((item, id) => (
               <div key={id}>
@@ -95,8 +90,8 @@ console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
 
       </div>
 
-    
-      
+
+
       <div
         dangerouslySetInnerHTML={{ __html: pages?.content }}
         className='locationContent'

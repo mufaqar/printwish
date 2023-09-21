@@ -4,7 +4,7 @@ import React from 'react'
 
 const Product_Box = ({ data, image }: any) => {
   const smallPrice  = data?.meta_data?.find((item:any) => item.key === "whitesmall" )
-  const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')) || data.allPaColor.nodes.length
+  const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')) || data?.allPaColor?.nodes?.length
 
   return (
     <article className="p-1 relative">
