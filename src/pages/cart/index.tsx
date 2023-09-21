@@ -1,5 +1,4 @@
-import PageBanner from '@/components/banner/page-banner'
-import { clearAll, decreaseCartItem, increseCartItem, removeProductFromCart } from '@/features/AddToCart'
+import { clearAll, removeProductFromCart } from '@/features/AddToCart'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -10,13 +9,6 @@ const Cart = () => {
      const cartItems = useSelector((state: any) => state.AddToCart.value)
      const dispatch = useDispatch()
      const router = useRouter()
-
-     // const IncreaseCartItemHandler = (product: any) => {
-     //      dispatch(increseCartItem(product))
-     // }
-     // const DecreaseCartItemHandler = (product: any) => {
-     //      dispatch(decreaseCartItem(product))
-     // }
 
      const handleCheckout = () => {
           if (cartItems.length > 0) {
