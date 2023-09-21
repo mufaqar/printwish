@@ -19,10 +19,9 @@ const Checkout = () => {
      }
 
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0);
-     const shipping = cartItems.length > 0 ? 4.22 : 0.00
-     const vat = parseInt(((10 / 100) * price).toFixed(2))
+     const vat = parseInt(((20 / 100) * price).toFixed(2))
 
-     const totalPrice = price+shipping+vat
+     const totalPrice = price+vat
 
 
      return (
@@ -64,7 +63,8 @@ const Checkout = () => {
                                                             <div className="inline-flex">
                                                                  <div className="ml-3">
                                                                       <p className="text-base font-semibold text-white">{item?.name}</p>
-                                                                      <p className="text-sm font-medium text-white text-opacity-80">Price</p>
+                                                                      <p className="font-medium text-white text-opacity-80">Price</p>
+                                                                      <p className="text-xs font-medium text-gray-400">Exclude Vat</p>
                                                                  </div>
                                                             </div>
                                                             <p className="text-sm font-semibold text-white">£ {item?.price}</p>
@@ -76,14 +76,16 @@ const Checkout = () => {
                                    <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
                                    <div className="space-y-2">
                                         <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>£{totalPrice}</span></p>
-                                        <p className="flex justify-between text-sm font-medium text-white"><span>Shipping</span><span>£{shipping}</span></p>
-                                        <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 10%</span><span>£{vat}</span></p>
+                                        <p className="text-xs font-medium !-mt-0 !mb-2 text-gray-400">include Vat</p>
+                                        <p className="flex justify-between text-sm font-medium text-white"><span>Shipping</span><span> Free </span></p>
+                                        <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 20%</span><span>£{vat}</span></p>
                                    </div>
                               </div>
                               <div className="relative mt-10 text-white">
                                    <h3 className="mb-5 text-lg font-bold">Support</h3>
-                                   <p className="text-sm font-semibold">+01 653 235 211 <span className="font-light">(International)</span></p>
-                                   <p className="mt-1 text-sm font-semibold">support@nanohair.com <span className="font-light">(Email)</span></p>
+                                   <p className="text-sm font-semibold">0800 051 0821 <span className="font-light">(International)</span></p>
+                                   <p className="mt-1 text-sm font-semibold">enquiries@printwish.co.uk<span className="font-light">(Email)</span></p>
+                                   <p className="mt-1 text-sm font-semibold">sales@printwish.co.uk<span className="font-light">(Email)</span></p>
                                    <p className="mt-2 text-xs font-medium">Call us now for payment related issues</p>
                               </div>
                               <div className="relative mt-10 flex">

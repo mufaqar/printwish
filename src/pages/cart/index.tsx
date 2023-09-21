@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 
 const Cart = () => {
      const cartItems = useSelector((state: any) => state.AddToCart.value)
-     console.log("🚀 ~ file: index.tsx:10 ~ Cart ~ cartItems:", cartItems)
      const dispatch = useDispatch()
      const router = useRouter()
 
@@ -27,8 +26,7 @@ const Cart = () => {
      }
 
      const totalPrice = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0);
-     const shipping = cartItems.length > 0 ? 4.22 : 0.00
-     const vat = parseInt(((10 / 100) * totalPrice).toFixed(2))
+     const vat = parseInt(((20 / 100) * totalPrice).toFixed(2))
 
      return (
           <>
@@ -68,7 +66,7 @@ const Cart = () => {
                                                                                           <li key={s?.name} className='border-[1px] p-1.5 text-sm mt-[2px] md:mt-0'>
                                                                                                <p>Size: {s?.name} </p>
                                                                                                <p>Quanitity: {s?.quantity} </p>
-                                                                                               <p>Unit Price: {s.price / s?.quantity} </p>
+                                                                                               <p>Unit Price: {(s.price / s?.quantity).toFixed(2)} </p>
                                                                                           </li>
                                                                                      ))
                                                                                 }
@@ -143,12 +141,12 @@ const Cart = () => {
 
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
                               <div className="mb-2 flex justify-between">
-                                   <p className="text-gray-700">Subtotal</p>
-                                   <p className="text-gray-700">£{totalPrice+shipping+vat}</p>
+                                   <p className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></p>
+                                   <p className="text-gray-700">£{totalPrice+vat}</p>
                               </div>
                               <div className="flex justify-between">
                                    <p className="text-gray-700">Shipping</p>
-                                   <p className="text-gray-700">£{shipping}</p>
+                                   <p className="text-gray-700">Free</p>
                               </div>
                               <div className="flex justify-between mt-2">
                                    <p className="text-gray-700">VAT</p>
@@ -158,8 +156,8 @@ const Cart = () => {
                               <div className="flex justify-between">
                                    <p className="text-lg font-bold">Total</p>
                                    <div className="">
-                                        <p className="mb-1 text-lg font-bold">£{totalPrice + shipping} Pound</p>
-                                        <p className="text-sm text-gray-700">including VAT</p>
+                                        <p className="mb-1 text-lg font-bold text-end">£{totalPrice}</p>
+                                        <p className="text-xs text-gray-700">including VAT</p>
                                    </div>
                               </div>
 
