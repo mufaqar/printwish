@@ -10,12 +10,12 @@ export default function Cotton_Bag({ bag }: any) {
 
     return (
         <div>
-            {/* top bar with some content  */}
-            <section className='shadow-lg p-3 hidden md:block'>
-                <div className='container mx-auto px-4 flex flex-wrap justify-between items-center gap-5'>
-                    <Image src="/images/freeukdelivery-1.png.webp" alt="image" width={190} height={48}/>
-                    <Image src="/images/nosetup-1.png.webp" alt="image" width={120} height={48}/>
-                    <Image src="/images/pricemat-1.png.webp" alt="image" width={135} height={48}/>
+          
+            <section className='shadow-lg p-3 md:block'>
+                <div className='container mx-auto flex flex-nowrap justify-between items-center'>
+                    <Image src="/images/freeukdelivery-1.png.webp" alt="image" width={154} height={45}/>
+                    <Image src="/images/nosetup-1.png.webp" alt="image" width={109} height={45}/>
+                    <Image src="/images/pricemat-1.png.webp" alt="image" width={118} height={45}/>
                 </div>
             </section>
             <section className='py-16'>
@@ -140,27 +140,27 @@ export default function Cotton_Bag({ bag }: any) {
                 <div className="bg-[#D9EDF7] w-full mt-4 text-center py-4 font-[700] leading-[1.2em] text-[#070505] ">
                     <p>Send us a quote to get favorite product at the best price.</p>
                 </div>
-                <div className="grid lg:grid-cols-4 text-center gap-14 font-[500] md:grid-cols-2 px-5">
+                <div className="grid lg:grid-cols-4 text-center gap-5 font-[500] grid-cols-2 px-5">
                     <div className="border w-full border-none flex flex-col items-center ">
                         <Image width={166} height={166} src="/images/Group-237469-1.png.webp" alt="" className="" />
-                        <p className="">Pick your items, select the quantity and sizes.</p>
+                        <p className="text-[13px] md:text-[16px]">Pick your items, select the quantity and sizes.</p>
                     </div>
                     <div className="border w-full border-none flex flex-col items-center">
                         <Image width={166} height={166} src="/images/Group-237468-1.png.webp" alt="" className="" />
-                        <p className="">Complete the quote form with your details, choose your print positions, attach your logo, and press submit.</p>
+                        <p className="text-[13px] md:text-[16px]">Complete the quote form with your details, choose your print positions, attach your logo, and press submit.</p>
                     </div>
                     <div className="border w-full border-none flex flex-col items-center">
                         <Image width={166} height={166} src="/images/PIC-03.png.webp" alt="" className="" />
-                        <p className="">We'll create a FREE digital proof of your design for your approval.</p>
+                        <p className="text-[13px] md:text-[16px]">We'll create a FREE digital proof of your design for your approval.</p>
                     </div>
                     <div className="border w-full border-none flex flex-col items-center">
                         <Image width={166} height={166} src="/images/PIC-01-1.png.webp" alt="" className="" />
-                        <p className="">We guarantee to deliver your order by your specified date.</p>
+                        <p className="text-[13px] md:text-[16px]">We guarantee to deliver your order by your specified date.</p>
                     </div>
                 </div>
                 <div >
                     <h2 className="mt-10 text-center font-[700] text-[22px] text-[#208BCB]">Ordering Your Promotional Products - The Simple Way</h2>
-                    <div className="grid grid-cols-2 gap-5 mt-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
                         <div className="bg-[#DDDDDD] py-4 px-4 rounded-lg">
                             <h3 className="text-[#800080] text-[18px] font-[700]">Request Your Quote</h3>
                             <p className="text-[18px] font-[600]">We’ll advise costs and delivery lead times to you via email</p>
