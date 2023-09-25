@@ -57,17 +57,17 @@ export const NavLinks = [
     {
         id: 6,
         name: 'Blog',
-        link: '#',
+        link: '/blog',
     },
     {
         id: 7,
         name: 'Delivery Information',
-        link: '#',
+        link: '/delivery-information',
     },
     {
         id: 8,
         name: 'Terms & Conditions',
-        link: '#',
+        link: '/printing-terms-conditions',
     },
 ]
 
