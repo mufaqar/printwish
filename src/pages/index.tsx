@@ -1,12 +1,8 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { useDispatch, useSelector } from 'react-redux'
 import Main_Banner from '@/components/banner/main-banner'
 import Brands_Slider from '@/components/slider/brand-slider'
 import Reviews from '@/components/reviews/reviews'
 import Category_Box from '@/components/product-widgets/category-box'
 import { Categories, CategoryType } from '@/const/categories'
-import Link from 'next/link'
 import Steps from '@/components/promotional-steps/steps'
 import Product_Slider from '@/components/product-widgets/product-slider'
 import { GetStaticProps } from 'next'
@@ -64,7 +60,6 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   };
 
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
-
   return { props: { products} }
 }
 
