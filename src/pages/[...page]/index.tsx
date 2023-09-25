@@ -21,7 +21,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          {/* CATEGORY PAGE DATA ↓ */}
                          <PageBanner title={query.page} category={category} />
                          {
-                             page  === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
+                             page  === 'custom-t-shirt-printing-cheap-t-shirt-printing' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }

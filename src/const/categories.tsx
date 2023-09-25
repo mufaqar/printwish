@@ -9,7 +9,7 @@ export const Categories = [
         id: 2,
         name: 'Polo Shirts',
         img: "/images/2.webp",
-        link: 'polo-shirts',
+        link: 'polo',
     },
     {
         id: 3,
@@ -39,7 +39,7 @@ export const Categories = [
         id: 7,
         name: 'Beanie/Caps',
         img: "/images/7.png",
-        link: 'beanie-caps',
+        link: 'embroidered-beanies-embroidered-caps-embroidered',
     },
     {
         id: 8,
