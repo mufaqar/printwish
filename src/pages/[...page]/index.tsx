@@ -21,7 +21,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          {/* CATEGORY PAGE DATA ↓ */}
                          <PageBanner title={query.page} category={category} />
                          {
-                             page  === 'custom-t-shirt-printing-cheap-t-shirt-printing' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
+                             page  === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }
@@ -56,17 +56,7 @@ export async function getStaticProps({ params }: any) {
      const p = params.page
      const slug = p[0]
 
-     console.log( );
-
-    
-     
-
-
-   
-    
-     if ((slug.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing") ) {
-
-          console.log("🚀 HI slug:", slug)
+     if (slug.includes("t-shirt-printing")) {
           const response = await client.query({
                query: LOCATION_PAGE,
                variables: {
@@ -82,7 +72,7 @@ export async function getStaticProps({ params }: any) {
             },
           });
 
-          const products = data.productTag?.products.nodes;
+          const products = data.productTag.products.nodes;
 
           /* The code `if(!pages) { return { notFound: true } }` is checking if the `pages` variable is
           falsy. If it is, it means that the requested location page does not exist or could not be
@@ -102,13 +92,6 @@ export async function getStaticProps({ params }: any) {
                },
           };
      }
-     else {
-
-          console.log("🚀 HI 2 slug:", slug)
-
-
-     }
-
 
 
      const dataForCategory = {
