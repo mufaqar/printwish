@@ -427,7 +427,7 @@ const ProductSlug = ({ post, product }: any) => {
           {
             isPrintable &&
             <>
-              <div className='flex justify-end items-end w-full'><button onClick={() => setIsOpen(true)} className='mt-5 font-bold font-roboto text-secondary uppercase hover:underline '>Size Guide</button></div>
+             
               {
                 customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
               }
@@ -445,7 +445,7 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
-              { !customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto'>Step 2 - Select Customization:</h5> }
+              { !customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5> }
               
               {
                 customizedMergeData?.length < 4 &&
