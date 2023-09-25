@@ -1,10 +1,10 @@
 export const Posts = [
      {
-          title: 'GoCustom Pack: 12 Classic Polo Shirts with Free Logo',
+          title: 'Printwish UK Pack: 12 Classic Polo Shirts with Free Logo',
           slug: '1',
           ProductCode: 'BUN-UC101-12',
           image: '/images/image.webp',
-          shortDescription: "This GoCustom Pack is a bundle containing 12 of our best-selling Classic Polo Shirts with FREE LOGO and FREE DELIVERY included. This classic polo shirt is a must-have top by Uneek. Featuring a traditional collar, classic fit and three-button placket design, this shirt will have you looking smart for any occasion.",
+          shortDescription: "This Printwish UK Pack is a bundle containing 12 of our best-selling Classic Polo Shirts with FREE LOGO and FREE DELIVERY included. This classic polo shirt is a must-have top by Uneek. Featuring a traditional collar, classic fit and three-button placket design, this shirt will have you looking smart for any occasion.",
           sizeDescription: [
                {
                     type: "XS",
@@ -198,7 +198,7 @@ export const faqs = [
      },
      {
           question: 'How much does it cost?',
-          answer: "At GoCustom, we offer FREE DELIVERY on all UK mainland orders over £100 For UK Mainland orders under £100 we charge just £5.95 for plain item orders and £6.95 for orders with customisations. For European and International Delivery Charges, please visit our main delivery page."
+          answer: "At Printwish UK, we offer free UK Shipping on all orders. Our lead time is 5-7 working days from the payment date and digital proof approval."
      },   
 ]
 
