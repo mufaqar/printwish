@@ -172,7 +172,7 @@ const ProductSlug = ({ post, product }: any) => {
     }
   }, [innerWidth])
 
-  const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "t-shirts")
+  const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "custom-t-shirt-printing-cheap-t-shirt-printing")
   const dispatch = useDispatch()
   const [totalQuantity, setTotalQuantity] = useState(0);
   useEffect(() => {

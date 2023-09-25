@@ -3,7 +3,7 @@ export const Categories = [
         id: 1,
         name: 'T-SHIRTS',
         img: "/images/1.webp",
-        link: 't-shirts',
+        link: 'custom-t-shirt-printing-cheap-t-shirt-printing',
     },
     {
         id: 2,
