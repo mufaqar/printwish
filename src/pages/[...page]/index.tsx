@@ -11,7 +11,6 @@ import Pagination from '@/components/pagination/pagination'
 import Faqs from '@/components/faqs/faqs'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo }: any) => {
-     console.log("🚀 ~ file: index.tsx:13 ~ CategorySlug ~ categoryInfo:", categoryInfo)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
