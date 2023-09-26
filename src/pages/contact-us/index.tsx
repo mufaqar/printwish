@@ -2,45 +2,125 @@ import Image from 'next/image'
 import React from 'react'
 
 function Contact() {
-  return (
-    <>
-    <main className='items-center mx-auto max-w-screen-xl px-6 md:px-6 py-2.5'>
-<div className="lg:flex justify-between ">
-<div className="txt">
-<form action="#" className="space-y-3">
-          <div>
-              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-              <input type="email" id="email" className="shadow-sm lg:w-[700px]  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required/>
-          </div>
-          <div className="sm:col-span-2">
-              <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400 w-96">Your message</label>
-              <textarea id="message" rows={6} className="block p-2.5 w-full h-16 text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
-          </div>
-          <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-950 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300  dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
-      </form>
-</div>
- <div className="cont mb-[20px] ">
-<div className="img cursor-pointer lg:mr-5 mt-11">
-    <Image className='w-full h-[128px]' width={300} height={200} src="/images/Review.png" alt="" />
-    </div>
-    </div>
-</div>
-<div className="text-center cursor-pointer mb-20">
-    <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-1'>Get in touch</h4>
-<h4 className='lg:w-[450px] m-auto text-[#000000] text-[16px] leading-[27px] pb-1'><strong>At PrintWish we want to provide you with awesome customer service. Please use the following methods of contact so we can attend your needs with the attention you deserve</strong></h4>
-   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-2'>Contact Info</h4>
-   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-[5px]'>Phone</h4>
-   <p className='text-[14px] font-[700] pb-[5px]'><a className='hover:underline' href="">0800 051 0821</a></p>
-   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-[5px]'>Email:</h4>
-   <p className='text-[14px] font-[700] pb-[10px]'><a className='hover:underline' href="">enquiries@printwish.co.uk</a></p>
-   <h4 className='text-[16px] font-[700] text-[#0188CC] leading-[19px] pb-[10px]'>The Office</h4>
-   <h4 className='pb-1 text-[14px] '><strong>PrintWish</strong></h4>
-   <p className='text-[14px]'><strong>6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS</strong>  </p>
-    </div>
+    return (
+        <>
+            <div className="container mx-auto px-4 my-20">
+                <div>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">CONTACT US</h2>
+                </div>
 
-    </main>
-    </>
-  )
+                <div className="flex flex-col md:flex-row gap-5 w-full">
+                    <div className="mt-5 md:w-96">
+                        <div className="py-3">
+                            <h3 className="font-bold">Printwish</h3>
+                            <div className="border border-b-0 mt-5"></div>
+                        </div>
+                        <div className="py-4 flex items-center gap-3">
+                            <i className="fa-solid fa-phone-flip text-3xl"></i>
+                            <div>
+                                <p>
+                                    <span className="font-bold">Sales Enquiries Tel:</span> 0800 051 0821
+                                </p>
+                                <p><span className="font-bold">Accounts Tel:</span> 0800 051 0821 </p>
+                            </div>
+                        </div>
+                        <div className="border border-b-0 mt-5"></div>
+
+                        <div className="py-4 flex items-center gap-3">
+                            <i className="fa-regular fa-envelope text-3xl"></i>
+                            <div>
+                                <p>
+                                    <span className="font-bold">Sales:</span>sales@gocustomlothing.com
+                                </p>
+                                <p>
+                                    <span className="font-bold">Accounts:</span
+                                    >accounts@gocustomlothing.com
+                                </p>
+                            </div>
+                        </div>
+                        <div className="border border-b-0 mt-5"></div>
+
+                        <div className="py-4">
+                            <p><span className="font-bold">Mon-Friday:</span> 09:00am - 05:30pm</p>
+                            <p><span className="font-bold">Sat/Sun:</span>Closed</p>
+                            <p><span className="font-bold">Bank Holidays:</span>Closed</p>
+
+                            <p className="py-5">
+                                Feel free to send us a message via the from on this page and we`ll
+                                get back to you as soon as possible.
+                            </p>
+                            <p>
+                                Alternatively, you can always call us during hours on
+                                <span className="text-green-500">0800 051 0821</span>
+                            </p>
+                        </div>
+                        <div className="border border-b-0 mt-5"></div>
+
+                        <div className="py-4">
+                            <h3 className="font-bold">Drop Shipping</h3>
+                            <p className="py-4">
+                                Looking for help or info related to drop shipping
+                            </p>
+                            <button className="bg-green-700 px-10 py-3 rounded-full text-white">
+                                DROP SHIPPING HELP
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="border-l-0 border"></div>
+                    <div className="px-4 mt-8 w-full">
+                        <div>
+                            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold">
+                                Contact us
+                            </h3>
+                        </div>
+
+                        <div className="flex  gap-4">
+                            <div className="mt-8">
+                                <p className="py-6">Subject</p>
+                                <p>Email address</p>
+                                <p className="py-5">Message</p>
+                            </div>
+                            <div className="mt-12">
+                                <input
+                                    type="text"
+                                    className="border outline-none border-gray-300 w-full max-w-96 py-2 px-2"
+                                    placeholder="Artword Enquiry"
+                                />
+                                <br />
+                                <input
+                                    type="text"
+                                    className="border outline-none w-full max-w-96  border-gray-300 py-2 px-2 mt-5"
+                                    placeholder="Artword Enquiry"
+                                />
+                                <div>
+                                    <textarea
+                                        name=""
+                                        id=""
+                                        rows={4}
+                                        className="border mt-5 w-full max-w-[500px] outline-none border-gray-300 py-2 px-2" placeholder="We can we help?"
+                                    ></textarea>
+                                    <div className="flex gap-2">
+                                        <input type="checkbox" name="" id="" className="mt-[3px]"/>
+                                        <p>
+                                            I agree to the terms and conditions and the privacy policy
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button
+                                        className="bg-green-500 py-2 px-8 hover:scale-105 rounded-full mt-5 text-white"
+                                    >
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default Contact
