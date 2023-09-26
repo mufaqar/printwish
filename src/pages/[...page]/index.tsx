@@ -10,6 +10,7 @@ import { GetProductByTag, LOCATION_PAGE } from '@/config/query'
 import Pagination from '@/components/pagination/pagination'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category }: any) => {
+console.log("🚀 ~ file: index.tsx:13 ~ CategorySlug ~ productsForLocationPage:", products)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
@@ -17,7 +18,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
      return (
           <>
                {
-                    slug?.includes("t-shirt-printing") ? <Location pages={pages} products={productsForLocationPage} /> : <>
+                    slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
                          <PageBanner title={query.page} category={category} />
                          {
@@ -56,7 +57,7 @@ export async function getStaticProps({ params }: any) {
      const p = params.page
      const slug = p[0]
 
-     if (slug.includes("t-shirt-printing")) {
+     if (slug.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing") {
           const response = await client.query({
                query: LOCATION_PAGE,
                variables: {
@@ -72,7 +73,7 @@ export async function getStaticProps({ params }: any) {
             },
           });
 
-          const products = data.productTag.products.nodes;
+          const products = data.productTag?.products.nodes;
 
           /* The code `if(!pages) { return { notFound: true } }` is checking if the `pages` variable is
           falsy. If it is, it means that the requested location page does not exist or could not be
