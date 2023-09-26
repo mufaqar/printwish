@@ -6,10 +6,12 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Location from '../location'
 import { client } from '@/config/client'
-import { GetProductByTag, LOCATION_PAGE } from '@/config/query'
+import { GetProductByTag, LOCATION_PAGE, PRODUCT_CATEGORY_INFO } from '@/config/query'
 import Pagination from '@/components/pagination/pagination'
+import Faqs from '@/components/faqs/faqs'
 
-const CategorySlug = ({ products, slug, pages, productsForLocationPage, category }: any) => {
+const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo }: any) => {
+     console.log("🚀 ~ file: index.tsx:13 ~ CategorySlug ~ categoryInfo:", categoryInfo)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
@@ -21,7 +23,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          {/* CATEGORY PAGE DATA ↓ */}
                          <PageBanner title={query.page} category={category} />
                          {
-                             page  === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
+                              page === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }
@@ -34,6 +36,18 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                                              return <Product_Box key={idx} data={item} image={img} />
                                         })}
                                    </div>
+                                   <div className='category_pages mt-10'>
+                                        <div
+                                             dangerouslySetInnerHTML={{ __html: categoryInfo?.content }}
+                                        />
+                                   </div>
+                                   {
+                                        categoryInfo?.faqs?.length > 0 && <div> 
+                                           <h2 className='text-gray-400 text-xl font-light md:text-3xl'> Frequently Asked Questions </h2>
+                                           <Faqs data={categoryInfo?.faqs} />
+                                        </div>
+                                   }
+                                   
                               </div> : <p className='container mx-auto px-3 my-20 w-full text-center'>Result Not Found!</p>
                          }
 
@@ -65,11 +79,11 @@ export async function getStaticProps({ params }: any) {
           });
           const pages = response?.data?.locationBy;
 
-          const {data} = await client.query({
-            query: GetProductByTag,
-            variables: {
-              tag: slug.replace('t-shirt-printing-',''),
-            },
+          const { data } = await client.query({
+               query: GetProductByTag,
+               variables: {
+                    tag: slug.replace('t-shirt-printing-', ''),
+               },
           });
 
           const products = data.productTag?.products.nodes;
@@ -83,7 +97,6 @@ export async function getStaticProps({ params }: any) {
                     notFound: true
                }
           }
-
           return {
                props: {
                     productsForLocationPage: products,
@@ -93,6 +106,12 @@ export async function getStaticProps({ params }: any) {
           };
      }
 
+     const response = await client.query({
+          query: PRODUCT_CATEGORY_INFO,
+          variables: {
+               category: slug,
+          },
+     });
 
      const dataForCategory = {
           per_page: 100,
@@ -117,7 +136,8 @@ export async function getStaticProps({ params }: any) {
           props: {
                products: products,
                slug,
-               category: getID
+               category: getID,
+               categoryInfo: response?.data?.productCategory?.categoryInfo
           },
      };
 

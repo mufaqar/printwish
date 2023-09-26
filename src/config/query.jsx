@@ -221,3 +221,19 @@ query GetProductByTag($tag: ID = "") {
     }
   }
 }`;
+
+
+
+export const PRODUCT_CATEGORY_INFO = gql`
+query PRODUCT_CATEGORY_INFO($idType: ProductCategoryIdType = SLUG, $category: ID = "") {
+  productCategory(id: $category, idType: $idType) {
+    categoryInfo {
+      content
+      faqs {
+        answer
+        question
+      }
+    }
+  }
+}
+`;
