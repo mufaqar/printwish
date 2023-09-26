@@ -11,6 +11,7 @@ import Pagination from '@/components/pagination/pagination'
 import Faqs from '@/components/faqs/faqs'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo }: any) => {
+console.log("🚀 ~ file: index.tsx:14 ~ CategorySlug ~ category:", category)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
@@ -20,7 +21,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
-                         <PageBanner title={query.page} category={category} />
+                         <PageBanner title={category.name} category={category} />
                          {
                               page === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
