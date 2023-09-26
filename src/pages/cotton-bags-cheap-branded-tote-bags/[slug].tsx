@@ -10,18 +10,19 @@ export default function Cotton_Bag({ bag }: any) {
 
     return (
         <div>
-          
+            
             <section className='shadow-lg p-3 md:block'>
                 <div className='container mx-auto flex flex-nowrap justify-between items-center'>
-                    <Image src="/images/freeukdelivery-1.png.webp" alt="image" width={154} height={45}/>
-                    <Image src="/images/nosetup-1.png.webp" alt="image" width={109} height={45}/>
-                    <Image src="/images/pricemat-1.png.webp" alt="image" width={118} height={45}/>
+                    <Image src="/images/freeukdelivery-1.png.webp" alt="image" width={154} height={45} className='w-28 sm:w-[154px]'/>
+                    <Image src="/images/nosetup-1.png.webp" alt="image" width={109} height={45} className='w-24 sm:w-[109px]'/>
+                    <Image src="/images/pricemat-1.png.webp" alt="image" width={118} height={45} className='w-24 sm:w-[118px]'/>
                 </div>
             </section>
-            <section className='py-16'>
+            <figure className="flex justify-center my-2 md:hidden"><Image src="/images/stars.png" alt='stars' width={1024} height={315} /></figure>
+            <section className='py-4 marker:md:py-16'>
                 <div className='max-w-screen-xl mx-auto px-4 flex md:flex-row flex-col gap-5'>
                     <div className='md:w-1/4 w-full'>
-                        <h2 className='text-2xl font-bold'>
+                        <h2 className='text-2xl font-bold text-center md:text-left text-blue-500'>
                             {bag?.title}
                         </h2>
                         <Image src="/images/cotton.jpg" alt='cotton' width={665} height={665} />
@@ -53,8 +54,8 @@ export default function Cotton_Bag({ bag }: any) {
                         </ul>
                     </div>
                     <div className='md:w-2/4 w-full'>
-                        <Image src="/images/stars.png" alt='stars' width={1024} height={315} />
-                        <h2 className='font-semibold bg-primary text-white text-2xl text-center py-1.5 px-4'>
+                        <Image src="/images/stars.png" alt='stars' className='hidden md:block' width={1024} height={315} />
+                        <h2 className='font-semibold bg-primary text-white text-2xl text-center py-1.5 mb-4 px-4'>
                             Printed From £{bag?.bagsInfo?.price} Each Ex Vat
                         </h2>
                         <p className='text-lg text-gray-600 font-roboto'>
