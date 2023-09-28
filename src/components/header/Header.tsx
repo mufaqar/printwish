@@ -71,7 +71,7 @@ const Header = () => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Cheap Bulk Custom T-Shirt Printing in London, UK - Wholesale Tshirt Printing</title>
         <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
         <link rel="canonical" href="https://printwish.co.uk/" />
@@ -91,7 +91,7 @@ const Header = () => {
         <meta name="twitter:site" content="@PrintwishUk" />
         <meta name="twitter:label1" content="Est. reading time" />
         <meta name="twitter:data1" content="57 minutes" />
-      </Head>
+      </Head> */}
       <header className="shadow-md">
         <TopBar />
         <nav className="bg-secondary z-50">

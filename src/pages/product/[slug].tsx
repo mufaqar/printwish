@@ -28,6 +28,8 @@ import SelectedCustmizedLayout from '@/components/selectedCustmizedLayout/select
 import Slider from 'react-slick';
 import { faqs } from '../../../public/data';
 import { useRouter } from 'next/router';
+import parse from "html-react-parser";
+import Head from 'next/head';
 
 
 interface IColor {
@@ -37,6 +39,8 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
+  const fullHead = parse(product.seo.fullHead);
+
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
@@ -53,7 +57,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
-  const [reset,setRest] = useState(false)
+  const [reset, setRest] = useState(false)
 
   const HandleColor = (clr: any) => {
     const colorExists = selectedProduct?.colors?.some((color: any) => color.name === clr.name);
@@ -221,9 +225,9 @@ const ProductSlug = ({ post, product }: any) => {
     data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
     dispatch(addItem(data))
     setSelectedProduct({
-      textCreator:[],
-      designArtWork:[],
-      colors:[],
+      textCreator: [],
+      designArtWork: [],
+      colors: [],
       productId: product.id,
       title: product.title
     })
@@ -232,6 +236,10 @@ const ProductSlug = ({ post, product }: any) => {
 
   return (
     <>
+      <Head>
+        <title>{product.seo.title}</title>
+        {fullHead}
+      </Head>
       {/* top bar with some content  */}
       <section className='shadow-lg p-3 hidden md:block'>
         <div className='container mx-auto px-4 flex flex-wrap justify-center items-center gap-5'>
@@ -253,10 +261,10 @@ const ProductSlug = ({ post, product }: any) => {
         </div>
       </section>
       <div className='block md:hidden px-3 container mx-auto'>
-            <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
-            <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
+        <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
+        <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
       </div>
-          
+
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%] image-slider'>
           <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg p-1'>
@@ -349,18 +357,18 @@ const ProductSlug = ({ post, product }: any) => {
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
             <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
           </div>
-            <div className="pt-[1px] w-full bg-gray-300 my-8" />
-            <div className='text-sm md:text-base text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
-            {
-              isPrintable &&
-              <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
-                <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
-                <div className='flex gap-8 '>
-                  <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
-                </div>
-              </section>
-            }
-          
+          <div className="pt-[1px] w-full bg-gray-300 my-8" />
+          <div className='text-sm md:text-base text-accent' dangerouslySetInnerHTML={{ __html: product?.excerpt }} />
+          {
+            isPrintable &&
+            <section className='my-7 bg-background p-8 rounded-lg flex justify-between items-center'>
+              <p className='text-lg text-accent font-roboto'>Customisations Available:</p>
+              <div className='flex gap-8 '>
+                <span className='flex items-center text-lg text-accent font-roboto'><BiCheck size={28} className='text-green-500' /> Print</span>
+              </div>
+            </section>
+          }
+
 
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
           <section className='bg-background p-3 md:p-8 rounded-lg '>
@@ -427,7 +435,7 @@ const ProductSlug = ({ post, product }: any) => {
           {
             isPrintable &&
             <>
-             
+
               {
                 customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
               }
@@ -445,8 +453,8 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
               <SizeGuide />
-              { !customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5> }
-              
+              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5>}
+
               {
                 customizedMergeData?.length < 4 &&
                 <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>

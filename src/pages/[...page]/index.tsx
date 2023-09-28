@@ -9,15 +9,26 @@ import { client } from '@/config/client'
 import { GetProductByTag, LOCATION_PAGE, PRODUCT_CATEGORY_INFO } from '@/config/query'
 import Pagination from '@/components/pagination/pagination'
 import Faqs from '@/components/faqs/faqs'
+import Head from 'next/head'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo }: any) => {
-console.log("🚀 ~ file: index.tsx:14 ~ CategorySlug ~ category:", category)
+
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
+     const pageTitle = page?.replace(/-/g, " ");
+     function capitalizeWords(input:any) {
+          return input.replace(/(^|\s)\S/g, function (match:any) {
+            return match.toUpperCase();
+          });
+        }
+        const capitalizedPageTitle = capitalizeWords(pageTitle);
 
      return (
           <>
+          <Head>
+               <title>{capitalizedPageTitle}</title>
+          </Head>
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}

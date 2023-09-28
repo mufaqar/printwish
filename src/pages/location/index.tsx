@@ -5,11 +5,19 @@ import Image from 'next/image'
 import React from 'react'
 import Faqs from '@/components/faqs/faqs'
 import Link from 'next/link'
+import Head from 'next/head'
+import parse from "html-react-parser";
+
 
 const Location = ({ products, pages }: any) => {
-  // console.log("🚀 ~ file: index.tsx:12 ~ Location ~ products:", products)
+  const fullHead = parse(pages.seo.fullHead);
 
   return (
+    <>
+    <Head>
+      <title>{pages.seo.title}</title>
+      {fullHead}
+    </Head>
     <section className='container mx-auto px-4 my-10'>
       <div className='mb-10'>
         <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Personalised Clothing {pages?.title}</h2>
@@ -105,6 +113,7 @@ const Location = ({ products, pages }: any) => {
 
       <Reviews />
     </section>
+    </>
   )
 }
 

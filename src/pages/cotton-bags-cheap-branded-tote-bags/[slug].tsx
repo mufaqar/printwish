@@ -2,15 +2,22 @@ import PageBanner from '@/components/banner/page-banner'
 import { client } from '@/config/client'
 import { SINGLEBAG } from '@/config/query'
 import { GetStaticPaths } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import parse from "html-react-parser";
 
 export default function Cotton_Bag({ bag }: any) {
+    const fullHead = parse(bag.seo.fullHead);
 
     return (
+        <>
+        <Head>
+            <title>{bag.seo.title}</title>
+            {fullHead}
+        </Head>
         <div>
-            
             <section className='shadow-lg p-3 md:block'>
                 <div className='container mx-auto flex flex-nowrap justify-between items-center'>
                     <Image src="/images/freeukdelivery-1.png.webp" alt="image" width={154} height={45} className='w-28 sm:w-[154px]'/>
@@ -187,6 +194,7 @@ export default function Cotton_Bag({ bag }: any) {
 
             </section>
         </div>
+        </>
     )
 }
 

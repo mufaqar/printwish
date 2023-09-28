@@ -23,6 +23,7 @@
     "eslint-config-next": "13.4.10",
     "flowbite": "^1.7.0",
     "graphql": "^16.8.0",
+    "html-react-parser": "^4.2.2",
     "next": "13.4.10",
     "next-transpile-modules": "^10.0.1",
     "nextjs-progressbar": "^0.0.16",

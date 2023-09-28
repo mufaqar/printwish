@@ -9,6 +9,10 @@ export const GET_PRODUCT = gql`
         excerpt
         content
         sku
+        seo {
+          fullHead
+          title
+        }
         featuredImage {
           node {
             mediaItemUrl
@@ -112,6 +116,10 @@ query GetLocation($slug: String!) {
     title
     content
     excerpt
+    seo {
+      fullHead
+      title
+    }
     locationinfo {
       faqs {
         answer
@@ -184,6 +192,11 @@ query SINGLEBAG($id: ID!) {
       node {
         mediaItemUrl
       }
+    }
+    seo {
+      fullHead
+      title
+      metaDesc
     }
   }
 }`;
