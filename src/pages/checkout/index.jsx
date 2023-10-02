@@ -1,29 +1,36 @@
-import { apiRequest } from '@/config/requests'
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { orderData } from '../../../public/data'
-import { toast } from 'react-toastify'
-import { clearAll } from '@/features/AddToCart'
-import { useRouter } from 'next/router'
+import React, { useContext, useState } from 'react'
+import { useSelector } from 'react-redux'
 import CraditCard from '@/components/paymentOption/CraditCard'
 import { FaArrowLeft } from 'react-icons/fa'
 import Link from 'next/link'
+import { SettingsContext } from '@/context/global-context'
+import { useForm } from "react-hook-form"
+import { orderData } from '../../../public/data'
 
 const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
-     // const dispatch = useDispatch()
-     // const router = useRouter()
      const [proceed, setProceed] = useState(false)
-
-     const PlaceOrder = async (cartItems) => {
-          setProceed(true)
-     }
 
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0);
      const vat = parseInt(((20 / 100) * price).toFixed(2))
+     const { setAllCartItems } = useContext(SettingsContext)
+     const totalPrice = price + vat
 
-     const totalPrice = price+vat
-
+     const {
+          register,
+          handleSubmit,
+          watch,
+          formState: { errors },
+     } = useForm()
+     const onSubmit = (data) => {
+          const billing = orderData['billing']
+          billing.email = data.email
+          billing.first_name = data.name
+          billing.phone = data.mobile
+          billing.address_1 = data.address
+          setProceed(true);
+          setAllCartItems(cartItems)
+     }
 
      return (
           <>
@@ -31,22 +38,38 @@ const Checkout = () => {
                     <div className="grid min-h-screen grid-cols-2">
                          <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">
                               <div className="mx-auto w-full max-w-lg">
-                                   {proceed && <FaArrowLeft className='text-gray-500 hover:text-black text-2xl mb-5' onClick={()=>setProceed(!proceed)}/>}
+                                   {proceed && <FaArrowLeft className='text-gray-500 hover:text-black text-2xl mb-5' onClick={() => setProceed(!proceed)} />}
                                    <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">Secure Checkout<span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span></h1>
                                    {
                                         !proceed &&
                                         <>
-                                             <form action="" className="mt-10 flex flex-col space-y-4">
-                                                  <div><label className="text-xs font-semibold text-gray-500">Name</label><input type="text" id="card-name" name="name" placeholder="name" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
-                                                  <div><label className="text-xs font-semibold text-gray-500">Email</label><input type="email" id="email" name="email" placeholder="john.capler@fang.com" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
-                                                  <div><label className="text-xs font-semibold text-gray-500">Mobile Number</label><input type="text" id="card-name" name="mobile-number" placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" /></div>
-                                                  <div><label className="text-xs font-semibold text-gray-500">Address</label><textarea placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"></textarea>     </div>
+                                             <form onSubmit={handleSubmit(onSubmit)} className="mt-10 flex flex-col space-y-4">
+                                                  <div>
+                                                       <label className="text-xs font-semibold text-gray-500">Name</label>
+                                                       <input type="text" {...register("name", { required: true })} id="card-name" name="name" placeholder="name" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" />
+                                                       {errors.name && <span className='text-red-400 m-1'>This field is required</span>}
+                                                  </div>
+                                                  <div>
+                                                       <label className="text-xs font-semibold text-gray-500">Email</label>
+                                                       <input type="email" id="email" {...register("email", { required: true })}  name="email" placeholder="john.capler@fang.com" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" />
+                                                       {errors.email && <span className='text-red-400 m-1'>This field is required</span>}
+                                                  </div>
+                                                  <div>
+                                                       <label className="text-xs font-semibold text-gray-500">Mobile Number</label>
+                                                       <input type="text" id="card-name" {...register("mobile")} name="mobile" placeholder="mobile number" className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500" />
+                                                       {errors.mobile && <span className='text-red-400 m-1'>This field is required</span>}
+                                                  </div>
+                                                  <div>
+                                                       <label className="text-xs font-semibold text-gray-500">Address</label>
+                                                       <textarea placeholder="Address" {...register("address", { required: true })} className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"></textarea>
+                                                       {errors.address && <span className='text-red-400 m-1'>This field is required</span>}
+                                                  </div>
+                                                  <p className="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <Link href="/terms-and-conditions" className="whitespace-nowrap text-secondary underline hover:text-primary">Terms and Conditions</Link></p>
+                                                  <input type="submit" className="mt-4 cursor-pointer inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg" value="Proceed" />
                                              </form>
-                                             <p className="mt-10 text-center text-sm font-semibold text-gray-500">By placing this order you agree to the <Link href="/terms-and-conditions" className="whitespace-nowrap text-secondary underline hover:text-primary">Terms and Conditions</Link></p>
-                                             <button type="submit" onClick={() => PlaceOrder(cartItems)} className="mt-4 inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg">Proceed</button>
                                         </>
                                    }
-                                   {proceed && <CraditCard totalPrice={totalPrice}/>}
+                                   {proceed && <CraditCard totalPrice={totalPrice} />}
                               </div>
                          </div>
                          <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">

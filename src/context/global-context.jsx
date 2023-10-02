@@ -16,6 +16,8 @@ export const SettingsProvider = ({ children }) => {
   const [imageURL, setImageURL] = useState(null);
   const [customizationButton, setCustomizationButton] = useState(false)
   const [designPosition, setDesignPosition] = useState('')
+  const [allCartItems, setAllCartItems] = useState()
+
 
   const [selectedProduct, setSelectedProduct] = useState({
     colors: [],
@@ -78,7 +80,8 @@ export const SettingsProvider = ({ children }) => {
         imageURL, setImageURL,
         customizationButton, setCustomizationButton,
         locations,
-        designPosition, setDesignPosition
+        designPosition, setDesignPosition,
+        allCartItems, setAllCartItems
       }}
     >
       {children}

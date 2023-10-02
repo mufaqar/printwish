@@ -1,5 +1,7 @@
+import { SettingsContext } from '@/context/global-context';
 import { clearAll } from '@/features/AddToCart';
-import React, { useEffect, useState } from 'react'
+import useOrderHandler from '@/hooks/useOrderHandler';
+import React, { useContext, useEffect, useState } from 'react'
 import { BsEmojiHeartEyes } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { CreditCard, PaymentForm } from 'react-square-web-payments-sdk';
@@ -8,10 +10,13 @@ const CraditCard = ({totalPrice}) => {
      const [resp, setResp] = useState()
      const [status, setStatus] = useState(false)
      const dispatch = useDispatch()
+     const {allCartItems} = useContext(SettingsContext)
+     const {OrderSubmit} = useOrderHandler()
 
      useEffect(()=>{
           if(resp?.status === "COMPLETED"){
                setStatus(true)
+               OrderSubmit(allCartItems)
                dispatch(clearAll())
           }
      },[resp])
@@ -45,7 +50,6 @@ const CraditCard = ({totalPrice}) => {
                     })}
                     locationId='LBEQWG43ZP71Z'
                >
-
                     <CreditCard />
                </PaymentForm>
           </section>
