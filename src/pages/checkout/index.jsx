@@ -75,8 +75,7 @@ const Checkout = () => {
                          <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
                               <h2 className="sr-only">Order summary</h2>
                               <div>
-                                   <img src="https://images.unsplash.com/photo-1581318694548-0fb6e47fe59b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" className="absolute inset-0 h-full w-full object-cover" />
-                                   <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-white to-primary opacity-95"></div>
+                                   <div className="absolute inset-0 h-full w-full bg-primary opacity-95"></div>
                               </div>
                               <div className="relative">
                                    <ul className="space-y-5">
