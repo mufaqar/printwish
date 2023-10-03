@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-function about() {
+function About() {
   return (
     <>
       <main className=' container mx-auto px-4 py-5'>
@@ -47,4 +47,4 @@ function about() {
     </>
   )
 }
-export default about
+export default About

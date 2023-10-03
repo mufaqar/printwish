@@ -1,22 +1,21 @@
 
-import Product_Box from '@/components/product-widgets/product-box'
-import Reviews from '@/components/reviews/reviews'
+import Product_Box from '../../components/product-widgets/product-box'
+import Reviews from '../../components/reviews/reviews'
 import Image from 'next/image'
 import React from 'react'
-import Faqs from '@/components/faqs/faqs'
+import Faqs from '../../components/faqs/faqs'
 import Link from 'next/link'
 import Head from 'next/head'
-import parse from "html-react-parser";
+// import parse from "html-react-parser";
 
 
 const Location = ({ products, pages }: any) => {
-  const fullHead = parse(pages.seo.fullHead);
+  // const fullHead = parse(pages.seo.fullHead);
 
   return (
     <>
     <Head>
-      <title>{pages.seo.title}</title>
-      {fullHead}
+      <title>{pages?.seo?.title}</title>
     </Head>
     <section className='container mx-auto px-4 my-10'>
       <div className='mb-10'>
