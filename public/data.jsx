@@ -137,8 +137,9 @@ export const designVarient = [
 
 export const orderData = {
      payment_method: "bacs",
-     payment_method_title: "Direct Bank Transfer",
+     payment_method_title: "Square Up",
      set_paid: true,
+     status: "processing",
      billing: {
           first_name: "Test",
           last_name: "Order",
@@ -163,6 +164,7 @@ export const orderData = {
      },
      line_items: [],
      shipping_lines: []
+
 };
 
 
