@@ -7,7 +7,7 @@ BigInt.prototype.toJSON = function () {
 
 const { paymentsApi } = new Client({
   accessToken: process.env.SQUARE_ACCESS_TOKEN,
-  environment: "sandbox",
+  environment: "production",
 });
 
 export default async function handler(req, res) {

@@ -26,7 +26,7 @@ const CraditCard = ({totalPrice}) => {
                <PaymentForm
                      //sq0idp-AqR_N1SYztjgjFKQjWbT9g
                      //L0EHQKCH6RFS5
-                    applicationId="sandbox-sq0idb-JGT7nJ4pMxI3WF4eU1rQhg"
+                    applicationId="sq0idp-AqR_N1SYztjgjFKQjWbT9g"
                     cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
                          const response = await fetch("/api/pay", {
                               method: "POST",
