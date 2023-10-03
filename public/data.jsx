@@ -141,8 +141,8 @@ export const orderData = {
      set_paid: true,
      status: "processing",
      billing: {
-          first_name: "Test",
-          last_name: "Order",
+          first_name: "Matt",
+          last_name: "Parker",
           address_1: "969 Market",
           address_2: "",
           city: "San Francisco",
@@ -153,14 +153,7 @@ export const orderData = {
           phone: "(555) 555-5555"
      },
      shipping: {
-          first_name: "John",
-          last_name: "Doe",
-          address_1: "969 Market",
-          address_2: "",
-          city: "San Francisco",
-          state: "CA",
-          postcode: "94103",
-          country: "US"
+          
      },
      line_items: [],
      shipping_lines: []
