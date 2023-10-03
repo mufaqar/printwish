@@ -25,7 +25,7 @@ const CraditCard = ({totalPrice}) => {
           <>
           <section className='mt-16'>
                <PaymentForm
-                    applicationId="sandbox-sq0idb-JGT7nJ4pMxI3WF4eU1rQhg"
+                    applicationId="sq0idp-AqR_N1SYztjgjFKQjWbT9g"
                     cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
                          const response = await fetch("/api/pay", {
                               method: "POST",
@@ -41,14 +41,14 @@ const CraditCard = ({totalPrice}) => {
                          setResp(payment)
                     }}
                     createPaymentRequest={() => ({
-                         countryCode: "US",
-                         currencyCode: "USD",
+                         countryCode: "UK",
+                         currencyCode: "GBP",
                          total: {
                               amount: `${totalPrice}.00`,
                               label: "Total",
                          },
                     })}
-                    locationId='LBEQWG43ZP71Z'
+                    locationId='L0EHQKCH6RFS5'
                >
                     <CreditCard />
                </PaymentForm>
