@@ -138,7 +138,7 @@ const Cart = () => {
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
                               <div className="mb-2 flex justify-between">
                                    <div className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></div>
-                                   <p className="text-gray-700">£{totalPrice+vat}</p>
+                                   <p className="text-gray-700">£{totalPrice}</p>
                               </div>
                               <div className="flex justify-between">
                                    <p className="text-gray-700">Shipping</p>
@@ -152,7 +152,7 @@ const Cart = () => {
                               <div className="flex justify-between">
                                    <p className="text-lg font-bold">Total</p>
                                    <div className="">
-                                        <p className="mb-1 text-lg font-bold text-end">£{totalPrice}</p>
+                                        <p className="mb-1 text-lg font-bold text-end">£{totalPrice+vat}</p>
                                         <p className="text-xs text-gray-700">including VAT</p>
                                    </div>
                               </div>
