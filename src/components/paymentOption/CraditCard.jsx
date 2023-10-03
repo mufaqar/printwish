@@ -25,7 +25,7 @@ const CraditCard = ({totalPrice}) => {
           <>
           <section className='mt-16'>
                <PaymentForm
-                    applicationId="sandbox-sq0idb-7JNy_rfoZZNevgwzrObecg"
+                    applicationId="sandbox-sq0idb-JGT7nJ4pMxI3WF4eU1rQhg"
                     cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
                          const response = await fetch("/api/pay", {
                               method: "POST",
