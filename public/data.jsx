@@ -153,14 +153,19 @@ export const orderData = {
           phone: "(555) 555-5555"
      },
      shipping: {
-          
+          first_name: "John",
+          last_name: "Doe",
+          address_1: "969 Market",
+          address_2: "",
+          city: "San Francisco",
+          state: "CA",
+          postcode: "94103",
+          country: "US"
      },
      line_items: [],
      shipping_lines: []
 
 };
-
-
 
 // images data 
 export const TShirtPrint = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4xNDYiIGhlaWdodD0iMTguMTI2IiB2aWV3Qm94PSIwIDAgMTcuMTQ2IDE4LjEyNiI+DQogIDxnIGlkPSJHcnVwb18yNTM2IiBkYXRhLW5hbWU9IkdydXBvIDI1MzYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM0Ni4xNTIgLTI2NC4wNDMpIj4NCiAgICA8cmVjdCBpZD0iUmVjdMOhbmd1bG9fMjM0IiBkYXRhLW5hbWU9IlJlY3TDoW5ndWxvIDIzNCIgd2lkdGg9IjEwLjA2MiIgaGVpZ2h0PSIzLjk5NiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM0Mi42MSAyNzguMTc0KSIgZmlsbD0iI2ZmZiIvPg0KICAgIDxwYXRoIGlkPSJUcmF6YWRvXzU3NiIgZGF0YS1uYW1lPSJUcmF6YWRvIDU3NiIgZD0iTS0zMjYuMzUzLDM2My43NzFoLTEyLjA2OWExLjgxNCwxLjgxNCwwLDAsMC0yLjAwNywxLjUyNnYzLjY1MWExLjc3MSwxLjc3MSwwLDAsMCwyLjAwNywxLjY4OXYtMi45NzloMTIuMDY5djIuOTc5YTEuNzcxLDEuNzcxLDAsMCwwLDIuMDA3LTEuNjg5VjM2NS4zQTEuODE0LDEuODE0LDAsMCwwLTMyNi4zNTMsMzYzLjc3MVptLTExLjUyLDIuNDg4aC0xLjEwOHYtMS4xMDhoMS4xMDhaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNS4xOTIgLTkwLjQ2NSkiIGZpbGw9IiNmZmYiLz4NCiAgICA8cGF0aCBpZD0iVHJhemFkb181NzciIGRhdGEtbmFtZT0iVHJhemFkbyA1NzciIGQ9Ik0tMzI5LjAwNywyNjcuMmwtNi4xNzUtMy4xNmgtLjIxOHMtLjI3Mi4zMjctMi4xNzkuMzI3LTIuMTgtLjMyNy0yLjE4LS4zMjdoLS4yMThsLTYuMTc1LDMuMTYsMS41MjYsMy4yNTEsMi4wMTYtLjIyNHYyLjEzMWgxMC4wNjJWMjcwLjIzbDIuMDE2LjIyNFptLTguNTczLTJhNS4wNTQsNS4wNTQsMCwwLDAsMS45MDctLjI4NSwyLjMsMi4zLDAsMCwxLTEuOTA3LDEuMDksMi4zLDIuMywwLDAsMS0xLjkwNy0xLjA5QTUuMDU1LDUuMDU1LDAsMCwwLTMzNy41NzksMjY1LjJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwKSIgZmlsbD0iI2ZmZiIvPg0KICA8L2c+DQo8L3N2Zz4NCg=="
