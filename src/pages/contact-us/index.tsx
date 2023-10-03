@@ -30,11 +30,10 @@ function Contact() {
                             <i className="fa-regular fa-envelope text-3xl"></i>
                             <div>
                                 <p>
-                                    <span className="font-bold">Sales:</span>sales@gocustomlothing.com
+                                    <span className="font-bold">Sales:</span>sales@printwish.co.uk
                                 </p>
                                 <p>
-                                    <span className="font-bold">Accounts:</span
-                                    >accounts@gocustomlothing.com
+                                    <span className="font-bold">Enquiries:</span>enquiries@printwish.co.uk
                                 </p>
                             </div>
                         </div>
