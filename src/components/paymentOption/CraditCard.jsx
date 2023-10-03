@@ -12,7 +12,6 @@ const CraditCard = ({totalPrice}) => {
      const dispatch = useDispatch()
      const {allCartItems} = useContext(SettingsContext)
      const {OrderSubmit} = useOrderHandler()
-
      useEffect(()=>{
           if(resp?.status === "COMPLETED"){
                setStatus(true)
@@ -25,7 +24,9 @@ const CraditCard = ({totalPrice}) => {
           <>
           <section className='mt-16'>
                <PaymentForm
-                    applicationId="sq0idp-AqR_N1SYztjgjFKQjWbT9g"
+                     //sq0idp-AqR_N1SYztjgjFKQjWbT9g
+                     //L0EHQKCH6RFS5
+                    applicationId="sandbox-sq0idb-JGT7nJ4pMxI3WF4eU1rQhg"
                     cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
                          const response = await fetch("/api/pay", {
                               method: "POST",

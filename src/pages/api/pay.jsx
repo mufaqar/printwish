@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       idempotencyKey: randomUUID(),
       sourceId: req.body.sourceId,
       amountMoney: {
-        currency: "USD",
+        currency: "GBP",
         amount: req.body.totalPrice * 100,
       },
       
