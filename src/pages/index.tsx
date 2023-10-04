@@ -5,7 +5,7 @@ import Category_Box from '@/components/product-widgets/category-box'
 import { Categories, CategoryType } from '@/const/categories'
 import Steps from '@/components/promotional-steps/steps'
 import Product_Slider from '@/components/product-widgets/product-slider'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import { apiRequest } from '@/config/requests'
 
 export default function Home(props: any) {
@@ -54,7 +54,7 @@ export default function Home(props: any) {
 
 
 
-export const getStaticProps: GetStaticProps<any> = async () => {
+export const getServerSideProps: GetServerSideProps<any> = async () => {
    const dataForProducts = {
     per_page: 10,
   };

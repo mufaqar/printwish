@@ -3,7 +3,7 @@ import Pagination from '@/components/pagination/pagination'
 import Product_Box from '@/components/product-widgets/product-box'
 //import Product_Sidebar from '@/components/sidebar/product-sidebar'
 import { apiRequest } from '@/config/requests'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
@@ -38,7 +38,7 @@ const ProductsPage = ({ products }: any) => {
 
 export default ProductsPage
 
-export const getStaticProps: GetStaticProps<any> = async () => {
+export const getServerSideProps: GetServerSideProps<any> = async () => {
     const dataForProducts = {
         per_page: 30,
     };
