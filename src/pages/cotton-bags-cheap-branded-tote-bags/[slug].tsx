@@ -5,11 +5,42 @@ import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import parse from "html-react-parser";
+import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify'
 
 export default function Cotton_Bag({ bag }: any) {
     const fullHead = parse(bag.seo.fullHead);
+    const [loading, setLoading] = useState<any>()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset
+    } = useForm()
+
+    const onSubmit = (data:any) => {
+
+        setLoading(true)
+        fetch('/api/email', {
+             method: 'POST',
+             headers: {
+                  'Accept': 'application/json, text/plain, */*',
+                  'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+        }).then((res) => {
+             console.log('Response received')
+             if (res.status === 200) {
+                  console.log('Email send succeeded!')
+                  toast.info("Email send successfully!");
+                  reset();
+                  setLoading(false)
+             }
+        })
+    }
+
 
     return (
         <>
@@ -83,58 +114,62 @@ export default function Cotton_Bag({ bag }: any) {
                             </p>
                         </div>
                         <div className='mt-5'>
-                            <form className='grid gap-5'>
+                            <form className='grid gap-5' onSubmit={handleSubmit(onSubmit)}>
                                 <div>
                                     <label htmlFor="name" className="block mb-2 text-base font-medium text-gray-900">Your name</label>
-                                    <input type="text" id="name" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Your Name" required />
+                                    <input  {...register("name", { required: true })} type="text" id="name" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Your Name" required/>
+                                    {errors.name && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block mb-2 text-base font-medium text-gray-900">Your email</label>
-                                    <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="name@flowbite.com" required />
+                                    <input type="email" {...register("Email", { required: true })} id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="name@flowbite.com" required />
+                                    {errors.email && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="quantity" className="block mb-2 text-base font-medium text-gray-900">Quantity</label>
-                                    <select id="quantity" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
+                                    <select id="quantity"  {...register("quantity", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
                                         <option value="0" selected>50-99</option>
                                         <option value="1">50-99</option>
                                         <option value="2">100-249</option>
                                         <option value="3">250-499</option>
                                         <option value="4">500-999</option>
                                     </select>
+                                    {errors.quantity && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="quantity" className="block mb-2 text-base font-medium text-gray-900">Custom Quantity</label>
-                                    <input type="number" id="quantity" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Custom Quantity" />
+                                    <input type="number" id="quantity" {...register("customQuantity", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Custom Quantity" />
+                                    {errors.customQuantity && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="date" className="block mb-2 text-base font-medium text-gray-900">Delivery Date </label>
-                                    <input type="date" id="date" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Delivery Date" />
+                                    <input type="date" id="date" {...register("deliveryDate", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Delivery Date" />
+                                    {errors.deliveryDate && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="colors" className="block mb-2 text-base font-medium text-gray-900">PRINT DETAILS</label>
-                                    <select id="colors" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
+                                    <select id="colors" {...register("colors", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
                                         <option value="0" selected>1 Color</option>
                                         <option value="1">2 Color</option>
                                         <option value="2">3 Color</option>
                                         <option value="3">4 Color</option>
                                         <option value="4">5 Color</option>
                                     </select>
+                                    {errors.colors && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="sides" className="block mb-2 text-base font-medium text-gray-900">TO ONE OR TWO SIDES </label>
-                                    <select id="sides" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
+                                    <select id="sides" {...register("sides", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
                                         <option value="0" selected>1 Side</option>
                                         <option value="1">2 Side</option>
                                     </select>
+                                    {errors.sides && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
-
                                     <label className="block mb-2 text-base font-medium text-gray-900" htmlFor="file_input">Upload file</label>
-                                    <input className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full" id="file_input" type="file" />
+                                    <input {...register("file")} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full" id="file_input" type="file" />
                                 </div>
-                                <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white bg-blue-950 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300">
-                                    Submit
-                                </button>
+                                <input value={loading ? 'Sending...' : 'Submit'} type="submit" className="py-3 px-5 text-sm font-medium text-center text-white bg-blue-950 sm:w-fit hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300" />
                             </form>
                         </div>
                     </div>

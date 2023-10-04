@@ -1,7 +1,40 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify'
 
 function Contact() {
+    const [loading, setLoading] = useState<any>()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset
+    } = useForm()
+
+    const onSubmit = (data:any) => {
+        setLoading(true)
+        data.page = "contact"
+        fetch('/api/email', {
+             method: 'POST',
+             headers: {
+                  'Accept': 'application/json, text/plain, */*',
+                  'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+        }).then((res) => {
+             console.log('Response received')
+             if (res.status === 200) {
+                  console.log('Email send succeeded!')
+                  toast.info("Email send successfully!");
+                  reset();
+                  setLoading(false)
+             }
+        })
+
+   }
+
+
     return (
         <>
             <div className="container mx-auto px-4 my-20">
@@ -73,48 +106,55 @@ function Contact() {
                                 Contact us
                             </h3>
                         </div>
-
-                        <div className="flex  gap-4">
-                            <div className="mt-8">
-                                <p className="py-6">Subject</p>
-                                <p>Email address</p>
-                                <p className="py-5">Message</p>
-                            </div>
-                            <div className="mt-12">
-                                <input
-                                    type="text"
-                                    className="border outline-none border-gray-300 w-full max-w-96 py-2 px-2"
-                                    placeholder="Artword Enquiry"
-                                />
-                                <br />
-                                <input
-                                    type="text"
-                                    className="border outline-none w-full max-w-96  border-gray-300 py-2 px-2 mt-5"
-                                    placeholder="Artword Enquiry"
-                                />
-                                <div>
-                                    <textarea
-                                        name=""
-                                        id=""
-                                        rows={4}
-                                        className="border mt-5 w-full max-w-[500px] outline-none border-gray-300 py-2 px-2" placeholder="We can we help?"
-                                    ></textarea>
-                                    <div className="flex gap-2">
-                                        <input type="checkbox" name="" id="" className="mt-[3px]"/>
-                                        <p>
-                                            I agree to the terms and conditions and the privacy policy
-                                        </p>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="flex  gap-5">
+                                <div className="mt-8">
+                                    <p className="py-7">Subject</p>
+                                    <p>Email address</p>
+                                    <p className="py-5">Message</p>
+                                </div>
+                                <div className="mt-12">
+                                    <select
+                                        {...register("Enquiries", { required: true })}
+                                        className={`border outline-none  w-full max-w-96 py-2 px-2 ${errors.Enquiries ? 'border-red-400' : 'border-gray-300'}`}
+                                        placeholder="Artword Enquiry"
+                                    >
+                                        <option value="General Enquiries">General Enquiries</option>
+                                        <option value="Invoice/Accounts Enquiry">Invoice/Accounts Enquiry</option>
+                                        <option value="Price Enquiry">Price Enquiry</option>
+                                        <option value="Request a Call">Request a Call</option>
+                                    </select>
+                                    <br />
+                                    <input
+                                        type="email"
+                                        className={`border outline-none  w-full max-w-96 py-2 px-2 mt-5 ${errors.Email ? 'border-red-400' : 'border-gray-300'}`}
+                                        placeholder="Email address"
+                                        {...register("Email", { required: true })}
+                                    />
+                                    <div>
+                                        <textarea
+                                            id=""
+                                            rows={4}
+                                            {...register("Message", { required: true })}
+                                            className={`border mt-5 w-full max-w-[500px] outline-none py-2 px-2 ${errors.Message ? 'border-red-400' : 'border-gray-300'}`} placeholder="We can we help?"
+                                        ></textarea>
+                                        <div className="flex gap-2">
+                                            <input type="checkbox" id="" {...register("Terms", { required: true })} className="mt-[3px]" />
+                                            <p className={errors.Terms ? 'text-red-500' : 'border-gray-800'}>
+                                                I agree to the terms and conditions and the privacy policy
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type='submit'
+                                            value={ loading ? 'Sending...' : 'Send'}
+                                            className="bg-green-500 py-2 px-8 hover:scale-105 rounded-full mt-5 text-white"
+                                        />
                                     </div>
                                 </div>
-                                <div>
-                                    <button
-                                        className="bg-green-500 py-2 px-8 hover:scale-105 rounded-full mt-5 text-white"
-                                    >
-                                        Send
-                                    </button>
-                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
