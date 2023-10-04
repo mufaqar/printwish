@@ -181,7 +181,7 @@ export default function Cotton_Bag({ bag }: any) {
                     <h2 className="text-[26px] text-center text-[#208BCB] font-[700] leading-[1.2em]">How To Order?</h2>
                 </div>
                 <div className="bg-[#D9EDF7] w-full mt-4 text-center py-4 font-[700] leading-[1.2em] text-[#070505] ">
-                    <p>Send us a quote to get favorite product at the best price.</p>
+                    <p>Send us a quote to get favorite product at the best price. </p>
                 </div>
                 <div className="grid lg:grid-cols-4 text-center gap-5 font-[500] grid-cols-2 px-5">
                     <div className="border w-full border-none flex flex-col items-center ">
