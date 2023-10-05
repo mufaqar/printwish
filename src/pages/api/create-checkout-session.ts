@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const SKey = process.env.STRIPE_SECRET_KEY
+const SKey = "sk_test_51KZccKBYpJVF6ADtJIF54auA6RHJEEiEBasxyMMN8hvwOC2czH4rSBdt0tRCwCMw9gYUxynchdG5yjxCjYp44JyF00tvx0T4gJ"
 const BaseURL = process.env.NEXT_PUBLIC_SITE_URL
 
 const stripe = require('stripe')(SKey)
