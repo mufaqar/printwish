@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/checkout/index.jsx", "src/components/slider/gallery-slider.jsx", "src/pages/api/upload.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/checkout/index.jsx", "src/components/slider/gallery-slider.jsx", "src/pages/api/upload.tsx", "src/pages/success.jsx"],
   "exclude": ["node_modules"]
 }

@@ -39,7 +39,7 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:42 ~ ProductSlug ~ product:", product)
+  
   const fullHead = parse(product.seo.fullHead);
 
 

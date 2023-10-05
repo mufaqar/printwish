@@ -9,7 +9,6 @@ import { orderData } from '../../../public/data'
 
 const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
-     const [proceed, setProceed] = useState(false)
 
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0);
      const vat = parseInt(((20 / 100) * price).toFixed(2))
@@ -22,15 +21,45 @@ const Checkout = () => {
           watch,
           formState: { errors },
      } = useForm()
+
      const onSubmit = (data) => {
           const billing = orderData['billing']
           billing.email = data.email
           billing.first_name = data.name
           billing.phone = data.mobile
           billing.address_1 = data.address
-          setProceed(true);
           setAllCartItems(cartItems)
+          paymentSubmitHandler()
      }
+
+     const paymentSubmitHandler = () => {
+          const orderdata = {
+               title: "test",
+               totalprice: totalPrice,
+               paymentApproved: false,
+               name: "test name",
+               email: "test@gmail.com",
+          };
+          
+          try {
+               fetch(`/api/create-checkout-session`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                         orderdata,
+                    }),
+               }).then((response) => response.json()).then((response) => {
+                    window.location.href = response.session.url;
+               });
+          } catch (error) {
+               console.log("🚀 ~ file: CraditCard.jsx:46 ~ paymentSubmitHandler ~ error:", error)
+          }
+     };
+
+
+
+
+
+
 
      return (
           <>
@@ -38,10 +67,8 @@ const Checkout = () => {
                     <div className="grid min-h-screen grid-cols-2">
                          <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">
                               <div className="mx-auto w-full max-w-lg">
-                                   {proceed && <FaArrowLeft className='text-gray-500 hover:text-black text-2xl mb-5' onClick={() => setProceed(!proceed)} />}
-                                   <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">Secure Checkout<span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span></h1>
-                                   {
-                                        !proceed &&
+                                   <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">Shipping Address!<span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span></h1>
+                                  
                                         <>
                                              <form onSubmit={handleSubmit(onSubmit)} className="mt-10 flex flex-col space-y-4">
                                                   <div>
@@ -68,8 +95,7 @@ const Checkout = () => {
                                                   <input type="submit" className="mt-4 cursor-pointer inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg" value="Proceed" />
                                              </form>
                                         </>
-                                   }
-                                   {proceed && <CraditCard totalPrice={totalPrice} />}
+
                               </div>
                          </div>
                          <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">

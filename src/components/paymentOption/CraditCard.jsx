@@ -13,6 +13,7 @@ const CraditCard = ({ totalPrice }) => {
      const dispatch = useDispatch()
      const { allCartItems } = useContext(SettingsContext)
      const { OrderSubmit } = useOrderHandler()
+
      useEffect(() => {
           if (resp?.status === "COMPLETED") {
                setStatus("COMPLETED")
@@ -21,45 +22,12 @@ const CraditCard = ({ totalPrice }) => {
           }
      }, [resp])
 
+    
+
      return (
           <>
                <section className='mt-16'>
-                    <PaymentForm
-                         //sq0idp-AqR_N1SYztjgjFKQjWbT9g
-                         //L0EHQKCH6RFS5
-                         applicationId="sq0idp-AqR_N1SYztjgjFKQjWbT9g"
-                         cardTokenizeResponseReceived={async (token, verifiedBuyer) => {
-                              try {
-                                   setStatus("PROCESSING")
-                                   const response = await fetch("/api/pay", {
-                                        method: "POST",
-                                        headers: {
-                                             "Content-type": "application/json",
-                                        },
-                                        body: JSON.stringify({
-                                             sourceId: token.token,
-                                             totalPrice
-                                        }),
-                                   });
-                                   const { payment } = await response.json()
-                                   setResp(payment)
-                              } catch (error) {
-                                   setStatus("FAIL")
-                              }
-
-                         }}
-                         createPaymentRequest={() => ({
-                              countryCode: "UK",
-                              currencyCode: "GBP",
-                              total: {
-                                   amount: `${totalPrice}.00`,
-                                   label: "Total",
-                              },
-                         })}
-                         locationId='L0EHQKCH6RFS5'
-                    >
-                         <CreditCard />
-                    </PaymentForm>
+                    <button onClick={paymentSubmitHandler}>Order Now</button>
                </section>
                {
                     status === "COMPLETED" && <p className='mt-4 text-lg flex justify-center items-center gap-2'><BsEmojiHeartEyes className="text-2xl text-orange-400" />Order Completed</p>
