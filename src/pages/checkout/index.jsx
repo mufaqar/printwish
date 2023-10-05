@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { useSelector } from 'react-redux'
-import CraditCard from '@/components/paymentOption/CraditCard'
-import { FaArrowLeft } from 'react-icons/fa'
 import Link from 'next/link'
 import { SettingsContext } from '@/context/global-context'
 import { useForm } from "react-hook-form"
@@ -12,7 +10,6 @@ const Checkout = () => {
 
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0);
      const vat = parseInt(((20 / 100) * price).toFixed(2))
-     const { setAllCartItems } = useContext(SettingsContext)
      const totalPrice = price + vat
 
      const {
@@ -23,14 +20,18 @@ const Checkout = () => {
      } = useForm()
 
      const onSubmit = (data) => {
+
+          sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+
           const billing = orderData['billing']
           billing.email = data.email
           billing.first_name = data.name
           billing.phone = data.mobile
           billing.address_1 = data.address
-          setAllCartItems(cartItems)
           paymentSubmitHandler()
      }
+
+     
 
      const paymentSubmitHandler = () => {
           const orderdata = {
