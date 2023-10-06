@@ -36,9 +36,8 @@ function About() {
             <p className='tracking-[.2px] pb-[1.25rem]'>Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? Then you have to buy custom apparel from print wish at cheap rates. Printwish UK also respect the desires of kids because some kids are the cartoons lover and they want that character on his clothes and print wish do it uniquely to makes the customer happy. Printwish t-shirt printing is incredibly amazing and an awesome shirt can make a huge statement. Print wish design to offer a healthy way for people to express their feelings. If you are craving personalization then you must have to check out our print wish services even at least once you will surely fall in love with our print wish printing. Printwish t-shirt printing design will always be different and better than the last so, show off your trendy side with the print wish t-shirt. Print wish always uses soft and durable stuff in apparel which can be used for a long time. The main goal of print wish is to deliver things exactly as you want to see your product at reasonable rates. Our apparels are very comfy and easy to wear and the vibrant color of our product will surely make your environment pleasing for your eyes.</p>
           </div>
         </div>
-
-        <div className="foeter pt-5">
-          <Image className='w-[65%] m-auto' width={400} height={150} src="/images/review.png" alt="" />
+        <div className="foeter pt-5 mb-5">
+          <Image className='m-auto' width={640} height={255} src="/images/reviews-about.webp" alt="" />
         </div>
 
       </main>
