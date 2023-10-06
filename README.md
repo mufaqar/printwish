@@ -5,10 +5,6 @@
 #Live
 #Stripe
 
-
-
-
 ## WooCommerce 
 ## Stripe
 
-#9-25
