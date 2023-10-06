@@ -141,16 +141,16 @@ export const orderData = {
      set_paid: true,
      status: "processing",
      billing: {
-          first_name: "Matt",
-          last_name: "Parker",
-          address_1: "969 Market",
+          first_name: "",
+          last_name: "",
+          address_1: "",
           address_2: "",
-          city: "San Francisco",
-          state: "CA",
-          postcode: "94103",
-          country: "US",
-          email: "john.doe@example.com",
-          phone: "(555) 555-5555"
+          city: "",
+          state: "",
+          postcode: "",
+          country: "",
+          email: "",
+          phone: ""
      },
      shipping: {
           first_name: "John",

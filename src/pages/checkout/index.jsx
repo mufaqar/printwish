@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import { SettingsContext } from '@/context/global-context'
 import { useForm } from "react-hook-form"
-import { orderData } from '../../../public/data'
 
 const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
@@ -21,13 +20,9 @@ const Checkout = () => {
 
      const onSubmit = (data) => {
 
+          sessionStorage.setItem('Formdata', JSON.stringify(data));
           sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-          const billing = orderData['billing']
-          billing.email = data.email
-          billing.first_name = data.name
-          billing.phone = data.mobile
-          billing.address_1 = data.address
           paymentSubmitHandler()
      }
 
