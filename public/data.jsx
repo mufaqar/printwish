@@ -137,7 +137,7 @@ export const designVarient = [
 
 export const orderData = {
      payment_method: "bacs",
-     payment_method_title: "Square Up",
+     payment_method_title: "Stripe",
      set_paid: true,
      status: "processing",
      billing: {
