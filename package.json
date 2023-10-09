@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",
+    "@bradgarropy/next-google-analytics": "^1.0.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@square/web-sdk": "^2.0.1",
     "@stripe/stripe-js": "^2.1.7",
