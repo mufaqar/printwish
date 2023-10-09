@@ -136,7 +136,7 @@ const SizeAndInstruction = () => {
                               })
                          }
                          <span className='text-lg'>Custom width:</span>
-                         <li className={`flex items-center p-1.5 cursor-pointer px-8 text-lg bg-white rounded-full ${!designWidth ? 'border-red-500': 'border-transparent'} border-[2px] ${designWidth === '10' || designWidth === '20' || designWidth === '30' ? 'border-transparent' : "border-secondary"}`}>
+                         <li className={`flex items-center p-1.5 cursor-pointer px-8 text-lg bg-white rounded-full ${!designWidth ? 'border-red-500': 'border-transparent'} border-[2px] `}>
                               <input type="number" className={`w-20  focus:ring-0 border-none focus:outline-none `} name="number" value={designWidth} onChange={(e) => setDesignWidth(e.target.value)} />
                               <span className='border-l-[1.5px] pl-4 border-gray-200'>cm</span>
                          </li>
