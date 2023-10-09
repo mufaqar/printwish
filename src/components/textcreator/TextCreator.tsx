@@ -9,15 +9,15 @@ const TextCreator = () => {
 
      return (
           <section className='mt-4 bg-background p-8 rounded-lg'>
-               <div className="text-xl">LINE 1</div>
+               <div className="text-xl">LINE 1 *</div>
                <div className="mb-6 mt-4">
-                    <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
+                    <input type="text" id="large-input" className={`block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md ${!textCreatorLine.text1 && 'border-red-500'}`}
                          name="text1"
                          value={textCreatorLine.text1}
                          onChange={handleChangeTextCreatorLine}
                     />
                     <div className='mt-5 flex md:flex-row flex-col gap-4 '>
-                         <select id="large" className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                         <select id="large" className={`block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${!textCreatorLine.size1 && 'border-red-500'}`}
                               name="size1"
                               value={textCreatorLine.size1}
                               onChange={handleChangeTextCreatorLine}
@@ -28,7 +28,7 @@ const TextCreator = () => {
                               <option value="Large">Large</option>
                               <option value="X-Large">X-Large</option>
                          </select>
-                         <select id="large" className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                         <select id="large" className={`block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${!textCreatorLine.font1 && 'border-red-500'}`}
                               name="font1"
                               value={textCreatorLine.font1}
                               onChange={handleChangeTextCreatorLine}>
@@ -37,7 +37,7 @@ const TextCreator = () => {
                               <option value="Black Two">Black Two</option>
                               <option value="Civic">Civic</option>
                          </select>
-                         <select id="large" className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                         <select id="large" className={`block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${!textCreatorLine.color1 && 'border-red-500'}`}
                               name="color1"
                               value={textCreatorLine.color1}
                               onChange={handleChangeTextCreatorLine}>

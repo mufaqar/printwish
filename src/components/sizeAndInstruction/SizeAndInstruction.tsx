@@ -126,7 +126,7 @@ const SizeAndInstruction = () => {
           <>
                {/* Choose design width: */}
                <div>
-                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6'>Choose design width:</h5>
+                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6'>Choose design width: *</h5>
                     <ul className='flex gap-4 mt-5 flex-wrap items-center'>
                          {
                               designWidthSizes?.sizes?.map((item: any, idx: number) => {
@@ -136,23 +136,23 @@ const SizeAndInstruction = () => {
                               })
                          }
                          <span className='text-lg'>Custom width:</span>
-                         <li className={`flex items-center p-1.5 cursor-pointer px-8 text-lg bg-white rounded-full border-[2px] ${designWidth === '10' || designWidth === '20' || designWidth === '30' ? 'border-transparent' : "border-secondary"}`}>
-                              <input type="number" className='w-20 border-none  focus:ring-0 focus:outline-none' name="number" value={designWidth} onChange={(e) => setDesignWidth(e.target.value)} />
+                         <li className={`flex items-center p-1.5 cursor-pointer px-8 text-lg bg-white rounded-full ${!designWidth ? 'border-red-500': 'border-transparent'} border-[2px] ${designWidth === '10' || designWidth === '20' || designWidth === '30' ? 'border-transparent' : "border-secondary"}`}>
+                              <input type="number" className={`w-20  focus:ring-0 border-none focus:outline-none `} name="number" value={designWidth} onChange={(e) => setDesignWidth(e.target.value)} />
                               <span className='border-l-[1.5px] pl-4 border-gray-200'>cm</span>
                          </li>
                     </ul>
                </div>
 
                <div>
-                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Notes or special instructions:</h5>
-                    <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
+                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Notes or special instructions: *</h5>
+                    <input type="text" id="large-input" className={`block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md ${!specialInstruction && 'border-red-500' } `}
                          name="Notes"
                          value={specialInstruction}
                          placeholder='Please let us know if you have any special requirements'
                          onChange={(e) => setSpecialInstruction(e.target.value)}
                     />
-                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Customisation name:</h5>
-                    <input type="text" id="large-input" className="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md  "
+                    <h5 className='text-xl font-semibold text-accent font-roboto mt-6 mb-5'>Customisation name: *</h5>
+                    <input type="text" id="large-input" className={`block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md ${!customisationName && 'border-red-500' } `}
                          name="Notes"
                          value={customisationName}
                          placeholder='Enter the name of your customisation here'
