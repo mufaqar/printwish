@@ -128,11 +128,11 @@ export default function Cotton_Bag({ bag }: any) {
                                 <div>
                                     <label htmlFor="quantity" className="block mb-2 text-base font-medium text-gray-900">Quantity</label>
                                     <select id="quantity"  {...register("quantity", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
-                                        <option value="0" selected>50-99</option>
-                                        <option value="1">50-99</option>
-                                        <option value="2">100-249</option>
-                                        <option value="3">250-499</option>
-                                        <option value="4">500-999</option>
+                                        <option value="50-99" selected>50-99</option>
+                                        <option value="50-99">50-99</option>
+                                        <option value="100-249">100-249</option>
+                                        <option value="250-499">250-499</option>
+                                        <option value="500-999">500-999</option>
                                     </select>
                                     {errors.quantity && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
@@ -149,19 +149,19 @@ export default function Cotton_Bag({ bag }: any) {
                                 <div>
                                     <label htmlFor="colors" className="block mb-2 text-base font-medium text-gray-900">PRINT DETAILS</label>
                                     <select id="colors" {...register("colors", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
-                                        <option value="0" selected>1 Color</option>
-                                        <option value="1">2 Color</option>
-                                        <option value="2">3 Color</option>
-                                        <option value="3">4 Color</option>
-                                        <option value="4">5 Color</option>
+                                        <option value="1 Color" selected>1 Color</option>
+                                        <option value="2 Color">2 Color</option>
+                                        <option value="3 Color">3 Color</option>
+                                        <option value="4 Color">4 Color</option>
+                                        <option value="5 Color">5 Color</option>
                                     </select>
                                     {errors.colors && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>
                                 <div>
                                     <label htmlFor="sides" className="block mb-2 text-base font-medium text-gray-900">TO ONE OR TWO SIDES </label>
                                     <select id="sides" {...register("sides", { required: true })} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5">
-                                        <option value="0" selected>1 Side</option>
-                                        <option value="1">2 Side</option>
+                                        <option value="1 Side" selected>1 Side</option>
+                                        <option value="2 Side">2 Side</option>
                                     </select>
                                     {errors.sides && <span className="text-xs text-red-500">This field is required</span>}
                                 </div>

@@ -36,7 +36,7 @@ export default function (req, res) {
      // step-2
      const mailData = {
           from: EMAIL_USER,
-          to: `${EMAIL_USER}, ${req.body.Email}`,
+          to: `${EMAIL_USER},sales@printwish.co.uk , ${req.body.Email}`,
           subject,
           text: "Sent from: PrintWist",
           html: req.body.page === 'contact' ? contactPage : cottonBagsOrder ,
