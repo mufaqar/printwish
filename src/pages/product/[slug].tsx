@@ -222,6 +222,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const slider = useRef<any>(null);
   const router = useRouter()
+
   const handleAddToCart = (data: any) => {
     data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
     dispatch(addItem(data))

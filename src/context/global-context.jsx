@@ -17,6 +17,7 @@ export const SettingsProvider = ({ children }) => {
   const [customizationButton, setCustomizationButton] = useState(false)
   const [designPosition, setDesignPosition] = useState('')
   const [allCartItems, setAllCartItems] = useState()
+  const [designImage, setDesignImage] = useState()
 
 
   const [selectedProduct, setSelectedProduct] = useState({
@@ -80,6 +81,7 @@ export const SettingsProvider = ({ children }) => {
         imageURL, setImageURL,
         customizationButton, setCustomizationButton,
         locations,
+        designImage, setDesignImage,
         designPosition, setDesignPosition,
         allCartItems, setAllCartItems
       }}
