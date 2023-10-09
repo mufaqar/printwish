@@ -4,7 +4,7 @@ export default function (req, res) {
 
      let EMAIL_USER = process.env.EMAIL_USER
      let EMAIL_PASSWORD = process.env.EMAIL_PASSWORD
-
+     
      const contactPage =`
           <p><strong>Enquiries: </strong> ${req.body.Enquiries}</p>
           <p><strong>Email: </strong> ${req.body.Email}</p>
@@ -41,8 +41,8 @@ export default function (req, res) {
           text: "Sent from: PrintWist",
           html: req.body.page === 'contact' ? contactPage : cottonBagsOrder ,
           attachments: req.body.page === 'contact' ? '' : [{
-               filename: "smtpjs.png",
-               path: "https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
+               filename: req.body.file.name,
+               path: req.body.file.url
           }]
      }
 
