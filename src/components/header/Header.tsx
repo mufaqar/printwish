@@ -120,6 +120,9 @@ const Header = () => {
                 <div id="dropdown"
                   className={`${dropdown ? 'sm:block hidden' : 'hidden'} z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow absolute top-[108px] `}>
                   <ul className="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
+                  <li onClick={() => { setSelectedCategory(''); setDropdown(!dropdown) }}>
+                            <button type="button" className="inline-flex py-2 px-4 w-full text-left hover:bg-gray-100 font-roboto">All categories</button>
+                          </li>
                     {
                       categories?.map(({ name }, idx) => {
                         return (
