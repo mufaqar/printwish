@@ -39,7 +39,8 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
-  
+  console.log("🚀 ~ file: [slug].tsx:42 ~ ProductSlug ~ product:", product)
+
   const fullHead = parse(product.seo.fullHead);
 
 
@@ -197,12 +198,17 @@ const ProductSlug = ({ post, product }: any) => {
     }
   }, [selectedProduct]);
 
+  
   let totalPrice = 0;
   selectedProduct?.colors?.forEach((color: any) => {
     color.selectedSize?.forEach((size: any) => {
       totalPrice += parseFloat(size.price);
     });
   });
+
+  if(totalPrice === 0) {
+    totalPrice = Number(product?.price.replace('£',''))
+  }
 
   // here array concatct 
   const dd = selectedProduct?.designArtWork?.concat(selectedProduct?.textCreator);
@@ -282,7 +288,7 @@ const ProductSlug = ({ post, product }: any) => {
             }
           </Slider>
           <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
-            <h6>From <strong className='text-gray-500'>£{colorsmall}</strong> per unit</h6>
+            <h6>From <strong className='text-gray-500'>£{whitesmall || product?.price.replace('£','')}</strong> per unit</h6>
             <h6>Lead Time : <span className='text-gray-500'>5 days</span></h6>
             <h6>Minimum Order : <span className='text-gray-500'>25 units</span></h6>
           </div>
@@ -373,66 +379,70 @@ const ProductSlug = ({ post, product }: any) => {
 
 
           <div className="pt-[1px] w-full bg-gray-300 my-8" />
-          <section className='bg-background p-3 md:p-8 rounded-lg '>
-            <div>
-              <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose Color:</h5>
-              <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
-                {
-                  product?.allPaColor.nodes?.map((clr: any, idx: number) => {
-                    const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
-                    return (
-                      <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
-                        <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
-                        <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-              {/* selected color and show all sizes with each selcted color */}
-
+          {
+            product?.allPaColor.nodes.length > 0 &&
+            <section className='bg-background p-3 md:p-8 rounded-lg '>
               <div>
-                {
-                  selectedProduct?.colors?.map((c: IColor, idx: number) => {
-                    return (
-                      <div key={idx} className='mt-6 flex justify-between '>
-                        <div>
-                          <div className='flex items-center gap-2'>
-                            <div className="p-5 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
-                            <p className='text-lg uppercase'>{c?.name}</p>
-                          </div>
-                          {/* map all size that are accociated to this product  */}
-                          <ul className='flex flex-wrap items-center gap-4 mt-3 '>
-                            {
-                              product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
+                <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose Color:</h5>
+                <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
+                  {
+                    product?.allPaColor.nodes?.map((clr: any, idx: number) => {
+                      const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
+                      return (
+                        <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
+                          <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
+                          <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+                {/* selected color and show all sizes with each selcted color */}
 
-                                const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
-                                const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
+                <div>
+                  {
+                    selectedProduct?.colors?.map((c: IColor, idx: number) => {
+                      return (
+                        <div key={idx} className='mt-6 flex justify-between '>
+                          <div>
+                            <div className='flex items-center gap-2'>
+                              <div className="p-5 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
+                              <p className='text-lg uppercase'>{c?.name}</p>
+                            </div>
+                            {/* map all size that are accociated to this product  */}
+                            <ul className='flex flex-wrap items-center gap-4 mt-3 '>
+                              {
+                                product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
 
-                                return (
-                                  <div key={idx} className='flex flex-col items-center justify-center'>
-                                    <p className='text-lg text-accent font-bold'>{item.name}</p>
-                                    <div className='mt-1'>
-                                      <input type="number" name={item.name} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
-                                        placeholder='0'
-                                        value={quantity}
-                                        onChange={(e) => handleSize(e, c?.name, item.name)}
-                                      />
+                                  const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
+                                  const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
+
+                                  return (
+                                    <div key={idx} className='flex flex-col items-center justify-center'>
+                                      <p className='text-lg text-accent font-bold'>{item.name}</p>
+                                      <div className='mt-1'>
+                                        <input type="number" name={item.name} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
+                                          placeholder='0'
+                                          value={quantity}
+                                          onChange={(e) => handleSize(e, c?.name, item.name)}
+                                        />
+                                      </div>
                                     </div>
-                                  </div>
-                                )
-                              })
-                            }
-                          </ul>
+                                  )
+                                })
+                              }
+                            </ul>
+                          </div>
+                          <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
                         </div>
-                        <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
-                      </div>
-                    )
-                  })
-                }
+                      )
+                    })
+                  }
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          }
+
 
           {
             isPrintable &&

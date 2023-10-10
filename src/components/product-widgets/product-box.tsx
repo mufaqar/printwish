@@ -23,7 +23,7 @@ const Product_Box = ({ data, image }: any) => {
         </p>
 
         <p className='text-center font-bold font-roboto mb-3 text-primary'>
-          From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.poductInfo?.whitesmall || data?.price }</span>
+          From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.price}</span>
         </p>
         <Link href={`/product/${data?.slug}`}  className='text-xs sm:text-base relative font-semibold flex justify-center text-center font-roboto uppercase bg-primary text-white px-2 md:px-6 py-1 hover:bg-transparent hover:text-primary border-primary border-2 hover:border-primary'
          >

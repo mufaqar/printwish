@@ -45,7 +45,7 @@ export const calculatePrice = ( customizedMergeData: any, totalPrice:number, tot
 
      var price = customizedMergeData?.length > 0 ? totalPrice + priceWithQuantity : totalPrice
 
-     return price.toFixed(2)
+     return price?.toFixed(2)
 }
 
 export const uid = function () {
