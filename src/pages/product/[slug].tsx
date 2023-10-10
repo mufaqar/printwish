@@ -206,7 +206,7 @@ const ProductSlug = ({ post, product }: any) => {
   });
 
   if(totalPrice === 0) {
-    totalPrice = Number(product?.price?.replace('£',''))
+    totalPrice = whitesmall ? whitesmall : Number(product?.price?.replace('£',''))
   }
 
   // here array concatct 
@@ -420,7 +420,7 @@ const ProductSlug = ({ post, product }: any) => {
                                     <div key={idx} className='flex flex-col items-center justify-center'>
                                       <p className='text-lg text-accent font-bold'>{item.name}</p>
                                       <div className='mt-1'>
-                                        <input type="number" name={item.name} className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
+                                        <input type="number" name={item.name} min="0" className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
                                           placeholder='0'
                                           value={quantity}
                                           onChange={(e) => handleSize(e, c?.name, item.name)}
