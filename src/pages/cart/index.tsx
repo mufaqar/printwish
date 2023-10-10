@@ -19,7 +19,7 @@ const Cart = () => {
      }
 
      const totalPrice = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0);
-     const vat = parseInt(((20 / 100) * totalPrice).toFixed(2))
+     const vat = Number(((20 / 100) * totalPrice).toFixed(2))
 
      return (
           <>

@@ -8,7 +8,7 @@ const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
 
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0);
-     const vat = parseInt(((20 / 100) * price).toFixed(2))
+     const vat = Number(((20 / 100) * price).toFixed(2))
      const totalPrice = price + vat
 
      const {
