@@ -35,7 +35,6 @@ export default Search
 
 export const getServerSideProps: GetServerSideProps<any> = async ({ query }) => {
   const { c, q } = query
-  console.log("🚀 ~ file: index.tsx:32 ~ constgetServerSideProps:GetServerSideProps<any>= ~ query:", query)
 
   const { data } = await client.query({
     query: c === '' ? SEARCH_PRODUCTS_WITHOUT_CAREGORY : SEARCH_PRODUCTS,
