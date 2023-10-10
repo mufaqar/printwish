@@ -38,7 +38,7 @@ const ProductsPage = ({ products }: any) => {
 
 export default ProductsPage
 
-export const getServerSideProps: GetServerSideProps<any> = async () => {
+export const getStaticProps = async () => {
     const dataForProducts = {
         per_page: 30,
     };
