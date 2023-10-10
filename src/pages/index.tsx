@@ -54,7 +54,7 @@ export default function Home(props: any) {
 
 
 
-export const getServerSideProps: GetServerSideProps<any> = async () => {
+export const getStaticProps = async () => {
    const dataForProducts = {
     per_page: 10,
   };
