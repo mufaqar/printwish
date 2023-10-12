@@ -112,7 +112,7 @@ async function generateSitemap() {
           <priority>0.80</priority>
         </url>`).join("")}
       ${products.map((item) => `<url>
-        <loc>${FRONTEND_URI}/${item.slug}</loc>
+        <loc>${FRONTEND_URI}/product/${item.slug}</loc>
         <lastmod>${item.modified || item.date}</lastmod>
         <priority>0.80</priority>
        </url>`).join("")}
