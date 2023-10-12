@@ -10,7 +10,7 @@ const Locations = () => {
           <Head>
         <title>Locations | Printwish</title>
         <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-        <link rel="canonical" href="https://printwish.co.uk/locations" />
+        <link rel="canonical" href="https://www.printwish.co.uk/locations" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Locations" />

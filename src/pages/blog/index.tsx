@@ -12,7 +12,7 @@ function bloglay() {
      <Head>
         <title>Blog | PrintWish T-Shirt Printing</title>
         <meta name="description" content="Blog | PrintWish T-Shirt Printing" />
-        <link rel="canonical" href={`https://printwish.co.uk/blog`} />
+        <link rel="canonical" href={`https://www.printwish.co.uk/blog`} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="blog" />

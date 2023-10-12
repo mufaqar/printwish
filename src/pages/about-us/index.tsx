@@ -7,7 +7,7 @@ function About() {
      <Head>
         <title>About Us | Printwish</title>
         <meta name="description" content="For Classy and stunning looks print wish is always on top Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? Then you have to buy custom […]" />
-        <link rel="canonical" href={`https://printwish.co.uk/about-us`} />
+        <link rel="canonical" href={`https://www.printwish.co.uk/about-us`} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="about" />

@@ -87,7 +87,7 @@ export default function Delivery_information() {
         <Head>
         <title>Delivery Information | Printwish</title>
         <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-        <link rel="canonical" href={`https://printwish.co.uk/delivery-information`} />
+        <link rel="canonical" href={`https://www.printwish.co.uk/delivery-information`} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="delivery-information" />

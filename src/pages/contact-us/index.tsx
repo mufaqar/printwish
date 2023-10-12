@@ -41,7 +41,7 @@ function Contact() {
         <Head>
         <title>Contact Us | Printwish</title>
         <meta name="description" content="Contact Us | PrintWish T-Shirt Printing" />
-        <link rel="canonical" href={`https://printwish.co.uk/contact-us`} />
+        <link rel="canonical" href={`https://www.printwish.co.uk/contact-us`} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="contact-us" />
