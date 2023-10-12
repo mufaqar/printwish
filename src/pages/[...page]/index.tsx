@@ -16,19 +16,38 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
+     console.log("🚀 ~ file: index.tsx:19 ~ CategorySlug ~ page:", page)
      const pageTitle = page?.replace(/-/g, " ");
-     function capitalizeWords(input:any) {
-          return input.replace(/(^|\s)\S/g, function (match:any) {
-            return match.toUpperCase();
+     function capitalizeWords(input: any) {
+          return input.replace(/(^|\s)\S/g, function (match: any) {
+               return match.toUpperCase();
           });
-        }
-        const capitalizedPageTitle = capitalizeWords(pageTitle);
+     }
+     const capitalizedPageTitle = capitalizeWords(pageTitle);
 
      return (
           <>
-          <Head>
-               <title>{capitalizedPageTitle}</title>
-          </Head>
+               <Head>
+                    <title>{capitalizedPageTitle} | Printwish</title>
+                    <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+                    <link rel="canonical" href={`https://printwish.co.uk/${page}`} />
+                    <meta property="og:locale" content="en_US" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content={capitalizedPageTitle} />
+                    <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+                    <meta property="og:url" content={`https://printwish.co.uk/${page}`} />
+                    <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
+                    <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
+                    <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
+                    <meta property="og:image" content="https://printwish.co.uk/wp-content/uploads/2020/03/DTG-Printing-Image.-.jpg" />
+                    <meta property="og:image:width" content="700" />
+                    <meta property="og:image:height" content="467" />
+                    <meta property="og:image:type" content="image/jpeg" />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:site" content="@PrintwishUk" />
+                    <meta name="twitter:label1" content="Est. reading time" />
+                    <meta name="twitter:data1" content="57 minutes" />
+               </Head>
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
@@ -53,12 +72,12 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                                         />
                                    </div>
                                    {
-                                        categoryInfo?.faqs?.length > 0 && <div> 
-                                           <h2 className='text-gray-400 text-xl font-light md:text-3xl'> Frequently Asked Questions </h2>
-                                           <Faqs data={categoryInfo?.faqs} />
+                                        categoryInfo?.faqs?.length > 0 && <div>
+                                             <h2 className='text-gray-400 text-xl font-light md:text-3xl'> Frequently Asked Questions </h2>
+                                             <Faqs data={categoryInfo?.faqs} />
                                         </div>
                                    }
-                                   
+
                               </div> : <p className='container mx-auto px-3 my-20 w-full text-center'>Result Not Found!</p>
                          }
 

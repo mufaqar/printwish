@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import { SettingsContext } from '@/context/global-context'
 import { useForm } from "react-hook-form"
+import Head from 'next/head'
 
 const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
@@ -59,6 +60,27 @@ const Checkout = () => {
 
      return (
           <>
+          <Head>
+          <title>Checkout | Printwish</title>
+          <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+          <link rel="canonical" href={`https://printwish.co.uk/checkout`} />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="checkout" />
+          <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+          <meta property="og:url" content={`https://printwish.co.uk/checkout`} />
+          <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
+          <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
+          <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
+          <meta property="og:image" content="https://printwish.co.uk/wp-content/uploads/2020/03/DTG-Printing-Image.-.jpg" />
+          <meta property="og:image:width" content="700" />
+          <meta property="og:image:height" content="467" />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@PrintwishUk" />
+          <meta name="twitter:label1" content="Est. reading time" />
+          <meta name="twitter:data1" content="57 minutes" />
+        </Head>
                <div className="relative mx-auto w-full bg-white">
                     <div className="grid min-h-screen grid-cols-2">
                          <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">

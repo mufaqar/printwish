@@ -3,12 +3,36 @@ import Brands_Slider from '@/components/slider/brand-slider'
 import GallerySlider from '@/components/slider/gallery-slider'
 import { client } from '@/config/client'
 import { ALLBAGS, GetGallery } from '@/config/query'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 const Bags = ({ gallery, bags }: any) => {
   return (
+    <>
+    <Head>
+        <title>Cotton Bags Cheap Branded Tote Bags | Printwish</title>
+        <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+        <link rel="canonical" href={`https://printwish.co.uk/cotton-bags-cheap-branded-tote-bags`} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="cotton-bags-cheap-branded-tote-bags" />
+        <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+        <meta property="og:url" content={`https://printwish.co.uk/cotton-bags-cheap-branded-tote-bags`} />
+        <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
+        <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
+        <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
+        <meta property="og:image" content="https://printwish.co.uk/wp-content/uploads/2020/03/DTG-Printing-Image.-.jpg" />
+        <meta property="og:image:width" content="700" />
+        <meta property="og:image:height" content="467" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@PrintwishUk" />
+        <meta name="twitter:label1" content="Est. reading time" />
+        <meta name="twitter:data1" content="57 minutes" />
+      </Head>
+    
     <section className='container mx-auto px-4'>
       <div className='flex justify-center mt-6'><Image src="/images/why-chose.webp" alt="choose" width={810} height={424} /></div>
       <Brands_Slider />
@@ -83,6 +107,7 @@ const Bags = ({ gallery, bags }: any) => {
         <p className="my-4 text-gray-600 !font-light">Visit our website, reach out to us, and get your quote today!</p>
       </section>
     </section>
+    </>
   )
 }
 
