@@ -10,13 +10,13 @@ function bloglay() {
   return (
     <>
      <Head>
-        <title>Blogs | Printwish</title>
-        <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+        <title>Blog | PrintWish T-Shirt Printing</title>
+        <meta name="description" content="Blog | PrintWish T-Shirt Printing" />
         <link rel="canonical" href={`https://printwish.co.uk/blog`} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="blog" />
-        <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
+        <meta property="og:description" content="Blog | PrintWish T-Shirt Printing" />
         <meta property="og:url" content={`https://printwish.co.uk/blog`} />
         <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
         <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
