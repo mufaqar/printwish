@@ -10,7 +10,6 @@ const client = new ApolloClient({
 });
 
 // generate current data and time to given formate that required in sitemap 
-//	2023-09-11 10:42 +00:00
 const now = new Date();
 const year = now.getFullYear();
 const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -18,7 +17,7 @@ const day = String(now.getDate()).padStart(2, '0');
 const hours = String(now.getHours()).padStart(2, '0');
 const minutes = String(now.getMinutes()).padStart(2, '0');
 const seconds = String(now.getSeconds()).padStart(2, '0');
-const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes} +00:00`;
+const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}+00:00`;
 
 // generating sitemap here 
 async function generateSitemap() {
@@ -104,7 +103,7 @@ async function generateSitemap() {
       </url>
       ${location.map((item) => `<url>
           <loc>${FRONTEND_URI}/${item.slug}</loc>
-          <lastmod>${formattedDateTime}</lastmod>
+          <lastmod>${item?.date || item?.modifiedGmt}+00:00</lastmod>
           <priority>0.80</priority>
         </url> `).join("")}
       ${categories.map((item) => `<url>
@@ -114,7 +113,7 @@ async function generateSitemap() {
         </url>`).join("")}
       ${products.map((item) => `<url>
         <loc>${FRONTEND_URI}/product/${item.slug}</loc>
-        <lastmod>${formattedDateTime}</lastmod>
+        <lastmod>${item.modified || item.date}</lastmod>
         <priority>0.80</priority>
        </url>`).join("")}
     </urlset>
