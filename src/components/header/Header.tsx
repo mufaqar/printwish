@@ -174,7 +174,7 @@ const Header = () => {
                   {catSubMenu && <CategoriesSubMenu setMobileMenu={setMobileMenu} categories={categories}/>}
                 </li>
                 <li onClick={()=>setMobileMenu(false)}>
-                  <Link href="/about"
+                  <Link href="/about-us"
                     className="text-white hover:text-primary">About Us</Link>
                 </li>
 

@@ -7,12 +7,12 @@ function About() {
      <Head>
         <title>About Us | Printwish</title>
         <meta name="description" content="For Classy and stunning looks print wish is always on top Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? Then you have to buy custom […]" />
-        <link rel="canonical" href={`https://printwish.co.uk/about`} />
+        <link rel="canonical" href={`https://printwish.co.uk/about-us`} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="about" />
         <meta property="og:description" content="For Classy and stunning looks print wish is always on top Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? Then you have to buy custom […]" />
-        <meta property="og:url" content={`https://printwish.co.uk/about`} />
+        <meta property="og:url" content={`https://printwish.co.uk/about-us`} />
         <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
         <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
         <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />

@@ -87,7 +87,7 @@ async function generateSitemap() {
           <priority>1.00</priority>
       </url>
       <url>
-          <loc>${FRONTEND_URI}/about</loc>
+          <loc>${FRONTEND_URI}/about-us</loc>
           <lastmod>${formattedDateTime}</lastmod>
           <priority>1.00</priority>
       </url>
