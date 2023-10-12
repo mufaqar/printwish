@@ -25,7 +25,7 @@ const Search = ({ products }: any) => {
         <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
         <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
         <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-        <meta property="og:image" content="https://printwish.co.uk/wp-content/uploads/2020/03/DTG-Printing-Image.-.jpg" />
+        <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
         <meta property="og:image:width" content="700" />
         <meta property="og:image:height" content="467" />
         <meta property="og:image:type" content="image/jpeg" />
