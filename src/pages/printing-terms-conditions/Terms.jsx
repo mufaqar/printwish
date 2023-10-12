@@ -1,5 +1,6 @@
 import React from 'react';
 import PageBanner from '../../components/banner/page-banner';
+import Head from 'next/head';
 
 const TermsAndCondition = () => {
   return (
