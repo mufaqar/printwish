@@ -34,6 +34,7 @@ export default function Home(props: any) {
         <meta name="twitter:site" content="@PrintwishUk" />
         <meta name="twitter:label1" content="Est. reading time" />
         <meta name="twitter:data1" content="57 minutes" />
+        <meta name="google-site-verification" content="OU1pmCJ6gWoPeRZs1_8ycnWKRaixALVrLMHVxyBeVUE" />
       </Head>
       <Main_Banner />
       <Brands_Slider />
