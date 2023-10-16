@@ -24,7 +24,7 @@ const TopBar = () => {
 
             <ul className='flex sm:gap-2 gap-1 items-center'>
               <li className='border border-gray-700 hover:border-transparent rounded-lg'>
-                <Link href="#"
+                <Link href="https://www.facebook.com/printwishuk/"
                   className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">
@@ -34,7 +34,7 @@ const TopBar = () => {
                 </Link>
               </li>
               <li className='border border-gray-700 hover:border-transparent rounded-lg'>
-                <Link href="#"
+                <Link href="https://www.instagram.com/printwishonline/?hl=en"
                   className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
@@ -44,7 +44,7 @@ const TopBar = () => {
                 </Link>
               </li>
               <li className='border border-gray-700 hover:border-transparent rounded-lg'>
-                <Link href="#"
+                <Link href="https://twitter.com/printwishuk?lang=en"
                   className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512">
@@ -54,7 +54,7 @@ const TopBar = () => {
                 </Link>
               </li>
               <li className='border border-gray-700 hover:border-transparent rounded-lg'>
-                <Link href="#"
+                <Link href="https://www.youtube.com/channel/UCb73rrDUl5soUZsGNNZ6FYg"
                   className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
