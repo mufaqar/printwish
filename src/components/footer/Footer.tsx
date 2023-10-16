@@ -134,7 +134,7 @@ const Footer = () => {
               <Image src="/images/logo.png" alt="logo" width={200} height={54} className='mx-auto' />
             </Link>
           </div>
-          <p className="block text-sm md:text-right text-highlight font-roboto">Print4LessLtd is Trading as PrintWish. Copyright 2022.
+          <p className="block text-sm md:text-right text-highlight font-roboto">PrintWish UK is Trading as PrintWish. Copyright 2022. Design with Love by Mufaqar
           </p>
         </div>
       </div>
