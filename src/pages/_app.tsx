@@ -11,11 +11,12 @@ import { Router } from 'next/router'
 import Loader from '@/components/loader'
 import NextNProgress from 'nextjs-progressbar';
 import GoogleAnalytics from "@bradgarropy/next-google-analytics"
-
+import CookiesMessage from '@/components/UI/cookiesMessage'
 
 export default function App({ Component, pageProps }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
+  const [cookies, setCookies] = useState(false)
   // useEffect(() => {
   //   Router.events.on("routeChangeStart", (url) => {
   //     setIsLoading(true)
@@ -30,8 +31,19 @@ export default function App({ Component, pageProps }: any) {
   //   });
   // }, [Router])
 
-  
 
+  useEffect(() => {
+    const localCookies = localStorage.getItem('cookies')
+    if(localCookies === "true"){
+      setCookies(false)
+    }else{
+      const timer = setTimeout(() => {
+        setCookies(true)
+      }, 1000)
+      return () => clearTimeout(timer);
+    }
+  }, [cookies]);
+  
   return (
     <>
       <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} />
@@ -54,6 +66,9 @@ export default function App({ Component, pageProps }: any) {
         draggable
         pauseOnHover
         theme="dark" />
+        {
+          cookies && <CookiesMessage setCookies={setCookies}/>
+        }
     </>
   )
 

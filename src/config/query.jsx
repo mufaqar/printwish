@@ -87,6 +87,17 @@ export const SEARCH_PRODUCTS = gql`
             mediaItemUrl
           }
         }
+        ... on SimpleProduct {
+          price
+          allPaColor {
+            nodes {
+              name
+            }
+          }
+        }
+        poductInfo {
+          whitesmall
+        }
       }
     }
   }
@@ -103,6 +114,17 @@ export const SEARCH_PRODUCTS_WITHOUT_CAREGORY = gql`
           node {
             mediaItemUrl
           }
+        }
+        ... on SimpleProduct {
+          price
+          allPaColor {
+            nodes {
+              name
+            }
+          }
+        }
+        poductInfo {
+          whitesmall
         }
       }
     }
