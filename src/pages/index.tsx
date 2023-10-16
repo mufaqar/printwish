@@ -9,12 +9,14 @@ import { GetServerSideProps, GetStaticProps } from 'next'
 import { apiRequest } from '@/config/requests'
 import Head from 'next/head'
 
+
+
 export default function Home(props: any) {
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
   return (
     <>
-     <Head>
+      <Head>
         <title>Cheap Bulk Custom T-Shirt Printing in London, UK - Wholesale Tshirt Printing</title>
         <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
         <link rel="canonical" href="https://www.printwish.co.uk/" />
@@ -44,11 +46,11 @@ export default function Home(props: any) {
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
             BEST SELLING CATEGORIES
           </h2>
-           <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-7 mt-10 p-4 md:p-8 bg-gray-100'>
-              {Categories?.map((item: CategoryType, idx: number) => {
-                return <Category_Box key={idx} data={item} />
-              })}
-            </div>
+          <div className='grid md:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-7 mt-10 p-4 md:p-8 bg-gray-100'>
+            {Categories?.map((item: CategoryType, idx: number) => {
+              return <Category_Box key={idx} data={item} />
+            })}
+          </div>
         </div>
       </section>
       <Steps />
@@ -78,12 +80,12 @@ export default function Home(props: any) {
 
 
 export const getStaticProps = async () => {
-   const dataForProducts = {
+  const dataForProducts = {
     per_page: 10,
   };
 
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
-  return { props: { products} }
+  return { props: { products } }
 }
 
 

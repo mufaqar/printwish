@@ -12,6 +12,7 @@ import Loader from '@/components/loader'
 import NextNProgress from 'nextjs-progressbar';
 import GoogleAnalytics from "@bradgarropy/next-google-analytics"
 import CookiesMessage from '@/components/UI/cookiesMessage'
+import TawkToChat from '@/components/TawkToChat/TawkToChat'
 
 export default function App({ Component, pageProps }: any) {
 
@@ -54,6 +55,7 @@ export default function App({ Component, pageProps }: any) {
           <Header />
           <Component {...pageProps} />
           <Footer />
+          <TawkToChat />
         </SettingsProvider>
       </Provider>
       <ToastContainer position="top-right"
