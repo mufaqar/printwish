@@ -4,8 +4,9 @@ import React from 'react'
 
 const Product_Box = ({ data, image }: any) => {
   const smallPrice  = data?.meta_data?.find((item:any) => item.key === "whitesmall" )
-  const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')) || data?.allPaColor?.nodes?.length
-
+  const colors_lenght = data?.attributes?.find((cl:any)=> (cl.name ==='Color')) || data?.allPaColor?.nodes?.length || "1"
+  const simplePrice = data?.price?.replace('£', '')
+  
   return (
     <article className="p-1 relative">
       <div className='p-1 border border-gray-200 pb-4'>
@@ -23,7 +24,7 @@ const Product_Box = ({ data, image }: any) => {
         </p>
 
         <p className='text-center font-bold font-roboto mb-3 text-primary'>
-          From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.price}</span>
+          From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.poductInfo?.whitesmall || simplePrice }</span>
         </p>
         <Link href={`/product/${data?.slug}`}  className='text-xs sm:text-base relative font-semibold flex justify-center text-center font-roboto uppercase bg-primary text-white px-2 md:px-6 py-1 hover:bg-transparent hover:text-primary border-primary border-2 hover:border-primary'
          >
