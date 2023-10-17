@@ -329,8 +329,8 @@ const ProductSlug = ({ post, product }: any) => {
                     <p className='text-accent'>{product?.poductInfo?.gender}</p>
                   </div>
                   <div className='flex justify-between items-center border-b-[1px] py-2 border-gray-200'>
-                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Minimum Order:</h6>
-                    <p className='text-accent'>{product?.poductInfo?.minimumOrder}</p>
+                    <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Minimum Order Value is</h6>
+                    <p className='text-accent'>{product?.poductInfo?.minimumOrder} Units</p>
                   </div>
                   <div className='border-b-[1px] py-2 border-gray-200'>
                     <h6 className='capitalize mb-1 text-lg text-gray-600 font-semibold mt-3 font-roboto'>Imprint Area:</h6>
