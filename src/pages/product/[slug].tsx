@@ -511,7 +511,7 @@ export default ProductSlug
 
 
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const slug = params.slug
 
   const response = await client.query({

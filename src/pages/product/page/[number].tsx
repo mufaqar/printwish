@@ -60,7 +60,7 @@ const PageNumber = ({ products }: any) => {
 export default PageNumber
 
 
-export const getStaticProps = async ({ params }: any) => {
+export const getServerSideProps = async ({ params }: any) => {
     const pagenumber = params?.number
     const dataForProducts = {
         per_page: 30,
