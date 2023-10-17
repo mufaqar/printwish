@@ -530,10 +530,10 @@ export async function getServerSideProps({ params }: any) {
 }
 
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: any = [];
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-}
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const paths: any = [];
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   };
+// }

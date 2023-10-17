@@ -71,11 +71,11 @@ export const getServerSideProps = async ({ params }: any) => {
     return { props: { products } }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths: any = [];
-    return {
-        paths,
-        fallback: 'blocking',
-    };
+// export const getStaticPaths: GetStaticPaths = async () => {
+//     const paths: any = [];
+//     return {
+//         paths,
+//         fallback: 'blocking',
+//     };
 
-}
+// }
