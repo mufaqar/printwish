@@ -511,7 +511,7 @@ export default ProductSlug
 
 
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const slug = params.slug
 
   const response = await client.query({
@@ -530,10 +530,10 @@ export async function getStaticProps({ params }: any) {
 }
 
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: any = [];
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-}
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const paths: any = [];
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   };
+// }

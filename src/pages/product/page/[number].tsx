@@ -60,7 +60,7 @@ const PageNumber = ({ products }: any) => {
 export default PageNumber
 
 
-export const getStaticProps = async ({ params }: any) => {
+export const getServerSideProps = async ({ params }: any) => {
     const pagenumber = params?.number
     const dataForProducts = {
         per_page: 30,
@@ -71,11 +71,11 @@ export const getStaticProps = async ({ params }: any) => {
     return { props: { products } }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths: any = [];
-    return {
-        paths,
-        fallback: 'blocking',
-    };
+// export const getStaticPaths: GetStaticPaths = async () => {
+//     const paths: any = [];
+//     return {
+//         paths,
+//         fallback: 'blocking',
+//     };
 
-}
+// }
