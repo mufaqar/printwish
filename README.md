@@ -8,3 +8,5 @@
 ## WooCommerce 
 ## Stripe
 
+#Location
+
