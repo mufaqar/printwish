@@ -154,7 +154,7 @@ query GetLocation($slug: String!) {
 
 export const ALL_LOCATIONS = gql`
 query GetLocations {
-  locations(first: 20, where: {orderby: {field: DATE, order: ASC}}) {
+  locations(first: 100, where: {orderby: {field: DATE, order: ASC}}) {
     nodes {
       title
       uri
