@@ -96,7 +96,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
 export default CategorySlug
 
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
      const p = params.page
      const slug = p[0]
 
@@ -173,11 +173,11 @@ export async function getStaticProps({ params }: any) {
 
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-     const paths: any = [];
-     return {
-          paths,
-          fallback: 'blocking',
-     };
+// export const getStaticPaths: GetStaticPaths = async () => {
+//      const paths: any = [];
+//      return {
+//           paths,
+//           fallback: 'blocking',
+//      };
 
-}
+// }

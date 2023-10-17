@@ -114,7 +114,7 @@ const Bags = ({ gallery, bags }: any) => {
 export default Bags
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await client.query({
     query: GetGallery,
   });
