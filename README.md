@@ -10,3 +10,5 @@
 
 #Location
 
+#Name server
+
