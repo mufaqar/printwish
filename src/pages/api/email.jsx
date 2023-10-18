@@ -14,6 +14,7 @@ export default function (req, res) {
      const cottonBagsOrder = `
           <p><strong>Name: </strong>${req.body.name}</p>
           <p><strong>Email: </strong>${req.body.Email}</p>
+          <p><strong>Product: </strong>${req.body.title}</p>
           <p><strong>Quantity: </strong>${req.body.customQuantity}</p>
           <p><strong>Delivery Date: </strong>${req.body.deliveryDate}</p>
           <p><strong>Colors: </strong>${req.body.colors}</p>

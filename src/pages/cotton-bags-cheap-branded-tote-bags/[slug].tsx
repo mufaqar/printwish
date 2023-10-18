@@ -150,6 +150,7 @@ export default function Cotton_Bag({ bag }: any) {
                             <div className='mt-5'>
                                 <form className='grid gap-5' onSubmit={handleSubmit(onSubmit)}>
                                     <div>
+                                    <input  {...register("title", { required: true })} type="hidden" value={bag?.title} id="name" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" />
                                         <label htmlFor="name" className="block mb-2 text-base font-medium text-gray-900">Your name</label>
                                         <input  {...register("name", { required: true })} type="text" id="name" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Your Name" required />
                                         {errors.name && <span className="text-xs text-red-500">This field is required</span>}
