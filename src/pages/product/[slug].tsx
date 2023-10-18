@@ -263,11 +263,16 @@ const ProductSlug = ({ post, product }: any) => {
             <p>FREE UK DELIVERY.</p>
           </Link>
           <Link href="#" className='flex px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <Image src="/images/rating.png" alt="rating" width={300} height={32} className="w-56" />
+            <Image src="/images/rating.jpg" alt="rating" width={335} height={64} className="w-56" />
           </Link>
         </div>
       </section>
       <div className='block md:hidden px-3 container mx-auto'>
+      <div className='mt-3 flex justify-center'>
+            <Image src="/images/rating.jpg" alt="rating" width={335} height={64} className="w-full" />
+          </div>
+
+
         <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
         <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
       </div>
@@ -479,9 +484,13 @@ const ProductSlug = ({ post, product }: any) => {
             Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span>
           </div>
 
-          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-primary gap-2 py-3 bg-primary text-white px-8 hover:text-primary hover:bg-transparent rounded-full'>
+          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-primary gap-2 py-3 bg-primary text-white px-8 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
+
+          <div className='mt-5 flex justify-center'>
+            <Image src="/images/rating.jpg" alt="rating" width={335} height={64} className="w-full" />
+          </div>
 
         </section>
       </main>
@@ -500,6 +509,8 @@ const ProductSlug = ({ post, product }: any) => {
         <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-primary uppercase text-white gap-2 p-2 flex items-center justify-center'>
           <BsCartDash /> Add to cart
         </div>
+
+       
       </section>
 
     </>
