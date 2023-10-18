@@ -30,6 +30,7 @@ import { faqs } from '../../../public/data';
 import { useRouter } from 'next/router';
 import parse from "html-react-parser";
 import Head from 'next/head';
+import Reviews from '@/components/reviews/reviews';
 
 
 interface IColor {
@@ -488,12 +489,12 @@ const ProductSlug = ({ post, product }: any) => {
             <SlBasketLoaded /> Add to cart
           </button>
 
-          <div className='mt-5 flex justify-center'>
-            <Image src="/images/rating.jpg" alt="rating" width={335} height={64} className="w-full" />
-          </div>
-
+         
         </section>
+
+       
       </main>
+      <Reviews />
 
       {/* floating price */}
       <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[300px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
