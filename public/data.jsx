@@ -157,10 +157,10 @@ export const orderData = {
           last_name: "Doe",
           address_1: "969 Market",
           address_2: "",
-          city: "San Francisco",
-          state: "CA",
-          postcode: "94103",
-          country: "US"
+          city: "",
+          state: "",
+          postcode: "",
+          country: "UK"
      },
      line_items: [],
      shipping_lines: []

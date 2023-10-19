@@ -7,11 +7,9 @@ import Head from 'next/head'
 
 const Checkout = () => {
      const cartItems = useSelector((state) => state.AddToCart.value)
-
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0).toFixed(2);
      const vat = Number(((20 / 100) * price).toFixed(2))
      const totalPrice = Number(price) + vat
-     console.log("🚀 ~ file: index.jsx:14 ~ Checkout ~ totalPrice:", totalPrice)
 
      const {
           register,
@@ -21,10 +19,8 @@ const Checkout = () => {
      } = useForm()
 
      const onSubmit = (data) => {
-
           sessionStorage.setItem('Formdata', JSON.stringify(data));
           sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-
           paymentSubmitHandler()
      }
 

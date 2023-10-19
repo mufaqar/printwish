@@ -42,6 +42,7 @@ const useOrderHandler = () => {
                          customisation Name : ${item.customisationName}
                          Position : ${item.designPosition}
                          Width : ${item.designWidth}
+                         ImageURL : ${item.imageURL}
                          special Instruction : ${item.specialInstruction}
                          ${lines}
                        ]`;

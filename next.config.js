@@ -5,7 +5,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["printwish.co.uk", "backend.printwish.co.uk"]
+    domains: ["printwish.co.uk", "backend.printwish.co.uk", "res.cloudinary.com"]
   },
   // experimental: {
   //   esmExternals: 'loose'

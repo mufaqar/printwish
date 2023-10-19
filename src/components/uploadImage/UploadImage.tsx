@@ -30,6 +30,7 @@ const UploadImage = () => {
       );
       const res = await response.json();
       setDesignImage(res.url)
+      setImageURL(res.url)
     } catch (error) {
       console.log("🚀 ~ file: UploadImage.tsx:32 ~ handleImageChange ~ error:", error)
     }
