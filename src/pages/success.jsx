@@ -28,13 +28,10 @@ const Success = () => {
       billing.address_1 = formdata.address
 
       const shipping = orderData['shipping']
-      shipping.email = formdata.email
       shipping.first_name = formdata.name
-      shipping.phone = formdata.mobile
       shipping.address_1 = formdata.address
 
       var cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
-      console.log('orderData', orderData)
 
       OrderSubmit(cartItems)
       dispatch(clearAll())
