@@ -28,7 +28,7 @@ const TermsAndCondition = () => {
       </Head>
       <PageBanner title={`Terms & conditions`} />
 
-      <div className="p-5">
+      <div className="p-5 container mx-auto">
         <p>
           <strong>TERMS OF AGREEMENT</strong>
         </p>

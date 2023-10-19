@@ -18,19 +18,19 @@ export default function App({ Component, pageProps }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [cookies, setCookies] = useState(false)
-  // useEffect(() => {
-  //   Router.events.on("routeChangeStart", (url) => {
-  //     setIsLoading(true)
-  //   });
+  useEffect(() => {
+    Router.events.on("routeChangeStart", (url) => {
+      setIsLoading(true)
+    });
 
-  //   Router.events.on("routeChangeComplete", (url) => {
-  //     setIsLoading(false)
-  //   });
+    Router.events.on("routeChangeComplete", (url) => {
+      setIsLoading(false)
+    });
 
-  //   Router.events.on("routeChangeError", (url) => {
-  //     setIsLoading(false)
-  //   });
-  // }, [Router])
+    Router.events.on("routeChangeError", (url) => {
+      setIsLoading(false)
+    });
+  }, [Router])
 
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }: any) {
   
   return (
     <>
-      <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} />
+      {/* <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} /> */}
       <GoogleAnalytics measurementId="G-SDRXNDYY1L" />
       <Provider store={store}>
         {isLoading && <Loader isLoading={isLoading}/>}
