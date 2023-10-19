@@ -11,6 +11,7 @@ const Checkout = () => {
      const price = cartItems.reduce((sum, product) => sum + +product.price, 0).toFixed(2);
      const vat = Number(((20 / 100) * price).toFixed(2))
      const totalPrice = Number(price) + vat
+     console.log("🚀 ~ file: index.jsx:14 ~ Checkout ~ totalPrice:", totalPrice)
 
      const {
           register,
@@ -142,7 +143,7 @@ const Checkout = () => {
                                    </ul>
                                    <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
                                    <div className="space-y-2">
-                                        <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>£{totalPrice}</span></p>
+                                        <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>£{totalPrice.toFixed(2)}</span></p>
                                         <p className="text-xs font-medium !-mt-0 !mb-2 text-gray-400">include Vat</p>
                                         <p className="flex justify-between text-sm font-medium text-white"><span>Shipping</span><span> Free </span></p>
                                         <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 20%</span><span>£{vat}</span></p>

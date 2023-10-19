@@ -12,7 +12,7 @@ export default async function handler(
 ) {
 
   const {orderdata}  = JSON.parse(req.body)
-  const price = orderdata.totalprice * 100
+  const price = Number(orderdata.totalprice.toFixed(2)) * 100
   
   const objString = new URLSearchParams(orderdata.orderdata).toString();
 

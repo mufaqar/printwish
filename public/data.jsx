@@ -78,52 +78,52 @@ export const Posts = [
 
 export const designVarient = [
      {
-          placement: 'Front',
+          placement: '',
           image: '/images/tshirt-varients/front_Left Chest.png',
           position: 'Left Chest',
      },
      {
-          placement: 'Front',
+          placement: '',
           image: '/images/tshirt-varients/front_Right Chest.png',
           position: 'Right Chest',
      },
      {
-          placement: 'Front',
+          placement: '',
           image: '/images/tshirt-varients/front_Centre Chest.png',
           position: 'Centre Chest',
      },
      {
-          placement: 'Back',
+          placement: '',
           image: '/images/tshirt-varients/back_Top Back.png',
           position: 'Top Back',
      },
      {
-          placement: 'Back',
+          placement: '',
           image: '/images/tshirt-varients/back_Nape_of_Neck.png',
           position: 'Nape of Neck',
      },
      {
-          placement: 'Back',
+          placement: '',
           image: '/images/tshirt-varients/back_Centre Back.png',
           position: 'Centre Back',
      },
      {
-          placement: 'Back',
+          placement: '',
           image: '/images/tshirt-varients/back_Bottom Back.png',
           position: 'Bottom Back',
      },
      {
-          placement: 'Front',
+          placement: '',
           image: '/images/tshirt-varients/front_Left_Sleeve.png',
           position: 'Left Sleeve',
      },
      {
-          placement: 'Front',
+          placement: '',
           image: '/images/tshirt-varients/front_Right_Sleeve.png',
           position: 'Right Sleeve',
      },
      {
-          placement: 'Front',
+          placement: '',
           image: '/images/tshirt-varients/front_Inside_Neck.png',
           position: 'Inside Neck',
      },
