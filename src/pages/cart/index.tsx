@@ -174,7 +174,7 @@ const Cart = () => {
                               <div className="flex justify-between">
                                    <p className="text-lg font-bold">Total</p>
                                    <div className="">
-                                        <p className="mb-1 text-lg font-bold text-end">£{priceWithVat}</p>
+                                        <p className="mb-1 text-lg font-bold text-end">£{priceWithVat.toFixed(2)}</p>
                                         <p className="text-xs text-gray-700">including VAT</p>
                                    </div>
                               </div>
