@@ -6,12 +6,13 @@ import React from 'react'
 import Faqs from '../../components/faqs/faqs'
 import Link from 'next/link'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 // import parse from "html-react-parser";
 
 
 const Location = ({ products, pages }: any) => {
   // const fullHead = parse(pages.seo.fullHead);
-
+  const router = useRouter()
   return (
     <>
 
@@ -52,7 +53,7 @@ const Location = ({ products, pages }: any) => {
                 <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
                 <h5 className='text-center mt-4 font-bold text-gray-700 min-h-[57px] text-lg'>{item?.name.replace(/London/g, pages?.title)}</h5>
                 <h6 className='text-center font-light mt-1 text-gray-800'>{item.text.replace(/London/g, pages?.title)}</h6>
-                <button className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'><Link href="/custom-t-shirt-printing-cheap-t-shirt-printing" >View Products</Link></button>
+                <button onClick={()=>router.push('/custom-t-shirt-printing-cheap-t-shirt-printing')} className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'>View Products</button>
               </div>
             ))
           }
