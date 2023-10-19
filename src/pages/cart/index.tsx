@@ -55,7 +55,7 @@ const Cart = () => {
                               {
                                    cartItems.map((item: any, idx: number) => {
                                         return (
-                                             <div key={idx} className='border rounded-lg hover:shadow p-6'>
+                                             <div key={idx} className='border rounded-lg hover:shadow p-6 mb-2'>
                                                   <div key={idx} className="justify-between mb-4 relative bg-white sm:flex sm:justify-start items-start">
                                                        <Image src={item?.featuredImage?.node?.mediaItemUrl || item?.images[0]?.src} alt={item?.name} width={112} height={200} className="w-full rounded-lg sm:w-28" />
                                                        <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
