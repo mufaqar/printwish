@@ -3,6 +3,7 @@ import React from 'react'
 import Slider from 'react-slick';
 import { IoIosArrowBack, IoIosArrowForward, } from 'react-icons/io';
 import { Feedback, FeedbackType } from '@/const/feedback';
+import Link from 'next/link';
 
 const Reviews = () => {
     const settings = {
@@ -48,7 +49,9 @@ const Reviews = () => {
                     <h2 className='sm:text-4xl hidden md:block text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                         WHAT OUR CLIENTS SAY ABOUT US
                     </h2>
+                    <Link href="/printwish-reviews">
                     <Image src="/images/reviews.webp" alt='reviews' height={300} width={700} className='mx-auto' />
+                    </Link>
                 </div>
                 <div className='relative mt-7 md:mt-24'>
                     <Slider ref={slider} {...settings}>

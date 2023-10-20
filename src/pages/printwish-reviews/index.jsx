@@ -1,0 +1,13 @@
+import React from 'react'
+import Reviews from '../../components/reviews/reviews'
+
+const PrintwishReview = () => {
+  return (
+    <section className='container mx-auto px-3 py-10'>
+      <div className='p-4 text-center font-bold text-gray-600 text-2xl border mb-5'>PRINTWISH Reviews </div>
+      <Reviews/>
+    </section>
+  )
+}
+
+export default PrintwishReview
