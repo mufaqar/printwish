@@ -10,6 +10,7 @@ import { GetProductByTag, LOCATION_PAGE, PRODUCT_CATEGORY_INFO } from '@/config/
 import Pagination from '@/components/pagination/pagination'
 import Faqs from '@/components/faqs/faqs'
 import Head from 'next/head'
+import Reviews from '@/components/reviews/reviews'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo }: any) => {
 
@@ -57,6 +58,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }
+                          <Reviews />
 
                          {
                               products.length > 0 ? <div className='container mx-auto px-3 my-10 w-full'>
