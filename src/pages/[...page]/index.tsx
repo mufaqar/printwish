@@ -14,7 +14,6 @@ import Reviews from '@/components/reviews/reviews'
 import parse from "html-react-parser";
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo, categorySEO }: any) => {
-console.log("🚀 ~ file: index.tsx:17 ~ CategorySlug ~ categorySEO:", categorySEO)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
