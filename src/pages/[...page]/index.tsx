@@ -11,13 +11,13 @@ import Pagination from '@/components/pagination/pagination'
 import Faqs from '@/components/faqs/faqs'
 import Head from 'next/head'
 import Reviews from '@/components/reviews/reviews'
+import parse from "html-react-parser";
 
-const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo }: any) => {
-
+const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo, categorySEO }: any) => {
+console.log("🚀 ~ file: index.tsx:17 ~ CategorySlug ~ categorySEO:", categorySEO)
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
-     console.log("🚀 ~ file: index.tsx:19 ~ CategorySlug ~ page:", page)
      const pageTitle = page?.replace(/-/g, " ");
      function capitalizeWords(input: any) {
           return input.replace(/(^|\s)\S/g, function (match: any) {
@@ -25,30 +25,15 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
           });
      }
      const capitalizedPageTitle = capitalizeWords(pageTitle);
+     const fullHead = parse(categorySEO?.fullHead);
 
      return (
           <>
                <Head>
-                    <title>{capitalizedPageTitle} | Printwish</title>
-                    <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-                    <link rel="canonical" href={`https://www.printwish.co.uk/${page}`} />
-                    <meta property="og:locale" content="en_US" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content={capitalizedPageTitle} />
-                    <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-                    <meta property="og:url" content={`https://printwish.co.uk/${page}`} />
-                    <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-                    <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-                    <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-                    <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
-                    <meta property="og:image:width" content="700" />
-                    <meta property="og:image:height" content="467" />
-                    <meta property="og:image:type" content="image/jpeg" />
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:site" content="@PrintwishUk" />
-                    <meta name="twitter:label1" content="Est. reading time" />
-                    <meta name="twitter:data1" content="57 minutes" />
+                    <title>{capitalizedPageTitle}</title>
+                    {fullHead}
                </Head>
+
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
@@ -58,7 +43,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }
-                          <Reviews />
+                         <Reviews />
 
                          {
                               products.length > 0 ? <div className='container mx-auto px-3 my-10 w-full'>
@@ -134,6 +119,7 @@ export async function getServerSideProps({ params }: any) {
                     productsForLocationPage: products,
                     slug,
                     pages,
+                    categorySEO: pages.seo
                },
           };
      }
@@ -169,7 +155,8 @@ export async function getServerSideProps({ params }: any) {
                products: products,
                slug,
                category: getID,
-               categoryInfo: response?.data?.productCategory?.categoryInfo
+               categoryInfo: response?.data?.productCategory?.categoryInfo,
+               categorySEO: response?.data?.productCategory.seo
           },
      };
 
