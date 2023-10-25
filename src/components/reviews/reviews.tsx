@@ -46,14 +46,14 @@ const Reviews = () => {
         <section className='py-5 pb-16 max-w-screen-xl mx-auto px-4 relative'>
             <div className='max-w-screen-xl mx-auto px-4'>
                 <div className='w-fit mx-auto '>
-                    <h2 className='sm:text-4xl hidden md:block text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
+                    <h2 className='sm:text-3xl hidden md:block text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
                         WHAT OUR CLIENTS SAY ABOUT US
                     </h2>
                     <Link href="/printwish-reviews">
-                    <Image src="/images/reviews.webp" alt='reviews' height={300} width={700} className='mx-auto' />
+                    <Image src="/images/reviews.webp" alt='reviews' height={250} width={500} className='mx-auto' />
                     </Link>
                 </div>
-                <div className='relative mt-7 md:mt-24'>
+                <div className='relative mt-8'>
                     <Slider ref={slider} {...settings}>
                     {Feedback?.map((item: FeedbackType, idx: number) => {
                             return <div key={idx}>

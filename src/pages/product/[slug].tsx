@@ -474,7 +474,7 @@ const ProductSlug = ({ post, product }: any) => {
 
               {
                 customizedMergeData?.length < 4 &&
-                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center text-xl mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-6 text-secondary rounded-full'>
+                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-5 text-secondary rounded-full'>
                   {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
                 </button>
               }
@@ -485,7 +485,7 @@ const ProductSlug = ({ post, product }: any) => {
             Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span>
           </div>
 
-          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center text-2xl mt-8 border border-primary gap-2 py-3 bg-primary text-white px-8 hover:text-primary hover:bg-transparent rounded-full'>
+          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
 
@@ -497,8 +497,8 @@ const ProductSlug = ({ post, product }: any) => {
       <Reviews />
 
       {/* floating price */}
-      <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[300px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
-        <h5 className='text-3xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span></h5>
+      <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[200px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
+        <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section>
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
