@@ -14,52 +14,52 @@ function Contact() {
         reset
     } = useForm()
 
-    const onSubmit = (data:any) => {
+    const onSubmit = (data: any) => {
         setLoading(true)
         data.page = "contact"
         fetch('/api/email', {
-             method: 'POST',
-             headers: {
-                  'Accept': 'application/json, text/plain, */*',
-                  'Content-Type': 'application/json'
-             },
-             body: JSON.stringify(data)
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         }).then((res) => {
-             console.log('Response received')
-             if (res.status === 200) {
-                  console.log('Email send succeeded!')
-                  toast.info("Email send successfully!");
-                  reset();
-                  setLoading(false)
-             }
+            console.log('Response received')
+            if (res.status === 200) {
+                console.log('Email send succeeded!')
+                toast.info("Email send successfully!");
+                reset();
+                setLoading(false)
+            }
         })
 
-   }
+    }
 
 
     return (
         <>
-        <Head>
-        <title>Contact Us | Printwish</title>
-        <meta name="description" content="Contact Us | PrintWish T-Shirt Printing" />
-        <link rel="canonical" href={`https://www.printwish.co.uk/contact-us`} />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="contact-us" />
-        <meta property="og:description" content="Contact Us | PrintWish T-Shirt Printing" />
-        <meta property="og:url" content={`https://printwish.co.uk/contact-us`} />
-        <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-        <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-        <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-        <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
-        <meta property="og:image:width" content="700" />
-        <meta property="og:image:height" content="467" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@PrintwishUk" />
-        <meta name="twitter:label1" content="Est. reading time" />
-        <meta name="twitter:data1" content="57 minutes" />
-      </Head>
+            <Head>
+                <title>Contact Us | Printwish</title>
+                <meta name="description" content="Contact Us | PrintWish T-Shirt Printing" />
+                <link rel="canonical" href={`https://www.printwish.co.uk/contact-us`} />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="contact-us" />
+                <meta property="og:description" content="Contact Us | PrintWish T-Shirt Printing" />
+                <meta property="og:url" content={`https://printwish.co.uk/contact-us`} />
+                <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
+                <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
+                <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
+                <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
+                <meta property="og:image:width" content="700" />
+                <meta property="og:image:height" content="467" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@PrintwishUk" />
+                <meta name="twitter:label1" content="Est. reading time" />
+                <meta name="twitter:data1" content="57 minutes" />
+            </Head>
             <div className="container mx-auto px-4 my-20">
                 <div>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">CONTACT US</h2>
@@ -117,7 +117,7 @@ function Contact() {
                                 Looking for help or info related to drop shipping
                             </p>
                             <button className="bg-green-700 px-10 py-3 rounded-full text-white">
-                            <Link href="mailto:enquiries@printwish.co.uk" >  DROP SHIPPING HELP </Link>
+                                <Link href="mailto:enquiries@printwish.co.uk" >  DROP SHIPPING HELP </Link>
                             </button>
                         </div>
                     </div>
@@ -171,7 +171,7 @@ function Contact() {
                                     <div>
                                         <input
                                             type='submit'
-                                            value={ loading ? 'Sending...' : 'Send'}
+                                            value={loading ? 'Sending...' : 'Send'}
                                             className="bg-green-500 py-2 px-8 hover:scale-105 rounded-full mt-5 text-white"
                                         />
                                     </div>
