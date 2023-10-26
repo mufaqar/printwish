@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify'
@@ -85,10 +86,10 @@ function Contact() {
                             <i className="fa-regular fa-envelope text-3xl"></i>
                             <div>
                                 <p>
-                                    <span className="font-bold">Sales:</span>sales@printwish.co.uk
+                                    <span className="font-bold">Sales:</span><Link href="mailto:sales@printwish.co.uk" >sales@printwish.co.uk </Link>
                                 </p>
                                 <p>
-                                    <span className="font-bold">Enquiries:</span>enquiries@printwish.co.uk
+                                    <span className="font-bold">Enquiries:</span><Link href="mailto:enquiries@printwish.co.uk" >enquiries@printwish.co.uk </Link>
                                 </p>
                             </div>
                         </div>
@@ -116,7 +117,7 @@ function Contact() {
                                 Looking for help or info related to drop shipping
                             </p>
                             <button className="bg-green-700 px-10 py-3 rounded-full text-white">
-                                DROP SHIPPING HELP
+                            <Link href="mailto:enquiries@printwish.co.uk" >  DROP SHIPPING HELP </Link>
                             </button>
                         </div>
                     </div>

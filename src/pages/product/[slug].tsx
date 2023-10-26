@@ -264,13 +264,13 @@ const ProductSlug = ({ post, product }: any) => {
             <p>FREE UK DELIVERY.</p>
           </Link>
           <Link href="#" className='flex px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <Image src="/images/rating.jpg" alt="rating" width={335} height={64} className="w-56" />
+            <Image src="/images/review-badge.svg" alt="rating" width={335} height={60} className="w-56" />
           </Link>
         </div>
       </section>
       <div className='block md:hidden px-3 container mx-auto'>
       <div className='mt-3 flex justify-center'>
-            <Image src="/images/rating.jpg" alt="rating" width={335} height={64} className="w-full" />
+            <Image src="/images/review-badge.svg" alt="rating" width={200} height={45} />
           </div>
 
 

@@ -71,8 +71,8 @@ const Location = ({ products, pages }: any) => {
           <div className='text-lg text-gray-600'>
             <h5>Printwish Clothing</h5>
             <p className='mt-2'>0800 051 0821</p>
-            <h6 className='mt-7 font-semibold underline'>enquiries@printwish.co.uk</h6>
-            <button className='mt-5 bg-[#D1DE8B] p-2 px-16 hover:scale-105 rounded-full shadow-xl'>Enquire</button>
+            <h6 className='mt-7 font-semibold underline'><Link href="mailto:enquiries@printwish.co.uk" >enquiries@printwish.co.uk </Link></h6>
+            <button className='mt-5 bg-[#D1DE8B] p-2 px-16 hover:scale-105 rounded-full shadow-xl'><Link href="mailto:enquiries@printwish.co.uk" >Enquire</Link></button>
           </div>
           <div className='md:mt-0 mt-6'>
             <div className='grid grid-cols-2 p-4 t_shadow font-semibold'>

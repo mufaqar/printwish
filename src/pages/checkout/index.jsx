@@ -148,8 +148,8 @@ const Checkout = () => {
                               <div className="relative mt-10 text-white">
                                    <h3 className="mb-5 text-lg font-bold">Support</h3>
                                    <p className="text-sm font-semibold">0800 051 0821 <span className="font-light">(International)</span></p>
-                                   <p className="mt-1 text-sm font-semibold">enquiries@printwish.co.uk<span className="font-light">(Email)</span></p>
-                                   <p className="mt-1 text-sm font-semibold">sales@printwish.co.uk<span className="font-light">(Email)</span></p>
+                                   <p className="mt-1 text-sm font-semibold">  <Link href="mailto:enquiries@printwish.co.uk" >enquiries@printwish.co.uk </Link><span className="font-light">(Email)</span></p>
+                                   <p className="mt-1 text-sm font-semibold"><Link href="mailto:sales@printwish.co.uk" >sales@printwish.co.uk </Link><span className="font-light">(Email)</span></p>
                                    <p className="mt-2 text-xs font-medium">Call us now for payment related issues</p>
                               </div>
                               <div className="relative mt-10 flex">
