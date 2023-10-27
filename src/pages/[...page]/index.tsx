@@ -45,7 +45,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          <Reviews />
 
                          {
-                              products.length > 0 ? <div className='container mx-auto px-3 my-10 w-full'>
+                              products.length > 0 ? <div className='container mx-auto px-1 my-2 w-full'>
                                    <div className='grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-2 gap-1 sm:gap-2 md:gap-4'>
                                         {products?.map((item: any, idx: number) => {
                                              const img = item?.images[0]?.src
