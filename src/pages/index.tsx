@@ -37,6 +37,7 @@ export default function Home(props: any) {
         <meta name="twitter:label1" content="Est. reading time" />
         <meta name="twitter:data1" content="57 minutes" />
         <meta name="google-site-verification" content="OU1pmCJ6gWoPeRZs1_8ycnWKRaixALVrLMHVxyBeVUE" />
+        <meta  name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </Head>
       <Main_Banner />
       <Brands_Slider />
