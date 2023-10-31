@@ -31,6 +31,7 @@ import { useRouter } from 'next/router';
 import parse from "html-react-parser";
 import Head from 'next/head';
 import Reviews from '@/components/reviews/reviews';
+import TopBar from '@/components/banner/top-bar';
 
 
 interface IColor {
@@ -249,25 +250,8 @@ const ProductSlug = ({ post, product }: any) => {
         {fullHead}
       </Head>
       {/* top bar with some content  */}
-      <section className='shadow-lg p-3 hidden md:block'>
-        <div className='container mx-auto px-4 flex flex-wrap justify-center items-center gap-5'>
-          <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <LuShirt className="text-2xl text-secondary" />
-            <p>25 MINIMUM ORDER VALUE</p>
-          </Link>
-          <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <TiTick className="text-2xl text-secondary" />
-            <p>PRICE MATCH PROMISE</p>
-          </Link>
-          <Link href="#" className='flex border-r-[2px] border-accent px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <TbTruckDelivery className="text-2xl text-secondary" />
-            <p>FREE UK DELIVERY.</p>
-          </Link>
-          <Link href="#" className='flex px-6 item-center hover:text-secondary gap-2 text-base uppercase text-accent'>
-            <Image src="/images/review-badge.svg" alt="rating" width={335} height={60} className="w-56" />
-          </Link>
-        </div>
-      </section>
+      <TopBar/>
+      
       <div className='block md:hidden px-3 container mx-auto'>
       <div className='mt-3 flex justify-center'>
             <Image src="/images/review-badge.svg" alt="rating" width={200} height={45} />

@@ -276,3 +276,22 @@ query PRODUCT_CATEGORY_INFO($idType: ProductCategoryIdType = SLUG, $category: ID
   }
 }
 `;
+
+export const GET_PRODUCTS_BY_DEAL = gql`
+query GET_PRODUCTS_BY_DEAL {
+  deals(where: {slug: "in-deal"}, first: 100) {
+    nodes {
+      products(first: 100) {
+        nodes {
+          title
+          slug
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
+    }
+  }
+}`;

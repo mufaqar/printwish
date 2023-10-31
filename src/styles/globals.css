@@ -386,3 +386,7 @@ input[type='number'] {
      transform: rotate(1turn);
   }
 }
+
+.dFeature{
+  list-style-image: url('../../public/images/gtick.png') !important;
+}
