@@ -29,7 +29,7 @@ const DealsBanner = ({title}:any) => {
 export default DealsBanner
 
 
-const points = [
+export const points = [
      "Super Fast Turnarounds",
      "Money Back Guaranteed.",
      "Secure payment System Via Stripe",

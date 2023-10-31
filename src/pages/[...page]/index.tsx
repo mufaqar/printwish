@@ -36,7 +36,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
-                         <PageBanner title={category.name} category={category} />
+                         <PageBanner title={category.name} category={category} slug={slug}/>
                          {
                               page === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>

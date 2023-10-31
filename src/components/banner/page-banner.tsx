@@ -1,6 +1,8 @@
 import React from 'react'
+import { points } from './deals-banner'
+import { TiTick } from 'react-icons/ti'
 
-const PageBanner = ({ title, category }: any) => {
+const PageBanner = ({ title, category, slug }: any) => {
   const img = category?.image?.src.length > 5 ? category?.image?.src : "/images/merge.png"
   return (
     <section>
@@ -14,6 +16,19 @@ const PageBanner = ({ title, category }: any) => {
           />
         </div>
         {/* <div className='bg-black/20 absolute inset-0'/> */}
+        {
+          slug === "custom-t-shirt-printing-cheap-t-shirt-printing" &&
+          <ul className="container mx-auto px-4  text-white mt-4">
+            {
+              points.map((item, idx) => (
+                <li className='flex items-center my-2' key={idx}>
+                  <TiTick className="text-secondary text-2xl" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        }
       </div>
     </section>
   )

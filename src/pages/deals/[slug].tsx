@@ -366,11 +366,6 @@ const ProductSlug = ({ post, product }: any) => {
 
       </section>
 
-
-
-
-
-
     </>
   )
 }
