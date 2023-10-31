@@ -43,7 +43,7 @@ const ProductsPage = ({ products }: any) => {
                                 {products?.map((item: any, idx: number) => {
                                     const img = item?.featuredImage?.node?.mediaItemUrl
                                     return (
-                                        <div className='p-1 border border-gray-200 pb-4'>
+                                        <div className='p-1 border border-gray-200 pb-4' key={idx}>
                                             <Link href={`/deals/${item?.slug}`} className='border-b-[1px] border-gray-100 p-2 md:h-[300px] cursor-pointer mb-2 flex flex-col justify-center items-center group'>
                                                 <Image src={img} alt={item?.title} width={200} height={200} className='object-contain h-[180px] transition-all duration-200 ease-in-out w-full mb-3 group-hover:scale-95 md:h-full' />
                                             </Link>
