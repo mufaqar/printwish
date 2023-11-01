@@ -394,14 +394,14 @@ const ProductSlug = ({ post, product }: any) => {
                   {
                     selectedProduct?.colors?.map((c: IColor, idx: number) => {
                       return (
-                        <div key={idx} className='flex border-[1.5px] justify-between my-3 bg-background p-3 md:py-4 md:px-8 rounded-lg' style={{ borderColor: `#${c?.code}`}}>
+                        <div key={idx} className='flex border-[1.5px] justify-between my-3 bg-background p-3 md:py-4 md:px-6 rounded-lg' style={{ borderColor: `#${c?.code}`}}>
                           <div>
                             <div className='flex items-center gap-2'>
-                              <div className="p-5 rounded-full" style={{ backgroundColor: `#${c?.code}`, borderColor: `#${c?.code}`}} />
+                              <div className="p-4 rounded-full" style={{ backgroundColor: `#${c?.code}`, borderColor: `#${c?.code}`}} />
                               <p className='text-lg uppercase'>{c?.name}</p>
                             </div>
                             {/* map all size that are accociated to this product  */}
-                            <ul className='flex flex-wrap items-center gap-4 mt-3 '>
+                            <ul className='flex flex-wrap items-center gap-3 mt-3 '>
                               {
                                 product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
                                   const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
