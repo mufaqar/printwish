@@ -34,7 +34,7 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
      }
 
      return (
-          <section className='bg-gray-50 md:p-8 p-5 border-[1px] rounded-lg border-secondary mt-4'>
+          <section className='bg-gray-50 md:p-8 p-5 border-[1.5px] rounded-lg border-secondary mt-4'>
                <div className='flex flex-col-reverse md:flex-row justify-between gap-4'>
                     <h4 className='text-xl uppercase font-opensans'>CUSTOMISATION {id} - <span className='text-secondary'>{item?.customisationName}</span></h4>
                     <div className='flex justify-end'>
