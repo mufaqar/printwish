@@ -367,7 +367,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
 
 
-          <div className="pt-[1px] w-full my-8" />
+          
           {
             product?.allPaColor.nodes.length > 0 &&
             <section className=''>
