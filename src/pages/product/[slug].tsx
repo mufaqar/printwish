@@ -367,11 +367,11 @@ const ProductSlug = ({ post, product }: any) => {
           }
 
 
-          <div className="pt-[1px] w-full bg-gray-300 my-8" />
+          <div className="pt-[1px] w-full my-8" />
           {
             product?.allPaColor.nodes.length > 0 &&
-            <section className='bg-background p-3 md:p-8 rounded-lg '>
-              <div>
+            <section className=''>
+              <div className="bg-background p-3 md:p-8 rounded-lg ">
                 <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose Color:</h5>
                 <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
                   {
@@ -387,22 +387,23 @@ const ProductSlug = ({ post, product }: any) => {
                   }
                 </ul>
                 {/* selected color and show all sizes with each selcted color */}
-
-                <div>
+              </div>
+              
+              {/* all selected colors list*/}
+              <div>
                   {
                     selectedProduct?.colors?.map((c: IColor, idx: number) => {
                       return (
-                        <div key={idx} className='mt-6 flex justify-between '>
+                        <div key={idx} className='flex border-[1px] justify-between my-3 bg-background p-3 md:py-4 md:px-8 rounded-lg' style={{ borderColor: `#${c?.code}`}}>
                           <div>
                             <div className='flex items-center gap-2'>
-                              <div className="p-5 rounded-full" style={{ backgroundColor: `#${c?.code}` }} />
+                              <div className="p-5 rounded-full" style={{ backgroundColor: `#${c?.code}`, borderColor: `#${c?.code}`}} />
                               <p className='text-lg uppercase'>{c?.name}</p>
                             </div>
                             {/* map all size that are accociated to this product  */}
                             <ul className='flex flex-wrap items-center gap-4 mt-3 '>
                               {
                                 product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
-
                                   const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
                                   const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
 
@@ -422,13 +423,13 @@ const ProductSlug = ({ post, product }: any) => {
                               }
                             </ul>
                           </div>
-                          <i className='mt-4 font-semibold text-xl active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
+                          <i className='mt-4 font-semibold text-xl cursor-pointer active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
                         </div>
                       )
                     })
                   }
-                </div>
               </div>
+
             </section>
           }
 
