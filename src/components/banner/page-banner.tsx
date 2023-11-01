@@ -8,7 +8,7 @@ const PageBanner = ({ title, category, slug }: any) => {
     <section>
       <div className='py-6 relative md:py-16 bg-cover bg-no-repeat bg-center' style={{ backgroundImage: `linear-gradient(0deg, rgba(0, 36,63,0.7), rgba(0, 36,63,0.7)), url(${img})` }}>
         <div className='container mx-auto px-4  text-white'>
-          <h2 className='sm:text-4xl text-2xl font-bold font-opensans capitalize mb-2'>
+          <h2 className='sm:text-4xl text-4xl font-bold font-opensans capitalize mb-2'>
             {title}
           </h2>
           <div
