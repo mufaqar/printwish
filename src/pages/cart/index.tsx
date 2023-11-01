@@ -2,7 +2,7 @@ import { clearAll, removeProductFromCart } from '@/features/AddToCart'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
@@ -10,6 +10,14 @@ const Cart = () => {
      const cartItems = useSelector((state: any) => state.AddToCart.value)
      const dispatch = useDispatch()
      const router = useRouter()
+     const [coupon, setcoupon] = useState();
+     const [coupon_message, setcoupon_message] = useState(false);
+     const [validCoupon , setValidCoupon] = useState(false)
+     const [final_price, setfinal_price] = useState<any>();
+ 
+     const totalPrice = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0).toFixed(2);
+     const vat = Number(((20 / 100) * totalPrice).toFixed(2))
+     let priceWithVat = Number(totalPrice) + vat
 
      const handleCheckout = () => {
           if (cartItems.length > 0) {
@@ -19,9 +27,27 @@ const Cart = () => {
           }
      }
 
-     const totalPrice = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0).toFixed(2);
-     const vat = Number(((20 / 100) * totalPrice).toFixed(2))
-     let priceWithVat = Number(totalPrice) + vat
+     const ApplyCoupon = () => {
+
+          const valid_coupon = "Winter2023";
+          if (valid_coupon === coupon) {
+               const updated_price_percentage = priceWithVat * 15 / 100;
+               const price_after_copuon = priceWithVat - updated_price_percentage
+               setfinal_price(price_after_copuon);
+               setValidCoupon(true);
+               setcoupon_message(false);
+          }
+          else {
+
+               setcoupon_message(true);
+          }
+     }
+
+     const onchangeCoupon = (e: any) => {
+          setcoupon(e.target.value)
+     }
+
+
 
      return (
           <>
@@ -88,6 +114,7 @@ const Cart = () => {
                                                                                           </li>
                                                                                      ))
                                                                                 }
+
                                                                            </ul>
 
                                                                       </li>
@@ -158,6 +185,12 @@ const Cart = () => {
                          </div>
 
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
+
+                              <div className='coupon'>
+                                   <input type='text' value={coupon} onChange={onchangeCoupon} className='w-full' />
+                                   {coupon_message && <span className='my-1 text-red-600'>Invalid Coupon</span>}
+                                   <button onClick={ApplyCoupon} className='bg-secondary w-full p-2 my-3 text-white' >Apply Coupon</button>
+                              </div>
                               <div className="mb-2 flex justify-between">
                                    <div className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></div>
                                    <p className="text-gray-700">£{totalPrice}</p>
@@ -174,7 +207,7 @@ const Cart = () => {
                               <div className="flex justify-between">
                                    <p className="text-lg font-bold">Total</p>
                                    <div className="">
-                                        <p className="mb-1 text-lg font-bold text-end">£{priceWithVat.toFixed(2)}</p>
+                                        <p className="mb-1 text-lg font-bold text-end">£{validCoupon? final_price.toFixed(2):priceWithVat.toFixed(2)  }</p>
                                         <p className="text-xs text-gray-700">including VAT</p>
                                    </div>
                               </div>
