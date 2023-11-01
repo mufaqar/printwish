@@ -8,7 +8,6 @@ import { SlBasketLoaded } from 'react-icons/sl'
 import CustomiztionProduct from '@/components/customiztionProduct/CustomiztionProduct';
 import { SettingsContext } from '@/context/global-context';
 import Artwork from '@/components/artwork/Artwork';
-import SizeGuide from '@/components/UI/modelBox/SizeGuide';
 import { LuShirt } from 'react-icons/lu'
 import { TiTick } from 'react-icons/ti'
 import { TbTruckDelivery } from 'react-icons/tb'
@@ -454,7 +453,7 @@ const ProductSlug = ({ post, product }: any) => {
                 </>
               }
               {selectArt === 'Text creator' && <TextCreator />}
-              <SizeGuide />
+    
               {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5>}
 
               {

@@ -6,7 +6,6 @@ import { SlBasketLoaded } from 'react-icons/sl'
 import CustomiztionProduct from '@/components/customiztionProduct/CustomiztionProduct';
 import { SettingsContext } from '@/context/global-context';
 import Artwork from '@/components/artwork/Artwork';
-import SizeGuide from '@/components/UI/modelBox/SizeGuide';
 import TextCreator from '@/components/textcreator/TextCreator';
 import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
@@ -347,7 +346,7 @@ const ProductSlug = ({ post, product }: any) => {
                 }
 
                 {selectArt === 'Text creator' && <TextCreator />}
-                <SizeGuide />
+              
                 {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5>}
 
                 {
