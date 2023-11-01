@@ -8,12 +8,19 @@ import Product_Slider from '@/components/product-widgets/product-slider'
 import { GetServerSideProps, GetStaticProps } from 'next'
 import { apiRequest } from '@/config/requests'
 import Head from 'next/head'
-
+import OfferModelBox from '@/components/UI/modelBox/Offer'
+import { useEffect, useState } from 'react'
 
 
 export default function Home(props: any) {
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
+  const [openOfferModel, setOpenOfferModel] = useState<boolean>(false)
+  useEffect(()=>{
+    setTimeout(() => {
+      setOpenOfferModel(true)
+    }, 3000);
+  },[])
   return (
     <>
       <Head>
@@ -58,7 +65,6 @@ export default function Home(props: any) {
       {
         props ? <Product_Slider products={props?.products} /> : <p>loading...</p>
       }
-
       <section className='py-6 pt-0 relative'>
         <div className='max-w-screen-xl mx-auto px-4'>
           <div className='w-fit mx-auto'>
@@ -73,6 +79,8 @@ export default function Home(props: any) {
         </div>
       </section>
       <Reviews />
+      {openOfferModel && <OfferModelBox/>}
+      
     </>
   )
 }

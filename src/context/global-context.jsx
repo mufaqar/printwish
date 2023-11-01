@@ -9,7 +9,7 @@ export const SettingsProvider = ({ children }) => {
   const [selectedCustomizedLayout, setSelectedCustomizedLayout] = useState('');
   const [selectArt, setSelectArt] = useState('')
   const [colorsInLogo, setColorsInLogo] = useState(0)
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(true);
   const [designWidth, setDesignWidth] = useState('');
   const [specialInstruction, setSpecialInstruction] = useState('');
   const [customisationName, setcustomisationName] = useState('');
@@ -63,7 +63,7 @@ export const SettingsProvider = ({ children }) => {
   };
 
   // hide scroll when modelbox is open  
-  HideScrollOnModelOpen(modalIsOpen)
+  // HideScrollOnModelOpen(modalIsOpen)
   
   return (
     <SettingsContext.Provider

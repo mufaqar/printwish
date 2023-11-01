@@ -110,6 +110,7 @@ input[type='number'] {
 
 .ReactModal__Overlay {
   background-color: rgb(0 0 0 / 50%) !important;
+  z-index: 11 ;
 }
 
 .slider {
