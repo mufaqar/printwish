@@ -442,7 +442,7 @@ const ProductSlug = ({ post, product }: any) => {
                 customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
               }
 
-              {customizationButton && <CustomiztionProduct />}
+              {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2}/>}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
 
               {
