@@ -34,7 +34,7 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
      }
 
      return (
-          <section className='bg-gray-50 md:p-8 p-5 border-[3px] rounded-lg border-secondary mt-4'>
+          <section className='bg-gray-50 md:p-8 p-5 border-[2px] shadow-xl rounded-lg border-secondary mt-4'>
                <div className='flex flex-col-reverse md:flex-row justify-between gap-4'>
                     <h4 className='text-xl uppercase font-opensans'>CUSTOMISATION {id} - <span className='text-secondary'>{item?.customisationName}</span></h4>
                     <div className='flex justify-end'>
@@ -45,21 +45,21 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
                     {details ? <MdKeyboardArrowUp size={25} /> : <MdKeyboardArrowDown size={25} />}</button>
                <div className={` sm:grid-cols-3 mt-6 ${details ? 'grid' : 'hidden'}`}>
                     <div>
-                         <h6 className='text-highlight text-lg uppercase'>TYPE OF CUSTOMISATION:</h6>
-                         <p className='capitalize text-lg mt-1'>Print</p>
-                         <h6 className='text-highlight text-lg uppercase mt-6'>DESIGN POSITION:</h6>
-                         <p className='capitalize text-lg mt-1'>{item?.designPosition}</p>
+                         <h6 className='text-highlight uppercase'>TYPE OF CUSTOMISATION:</h6>
+                         <p className='capitalize mt-1'>Print</p>
+                         <h6 className='text-highlight uppercase mt-6'>DESIGN POSITION:</h6>
+                         <p className='capitalize mt-1'>{item?.designPosition}</p>
                     </div>
                     <div>
                          {
                               item?.numberOfColorInLogo > 0 && <>
-                                   <h6 className='text-highlight text-lg uppercase mt-6 md:mt-0'>No. of colors in logo:</h6>
-                                   <p className='capitalize text-lg mt-1'>{item?.numberOfColorInLogo}</p>
+                                   <h6 className='text-highlight uppercase mt-6 md:mt-0'>No. of colors in logo:</h6>
+                                   <p className='capitalize mt-1'>{item?.numberOfColorInLogo}</p>
                               </>
                          }
 
-                         <h6 className={`text-highlight text-lg uppercase ${item?.numberOfColorInLogo > 0 && 'mt-6'}`}>DESIGN WIDTH:</h6>
-                         <p className='capitalize text-lg mt-1'>{item?.designWidth} cm</p>
+                         <h6 className={`text-highlight uppercase ${item?.numberOfColorInLogo > 0 && 'mt-6'}`}>DESIGN WIDTH:</h6>
+                         <p className='capitalize mt-1'>{item?.designWidth} cm</p>
                     </div>
                     <div className='flex md:justify-center items-center mt-5 md:mt-0'>
                          {

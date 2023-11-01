@@ -59,6 +59,7 @@ const CustomiztionProduct = () => {
           <>
                <section className='mt-4 bg-background p-8 rounded-lg'>
                     <h5 className='text-xl font-semibold text-accent font-roboto'>Step 2 - Select Positions:</h5>
+                    <p>You can select only 1 position at a time, if you can to select another then repeat customization process!</p>
                     <div className='mt-5'>
                          <Slider {...settings}>
                               {designVarient.map((item, idx) => {

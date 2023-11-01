@@ -22,12 +22,12 @@ const Artwork = () => {
                          </figure>
                          <span>Upload image</span>
                     </button>
-                    <button onClick={()=>handleSelectArt('Text creator')} className={`bg-white flex items-center gap-3 p-2 hover:scale-105 active:scale-100 mt-3 md:mt-0 w-full md:w-60 text-xl border-[2px] rounded-full ${selectArt === 'Text creator' ? 'border-secondary' : ' border-transparent'}`}>
+                    {/* <button onClick={()=>handleSelectArt('Text creator')} className={`bg-white flex items-center gap-3 p-2 hover:scale-105 active:scale-100 mt-3 md:mt-0 w-full md:w-60 text-xl border-[2px] rounded-full ${selectArt === 'Text creator' ? 'border-secondary' : ' border-transparent'}`}>
                          <figure className='bg-accent p-2 rounded-full'>
                               <Image src={textIcon} width={100} height={100} className='w-5 h-5' alt="print" />
                          </figure>
                          <span>Text creator</span>
-                    </button>
+                    </button> */}
                </div>
 
           </section>
