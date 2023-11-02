@@ -59,6 +59,15 @@ export const GET_PRODUCT = gql`
             front
             leftbreast
           }
+          rating {
+            ratingNumber
+            ratingImage {
+              mediaItemUrl
+            }
+            starImage {
+              mediaItemUrl
+            }
+          }
           imprintMethod
           minimumOrder
           packaging
