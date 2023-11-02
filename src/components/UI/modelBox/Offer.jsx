@@ -47,7 +47,7 @@ const OfferModelBox = ({setIsOpen, modalIsOpen}) => {
                               <section className="text-center my-6 mb-10">
                                    <h5 className='text-red-600 font-bold -tracking-wider text-4xl'>Get 15% off</h5>
                                    <h2 className='text-white font-bold text-xl md:text-2xl'>Winter Discount Available Now</h2>
-                                   <p className='text-white mt-2 md:text-xl leading-8 tracking-wide'>Get 15% Discount on all Orders by using the discount code "<span className="text-red-600 font-semibold">Winter2023</span>" at checkout. We are also offering next day fast and free delivery Via DPD.</p>
+                                   <p className='text-white mt-2 md:text-xl leading-8 tracking-wide'>Get 15% Discount on all Orders by using the discount code <span className="text-red-600 font-semibold">Winter2023</span> at checkout. We are also offering next day fast and free delivery Via DPD.</p>
                                    <button className="mt-10 hover:scale-105"><Link href="/custom-t-shirt-printing-cheap-t-shirt-printing" className="bg-red-600 text-white font-semibold p-4 text-sm sm:text-xl rounded-lg px-5">PLACE ORDER AND GET 15% OFF</Link></button>
                               </section>
                          </div>

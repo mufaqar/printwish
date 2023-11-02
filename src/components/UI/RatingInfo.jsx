@@ -10,7 +10,7 @@ const RatingInfo = () => {
                <Image src="/images/rating-star.png" alt="rating" width={250} height={200} className="max-w-[300px] sm:w-full cursor-pointer" />
                <button onClick={() => setOpenRating(!openRating)}>
                     {
-                         openRating ? <IoIosArrowUp className='text-3xl mt-2 cursor-pointer' /> : <IoIosArrowDown className='text-2xl mt-1 cursor-pointer' />
+                         openRating ? <IoIosArrowUp className='text-2xl mt-2 cursor-pointer' /> : <IoIosArrowDown className='text-2xl mt-2 cursor-pointer' />
                     }
                </button>
                {
