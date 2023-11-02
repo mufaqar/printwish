@@ -31,7 +31,7 @@ import parse from "html-react-parser";
 import Head from 'next/head';
 import Reviews from '@/components/reviews/reviews';
 import TopBar from '@/components/banner/top-bar';
-
+import RatingInfo from '@/components/UI/RatingInfo'
 
 interface IColor {
   code: string,
@@ -280,6 +280,7 @@ const ProductSlug = ({ post, product }: any) => {
             <h6>Lead Time : <span className='text-gray-500'>3-5 working days</span></h6>
             <h6>Minimum Order Value is  <span className='text-gray-500'>25 units.</span></h6>
           </div>
+          <RatingInfo />
           <section className='bg-background p-6 md:p-8 mt-5 rounded-lg'>
             <div className='font-semibold text-lg uppercase flex font-roboto gap-5 text-secondary'>
               <button className={DetailTab === 'DESCRIPTION' ? 'opacity-100 border-b-[3px] border-secondary' : 'border-b-[3px] opacity-50 border-transparent'} onClick={() => handleDetailsTabs('DESCRIPTION')}>DESCRIPTION</button>

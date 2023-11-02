@@ -140,7 +140,7 @@ const Checkout = () => {
                                         <p className="flex justify-between text-sm font-medium text-white"><span>Shipping</span><span> Free </span></p>
                                         <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 20%</span><span>£{vat}</span></p>
                                         {
-                                             couponDiscountPrice && <p className="flex justify-between text-sm font-medium text-white"><span>Discount</span><span>£{couponDiscountPrice}</span></p>
+                                             couponDiscountPrice && <p className="flex justify-between text-sm font-medium text-white"><span>Discount</span><span>£{couponDiscountPrice.toFixed(2)}</span></p>
                                         }
                                         
                                    </div>
