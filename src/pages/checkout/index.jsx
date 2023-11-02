@@ -4,12 +4,13 @@ import Link from 'next/link'
 import { SettingsContext } from '@/context/global-context'
 import { useForm } from "react-hook-form"
 import Head from 'next/head'
+import { TotalPriceCalculate } from '@/utils'
 
 const Checkout = () => {
+
+
      const cartItems = useSelector((state) => state.AddToCart.value)
-     const price = cartItems.reduce((sum, product) => sum + +product.price, 0).toFixed(2);
-     const vat = Number(((20 / 100) * price).toFixed(2))
-     const totalPrice = Number(price) + vat
+     const { priceWithVat, vat, couponDiscountPrice } = TotalPriceCalculate(cartItems)
 
      const {
           register,
@@ -29,7 +30,7 @@ const Checkout = () => {
      const paymentSubmitHandler = () => {
           const orderdata = {
                title: "test",
-               totalprice: totalPrice,
+               totalprice: priceWithVat,
                paymentApproved: false,
                name: "test name",
                email: "test@gmail.com",
@@ -48,11 +49,6 @@ const Checkout = () => {
                console.log("🚀 ~ file: CraditCard.jsx:46 ~ paymentSubmitHandler ~ error:", error)
           }
      };
-
-
-
-
-
 
 
      return (
@@ -139,10 +135,14 @@ const Checkout = () => {
                                    </ul>
                                    <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
                                    <div className="space-y-2">
-                                        <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>£{totalPrice.toFixed(2)}</span></p>
+                                        <p className="flex justify-between text-lg font-bold text-white"><span>Total price:</span><span>£{priceWithVat.toFixed(2)}</span></p>
                                         <p className="text-xs font-medium !-mt-0 !mb-2 text-gray-400">include Vat</p>
                                         <p className="flex justify-between text-sm font-medium text-white"><span>Shipping</span><span> Free </span></p>
                                         <p className="flex justify-between text-sm font-medium text-white"><span>Vat: 20%</span><span>£{vat}</span></p>
+                                        {
+                                             couponDiscountPrice && <p className="flex justify-between text-sm font-medium text-white"><span>Discount</span><span>£{couponDiscountPrice}</span></p>
+                                        }
+                                        
                                    </div>
                               </div>
                               <div className="relative mt-10 text-white">

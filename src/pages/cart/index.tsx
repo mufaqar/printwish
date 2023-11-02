@@ -1,8 +1,9 @@
 import { clearAll, removeProductFromCart } from '@/features/AddToCart'
+import { TotalPriceCalculate } from '@/utils'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
@@ -12,12 +13,7 @@ const Cart = () => {
      const router = useRouter()
      const [coupon, setcoupon] = useState();
      const [coupon_message, setcoupon_message] = useState(false);
-     const [validCoupon , setValidCoupon] = useState(false)
-     const [final_price, setfinal_price] = useState<any>();
- 
-     const totalPrice = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0).toFixed(2);
-     const vat = Number(((20 / 100) * totalPrice).toFixed(2))
-     let priceWithVat = Number(totalPrice) + vat
+     const [validCoupon, setValidCoupon] = useState(false)
 
      const handleCheckout = () => {
           if (cartItems.length > 0) {
@@ -27,18 +23,19 @@ const Cart = () => {
           }
      }
 
-     const ApplyCoupon = () => {
+     useEffect(() => {
+     }, [validCoupon])
 
+     const { priceWithVat, vat, totalPriceWithoutVAT, couponDiscountPrice } = TotalPriceCalculate(cartItems)
+
+     const ApplyCoupon = () => {
           const valid_coupon = "Winter2023";
           if (valid_coupon === coupon) {
-               const updated_price_percentage = priceWithVat * 15 / 100;
-               const price_after_copuon = priceWithVat - updated_price_percentage
-               setfinal_price(price_after_copuon);
+               sessionStorage.setItem("coupon", 'valid')
                setValidCoupon(true);
                setcoupon_message(false);
           }
           else {
-
                setcoupon_message(true);
           }
      }
@@ -46,8 +43,6 @@ const Cart = () => {
      const onchangeCoupon = (e: any) => {
           setcoupon(e.target.value)
      }
-
-
 
      return (
           <>
@@ -186,15 +181,15 @@ const Cart = () => {
 
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
 
-                              <div className='coupon'>
-                                   <p>Enter "WINTER2023" Code in  a box below to get 15% discount.</p>
-                                   <input type='text' value={coupon} onChange={onchangeCoupon} className='w-full' />
-                                   {coupon_message && <span className='my-1 text-red-600'>Invalid Coupon</span>}
-                                   <button onClick={ApplyCoupon} className='bg-secondary w-full p-2 my-3 text-white' >Apply Coupon</button>
+                              <div className='coupon border-b-[1px] mb-4 pb-2'>
+                                   <p>Enter "<span className='font-semibold text-red-600'>Winter2023</span>" Code in  a box below to get 15% discount.</p>
+                                   <input type='text' value={coupon} onChange={onchangeCoupon} className='w-full mt-3' />
+                                   {coupon_message && <span className='pt-1 text-red-600 text-sm'>Invalid Coupon</span>}
+                                   <button onClick={ApplyCoupon} className='bg-secondary hover:bg-primary rounded-md w-full p-2 my-3 text-white' >Apply Coupon</button>
                               </div>
                               <div className="mb-2 flex justify-between">
                                    <div className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></div>
-                                   <p className="text-gray-700">£{totalPrice}</p>
+                                   <p className="text-gray-700">£{totalPriceWithoutVAT}</p>
                               </div>
                               <div className="flex justify-between">
                                    <p className="text-gray-700">Shipping</p>
@@ -204,17 +199,22 @@ const Cart = () => {
                                    <p className="text-gray-700">VAT</p>
                                    <p className="text-gray-700">£{vat}</p>
                               </div>
+                              {
+                                   couponDiscountPrice && <div className="flex justify-between mt-2">
+                                        <p className="text-gray-700">Discount</p>
+                                        <p className="text-gray-700">£{couponDiscountPrice.toFixed(2)}</p>
+                                   </div>
+                              }
+
                               <hr className="my-4" />
                               <div className="flex justify-between">
                                    <p className="text-lg font-bold">Total</p>
                                    <div className="">
-                                        <p className="mb-1 text-lg font-bold text-end">£{validCoupon? final_price.toFixed(2):priceWithVat.toFixed(2)  }</p>
+                                        <p className="mb-1 text-lg font-bold text-end">£{priceWithVat.toFixed(2)}</p>
                                         <p className="text-xs text-gray-700">including VAT</p>
                                    </div>
                               </div>
-
                               <button onClick={() => handleCheckout()} className="mt-6 w-full rounded-md bg-primary py-1.5 font-medium text-blue-50 hover:bg-secondary">Check out</button>
-
                          </div>
                     </div>
                </section>

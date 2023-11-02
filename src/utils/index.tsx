@@ -22,11 +22,11 @@ export const HideScrollOnModelOpen = (modalIsOpen: any) => {
      }, [modalIsOpen]);
 }
 
-
+// this price is calculate according to the product quantity with customized data
 export const calculatePrice = ( customizedMergeData: any, totalPrice:number, totalQuantity:any) => {
-
-     var priceWithQuantity = 0
      
+     var priceWithQuantity = 0
+
      if(totalQuantity >= 25 && totalQuantity <= 49){
           priceWithQuantity = totalQuantity * (6.88 * customizedMergeData.length)
      }else if(totalQuantity >= 50 && totalQuantity <= 99){
@@ -52,3 +52,34 @@ export const uid = function () {
      return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
 
+
+// calculate total price with vat and if also have coupon code
+export const TotalPriceCalculate = (cartItems: any) => {
+     const totalPriceWithoutVAT = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0).toFixed(2);
+     const vat = Number(((20 / 100) * totalPriceWithoutVAT).toFixed(2));
+     let priceWithVat = Number(totalPriceWithoutVAT) + vat;
+   
+     let hasValidCoupon = null; // Initialize as null
+     var couponDiscountPrice;
+     var priceAfterCopuon
+
+     if (typeof window !== 'undefined') {
+       // Check if window is defined (client-side)
+       hasValidCoupon = window.sessionStorage.getItem('coupon');
+     }
+   
+     if (hasValidCoupon === 'valid') {
+          couponDiscountPrice = priceWithVat * 15 / 100;
+          priceAfterCopuon = priceWithVat - couponDiscountPrice
+          priceWithVat = priceAfterCopuon
+     }
+   
+
+     return {
+       vat,
+       priceWithVat,
+       totalPriceWithoutVAT,
+       couponDiscountPrice, 
+     };
+   };
+   

@@ -21,6 +21,9 @@ const Success = () => {
       // Access sessionStorage only on the client-side
       var formdata = JSON.parse(sessionStorage.getItem('Formdata'));
 
+      // remove coupon from sessionStorage if user order success 
+      sessionStorage.removeItem('coupon')
+
       const billing = orderData['billing']
       billing.email = formdata.email
       billing.first_name = formdata.name
