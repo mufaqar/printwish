@@ -230,6 +230,7 @@ const ProductSlug = ({ post, product }: any) => {
   const router = useRouter()
 
   const handleAddToCart = (data: any) => {
+    sessionStorage.removeItem('coupon')
     data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
     dispatch(addItem(data))
     setSelectedProduct({
