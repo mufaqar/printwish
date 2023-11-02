@@ -186,11 +186,12 @@ const Cart = () => {
 
                          <div className="mt-6 h-full rounded-lg border bg-white p-6 md:mt-0 md:w-1/3 sticky top-10">
 
-                              {/* <div className='coupon'>
+                              <div className='coupon'>
+                                   <p>Enter "WINTER2023" Code in  a box below to get 15% discount.</p>
                                    <input type='text' value={coupon} onChange={onchangeCoupon} className='w-full' />
                                    {coupon_message && <span className='my-1 text-red-600'>Invalid Coupon</span>}
                                    <button onClick={ApplyCoupon} className='bg-secondary w-full p-2 my-3 text-white' >Apply Coupon</button>
-                              </div> */}
+                              </div>
                               <div className="mb-2 flex justify-between">
                                    <div className="text-gray-700">Subtotal <p className="text-xs text-gray-700">excluding VAT</p></div>
                                    <p className="text-gray-700">£{totalPrice}</p>
