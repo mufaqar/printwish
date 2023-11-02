@@ -5,22 +5,15 @@ import Category_Box from '@/components/product-widgets/category-box'
 import { Categories, CategoryType } from '@/const/categories'
 import Steps from '@/components/promotional-steps/steps'
 import Product_Slider from '@/components/product-widgets/product-slider'
-import { GetServerSideProps, GetStaticProps } from 'next'
 import { apiRequest } from '@/config/requests'
 import Head from 'next/head'
-import OfferModelBox from '@/components/UI/modelBox/Offer'
-import { useEffect, useState } from 'react'
+
 
 
 export default function Home(props: any) {
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
-  const [openOfferModel, setOpenOfferModel] = useState<boolean>(false)
-  useEffect(()=>{
-    setTimeout(() => {
-      setOpenOfferModel(true)
-    }, 3000);
-  },[])
+  
   return (
     <>
       <Head>
@@ -79,8 +72,6 @@ export default function Home(props: any) {
         </div>
       </section>
       <Reviews />
-      {openOfferModel && <OfferModelBox/>}
-      
     </>
   )
 }

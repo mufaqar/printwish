@@ -13,11 +13,16 @@ import NextNProgress from 'nextjs-progressbar';
 import GoogleAnalytics from "@bradgarropy/next-google-analytics"
 import CookiesMessage from '@/components/UI/cookiesMessage'
 import TawkToChat from '@/components/TawkToChat/TawkToChat'
+import OfferModelBox from '@/components/UI/modelBox/Offer'
 
 export default function App({ Component, pageProps }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [cookies, setCookies] = useState(false)
+  const [openOfferModel, setOpenOfferModel] = useState<boolean>(false)
+  const [modalIsOpen, setIsOpen] = useState(true)
+  console.log('modalIsOpen', modalIsOpen);
+  
   useEffect(() => {
     Router.events.on("routeChangeStart", (url) => {
       setIsLoading(true)
@@ -44,7 +49,19 @@ export default function App({ Component, pageProps }: any) {
       return () => clearTimeout(timer);
     }
   }, [cookies]);
-  
+
+  useEffect(()=>{
+    setOpenOfferModel(true)
+  },[])
+
+  useEffect(()=>{
+    const modelState:any = sessionStorage.getItem('modelState')
+    const s = JSON.parse(modelState)
+    if(s){
+      setIsOpen(s.state)
+    }
+  },[modalIsOpen])
+
   return (
     <>
       {/* <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} /> */}
@@ -71,6 +88,7 @@ export default function App({ Component, pageProps }: any) {
         {
           cookies && <CookiesMessage setCookies={setCookies}/>
         }
+        { openOfferModel && <OfferModelBox modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/> }
     </>
   )
 
