@@ -28,7 +28,7 @@ const Cancel = () => {
       </Head>
     <div className='flex flex-col items-center text-center my-20'>
       <TbBasketOff size={80} color="red"/>
-      Your order are cancel!
+      Your Order is Cancelled
     </div>
     </>
   )

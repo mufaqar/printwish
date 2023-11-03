@@ -391,3 +391,6 @@ input[type='number'] {
 .dFeature{
   list-style-image: url('../../public/images/gtick.png') !important;
 }
+.text-transition{
+  height: auto !important;
+}

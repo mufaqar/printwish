@@ -72,7 +72,7 @@ const Header = () => {
   return (
     <>
      
-      <header className="shadow-md">
+      <header className="shadow-md ">
         <TopBar />
         <nav className="bg-secondary z-50">
           <div className="grid py-4 px-4 mx-auto container lg:grid-cols-2 md:px-6 gap-4 items-center">

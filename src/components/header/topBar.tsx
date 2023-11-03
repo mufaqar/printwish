@@ -2,30 +2,44 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import TextTransition, { presets } from 'react-text-transition';
+
+const TEXTS = [ "Enter Winter2023 Code in a box below to get 15% discount"];
+// "The UK's leading personalised clothing company",
 
 const TopBar = () => {
   const cartItems = useSelector((state: any) => state.AddToCart.value)
+  const [index, setIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setIndex((index) => index + 1),
+      3000, // every 3 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
+
   return (
-    <nav className="bg-primary">
+    <nav className="bg-red-600 text-black  ">
       <div className="flex justify-center lg:justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
         <Link href="/" className="lg:flex items-center hidden">
-        <Image src="/images/logo.png" alt="logo" width={140} height={37} />
+        <Image src="/images/logo.png" alt="logo" width={140} height={37} className='invert'/>
         </Link>
-        <h6 className='text-xs sm:text-base md:text-xl font-semibold uppercase text-white text-center'>
-          The UK's leading personalised clothing company
-        </h6>
+        <div className='text-xs sm:text-base md:text-xl font-semibold uppercase text-center'>
+          <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
+        </div>
         <div className="hidden items-center lg:flex justify-between">
           <ul className='flex gap-2 items-center'>
             <li className='hidden sm:block'>
-              <Link href="tel:08000510821" className='text-sm font-medium text-white hover:text-secondary hover:underline'>
+              <Link href="tel:08000510821" className='text-sm font-medium  hover:text-secondary hover:underline'>
                 0800 051 0821
               </Link>
             </li>
 
             <ul className='flex sm:gap-2 gap-1 items-center'>
-              <li className='border border-gray-700 hover:border-transparent rounded-lg'>
+              <li className='border border-black hover:border-transparent rounded-lg'>
                 <Link href="https://www.facebook.com/printwishuk/"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium  hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">
                     <path
@@ -33,9 +47,9 @@ const TopBar = () => {
                   </svg>
                 </Link>
               </li>
-              <li className='border border-gray-700 hover:border-transparent rounded-lg'>
+              <li className='border border-black hover:border-transparent rounded-lg'>
                 <Link href="https://www.instagram.com/printwishonline/?hl=en"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium text-black hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path
@@ -43,9 +57,9 @@ const TopBar = () => {
                   </svg>
                 </Link>
               </li>
-              <li className='border border-gray-700 hover:border-transparent rounded-lg'>
+              <li className='border border-black hover:border-transparent rounded-lg'>
                 <Link href="https://twitter.com/printwishuk?lang=en"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium text-black hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512">
                     <path
@@ -53,9 +67,9 @@ const TopBar = () => {
                   </svg>
                 </Link>
               </li>
-              <li className='border border-gray-700 hover:border-transparent rounded-lg'>
+              <li className='border border-black hover:border-transparent rounded-lg'>
                 <Link href="https://www.youtube.com/channel/UCb73rrDUl5soUZsGNNZ6FYg"
-                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium text-black hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path

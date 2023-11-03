@@ -8,6 +8,7 @@ import Head from 'next/head'
 import React from 'react'
 
 const ProductsPage = ({ products }: any) => {
+    // console.log('products', products)
     return (
         <>
             <Head>

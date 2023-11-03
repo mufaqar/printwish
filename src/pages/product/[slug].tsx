@@ -253,12 +253,10 @@ const ProductSlug = ({ post, product }: any) => {
       <TopBar/>
       
       <div className='block md:hidden px-3 container mx-auto'>
-      <div className='mt-3 flex justify-center'>
+          <div className='mt-3 flex justify-center'>
             <Image src="/images/review-badge.svg" alt="rating" width={200} height={45} />
           </div>
-
-
-        <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
+        <h2 className='text-xl md:text-3xl lg:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
         <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
       </div>
 
@@ -282,7 +280,7 @@ const ProductSlug = ({ post, product }: any) => {
             <h6>Minimum Order Value is  <span className='text-gray-500'>25 units.</span></h6>
           </div>
           {
-            product?.poductInfo?.rating?.ratingNumber && <RatingInfo data={product?.poductInfo?.rating}/>
+            product?.poductInfo?.rating?.ratingNumber && <div className='md:hidden'><RatingInfo data={product?.poductInfo?.rating}/></div>
           }
           <section className='bg-background p-6 md:p-8 mt-5 rounded-lg'>
             <div className='font-semibold text-lg uppercase flex font-roboto gap-5 text-secondary'>
