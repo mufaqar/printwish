@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: any) {
   const [openOfferModel, setOpenOfferModel] = useState<boolean>(false)
   const [modalIsOpen, setIsOpen] = useState(true)
   console.log('modalIsOpen', modalIsOpen);
-  
+
   useEffect(() => {
     Router.events.on("routeChangeStart", (url) => {
       setIsLoading(true)
@@ -40,9 +40,9 @@ export default function App({ Component, pageProps }: any) {
 
   useEffect(() => {
     const localCookies = localStorage.getItem('cookies')
-    if(localCookies === "true"){
+    if (localCookies === "true") {
       setCookies(false)
-    }else{
+    } else {
       const timer = setTimeout(() => {
         setCookies(true)
       }, 1000)
@@ -50,24 +50,32 @@ export default function App({ Component, pageProps }: any) {
     }
   }, [cookies]);
 
-  useEffect(()=>{
-    setOpenOfferModel(true)
-  },[])
+  useEffect(() => {
+    setTimeout(() => {
+      const modelState: any = sessionStorage.getItem('modelState')
+      const s = JSON.parse(modelState)
+      if (s) {
+        setOpenOfferModel(false)
+      } else {
+        setOpenOfferModel(true)
+      }
+    }, 5000);
+  }, [])
 
-  useEffect(()=>{
-    const modelState:any = sessionStorage.getItem('modelState')
+  useEffect(() => {
+    const modelState: any = sessionStorage.getItem('modelState')
     const s = JSON.parse(modelState)
-    if(s){
+    if (s) {
       setIsOpen(s.state)
     }
-  },[modalIsOpen])
+  }, [modalIsOpen])
 
   return (
     <>
       {/* <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} /> */}
       <GoogleAnalytics measurementId="G-SDRXNDYY1L" />
       <Provider store={store}>
-        {isLoading && <Loader isLoading={isLoading}/>}
+        {isLoading && <Loader isLoading={isLoading} />}
         <SettingsProvider>
           <Header />
           <Component {...pageProps} />
@@ -85,10 +93,10 @@ export default function App({ Component, pageProps }: any) {
         draggable
         pauseOnHover
         theme="dark" />
-        {
-          cookies && <CookiesMessage setCookies={setCookies}/>
-        }
-        { openOfferModel && <OfferModelBox modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/> }
+      {
+        cookies && <CookiesMessage setCookies={setCookies} />
+      }
+      {openOfferModel && <OfferModelBox modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />}
     </>
   )
 

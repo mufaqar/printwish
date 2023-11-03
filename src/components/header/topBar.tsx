@@ -2,32 +2,33 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import TextTransition, { presets } from 'react-text-transition';
+import { TypeAnimation } from 'react-type-animation';
 
-const TEXTS = [ "Enter Winter2023 Code in a box below to get 15% discount"];
-// "The UK's leading personalised clothing company",
 
 const TopBar = () => {
   const cartItems = useSelector((state: any) => state.AddToCart.value)
-  const [index, setIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex((index) => index + 1),
-      3000, // every 3 seconds
-    );
-    return () => clearTimeout(intervalId);
-  }, []);
 
   return (
     <nav className="bg-red-600 text-black  ">
       <div className="flex justify-center lg:justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
         <Link href="/" className="lg:flex items-center hidden">
-        <Image src="/images/logo.png" alt="logo" width={140} height={37} className='invert'/>
+          <Image src="/images/logo.png" alt="logo" width={140} height={37} className='invert' />
         </Link>
-        <div className='text-xs sm:text-base md:text-xl font-semibold uppercase text-center'>
-          <TextTransition springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
+        <div className='text-xs sm:text-base font-semibold text-center'>
+          <TypeAnimation
+            sequence={[
+              'FREE UK SHIPPING ON ALL ORDERS',
+              2000,
+              "TURN UP THE TEMP! - 15% OFF EVERYTHING! CODE: Winter2023 (Enter Code at Checkout)",
+              2000
+            ]}
+            wrapper="span"
+            speed={50}
+            style={{ display: 'inline-block' }}
+            repeat={Infinity}
+          />
         </div>
+
         <div className="hidden items-center lg:flex justify-between">
           <ul className='flex gap-2 items-center'>
             <li className='hidden sm:block'>
