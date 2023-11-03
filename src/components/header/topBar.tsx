@@ -2,34 +2,38 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { TypeAnimation } from 'react-type-animation';
+import Slider from "react-slick";
 
+const settings = {
+  dots: false,
+  arrows:false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  autoplaySpeed: 2000,
+  autoplay: true,
+  slidesToScroll: 1
+};
 
 const TopBar = () => {
   const cartItems = useSelector((state: any) => state.AddToCart.value)
 
   return (
-    <nav className="bg-red-600 text-black  ">
+    <nav className="bg-black text-white  ">
       <div className="flex justify-center lg:justify-between items-center mx-auto container px-4 md:px-6 py-2.5">
-        <Link href="/" className="lg:flex items-center hidden">
-          <Image src="/images/logo.png" alt="logo" width={140} height={37} className='invert' />
+        <Link href="/" className="lg:flex items-center hidden w-[10%]">
+          <Image src="/images/logo.png" alt="logo" width={140} height={37}  />
         </Link>
-        <div className='text-xs sm:text-base font-semibold text-center'>
-          <TypeAnimation
-            sequence={[
-              'FREE UK SHIPPING ON ALL ORDERS',
-              2000,
-              "TURN UP THE TEMP! - 15% OFF EVERYTHING! CODE: Winter2023 (Enter Code at Checkout)",
-              2000
-            ]}
-            wrapper="span"
-            speed={50}
-            style={{ display: 'inline-block' }}
-            repeat={Infinity}
-          />
+        <div className='w-full lg:w-[60%]'>
+        <Slider {...settings}>
+          {
+            Text.map((t,i)=>(
+              <div key={i} className='text-xs sm:text-base font-semibold text-center'><p>{t}</p></div>
+            ))
+          }
+        </Slider>
         </div>
-
-        <div className="hidden items-center lg:flex justify-between">
+        <div className="hidden items-center lg:flex justify-between ">
           <ul className='flex gap-2 items-center'>
             <li className='hidden sm:block'>
               <Link href="tel:08000510821" className='text-sm font-medium  hover:text-secondary hover:underline'>
@@ -38,7 +42,7 @@ const TopBar = () => {
             </li>
 
             <ul className='flex sm:gap-2 gap-1 items-center'>
-              <li className='border border-black hover:border-transparent rounded-lg'>
+              <li className='border border-white hover:border-transparent rounded-lg'>
                 <Link href="https://www.facebook.com/printwishuk/"
                   className="inline-flex items-center p-2 text-sm font-medium  hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +52,9 @@ const TopBar = () => {
                   </svg>
                 </Link>
               </li>
-              <li className='border border-black hover:border-transparent rounded-lg'>
+              <li className='border border-white hover:border-transparent rounded-lg'>
                 <Link href="https://www.instagram.com/printwishonline/?hl=en"
-                  className="inline-flex items-center p-2 text-sm font-medium text-black hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path
@@ -58,9 +62,9 @@ const TopBar = () => {
                   </svg>
                 </Link>
               </li>
-              <li className='border border-black hover:border-transparent rounded-lg'>
+              <li className='border border-white hover:border-transparent rounded-lg'>
                 <Link href="https://twitter.com/printwishuk?lang=en"
-                  className="inline-flex items-center p-2 text-sm font-medium text-black hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512">
                     <path
@@ -68,9 +72,9 @@ const TopBar = () => {
                   </svg>
                 </Link>
               </li>
-              <li className='border border-black hover:border-transparent rounded-lg'>
+              <li className='border border-white hover:border-transparent rounded-lg'>
                 <Link href="https://www.youtube.com/channel/UCb73rrDUl5soUZsGNNZ6FYg"
-                  className="inline-flex items-center p-2 text-sm font-medium text-black hover:text-secondary rounded-lg hover:bg-background">
+                  className="inline-flex items-center p-2 text-sm font-medium text-white hover:text-secondary rounded-lg hover:bg-background">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
                     <path
@@ -89,3 +93,8 @@ const TopBar = () => {
 }
 
 export default TopBar
+
+
+const Text = ["TURN UP THE TEMP! - 15% OFF EVERYTHING! CODE: Winter2023 (Enter Code at Checkout)",
+"FREE UK SHIPPING ON ALL ORDERS"
+]
