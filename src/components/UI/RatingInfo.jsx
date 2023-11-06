@@ -8,8 +8,8 @@ const RatingInfo = ({data}) => {
      return (
           <div className='flex items-center justify-center gap-2 mt-4 relative'>
                <div className='items-center gap-2'>
-                    <Image src={ data?.starImage?.mediaItemUrl || data?.ratingStarUrl?.value } alt="rating" width={250} height={200} className="max-w-[120px] sm:max-w-[250px] sm:w-full cursor-pointer" />
-                    <span className='font-semibold sm:text-lg whitespace-nowrap'>{data?.ratingNumber || data?.rating?.value } Reviews</span>
+                    <Image src={ data?.starImage } alt="rating" width={250} height={200} className="max-w-[120px] sm:max-w-[250px] sm:w-full cursor-pointer" />
+                    <span className='font-semibold sm:text-lg whitespace-nowrap'>{data?.ratingNumber } Reviews</span>
                </div>
                <button onClick={() => setOpenRating(!openRating)}>
                     {
@@ -17,7 +17,7 @@ const RatingInfo = ({data}) => {
                     }
                </button>
                {
-                    openRating && <Image src={data?.ratingImage?.mediaItemUrl || data?.ratingStatsUrl?.value} alt="rating" width={500} height={200} className="absolute top-8 md:top-10 left-0 z-10 drop-shadow-xl" />
+                    openRating && <Image src={data?.ratingImage} alt="rating" width={500} height={200} className="absolute top-8 md:top-10 left-0 z-10 drop-shadow-xl" />
                }
           </div>
      )

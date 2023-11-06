@@ -280,7 +280,7 @@ const ProductSlug = ({ post, product }: any) => {
             <h6>Minimum Order Value is  <span className='text-gray-500'>25 units.</span></h6>
           </div>
           {
-            product?.poductInfo?.rating?.ratingNumber && <div className='md:hidden'><RatingInfo data={product?.poductInfo?.rating}/></div>
+            product?.poductInfo?.rating?.ratingNumber && <div className='md:hidden'><RatingInfo data={product?.poductInfo?.productRating}/></div>
           }
           <section className='bg-background p-6 md:p-8 mt-5 rounded-lg'>
             <div className='font-semibold text-lg uppercase flex font-roboto gap-5 text-secondary'>
@@ -367,8 +367,6 @@ const ProductSlug = ({ post, product }: any) => {
             </section>
           }
 
-
-          
           {
             product?.allPaColor.nodes.length > 0 &&
             <section className=''>

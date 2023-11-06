@@ -59,14 +59,10 @@ export const GET_PRODUCT = gql`
             front
             leftbreast
           }
-          rating {
+          productRating {
+            ratingImage
+            starImage
             ratingNumber
-            ratingImage {
-              mediaItemUrl
-            }
-            starImage {
-              mediaItemUrl
-            }
           }
           imprintMethod
           minimumOrder
