@@ -51,7 +51,7 @@ const Product_Box = ({ data, image }: any) => {
               </div>
 
               {
-                openRating && <Image src={ratingData?.ratingStatsUrl?.value} alt="rating" width={500} height={200} className="absolute -bottom-[72px] right-0 z-10 drop-shadow-xl" />
+                openRating && <Image src={ratingData?.ratingStatsUrl?.value} alt="rating" width={500} height={200} className="absolute top-[85%] right-0 z-10 drop-shadow-xl" />
               }
             </div>
           }
