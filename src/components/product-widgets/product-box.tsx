@@ -3,17 +3,17 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-const Product_Box = ({ data, image, rating }: any) => {
-
+const Product_Box = ({ data, image }: any) => {
+  
   const smallPrice = data?.meta_data?.find((item: any) => item.key === "whitesmall")
   const colors_lenght = data?.attributes?.find((cl: any) => (cl.name === 'Color')) || data?.allPaColor?.nodes?.length || "1"
   const simplePrice = data?.price?.replace('£', '')
   const [openRating, setOpenRating] = useState(false)
 
   const ratingData = {
-    rating: rating?.find((i: any) => i.key === "product_rating_rating_number"),
-    ratingStarUrl: rating?.find((i: any) => i.key === "product_rating_star_image"),
-    ratingStatsUrl: rating?.find((i: any) => i.key === "product_rating_rating_image")
+    rating: data?.meta_data?.find((i: any) => i.key === "product_rating_rating_number"),
+    ratingStarUrl: data?.meta_data?.find((i: any) => i.key === "product_rating_star_image"),
+    ratingStatsUrl: data?.meta_data?.find((i: any) => i.key === "product_rating_rating_image")
   }
 
   return (

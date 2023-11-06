@@ -43,8 +43,7 @@ const ProductsPage = ({ products }: any) => {
                             <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-1 sm:gap-2 md:gap-4'>
                                 {products?.map((item: any, idx: number) => {
                                     const img = item?.images[0]?.src
-                                    const rating = item?.meta_data
-                                    return <Product_Box key={idx} data={item} image={img} rating={rating} />
+                                    return <Product_Box key={idx} data={item} image={img} />
                                 })}
                             </div>
                             <Pagination perPage="30" endpoint="custom-post-api/v1/post-count" />
