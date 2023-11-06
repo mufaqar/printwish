@@ -9,13 +9,12 @@ const Product_Box = ({ data, image }: any) => {
   const colors_lenght = data?.attributes?.find((cl: any) => (cl.name === 'Color')) || data?.allPaColor?.nodes?.length || "1"
   const simplePrice = data?.price?.replace('£', '')
   const [openRating, setOpenRating] = useState(false)
-
+  
   const ratingData = {
     rating: data?.meta_data?.find((i: any) => i.key === "product_rating_rating_number"),
     ratingStarUrl: data?.meta_data?.find((i: any) => i.key === "product_rating_star_image"),
     ratingStatsUrl: data?.meta_data?.find((i: any) => i.key === "product_rating_rating_image")
   }
-
 
   return (
     <article className="p-1 relative">
@@ -37,7 +36,7 @@ const Product_Box = ({ data, image }: any) => {
             From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.poductInfo?.whitesmall || simplePrice}</span>
           </p>
           {
-            ratingData?.ratingStarUrl?.value.length > 2 && <div onClick={() => setOpenRating(!openRating)} className='flex flex-col -mt-3 justify-center items-center'>
+            ratingData?.ratingStarUrl?.value.length > 2 && <div onClick={() => setOpenRating(!openRating)} className='flex flex-col -mt-3 justify-between items-center min-h-[62px]'>
               <div className='items-center'>
                 <Image src={ratingData?.ratingStarUrl?.value} alt="rating" width={200} height={200} className="max-w-[120px] sm:w-full cursor-pointer" />
               </div>
