@@ -16,7 +16,6 @@ const Product_Box = ({ data, image }: any) => {
     ratingStatsUrl: data?.meta_data?.find((i: any) => i.key === "product_rating_rating_image")
   }
 
-  console.log('ratingData', ratingData)
 
   return (
     <article className="p-1 relative">
@@ -38,11 +37,11 @@ const Product_Box = ({ data, image }: any) => {
             From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.poductInfo?.whitesmall || simplePrice}</span>
           </p>
           {
-            ratingData?.ratingStarUrl?.value.length > 2 && <div onMouseLeave={() => setOpenRating(false)} onMouseEnter={() => setOpenRating(true)} className='flex flex-col -mt-3 justify-center items-center'>
+            ratingData?.ratingStarUrl?.value.length > 2 && <div onClick={() => setOpenRating(!openRating)} className='flex flex-col -mt-3 justify-center items-center'>
               <div className='items-center'>
                 <Image src={ratingData?.ratingStarUrl?.value} alt="rating" width={200} height={200} className="max-w-[120px] sm:w-full cursor-pointer" />
               </div>
-              <div className='flex items-center mb-2 gap-12'>
+              <div className='flex items-center mb-2 gap-1'>
                 <span className='font-normal text-sm whitespace-nowrap'>{ratingData?.rating?.value} Reviews</span>
                 <button>
                   {
