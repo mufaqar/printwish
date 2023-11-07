@@ -73,7 +73,7 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       {/* <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} /> */}
-      <GoogleAnalytics measurementId="G-SDRXNDYY1L" />
+      <GoogleAnalytics measurementId="GTM-TGC54P3" />
       <Provider store={store}>
         {isLoading && <Loader isLoading={isLoading} />}
         <SettingsProvider>
