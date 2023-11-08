@@ -46,6 +46,8 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
+    
+    console.log("🚀 ~ file: [slug].tsx:49 ~ ProductSlug ~ selectedProduct:", selectedProduct)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -200,6 +202,7 @@ const ProductSlug = ({ post, product }: any) => {
 
 
   let totalPrice = 0;
+
   selectedProduct?.colors?.forEach((color: any) => {
     color.selectedSize?.forEach((size: any) => {
       totalPrice += parseFloat(size.price);
@@ -209,6 +212,7 @@ const ProductSlug = ({ post, product }: any) => {
   if(totalPrice === 0) {
     totalPrice = whitesmall ? whitesmall : Number(product?.price?.replace('£',''))
   }
+
 
   // here array concatct 
   const dd = selectedProduct?.designArtWork?.concat(selectedProduct?.textCreator);
@@ -231,7 +235,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const handleAddToCart = (data: any) => {
     sessionStorage.removeItem('coupon')
-    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
+    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), productPrice: totalPrice, extra: selectedProduct }
     dispatch(addItem(data))
     setSelectedProduct({
       textCreator: [],
@@ -242,6 +246,7 @@ const ProductSlug = ({ post, product }: any) => {
     })
     router.push('/cart')
   }
+
 
   return (
     <>
@@ -469,10 +474,11 @@ const ProductSlug = ({ post, product }: any) => {
             Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span>
           </div>
 
-          <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+          {
+            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
-
+          }
          
         </section>
 
