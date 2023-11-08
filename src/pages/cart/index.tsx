@@ -85,7 +85,7 @@ const Cart = () => {
                                                        <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                                             <div className="mt-5 sm:mt-0 pr-4">
                                                                  <h2 className="text-lg font-bold text-gray-900">{item?.name || item?.title}</h2>
-                                                                 <p className="text-lg font-bold mt-1">Product Price: £{item?.productPrice}</p>
+                                                                 <p className="text-lg font-bold mt-1">Product Price: £{item?.productPrice.toFixed(2)}</p>
                                                                  <p className="text-lg font-bold mt-1">Printing Price: £{item?.price - item?.productPrice}</p>
                                                                  <p className="mt-1 text-xs text-gray-700">SKU: {item?.sku}</p>
                                                             </div>
