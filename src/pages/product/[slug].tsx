@@ -47,7 +47,6 @@ const ProductSlug = ({ post, product }: any) => {
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
     
     console.log("🚀 ~ file: [slug].tsx:49 ~ ProductSlug ~ selectedProduct:", selectedProduct)
-    
   
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -469,10 +468,12 @@ const ProductSlug = ({ post, product }: any) => {
               }
             </>
           }
-          <div className='mt-6 text-lg'>
-            <h6>Unit Price : <span className='font-semibold'>£{whitesmall || Number(product?.price?.replace('£',''))}</span></h6>
-            <h6>Printing Price : <span className='font-semibold'>£{calculatePrintingPrice(customizedMergeData, totalQuantity)}</span></h6>
+          {
+            selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-lg'>
+            <h6>Unit Price : <span className='font-semibold'>£{selectedProduct?.colors[0]?.name === "WHITE" ? whitesmall : colorsmall}</span></h6>
           </div>
+          }
+          
           <div className='text-3xl flex items-center mt-6 gap-2'>
             Total: <span className='font-semibold text-secondary text-5xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span>
           </div>
