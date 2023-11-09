@@ -79,53 +79,43 @@ export const Posts = [
 export const designVarient = [
      {
           placement: '',
-          image: '/images/tshirt-varients/front_Left Chest.png',
-          position: 'Left Chest',
+          image: '/images/tshirt-varients/left-breast.jpeg',
+          position: 'Left Breast',
      },
      {
           placement: '',
-          image: '/images/tshirt-varients/front_Right Chest.png',
-          position: 'Right Chest',
+          image: '/images/tshirt-varients/right-breast.jpeg',
+          position: 'Right Breast',
      },
      {
           placement: '',
-          image: '/images/tshirt-varients/front_Centre Chest.png',
+          image: '/images/tshirt-varients/center-chest.jpeg',
           position: 'Centre Chest',
      },
      {
           placement: '',
-          image: '/images/tshirt-varients/back_Top Back.png',
-          position: 'Top Back',
-     },
-     {
-          placement: '',
-          image: '/images/tshirt-varients/back_Nape_of_Neck.png',
-          position: 'Nape of Neck',
-     },
-     {
-          placement: '',
-          image: '/images/tshirt-varients/back_Centre Back.png',
-          position: 'Centre Back',
-     },
-     {
-          placement: '',
-          image: '/images/tshirt-varients/back_Bottom Back.png',
-          position: 'Bottom Back',
-     },
-     {
-          placement: '',
-          image: '/images/tshirt-varients/front_Left_Sleeve.png',
+          image: '/images/tshirt-varients/left sleeve.jpeg',
           position: 'Left Sleeve',
      },
      {
           placement: '',
-          image: '/images/tshirt-varients/front_Right_Sleeve.png',
+          image: '/images/tshirt-varients/right sleeve.jpeg',
           position: 'Right Sleeve',
      },
      {
           placement: '',
-          image: '/images/tshirt-varients/front_Inside_Neck.png',
-          position: 'Inside Neck',
+          image: '/images/tshirt-varients/big front.jpeg',
+          position: 'Big Front',
+     },
+     {
+          placement: '',
+          image: '/images/tshirt-varients/big back.jpeg',
+          position: 'Big Back',
+     },
+     {
+          placement: '',
+          image: '/images/tshirt-varients/nape of neck.jpeg',
+          position: 'Nape of Neck',
      },
      // {
      //      placement: 'Front',

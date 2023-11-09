@@ -10,8 +10,6 @@ import { toast } from 'react-toastify'
 const Cart = () => {
      const cartItems = useSelector((state: any) => state.AddToCart.value)
 
-     console.log("🚀 ~ file: index.tsx:12 ~ Cart ~ cartItems:", cartItems)
-
      const dispatch = useDispatch()
      const router = useRouter()
      const [coupon, setcoupon] = useState();

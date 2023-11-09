@@ -17,7 +17,7 @@ import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
-import { calculatePrice, uid } from '@/utils';
+import { calculatePrice, calculatePrintingPrice, uid } from '@/utils';
 import { BsCartDash } from 'react-icons/bs';
 import Faqs from '@/components/faqs/faqs';
 import { toast } from 'react-toastify';
@@ -43,12 +43,12 @@ const ProductSlug = ({ post, product }: any) => {
 
   const fullHead = parse(product.seo.fullHead);
 
-
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
     
     console.log("🚀 ~ file: [slug].tsx:49 ~ ProductSlug ~ selectedProduct:", selectedProduct)
-
+    
+  
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
   useEffect(() => {
@@ -437,7 +437,6 @@ const ProductSlug = ({ post, product }: any) => {
             </section>
           }
 
-
           {
             isPrintable &&
             <>
@@ -463,15 +462,19 @@ const ProductSlug = ({ post, product }: any) => {
 
               {
                 customizedMergeData?.length < 4 &&
-                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-5 text-secondary rounded-full'>
-                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'} {customizedMergeData?.length + 1}
+                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle logo design' : 'Add logo design'} 
                 </button>
+                // {customizedMergeData?.length + 1}
               }
             </>
           }
-
-          <div className='text-3xl mt-10 flex items-center gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span>
+          <div className='mt-6 text-lg'>
+            <h6>Unit Price : <span className='font-semibold'>£{whitesmall || Number(product?.price?.replace('£',''))}</span></h6>
+            <h6>Printing Price : <span className='font-semibold'>£{calculatePrintingPrice(customizedMergeData, totalQuantity)}</span></h6>
+          </div>
+          <div className='text-3xl flex items-center mt-6 gap-2'>
+            Total: <span className='font-semibold text-secondary text-5xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span>
           </div>
 
           {
@@ -488,13 +491,13 @@ const ProductSlug = ({ post, product }: any) => {
 
       {/* floating price */}
       <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[200px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
-        <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</span></h5>
+        <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section>
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
         <div className='flex-1 p-2 px-5'>
           <h5 className='font-semibold'>Total</h5>
-          <h4 className='font-semibold text-secondary text-xl'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
+          <h4 className='font-semibold text-secondary text-xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
 
         <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-primary uppercase text-white gap-2 p-2 flex items-center justify-center'>

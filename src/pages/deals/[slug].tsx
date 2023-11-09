@@ -352,7 +352,7 @@ const ProductSlug = ({ post, product }: any) => {
                 {
                   customizedMergeData?.length < 4 &&
                   <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-6 border border-secondary gap-2 py-3 hover:bg-secondary hover:text-white px-5 text-secondary rounded-full'>
-                    {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization'}
+                    {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle customization' : 'Add customization 11'}
                   </button>
                 }
               </>

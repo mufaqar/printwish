@@ -25,6 +25,19 @@ export const HideScrollOnModelOpen = (modalIsOpen: any) => {
 // this price is calculate according to the product quantity with customized data
 export const calculatePrice = ( customizedMergeData: any, totalPrice:number, totalQuantity:any) => {
      
+     var printingPrice = calculatePrintingPrice(customizedMergeData,totalQuantity)
+
+     var price = customizedMergeData?.length > 0 ? totalPrice + printingPrice : totalPrice
+
+     return price?.toFixed(2)
+}
+
+export const uid = function () {
+     return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+export const calculatePrintingPrice = (customizedMergeData:any, totalQuantity:any) => {
+
      var priceWithQuantity = 0
 
      if(totalQuantity >= 25 && totalQuantity <= 49){
@@ -43,14 +56,9 @@ export const calculatePrice = ( customizedMergeData: any, totalPrice:number, tot
           priceWithQuantity = totalQuantity * ( 1.85 * customizedMergeData.length )
      }
 
-     var price = customizedMergeData?.length > 0 ? totalPrice + priceWithQuantity : totalPrice
-
-     return price?.toFixed(2)
+     return priceWithQuantity
 }
 
-export const uid = function () {
-     return Date.now().toString(36) + Math.random().toString(36).substr(2);
-}
 
 
 // calculate total price with vat and if also have coupon code
