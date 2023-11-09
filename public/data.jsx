@@ -90,7 +90,12 @@ export const designVarient = [
      {
           placement: '',
           image: '/images/tshirt-varients/center-chest.jpeg',
-          position: 'Centre Chest',
+          position: 'Centre Front',
+     },
+     {
+          placement: '',
+          image: '/images/tshirt-varients/big back.jpeg',
+          position: 'Centre Back',
      },
      {
           placement: '',
@@ -104,18 +109,13 @@ export const designVarient = [
      },
      {
           placement: '',
-          image: '/images/tshirt-varients/big front.jpeg',
-          position: 'Big Front',
-     },
-     {
-          placement: '',
-          image: '/images/tshirt-varients/big back.jpeg',
-          position: 'Big Back',
-     },
-     {
-          placement: '',
           image: '/images/tshirt-varients/nape of neck.jpeg',
           position: 'Nape of Neck',
+     },
+     {
+          placement: '',
+          image: '/images/tshirt-varients/big front.jpeg',
+          position: 'Big Front',
      },
      // {
      //      placement: 'Front',

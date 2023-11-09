@@ -45,9 +45,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
-    
-    console.log("🚀 ~ file: [slug].tsx:49 ~ ProductSlug ~ selectedProduct:", selectedProduct)
-  
+      
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
   useEffect(() => {
@@ -505,7 +503,6 @@ const ProductSlug = ({ post, product }: any) => {
           <BsCartDash /> Add to cart
         </div>
 
-       
       </section>
 
     </>

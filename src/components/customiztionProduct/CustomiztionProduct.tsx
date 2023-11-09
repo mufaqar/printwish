@@ -52,7 +52,6 @@ const CustomiztionProduct = ({ number }: any) => {
           setDesignPosition(designPosition)
           setSelectedCustomizedLayout(designPosition);
           // setSelectedProduct({...selectedProduct, designPosition})
-
      })
 
      return (
