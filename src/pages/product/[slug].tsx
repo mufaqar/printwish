@@ -477,7 +477,7 @@ const ProductSlug = ({ post, product }: any) => {
           </div>
 
           {
-            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
           }
