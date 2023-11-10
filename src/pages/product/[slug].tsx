@@ -467,13 +467,13 @@ const ProductSlug = ({ post, product }: any) => {
             </>
           }
           {
-            selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-lg'>
+            selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-2xl text-red-600'>
             <h6>Unit Price : <span className='font-semibold'>£{selectedProduct?.colors[0]?.name === "WHITE" ? whitesmall : colorsmall}</span></h6>
           </div>
           }
           
-          <div className='text-3xl flex items-center mt-6 gap-2'>
-            Total: <span className='font-semibold text-secondary text-5xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span>
+          <div className='text-2xl flex items-center mt-3 gap-2'>
+            Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span>
           </div>
 
           {
