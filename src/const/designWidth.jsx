@@ -1,6 +1,6 @@
 const designWidthData = [
      {
-          type: 'Left Chest',
+          type: 'Left Breast',
           sizes: [
                {
                     name: "Small (5cm)",
@@ -17,7 +17,7 @@ const designWidthData = [
           ]
      },
      {
-          type: 'Right Chest',
+          type: 'Right Breast',
           sizes: [
                {
                     name: "Small (5cm)",
@@ -34,7 +34,7 @@ const designWidthData = [
           ]
      },
      {
-          type: 'Centre Chest',
+          type: 'Centre Front',
           sizes: [
                {
                     name: "Small (10cm)",
@@ -47,62 +47,11 @@ const designWidthData = [
                {
                     name: "Large (30cm)",
                     value: '30'
-               }
-          ]
-     },
-     {
-          type: 'Top Back',
-          sizes: [
-               {
-                    name: "Small (10cm)",
-                    value: '10'
-               },
-               {
-                    name: "Medium (20cm)",
-                    value: '20'
-               },
-               {
-                    name: "Large (30cm)",
-                    value: '30'
-               }
-          ]
-     },
-     {
-          type: 'Nape of Neck',
-          sizes: [
-               {
-                    name: "Small (5cm)",
-                    value: '5'
-               },
-               {
-                    name: "Medium (8cm)",
-                    value: '8'
-               },
-               {
-                    name: "Large (11cm)",
-                    value: '11'
                }
           ]
      },
      {
           type: 'Centre Back',
-          sizes: [
-               {
-                    name: "Small (10cm)",
-                    value: '10'
-               },
-               {
-                    name: "Medium (20cm)",
-                    value: '20'
-               },
-               {
-                    name: "Large (30cm)",
-                    value: '30'
-               }
-          ]
-     },
-     {
-          type: 'Bottom Back',
           sizes: [
                {
                     name: "Small (10cm)",
@@ -153,7 +102,7 @@ const designWidthData = [
           ]
      },
      {
-          type: 'Inside Neck',
+          type: 'Nape of Neck',
           sizes: [
                {
                     name: "Small (5cm)",
@@ -166,6 +115,23 @@ const designWidthData = [
                {
                     name: "Large (11cm)",
                     value: '11'
+               }
+          ]
+     },
+     {
+          type: 'Big Front',
+          sizes: [
+               {
+                    name: "Small (10cm)",
+                    value: '10'
+               },
+               {
+                    name: "Medium (20cm)",
+                    value: '20'
+               },
+               {
+                    name: "Large (30cm)",
+                    value: '30'
                }
           ]
      },
