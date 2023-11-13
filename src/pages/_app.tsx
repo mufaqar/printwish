@@ -14,6 +14,7 @@ import GoogleAnalytics from "@bradgarropy/next-google-analytics"
 import CookiesMessage from '@/components/UI/cookiesMessage'
 import TawkToChat from '@/components/TawkToChat/TawkToChat'
 import OfferModelBox from '@/components/UI/modelBox/Offer'
+import Head from 'next/head'
 
 export default function App({ Component, pageProps }: any) {
 
@@ -40,6 +41,7 @@ export default function App({ Component, pageProps }: any) {
 
   useEffect(() => {
     const localCookies = localStorage.getItem('cookies')
+
     if (localCookies === "true") {
       setCookies(false)
     } else {
@@ -70,10 +72,15 @@ export default function App({ Component, pageProps }: any) {
     }
   }, [modalIsOpen])
 
+  
+
   return (
     <>
       {/* <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} /> */}
-      
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        <meta name="HandheldFriendly" content="true" />
+      </Head>
       <Provider store={store}>
         {isLoading && <Loader isLoading={isLoading} />}
         <SettingsProvider>
