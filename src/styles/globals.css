@@ -14,13 +14,6 @@
   }
 }
 
-html {
-  touch-action: manipulation; /* Improve touch behavior on mobile devices */
-}
-
-body {
-  overflow: hidden; /* Prevent scrolling */
-}
 
 @font-face {
   font-family: OpenSans;

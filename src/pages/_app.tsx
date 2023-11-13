@@ -77,10 +77,7 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       {/* <NextNProgress color="#f89635" startPosition={0.3} height={3} showOnShallow={true} /> */}
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-        <meta name="HandheldFriendly" content="true" />
-      </Head>
+      
       <Provider store={store}>
         {isLoading && <Loader isLoading={isLoading} />}
         <SettingsProvider>
