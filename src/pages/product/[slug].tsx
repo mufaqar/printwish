@@ -468,7 +468,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
           {
             selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-2xl text-red-600'>
-            <h6>Unit Price : <span className='font-semibold'>£{Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)/totalQuantity).toFixed(2)}</span></h6>
+            <h6>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity))/totalQuantity).toFixed(2)}</span></h6>
           </div>
           }
           
