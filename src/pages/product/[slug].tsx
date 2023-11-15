@@ -8,10 +8,7 @@ import { SlBasketLoaded } from 'react-icons/sl'
 import CustomiztionProduct from '@/components/customiztionProduct/CustomiztionProduct';
 import { SettingsContext } from '@/context/global-context';
 import Artwork from '@/components/artwork/Artwork';
-import { LuShirt } from 'react-icons/lu'
-import { TiTick } from 'react-icons/ti'
-import { TbTruckDelivery } from 'react-icons/tb'
-import Link from 'next/link';
+import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
 import TextCreator from '@/components/textcreator/TextCreator';
 import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
@@ -32,7 +29,6 @@ import Head from 'next/head';
 import Reviews from '@/components/reviews/reviews';
 import TopBar from '@/components/banner/top-bar';
 import RatingInfo from '@/components/UI/RatingInfo'
-import { useDigitalClock } from '@/hooks/useDigitalClock'
 
 interface IColor {
   code: string,
@@ -245,19 +241,7 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
-  const [resultDate, setResultDate] = useState('');
-
-  useEffect(() => {
-    const currentDate = new Date();
-    // Check if the current time is between 9 am and 11 pm
-    const currentHour = currentDate.getHours();
-    const isWorkingHours = currentHour >= 9 && currentHour <= 23;
-
-    const newDate = getNextBusinessDay(currentDate, isWorkingHours ? 7 : 8)
-    setResultDate(formatDate(newDate));
-  }, []);
-
-  const { hours, minutes } = useDigitalClock()
+  
 
   return (
     <>
@@ -469,12 +453,12 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
 
-              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5>}
+              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Add Customization:</h5>}
 
               {
                 customizedMergeData?.length < 4 &&
-                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
-                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle logo design' : 'Add logo design'}
+                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle your logo' : 'ADD YOUR LOGOS'}
                 </button>
                 // {customizedMergeData?.length + 1}
               }
@@ -496,14 +480,7 @@ const ProductSlug = ({ post, product }: any) => {
             </button>
           }
 
-          <div className='border p-6 mt-8 md:max-w-[420px] shadow rounded-md text-sm'>
-            <div className='flex justify-between items-center'>
-              <h6 className='font-semibold'>Standard</h6>
-              <img src="/images/dpd.png" alt="icon" width={45} height={45} />
-            </div>
-            <p className='my-1'>Arrives <span className='font-semibold text-secondary'> {resultDate}</span></p>
-            <p>Order within <span className='text-secondary'>{hours}hrs {minutes}mins</span></p>
-          </div>
+          <DeliveryTime title="Standard" desc=""/>
         </section>
 
 

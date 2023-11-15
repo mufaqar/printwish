@@ -12,6 +12,8 @@ import Faqs from '@/components/faqs/faqs'
 import Head from 'next/head'
 import Reviews from '@/components/reviews/reviews'
 import parse from "html-react-parser";
+import Brands_Slider from '@/components/slider/brand-slider'
+import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo, categorySEO }: any) => {
 
@@ -42,7 +44,11 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
                               </section>
                          }
+                         <Brands_Slider />
                          <Reviews />
+                         <div className='max-w-[500px] w-full mb-16 mx-auto'>
+                         <DeliveryTime title="Super Fast Delivery Available" desc="Place your order today and receive within 5 working days"/>
+                         </div>
 
                          {
                               products.length > 0 ? <div className='container mx-auto px-1 my-2 w-full'>
