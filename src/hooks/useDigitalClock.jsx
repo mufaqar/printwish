@@ -30,10 +30,12 @@ export const useDigitalClock = () => {
 
     const remainingHours = Math.floor(timeDifference / (1000 * 60 * 60));
     const remainingMinutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const remSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
     return {
       hours: remainingHours,
       minutes: remainingMinutes,
+      seconds: remSeconds,
     };
   }
 

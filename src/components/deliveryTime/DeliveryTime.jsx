@@ -15,7 +15,7 @@ const DeliveryTime = ({title,desc}) => {
     setResultDate(formatDate(newDate));
   }, []);
 
-  const { hours, minutes } = useDigitalClock();
+  const { hours, minutes , seconds } = useDigitalClock();
 
   return (
     <>
@@ -30,7 +30,7 @@ const DeliveryTime = ({title,desc}) => {
           <span className="font-semibold text-secondary"> {resultDate}</span>
         </p>
         <p>
-          Order within <span className="text-secondary"> {hours}hrs {minutes}mins</span>
+          Order within <span className="text-secondary"> {hours}hrs {minutes}mins {seconds}sec</span>
         </p>
       </div>
     </>
