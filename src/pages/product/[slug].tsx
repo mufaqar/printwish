@@ -471,7 +471,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
 
           <div className='text-2xl flex items-center mt-3 gap-2'>
-            Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0 `} <span className='font-normal text-primary text-xl'>excluding VAT</span></span>
+            Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0 `} <span className='font-normal text-primary text-xl ml-1'>excluding VAT</span></span>
           </div>
 
           {
