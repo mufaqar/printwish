@@ -91,3 +91,39 @@ export const TotalPriceCalculate = (cartItems: any) => {
      };
    };
    
+
+   export const formatDate = (date:any) => {
+     const options:any = { weekday: 'long', day: 'numeric', month: 'long' };
+     const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+     const day = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(date);
+     const suffix = getDaySuffix(day);
+     return formattedDate.replace(/\d+/, day + suffix);
+   };
+   
+   const getDaySuffix = (day:any) => {
+     if (day >= 11 && day <= 13) {
+       return 'th';
+     }
+     switch (day % 10) {
+       case 1:
+         return 'st';
+       case 2:
+         return 'nd';
+       case 3:
+         return 'rd';
+       default:
+         return 'th';
+     }
+   };
+   
+   export const getNextBusinessDay = (startDate:any, daysToAdd:any) => {
+     let currentDate = new Date(startDate);
+     while (daysToAdd > 0) {
+       currentDate.setDate(currentDate.getDate() + 1);
+       // Skip Saturday (6) and Sunday (0)
+       if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+         daysToAdd--;
+       }
+     }
+     return currentDate;
+   };

@@ -17,7 +17,7 @@ import { GET_PRODUCT } from '@/config/query'
 import { client } from '@/config/client'
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/features/AddToCart';
-import { calculatePrice, calculatePrintingPrice, uid } from '@/utils';
+import { calculatePrice, calculatePrintingPrice, formatDate, getNextBusinessDay, uid } from '@/utils';
 import { BsCartDash } from 'react-icons/bs';
 import Faqs from '@/components/faqs/faqs';
 import { toast } from 'react-toastify';
@@ -244,6 +244,13 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
+  const [resultDate, setResultDate] = useState('');
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const newDate = getNextBusinessDay(currentDate, 8);
+    setResultDate(formatDate(newDate));
+  }, []);
 
   return (
     <>
@@ -477,10 +484,15 @@ const ProductSlug = ({ post, product }: any) => {
           </div>
 
           {
-            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : handleAddToCart(product) }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.info('Add Logo Design First') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
             <SlBasketLoaded /> Add to cart
           </button>
           }
+
+          <div className='border p-6 mt-8'>
+            <h6 className='font-semibold'>Standard</h6>
+            <p className='mt-1'>Arrives <span className='font-semibold text-secondary'> {resultDate}</span></p>
+          </div>
         </section>
 
        
