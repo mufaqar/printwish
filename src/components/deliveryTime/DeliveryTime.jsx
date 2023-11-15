@@ -11,7 +11,7 @@ const DeliveryTime = ({title,desc}) => {
     const currentHour = currentDate.getHours();
     const isWorkingHours = currentHour >= 9 && currentHour <= 23;
 
-    const newDate = getNextBusinessDay(currentDate, isWorkingHours ? 7 : 8);
+    const newDate = getNextBusinessDay(currentDate, isWorkingHours ? 5 : 6);
     setResultDate(formatDate(newDate));
   }, []);
 
