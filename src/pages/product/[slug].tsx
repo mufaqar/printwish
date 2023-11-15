@@ -32,6 +32,7 @@ import Head from 'next/head';
 import Reviews from '@/components/reviews/reviews';
 import TopBar from '@/components/banner/top-bar';
 import RatingInfo from '@/components/UI/RatingInfo'
+import { useDigitalClock } from '@/hooks/useDigitalClock'
 
 interface IColor {
   code: string,
@@ -45,7 +46,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
-      
+
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
   useEffect(() => {
@@ -206,8 +207,8 @@ const ProductSlug = ({ post, product }: any) => {
     });
   });
 
-  if(totalPrice === 0) {
-    totalPrice = whitesmall ? whitesmall : Number(product?.price?.replace('£',''))
+  if (totalPrice === 0) {
+    totalPrice = whitesmall ? whitesmall : Number(product?.price?.replace('£', ''))
   }
 
 
@@ -248,9 +249,15 @@ const ProductSlug = ({ post, product }: any) => {
 
   useEffect(() => {
     const currentDate = new Date();
-    const newDate = getNextBusinessDay(currentDate, 8);
+    // Check if the current time is between 9 am and 11 pm
+    const currentHour = currentDate.getHours();
+    const isWorkingHours = currentHour >= 9 && currentHour <= 23;
+
+    const newDate = getNextBusinessDay(currentDate, isWorkingHours ? 7 : 8)
     setResultDate(formatDate(newDate));
   }, []);
+
+  const { hours, minutes } = useDigitalClock()
 
   return (
     <>
@@ -259,12 +266,12 @@ const ProductSlug = ({ post, product }: any) => {
         {fullHead}
       </Head>
       {/* top bar with some content  */}
-      <TopBar/>
-      
+      <TopBar />
+
       <div className='block md:hidden px-3 container mx-auto'>
-          <div className='mt-3 flex justify-center'>
-            <Image src="/images/review-badge.svg" alt="rating" width={200} height={45} />
-          </div>
+        <div className='mt-3 flex justify-center'>
+          <Image src="/images/review-badge.svg" alt="rating" width={200} height={45} />
+        </div>
         <h2 className='text-xl md:text-3xl lg:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
         <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
       </div>
@@ -284,12 +291,12 @@ const ProductSlug = ({ post, product }: any) => {
             }
           </Slider>
           <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
-            <h6>From <strong className='text-gray-500'>£{whitesmall || product?.price?.replace('£','')}</strong> per unit</h6>
+            <h6>From <strong className='text-gray-500'>£{whitesmall || product?.price?.replace('£', '')}</strong> per unit</h6>
             <h6>Lead Time : <span className='text-gray-500'>3-5 working days</span></h6>
             <h6>Minimum Order Value is  <span className='text-gray-500'>25 units.</span></h6>
           </div>
           {
-            product?.poductInfo?.rating?.ratingNumber && <div className='md:hidden'><RatingInfo data={product?.poductInfo?.productRating}/></div>
+            product?.poductInfo?.rating?.ratingNumber && <div className='md:hidden'><RatingInfo data={product?.poductInfo?.productRating} /></div>
           }
           <section className='bg-background p-6 md:p-8 mt-5 rounded-lg'>
             <div className='font-semibold text-lg uppercase flex font-roboto gap-5 text-secondary'>
@@ -396,46 +403,46 @@ const ProductSlug = ({ post, product }: any) => {
                 </ul>
                 {/* selected color and show all sizes with each selcted color */}
               </div>
-              
+
               {/* all selected colors list*/}
               <div>
-                  {
-                    selectedProduct?.colors?.map((c: IColor, idx: number) => {
-                      return (
-                        <div key={idx} className='flex border-[1.5px] justify-between my-3 bg-background p-3 md:py-4 md:px-6 rounded-lg' style={{ borderColor: `#${c?.code}`}}>
-                          <div>
-                            <div className='flex items-center gap-2'>
-                              <div className="p-4 rounded-full" style={{ backgroundColor: `#${c?.code}`, borderColor: `#${c?.code}`}} />
-                              <p className='text-lg uppercase'>{c?.name}</p>
-                            </div>
-                            {/* map all size that are accociated to this product  */}
-                            <ul className='flex flex-wrap items-center gap-3 mt-3 '>
-                              {
-                                product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
-                                  const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
-                                  const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
-
-                                  return (
-                                    <div key={idx} className='flex flex-col items-center justify-center'>
-                                      <p className='text-lg text-accent font-bold'>{item.name}</p>
-                                      <div className='mt-1'>
-                                        <input type="number" name={item.name} min="0" className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
-                                          placeholder='0'
-                                          value={quantity}
-                                          onChange={(e) => handleSize(e, c?.name, item.name)}
-                                        />
-                                      </div>
-                                    </div>
-                                  )
-                                })
-                              }
-                            </ul>
+                {
+                  selectedProduct?.colors?.map((c: IColor, idx: number) => {
+                    return (
+                      <div key={idx} className='flex border-[1.5px] justify-between my-3 bg-background p-3 md:py-4 md:px-6 rounded-lg' style={{ borderColor: `#${c?.code}` }}>
+                        <div>
+                          <div className='flex items-center gap-2'>
+                            <div className="p-4 rounded-full" style={{ backgroundColor: `#${c?.code}`, borderColor: `#${c?.code}` }} />
+                            <p className='text-lg uppercase'>{c?.name}</p>
                           </div>
-                          <i className='mt-4 font-semibold text-xl cursor-pointer active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
+                          {/* map all size that are accociated to this product  */}
+                          <ul className='flex flex-wrap items-center gap-3 mt-3 '>
+                            {
+                              product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
+                                const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
+                                const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
+
+                                return (
+                                  <div key={idx} className='flex flex-col items-center justify-center'>
+                                    <p className='text-lg text-accent font-bold'>{item.name}</p>
+                                    <div className='mt-1'>
+                                      <input type="number" name={item.name} min="0" className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
+                                        placeholder='0'
+                                        value={quantity}
+                                        onChange={(e) => handleSize(e, c?.name, item.name)}
+                                      />
+                                    </div>
+                                  </div>
+                                )
+                              })
+                            }
+                          </ul>
                         </div>
-                      )
-                    })
-                  }
+                        <i className='mt-4 font-semibold text-xl cursor-pointer active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
+                      </div>
+                    )
+                  })
+                }
               </div>
 
             </section>
@@ -449,7 +456,7 @@ const ProductSlug = ({ post, product }: any) => {
                 customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
               }
 
-              {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2}/>}
+              {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2} />}
               {selectedCustomizedLayout?.length > 1 && <Artwork />}
 
               {
@@ -461,13 +468,13 @@ const ProductSlug = ({ post, product }: any) => {
                 </>
               }
               {selectArt === 'Text creator' && <TextCreator />}
-    
+
               {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Select Customization:</h5>}
 
               {
                 customizedMergeData?.length < 4 &&
                 <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-8 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
-                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle logo design' : 'Add logo design'} 
+                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle logo design' : 'Add logo design'}
                 </button>
                 // {customizedMergeData?.length + 1}
               }
@@ -475,27 +482,31 @@ const ProductSlug = ({ post, product }: any) => {
           }
           {
             selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-2xl text-red-600'>
-            <h6>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity))/totalQuantity).toFixed(2)}</span></h6>
-          </div>
+              <h6>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) / totalQuantity).toFixed(2)}</span></h6>
+            </div>
           }
-          
+
           <div className='text-2xl flex items-center mt-3 gap-2'>
             Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span>
           </div>
 
           {
             Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('Add Logo Design First') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
-            <SlBasketLoaded /> Add to cart
-          </button>
+              <SlBasketLoaded /> Add to cart
+            </button>
           }
 
-          <div className='border p-6 mt-8'>
-            <h6 className='font-semibold'>Standard</h6>
-            <p className='mt-1'>Arrives <span className='font-semibold text-secondary'> {resultDate}</span></p>
+          <div className='border p-6 mt-8 md:max-w-[420px] shadow rounded-md text-sm'>
+            <div className='flex justify-between items-center'>
+              <h6 className='font-semibold'>Standard</h6>
+              <Image src="/images/dpd.png" alt="ico" width={45} height={45} />
+            </div>
+            <p className='my-1'>Arrives <span className='font-semibold text-secondary'> {resultDate}</span></p>
+            <p>Order within <span className='text-secondary'>{hours}hrs {minutes}mins</span></p>
           </div>
         </section>
 
-       
+
       </main>
       <Reviews />
 
