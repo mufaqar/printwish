@@ -499,7 +499,7 @@ const ProductSlug = ({ post, product }: any) => {
           <div className='border p-6 mt-8 md:max-w-[420px] shadow rounded-md text-sm'>
             <div className='flex justify-between items-center'>
               <h6 className='font-semibold'>Standard</h6>
-              <Image src="/images/dpd.png" alt="ico" width={45} height={45} />
+              <img src="/images/dpd.png" alt="icon" width={45} height={45} />
             </div>
             <p className='my-1'>Arrives <span className='font-semibold text-secondary'> {resultDate}</span></p>
             <p>Order within <span className='text-secondary'>{hours}hrs {minutes}mins</span></p>
