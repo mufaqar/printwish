@@ -101,7 +101,7 @@ export default function App({ Component, pageProps }: any) {
       {
         cookies && <CookiesMessage setCookies={setCookies} />
       }
-      {openOfferModel && <OfferModelBox modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />}
+      {/*  openOfferModel && <OfferModelBox modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} /> */}
     </>
   )
 
