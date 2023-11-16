@@ -29,6 +29,8 @@ import Head from 'next/head';
 import Reviews from '@/components/reviews/reviews';
 import TopBar from '@/components/banner/top-bar';
 import RatingInfo from '@/components/UI/RatingInfo'
+import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
+
 
 interface IColor {
   code: string,
@@ -176,24 +178,8 @@ const ProductSlug = ({ post, product }: any) => {
 
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "custom-t-shirt-printing-cheap-t-shirt-printing")
   const dispatch = useDispatch()
-  const [totalQuantity, setTotalQuantity] = useState(0);
-  useEffect(() => {
-    if (selectedProduct) {
-      let newTotalQuantity = 0;
-
-      selectedProduct.colors?.forEach((color: any) => {
-        color.selectedSize?.forEach((size: any) => {
-          const quantity = parseInt(size.quantity);
-          if (quantity >= 1) {
-            newTotalQuantity += quantity;
-          }
-        });
-      });
-
-      setTotalQuantity(newTotalQuantity);
-    }
-  }, [selectedProduct]);
-
+  
+  const totalQuantity = useGetTotalQuantity(selectedProduct)
 
   let totalPrice = 0;
 

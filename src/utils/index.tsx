@@ -1,5 +1,5 @@
 import { SettingsContext } from "@/context/global-context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 
 // hide scrolling 
@@ -127,3 +127,5 @@ export const TotalPriceCalculate = (cartItems: any) => {
      }
      return currentDate;
    };
+
+
