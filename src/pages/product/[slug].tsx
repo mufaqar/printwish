@@ -371,7 +371,7 @@ const ProductSlug = ({ post, product }: any) => {
             product?.allPaColor.nodes.length > 0 &&
             <section className=''>
               <div className="bg-background p-3 md:p-8 rounded-lg ">
-                <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose Color:</h5>
+                <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose one or more colours:</h5>
                 <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
                   {
                     product?.allPaColor.nodes?.map((clr: any, idx: number) => {
@@ -453,7 +453,7 @@ const ProductSlug = ({ post, product }: any) => {
               }
               {selectArt === 'Text creator' && <TextCreator />}
 
-              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - Add Customization:</h5>}
+              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - ADD YOUR LOGOS:</h5>}
 
               {
                 customizedMergeData?.length < 4 &&
@@ -475,7 +475,7 @@ const ProductSlug = ({ post, product }: any) => {
           </div>
 
           {
-            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('Add Logo Design First') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('ADD YOUR LOGO PLEASE') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
               <SlBasketLoaded /> Add to cart
             </button>
           }
