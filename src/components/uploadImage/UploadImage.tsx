@@ -4,11 +4,12 @@ import { SettingsContext } from "@/context/global-context";
 
 const UploadImage = () => {
   const { imageURL, setImageURL, setDesignImage } = useContext(SettingsContext)
+  const [img, setImg] = useState<any>()
 
   const handleImageChange = async (event: any) => {
     const file = event.target.files[0];
-    console.log('URL?.createObjectURL(file)', URL?.createObjectURL(file))
     setImageURL(URL?.createObjectURL(file));
+    setImg(URL?.createObjectURL(file))
 
     const CLOUDINARY_CLOUD_NAME = "drokpzsz7"
     const UPLOAD_PRESET = "siqj1van"
@@ -55,7 +56,7 @@ const UploadImage = () => {
       </div>
       <div>
         <Image
-          src={imageURL || '/images/image.png'}
+          src={img || '/images/image.png'}
           alt="Selected Preview"
           width={500}
           height={500}
