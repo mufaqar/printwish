@@ -4,10 +4,12 @@ import { SettingsContext } from "@/context/global-context";
 
 const UploadImage = () => {
   const { imageURL, setImageURL, setDesignImage } = useContext(SettingsContext)
+  const [img,setImage] = useState()
 
   const handleImageChange = async (event: any) => {
     const file = event.target.files[0];
-    setImageURL(URL.createObjectURL(file));
+    console.log('URL?.createObjectURL(file)', URL?.createObjectURL(file))
+    setImageURL(URL?.createObjectURL(file));
 
     const CLOUDINARY_CLOUD_NAME = "drokpzsz7"
     const UPLOAD_PRESET = "siqj1van"
@@ -31,6 +33,7 @@ const UploadImage = () => {
       const res = await response.json();
       setDesignImage(res.url)
       setImageURL(res.url)
+      setImage(res.url)
     } catch (error) {
       console.log("🚀 ~ file: UploadImage.tsx:32 ~ handleImageChange ~ error:", error)
     }
@@ -54,7 +57,7 @@ const UploadImage = () => {
       </div>
       <div>
         <Image
-          src={imageURL || '/images/image.png'}
+          src={img || imageURL || '/images/image.png'}
           alt="Selected Preview"
           width={500}
           height={500}
