@@ -4,7 +4,6 @@ import { SettingsContext } from "@/context/global-context";
 
 const UploadImage = () => {
   const { imageURL, setImageURL, setDesignImage } = useContext(SettingsContext)
-  const [img,setImage] = useState()
 
   const handleImageChange = async (event: any) => {
     const file = event.target.files[0];
@@ -33,7 +32,6 @@ const UploadImage = () => {
       const res = await response.json();
       setDesignImage(res.url)
       setImageURL(res.url)
-      setImage(res.url)
     } catch (error) {
       console.log("🚀 ~ file: UploadImage.tsx:32 ~ handleImageChange ~ error:", error)
     }
@@ -57,7 +55,7 @@ const UploadImage = () => {
       </div>
       <div>
         <Image
-          src={img || imageURL || '/images/image.png'}
+          src={imageURL || '/images/image.png'}
           alt="Selected Preview"
           width={500}
           height={500}
