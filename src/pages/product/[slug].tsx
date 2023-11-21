@@ -253,11 +253,11 @@ const ProductSlug = ({ post, product }: any) => {
               product?.galleryImages?.nodes.length > 0 ? product?.galleryImages?.nodes.map((item: any, idx: number) => {
                 return (
                   <div key={idx}>
-                    <Image src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
+                    <img src={item?.mediaItemUrl} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
                     <h5 className='text-center font-semibold text-lg capitalize mb-3'>{item?.altText}</h5>
                   </div>
                 )
-              }) : <Image src={imagePath} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
+              }) : <img src={imagePath} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
             }
           </Slider>
           <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
