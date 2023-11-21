@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { MdDelete, MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
 const SelectedCustmizedLayout = ({ item, id }: any) => {
+     console.log("🚀 ~ file: selectedCustmizedLayout.tsx:8 ~ SelectedCustmizedLayout ~ item:", item.imageURL)
      
      const { selectedProduct, setSelectedProduct } = useContext(SettingsContext)
 
@@ -76,7 +77,7 @@ const SelectedCustmizedLayout = ({ item, id }: any) => {
                                              ))
                                         }
                                    </div>
-                                   : <Image src={item?.imageURL} alt="image" width={140} height={140} />
+                                   : <img src={item?.imageURL} alt="image" width={140} height={140} />
                          }
 
                     </div>
