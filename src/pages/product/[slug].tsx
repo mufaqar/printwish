@@ -30,6 +30,7 @@ import Reviews from '@/components/reviews/reviews';
 import TopBar from '@/components/banner/top-bar';
 import RatingInfo from '@/components/UI/RatingInfo'
 import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
+import HowToBuy from '@/components/HowToBuy/HowToBuy';
 
 
 interface IColor {
@@ -417,7 +418,7 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-
+          <HowToBuy/>
           {
             isPrintable &&
             <>
