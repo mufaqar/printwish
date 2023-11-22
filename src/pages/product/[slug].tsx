@@ -336,7 +336,7 @@ const ProductSlug = ({ post, product }: any) => {
             </div>
           </section>
         </section>
-
+        
         <section className='md:w-[60%] text-accent'>
           <div className='hidden md:block'>
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
@@ -353,7 +353,7 @@ const ProductSlug = ({ post, product }: any) => {
               </div>
             </section>
           }
-
+          <HowToBuy />
           {
             product?.allPaColor.nodes.length > 0 &&
             <section className=''>
@@ -418,7 +418,7 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-          <HowToBuy />
+          
           {
             isPrintable &&
             <>
