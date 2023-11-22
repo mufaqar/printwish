@@ -418,7 +418,7 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-          <HowToBuy/>
+          <HowToBuy />
           {
             isPrintable &&
             <>
