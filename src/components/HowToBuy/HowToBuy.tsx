@@ -4,7 +4,7 @@ const HowToBuy = () => {
      const [videoToggle, setVideoToggle] = useState(false)
      return (
           <section className='mb-7'>
-               <div className='flex justify-end'>
+               <div className='flex justify-center'>
                     <button onClick={() => setVideoToggle(!videoToggle)} className={`sm:text-lg font-normal bg-primary text-white px-6 py-2 rounded-full`}>Watch Video - How to place an Order!</button>
                </div>
                {
