@@ -31,6 +31,7 @@ import TopBar from '@/components/banner/top-bar';
 import RatingInfo from '@/components/UI/RatingInfo'
 import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
 import HowToBuy from '@/components/HowToBuy/HowToBuy';
+import SelectLogoColor from '@/components/SelectLogoColor/SelectLogoColor';
 
 
 interface IColor {
@@ -43,7 +44,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const fullHead = parse(product.seo.fullHead);
 
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, setIsOpen, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
@@ -55,6 +56,8 @@ const ProductSlug = ({ post, product }: any) => {
       title: product.title
     })
   }, [calculatePrice])
+
+  console.log('colorsInLogo1', +colorsInLogo)
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
@@ -216,7 +219,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const handleAddToCart = (data: any) => {
     sessionStorage.removeItem('coupon')
-    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), productPrice: totalPrice, extra: selectedProduct }
+    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo), productPrice: totalPrice, extra: selectedProduct }
     dispatch(addItem(data))
     setSelectedProduct({
       textCreator: [],
@@ -422,13 +425,15 @@ const ProductSlug = ({ post, product }: any) => {
           {
             isPrintable &&
             <>
-
               {
                 customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
               }
 
               {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2} />}
-              {selectedCustomizedLayout?.length > 1 && <Artwork />}
+
+              { designPosition && <SelectLogoColor /> }
+
+              {selectedCustomizedLayout?.length > 1 && colorsInLogo > 0 && <Artwork />}
 
               {
                 selectArt === 'Upload image' && <>
@@ -453,16 +458,16 @@ const ProductSlug = ({ post, product }: any) => {
           }
           {
             selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-3xl text-red-600'>
-              <h6 className='font-extrabold'>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) / totalQuantity).toFixed(2)}</span></h6>
+              <h6 className='font-extrabold'>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)) / totalQuantity).toFixed(2)}</span></h6>
             </div>
           }
 
           <div className='text-2xl flex items-center mt-3 gap-2'>
-            Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0 `} <span className='font-normal text-primary text-xl ml-1'>excluding VAT</span></span>
+            Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0 `} <span className='font-normal text-primary text-xl ml-1'>excluding VAT</span></span>
           </div>
 
           {
-            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('ADD YOUR LOGO PLEASE') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+            Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('ADD YOUR LOGO PLEASE') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
               <SlBasketLoaded /> Add to cart
             </button>
           }
@@ -476,13 +481,13 @@ const ProductSlug = ({ post, product }: any) => {
 
       {/* floating price */}
       <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[200px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
-        <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`}</span></h5>
+        <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0`}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section>
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
         <div className='flex-1 p-2 px-5'>
           <h5 className='font-semibold'>Total</h5>
-          <h4 className='font-semibold text-secondary text-xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity)}` : `£0`} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
+          <h4 className='font-semibold text-secondary text-xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0`} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
         </div>
 
         <div onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum order quantity are ${product?.poductInfo?.minimumOrder}`) : handleAddToCart(product) }} className='flex-1 bg-primary uppercase text-white gap-2 p-2 flex items-center justify-center'>

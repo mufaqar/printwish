@@ -33,11 +33,15 @@ export const SettingsProvider = ({ children }) => {
       const response = await client.query({
         query: ALL_LOCATIONS,
       });
-      const location = response?.data?.locations.nodes      ;
+      const location = response?.data?.locations.nodes;
       setLocations(location)
     }
     f()
+    const nomberofcolor = sessionStorage.getItem('colorInLogo') || 0
+    setColorsInLogo(+nomberofcolor)
+
   },[])
+
 
   // Text creator form states
   const [textCreatorLine, setCreatorStateLine] = useState({
