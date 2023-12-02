@@ -33,7 +33,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const fullHead = parse(product.seo.fullHead);
 
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen,
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, setIsOpen, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton,
     totalQuantity, setTotalQuantity } = useContext(SettingsContext)
 
@@ -218,7 +218,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const router = useRouter()
   const handleAddToCart = (data: any) => {
-    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity), extra: selectedProduct }
+    data = { ...data, price: calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo), extra: selectedProduct }
     dispatch(addItem(data))
     setSelectedProduct({
       textCreator: [],
@@ -251,7 +251,7 @@ const ProductSlug = ({ post, product }: any) => {
             <Image src={imagePath} alt={product.name} width={600} height={600} className="md:max-w-[300px] w-full rounded-lg" />
             <div className="flex items-center justify-between md:justify-start md:flex-col md:items-end">
               <button className='bg-black p-2 text-white text-sm px-4 whitespace-nowrap'>SAVE 32% ON RRP</button>
-              <div className='font-semibold text-secondary text-5xl mt-5'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity)}</div>
+              <div className='font-semibold text-secondary text-5xl mt-5'>£{calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}</div>
             </div>
           </div>
         </div>
