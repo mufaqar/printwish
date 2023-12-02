@@ -117,7 +117,8 @@ const SizeAndInstruction = () => {
                     setcustomisationName()
                }
           }
-
+          
+          setColorsInLogo(sessionStorage.getItem('colorInLogo'))
      }
 
      const designWidthSizes = designWidthData.find(i=>i.type === designPosition)
