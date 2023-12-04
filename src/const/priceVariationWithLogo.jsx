@@ -169,7 +169,48 @@ export const priceVariationWithLogoColor = [
           minQuantity: 2500,
           maxQuantity: 4999,
           price: 0.72 
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 25,
+          maxQuantity: 49,
+          price: 6.88 
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 50,
+          maxQuantity: 99,
+          price: 4.80 
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 100,
+          maxQuantity: 249,
+          price: 3.00
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 250,
+          maxQuantity: 499,
+          price: 2.80
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 500,
+          maxQuantity: 999,
+          price: 2.20 
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 1000,
+          maxQuantity: 2499,
+          price: 1.98 
+     },
+     {
+          coloInLogo : 5,
+          minQuantity: 2500,
+          maxQuantity: 4999,
+          price: 1.85 
      }
-
      
 ]

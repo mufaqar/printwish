@@ -39,24 +39,24 @@ export const uid = function () {
 export const calculatePrintingPrice = (customizedMergeData: any, totalQuantity: any, colorsInLogo:any) => {
      var priceWithQuantity = 0
      const price = priceVariationWithLogoColor.filter((item: any) => item.coloInLogo === colorsInLogo && totalQuantity <= item.maxQuantity && totalQuantity >= item.minQuantity).map(item => item.price)[0]
-
+     priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
      // priceWithQuantity = totalQuantity * price[0] * customizedMergeData.length
 
-     if (totalQuantity >= 25 && totalQuantity <= 49) {
-          priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
-     } else if (totalQuantity >= 50 && totalQuantity <= 99) {
-          priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
-     } else if (totalQuantity >= 100 && totalQuantity <= 249) {
-          priceWithQuantity = totalQuantity * (3.00 * customizedMergeData.length)
-     } else if (totalQuantity >= 250 && totalQuantity <= 499) {
-          priceWithQuantity = totalQuantity * (2.80 * customizedMergeData.length)
-     } else if (totalQuantity >= 500 && totalQuantity <= 999) {
-          priceWithQuantity = totalQuantity * (2.20 * customizedMergeData.length)
-     } else if (totalQuantity >= 1000 && totalQuantity <= 2499) {
-          priceWithQuantity = totalQuantity * (1.98 * customizedMergeData.length)
-     } else if (totalQuantity >= 2500) {
-          priceWithQuantity = totalQuantity * (1.85 * customizedMergeData.length)
-     }
+     // if (totalQuantity >= 25 && totalQuantity <= 49) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // } else if (totalQuantity >= 50 && totalQuantity <= 99) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // } else if (totalQuantity >= 100 && totalQuantity <= 249) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // } else if (totalQuantity >= 250 && totalQuantity <= 499) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // } else if (totalQuantity >= 500 && totalQuantity <= 999) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // } else if (totalQuantity >= 1000 && totalQuantity <= 2499) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // } else if (totalQuantity >= 2500) {
+     //      priceWithQuantity = totalQuantity * (price * customizedMergeData.length)
+     // }
      return priceWithQuantity
 }
 

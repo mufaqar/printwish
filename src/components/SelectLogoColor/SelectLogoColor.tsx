@@ -10,10 +10,10 @@ const SelectLogoColor = () => {
                <p className='pl-2'>How many colors your logo design is?</p>
                <div className='flex flex-wrap mt-4 gap-2'>
                     {
-                         [1, 2, 3, 4].map((item: any, idx: number) => (
+                         [1, 2, 3, 4, 5].map((item: any, idx: number) => (
                               <div className='relative' key={idx} >
                                    <button onClick={() => {setColorsInLogo(item); sessionStorage.setItem('colorInLogo', item)}} className={`p-2.5 cursor-pointer  px-8 pl-2 text-lg bg-white rounded-full border-[2px] ${colorsInLogo === item ? ' border-secondary' : 'border-gray-100 hover:border-main'}`}>
-                                        <span className='p-1 bg-black text-white px-3 mr  -1 rounded-full'>{item}</span> {item === 4 ? 'Full Color' : item > 2 ? 'Colors' : 'Color'}
+                                        <span className='p-1 bg-black text-white px-3 mr  -1 rounded-full'>{item}</span> {item === 5 ? 'Full Color' : item > 2 ? 'Colors' : 'Color'}
                                    </button>
                                    {colorsInLogo === item && <FaCircleCheck className='text-secondary absolute right-1 -top-2 bg-white rounded-full text-xl' />}
                               </div>

@@ -45,7 +45,7 @@ const ProductSlug = ({ post, product }: any) => {
   const fullHead = parse(product.seo.fullHead);
 
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, setIsOpen, colorsInLogo,
-    setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton } = useContext(SettingsContext)
+    setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
 
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -172,6 +172,7 @@ const ProductSlug = ({ post, product }: any) => {
     setCustomizationButton(!customizationButton)
     setColorsInLogo()
     setSelectedCustomizedLayout()
+    setDesignPosition('')
   }
 
   useEffect(() => {

@@ -10,7 +10,7 @@ const SizeAndInstruction = () => {
      const { specialInstruction, setSpecialInstruction, customisationName, setSelectedCustomizedLayout,
           setcustomisationName, designWidth, setDesignWidth, colorsInLogo, selectedProduct, setSelectArt,
           selectedCustomizedLayout, setSelectedProduct, imageURL, setCustomizationButton, textCreatorLine,
-          setColorsInLogo, setImageURL, setCreatorStateLine, designPosition } = useContext(SettingsContext)
+          setColorsInLogo, setImageURL, setCreatorStateLine, designPosition, setDesignPosition } = useContext(SettingsContext)
 
 
      const lineOne: any = {
@@ -119,6 +119,7 @@ const SizeAndInstruction = () => {
           }
           
           setColorsInLogo(sessionStorage.getItem('colorInLogo'))
+          setDesignPosition('')
      }
 
      const designWidthSizes = designWidthData.find(i=>i.type === designPosition)
