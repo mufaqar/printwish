@@ -8,7 +8,7 @@ const settings = {
   dots: false,
   arrows:false,
   infinite: true,
-  speed: 500,
+  speed: 5000,
   slidesToShow: 1,
   autoplaySpeed: 2000,
   autoplay: true,
