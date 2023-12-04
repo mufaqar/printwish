@@ -95,5 +95,4 @@ const TopBar = () => {
 export default TopBar
 
 
-const Text = ["TURN UP THE TEMP! - 15% OFF EVERYTHING! CODE: Winter2023 (Enter Code at Checkout)"
-]
+const Text = ["FREE UK SHIPPING ON ALL ORDERS. " , "MONEY BACK GUARANTEED " , "SUPER FAST TURNAROUNDS" ]
