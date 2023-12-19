@@ -12,6 +12,9 @@ export const GET_PRODUCT = gql`
         seo {
           fullHead
           title
+          metaDesc   
+          opengraphTitle
+          title
         }
         featuredImage {
           node {
@@ -146,6 +149,9 @@ query GetLocation($slug: String!) {
     seo {
       fullHead
       title
+      metaDesc   
+      opengraphTitle
+      title
     }
     locationinfo {
       faqs {
@@ -223,7 +229,9 @@ query SINGLEBAG($id: ID!) {
     seo {
       fullHead
       title
-      metaDesc
+      metaDesc   
+      opengraphTitle
+      title
     }
   }
 }`;
@@ -269,6 +277,9 @@ query PRODUCT_CATEGORY_INFO($idType: ProductCategoryIdType = SLUG, $category: ID
   productCategory(id: $category, idType: $idType) {
     seo {
       fullHead
+      title
+      metaDesc   
+      opengraphTitle
       title
     }
     categoryInfo {

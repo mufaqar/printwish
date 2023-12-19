@@ -16,6 +16,8 @@ import Brands_Slider from '@/components/slider/brand-slider'
 import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo, categorySEO }: any) => {
+     console.log("🚀 ~ file: index.tsx:19 ~ CategorySlug ~ categorySEO:", categorySEO)
+
 
      const { query } = useRouter()
      const page = query?.page?.[0] ?? null;
@@ -30,15 +32,32 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
 
      return (
           <>
-               <Head>
-                    <title>{capitalizedPageTitle}</title>
-                    {fullHead}
-               </Head>
 
+               <Head>
+                    <title>{pages?.seo?.title} | Printwish</title>
+                    <meta name="description" content={categorySEO?.metaDesc} />
+                    <link rel="canonical" href={`https://www.printwish.co.uk/${slug}`} />
+                    <meta property="og:locale" content="en_US" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content="Location" />
+                    <meta property="og:description" content={categorySEO?.metaDesc} />
+                    <meta property="og:url" content={`https://printwish.co.uk/${slug}`} />
+                    <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
+                    <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
+                    <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
+                    <meta property="og:image" content="https://www.printwish.co.uk/images/logo.png" />
+                    <meta property="og:image:width" content="1000" />
+                    <meta property="og:image:height" content="300" />
+                    <meta property="og:image:type" content="image/png" />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:site" content="@PrintwishUk" />
+                    <meta name="twitter:label1" content="Est. reading time" />
+                    <meta name="twitter:data1" content="24 minutes" />
+               </Head>
                {
-                    slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} products={productsForLocationPage} /> : <>
+                    slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} slug={slug} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
-                         <PageBanner title={category.name} category={category} slug={slug}/>
+                         <PageBanner title={category.name} category={category} slug={slug} />
                          {
                               page === 't-shirts' && <section className='container mx-auto px-3 mt-2 md:mt-6'>
                                    <div className='font-bold text-xl md:text-2xl bg-primary text-white text-center mt-4 p-2'>BRANDED T-SHIRTS</div>
@@ -47,7 +66,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          <Brands_Slider />
                          <Reviews />
                          <div className='max-w-[500px] w-full mb-8 mx-auto'>
-                         <DeliveryTime title="Super Fast Delivery Available" desc="Place your order today and receive within 5 working days"/>
+                              <DeliveryTime title="Super Fast Delivery Available" desc="Place your order today and receive within 5 working days" />
                          </div>
 
                          {

@@ -10,33 +10,14 @@ import { useRouter } from 'next/router'
 // import parse from "html-react-parser";
 
 
-const Location = ({ products, pages }: any) => {
+const Location = ({ products, pages,slug }: any) => {
+  console.log("🚀 ~ file: index.tsx:14 ~ Location ~ pages:", slug)
   // const fullHead = parse(pages.seo.fullHead);
   const router = useRouter()
   return (
     <>
 
-    <Head>
-        <title>{pages?.seo?.title} | Printwish</title>
-        <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-        <link rel="canonical" href={`https://www.printwish.co.uk/${pages?.seo?.title}`} />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Location" />
-        <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-        <meta property="og:url" content={`https://printwish.co.uk/${pages?.seo?.title}`} />
-        <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-        <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-        <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-        <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
-        <meta property="og:image:width" content="700" />
-        <meta property="og:image:height" content="467" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@PrintwishUk" />
-        <meta name="twitter:label1" content="Est. reading time" />
-        <meta name="twitter:data1" content="57 minutes" />
-      </Head>
+    
     <section className='container mx-auto px-4 my-10'>
       <div className='mb-10'>
         <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Personalised Clothing {pages?.title}</h2>
