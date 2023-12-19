@@ -14,6 +14,7 @@ import Reviews from '@/components/reviews/reviews'
 import parse from "html-react-parser";
 import Brands_Slider from '@/components/slider/brand-slider'
 import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
+import SeoMeta from '@/components/seo/Seo'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo, categorySEO }: any) => {
      console.log("🚀 ~ file: index.tsx:19 ~ CategorySlug ~ categorySEO:", categorySEO)
@@ -32,28 +33,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
 
      return (
           <>
-
-               <Head>
-                    <title>{pages?.seo?.title} | Printwish</title>
-                    <meta name="description" content={categorySEO?.metaDesc} />
-                    <link rel="canonical" href={`https://www.printwish.co.uk/${slug}`} />
-                    <meta property="og:locale" content="en_US" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content="Location" />
-                    <meta property="og:description" content={categorySEO?.metaDesc} />
-                    <meta property="og:url" content={`https://printwish.co.uk/${slug}`} />
-                    <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-                    <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-                    <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-                    <meta property="og:image" content="https://www.printwish.co.uk/images/logo.png" />
-                    <meta property="og:image:width" content="1000" />
-                    <meta property="og:image:height" content="300" />
-                    <meta property="og:image:type" content="image/png" />
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:site" content="@PrintwishUk" />
-                    <meta name="twitter:label1" content="Est. reading time" />
-                    <meta name="twitter:data1" content="24 minutes" />
-               </Head>
+               <SeoMeta title={categorySEO?.title} description={categorySEO?.metaDesc} url={slug} />
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} slug={slug} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
