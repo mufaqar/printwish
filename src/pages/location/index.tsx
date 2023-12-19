@@ -20,7 +20,7 @@ const Location = ({ products, pages,slug }: any) => {
     
     <section className='container mx-auto px-4 my-10'>
       <div className='mb-10'>
-        <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Personalised Clothing {pages?.title}</h2>
+        <h1 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Personalised Clothing {pages?.title}</h1>
         <p className='font-bold text-xl text-gray-600'>Desire a distinctive addition to your {pages?.title} closet? At PrintWish, we showcase a
           diverse array, ready for your personal touch. Dive into a world where your fashion
           aspirations meet our expertise. This includes advanced techniques in printing,
