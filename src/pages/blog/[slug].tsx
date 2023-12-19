@@ -14,10 +14,13 @@ import { FaRegClock } from 'react-icons/fa'
 import { BsFillPlayFill } from 'react-icons/bs'
 import BlogSidebar from '@/components/blogsidebar'
 import Image from 'next/image'
+import SeoMeta from '@/components/seo/Seo'
 
 function SingleBlog() {
     return (
         <>
+         <SeoMeta title="Blog and Latest News about T-Shirt Printing  " description="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders." url="blog" />
+
             <main className='my-20 lg:flex lg:flex-wrap justify-between items-center mx-auto max-w-screen-xl md:px-6  px-6   '>
 
                 <div className=" container lg:w-[800px] ">

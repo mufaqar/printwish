@@ -84,7 +84,7 @@ const Footer = () => {
             </ul>
             <ul className='flex sm:gap-2 gap-1 items-center mt-7'>
               <li>
-                <Link href="https://www.facebook.com/printwishuk/"
+                <Link href="https://www.facebook.com/printwishuk/" target='_blank'
                   className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">
@@ -94,7 +94,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="https://www.instagram.com/printwishonline/?hl=en"
+                <Link href="https://www.instagram.com/printwishonline/?hl=en" target='_blank'
                   className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
@@ -104,7 +104,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/printwishuk?lang=en"
+                <Link href="https://twitter.com/printwishuk?lang=en" target='_blank'
                   className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512">
@@ -114,7 +114,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="https://www.youtube.com/channel/UCb73rrDUl5soUZsGNNZ6FYg"
+                <Link href="https://www.youtube.com/channel/UCb73rrDUl5soUZsGNNZ6FYg" target='_blank'
                   className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
                   <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
@@ -134,7 +134,7 @@ const Footer = () => {
               <Image src="/images/logo.png" alt="logo" width={200} height={54} className='mx-auto' />
             </Link>
           </div>
-          <p className="block text-sm md:text-right text-highlight font-roboto">PrintWish UK is Trading as PrintWish. Copyright 2022-23. Design with Love by Mufaqar
+          <p className="block text-sm md:text-right text-highlight font-roboto">PrintWish UK is Trading as PrintWish. Copyright 2022-23. Design with Love by <a href='httsp://mufaqar.com' target='_blank'>Mufaqar</a>
           </p>
         </div>
       </div>

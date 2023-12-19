@@ -22,37 +22,8 @@ export const NavLinks = [
     {
         id: 5,
         name: 'Locations',
-        link: '#',
-        sub_menu: [
-            {
-                name: 'London',
-                link: '#',
-            },
-            {
-                name: 'Manchester',
-                link: '#',
-            },
-            {
-                name: 'Bristol',
-                link: '#',
-            },
-            {
-                name: 'Glasgow',
-                link: '#',
-            },
-            {
-                name: 'Liverpool',
-                link: '#',
-            },
-            {
-                name: 'Birmingham',
-                link: '#',
-            },
-            {
-                name: 'Edinburgh',
-                link: '#',
-            },
-        ]
+        link: '/locations',
+       
     },
     {
         id: 6,

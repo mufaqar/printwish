@@ -11,7 +11,6 @@ import { useRouter } from 'next/router'
 
 
 const Location = ({ products, pages,slug }: any) => {
-  console.log("🚀 ~ file: index.tsx:14 ~ Location ~ pages:", slug)
   // const fullHead = parse(pages.seo.fullHead);
   const router = useRouter()
   return (
