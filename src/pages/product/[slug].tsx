@@ -227,12 +227,8 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
-
-
   return (
     <>
-
-
       <SeoMeta title={product.seo.title} description={product?.seo.metaDesc} url={`/product/${product.slug}`} />
       <TopBar />
 
@@ -243,7 +239,6 @@ const ProductSlug = ({ post, product }: any) => {
         <h2 className='text-xl md:text-3xl lg:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
         <p className='mt-4 font-normal text-accent'>Product Code: <span className=''>{product?.sku}</span></p>
       </div>
-
       <main className='md:flex container mx-auto px-4 gap-10 mt-7 font-opensans mb-20'>
         <section className='md:w-[40%] image-slider'>
           <Slider {...settings} ref={slider} className='border border-gray-200 rounded-lg p-1'>
@@ -496,12 +491,8 @@ const ProductSlug = ({ post, product }: any) => {
 
 export default ProductSlug
 
-
-
-
 export async function getServerSideProps({ params }: any) {
   const slug = params.slug
-
   const response = await client.query({
     query: GET_PRODUCT,
     variables: {
