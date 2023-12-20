@@ -32,6 +32,7 @@ import RatingInfo from '@/components/UI/RatingInfo'
 import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
 import HowToBuy from '@/components/HowToBuy/HowToBuy';
 import SelectLogoColor from '@/components/SelectLogoColor/SelectLogoColor';
+import SeoMeta from '@/components/seo/Seo';
 
 
 interface IColor {
@@ -41,6 +42,7 @@ interface IColor {
 
 
 const ProductSlug = ({ post, product }: any) => {
+  console.log("🚀 ~ file: [slug].tsx:45 ~ ProductSlug ~ product:", product)
 
   const fullHead = parse(product.seo.fullHead);
 
@@ -183,7 +185,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const isPrintable = product?.productCategories.nodes.some((i: any) => i.slug === "custom-t-shirt-printing-cheap-t-shirt-printing")
   const dispatch = useDispatch()
-  
+
   const totalQuantity = useGetTotalQuantity(selectedProduct)
 
   let totalPrice = 0;
@@ -232,15 +234,13 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
-  
+
 
   return (
     <>
-      <Head>
-        <title>{product.seo.title}</title>
-        {fullHead}
-      </Head>
-      {/* top bar with some content  */}
+
+
+      <SeoMeta title={product.seo.title} description={product?.seo.metaDesc} url={`/product/${product.slug}`} />
       <TopBar />
 
       <div className='block md:hidden px-3 container mx-auto'>
@@ -340,7 +340,7 @@ const ProductSlug = ({ post, product }: any) => {
             </div>
           </section>
         </section>
-        
+
         <section className='md:w-[60%] text-accent'>
           <div className='hidden md:block'>
             <h2 className=' text-2xl md:text-4xl font-medium mt-6 md:mt-0'>{product?.title}</h2>
@@ -422,7 +422,7 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-          
+
           {
             isPrintable &&
             <>
@@ -432,7 +432,7 @@ const ProductSlug = ({ post, product }: any) => {
 
               {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2} />}
 
-              { designPosition && <SelectLogoColor /> }
+              {designPosition && <SelectLogoColor />}
 
               {selectedCustomizedLayout?.length > 1 && colorsInLogo > 0 && <Artwork />}
 
@@ -473,7 +473,7 @@ const ProductSlug = ({ post, product }: any) => {
             </button>
           }
 
-          <DeliveryTime title="Standard" desc=""/>
+          <DeliveryTime title="Standard" desc="" />
         </section>
 
 
