@@ -33,22 +33,15 @@ import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
 import HowToBuy from '@/components/HowToBuy/HowToBuy';
 import SelectLogoColor from '@/components/SelectLogoColor/SelectLogoColor';
 import SeoMeta from '@/components/seo/Seo';
-
-
 interface IColor {
   code: string,
   name: string
 }
 
-
 const ProductSlug = ({ post, product }: any) => {
-  console.log("🚀 ~ file: [slug].tsx:45 ~ ProductSlug ~ product:", product)
-
-  const fullHead = parse(product.seo.fullHead);
-
+  //const fullHead = parse(product.seo.fullHead);
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, setIsOpen, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
-
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
   useEffect(() => {
