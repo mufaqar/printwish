@@ -10,108 +10,108 @@ import { useRouter } from 'next/router'
 // import parse from "html-react-parser";
 
 
-const Location = ({ products, pages,slug }: any) => {
+const Location = ({ products, pages, slug }: any) => {
   // const fullHead = parse(pages.seo.fullHead);
   const router = useRouter()
   return (
     <>
 
-    
-    <section className='container mx-auto px-4 my-10'>
-      <div className='mb-10'>
-        <h1 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Personalised Clothing {pages?.title}</h1>
-        <p className='font-bold text-xl text-gray-600'>Desire a distinctive addition to your {pages?.title} closet? At PrintWish, we showcase a
-          diverse array, ready for your personal touch. Dive into a world where your fashion
-          aspirations meet our expertise. This includes advanced techniques in printing,
-          intricate embroidery, and so much more. Whether you’re seeking tees branded
-          with your unique logo or exclusive patterns shipped UK-wide, our promise is
-          quality and originality.</p>
-        <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
-          {
-            list1.map((item, id) => (
-              <div key={id}>
-                <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
-                <h5 className='text-center mt-4 font-bold text-gray-700 min-h-[57px] text-lg'>{item?.name.replace(/London/g, pages?.title)}</h5>
-                <h6 className='text-center font-light mt-1 text-gray-800'>{item.text.replace(/London/g, pages?.title)}</h6>
-                <button onClick={()=>router.push('/custom-t-shirt-printing-cheap-t-shirt-printing')} className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'>View Products</button>
-              </div>
-            ))
-          }
-        </div>
 
-        <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
-        <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
-          {products?.map((item: any, idx: number) => {
-            const img = item?.featuredImage?.node.mediaItemUrl
-            return <Product_Box key={idx} data={item} image={img} />
-          })}
-        </div>
-
-        <div className='grid grid-cols-1 items-center md:grid-cols-2 mt-12'>
-          <div className='text-lg text-gray-600'>
-            <h5>Printwish Clothing</h5>
-            <p className='mt-2'>0800 051 0821</p>
-            <h6 className='mt-7 font-semibold underline'><Link href="mailto:enquiries@printwish.co.uk" >enquiries@printwish.co.uk </Link></h6>
-            <button className='mt-5 bg-[#D1DE8B] p-2 px-16 hover:scale-105 rounded-full shadow-xl'><Link href="mailto:enquiries@printwish.co.uk" >Enquire</Link></button>
+      <section className='container mx-auto px-4 my-10'>
+        <div className='mb-10'>
+          <h1 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'>Personalised Clothing {pages?.title}</h1>
+          <p className='font-bold text-xl text-gray-600'>Desire a distinctive addition to your {pages?.title} closet? At PrintWish, we showcase a
+            diverse array, ready for your personal touch. Dive into a world where your fashion
+            aspirations meet our expertise. This includes advanced techniques in printing,
+            intricate embroidery, and so much more. Whether you’re seeking tees branded
+            with your unique logo or exclusive patterns shipped UK-wide, our promise is
+            quality and originality.</p>
+          <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
+            {
+              list1.map((item, id) => (
+                <div key={id}>
+                  <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
+                  <h5 className='text-center mt-4 font-bold text-gray-700 min-h-[57px] text-lg'>{item?.name.replace(/London/g, pages?.title)}</h5>
+                  <h6 className='text-center font-light mt-1 text-gray-800'>{item.text.replace(/London/g, pages?.title)}</h6>
+                  <button onClick={() => router.push('/custom-t-shirt-printing-cheap-t-shirt-printing')} className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'>View Products</button>
+                </div>
+              ))
+            }
           </div>
-          <div className='md:mt-0 mt-6'>
-            <div className='grid grid-cols-2 p-4 t_shadow font-semibold'>
-              <div />
-              <div className='text-center sm:text-lg'> Opening Times </div>
+
+          <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
+          <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
+            {products?.map((item: any, idx: number) => {
+              const img = item?.featuredImage?.node.mediaItemUrl
+              return <Product_Box key={idx} data={item} image={img} />
+            })}
+          </div>
+
+          <div className='grid grid-cols-1 items-center md:grid-cols-2 mt-12'>
+            <div className='text-lg text-gray-600'>
+              <h5>Printwish Clothing</h5>
+              <p className='mt-2'>0800 051 0821</p>
+              <h6 className='mt-7 font-semibold underline'><Link href="mailto:enquiries@printwish.co.uk" >enquiries@printwish.co.uk </Link></h6>
+              <button className='mt-5 bg-[#D1DE8B] p-2 px-16 hover:scale-105 rounded-full shadow-xl'><Link href="mailto:enquiries@printwish.co.uk" >Enquire</Link></button>
             </div>
-            <div className='grid grid-cols-2 text-gray-600'>
-              <ul className='text-center border-r-[1px] border-black'>
-                {
-                  openSchdule.map((d, i) => (
-                    <li key={i} className='my-6'>{d.day}</li>
-                  ))
-                }
-              </ul>
-              <ul className='text-center '>
-                {
-                  openSchdule.map((d, i) => (
-                    <li key={i} className='my-6'>{d.time}</li>
-                  ))
-                }
-              </ul>
+            <div className='md:mt-0 mt-6'>
+              <div className='grid grid-cols-2 p-4 t_shadow font-semibold'>
+                <div />
+                <div className='text-center sm:text-lg'> Opening Times </div>
+              </div>
+              <div className='grid grid-cols-2 text-gray-600'>
+                <ul className='text-center border-r-[1px] border-black'>
+                  {
+                    openSchdule.map((d, i) => (
+                      <li key={i} className='my-6'>{d.day}</li>
+                    ))
+                  }
+                </ul>
+                <ul className='text-center '>
+                  {
+                    openSchdule.map((d, i) => (
+                      <li key={i} className='my-6'>{d.time}</li>
+                    ))
+                  }
+                </ul>
+              </div>
             </div>
           </div>
+          <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'>ORDER DELIVERY TIMELINE?</h2>
+          <p className='font-bold text-xl text-gray-600'>We are committed to timely deliveries. With complimentary UK Shipping on every
+            order, you can expect your curated pieces within 5-7 business days post payment.
+            Should you have urgent needs or special requests, our dedicated team is
+            available at sales@printwish.co.uk.</p>
+
+          <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
+            {
+              list2.map((item, id) => (
+                <div key={id}>
+                  <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
+                  <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.name}</h5>
+                  <h6 className='text-center font-light mt-4 text-gray-800'>{item.text.replace(/London/g, item?.name)}</h6>
+                </div>
+              ))
+            }
+          </div>
+
         </div>
-        <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'>ORDER DELIVERY TIMELINE?</h2>
-        <p className='font-bold text-xl text-gray-600'>We are committed to timely deliveries. With complimentary UK Shipping on every
-          order, you can expect your curated pieces within 5-7 business days post payment.
-          Should you have urgent needs or special requests, our dedicated team is
-          available at sales@printwish.co.uk.</p>
-
-        <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
-          {
-            list2.map((item, id) => (
-              <div key={id}>
-                <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
-                <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.name}</h5>
-                <h6 className='text-center font-light mt-4 text-gray-800'>{item.text.replace(/London/g, item?.name)}</h6>
-              </div>
-            ))
-          }
-        </div>
-
-      </div>
 
 
 
-      <div
-        dangerouslySetInnerHTML={{ __html: pages?.content }}
-        className='locationContent'
-      />
-      {
-        pages?.locationinfo?.faqs?.length > 0 && <>
-          <h3 className='font-bold text-2xl md:text-3xl mt-4 mb-3 capitalize'>Frequently Asked Questions</h3>
-          <Faqs data={pages.locationinfo.faqs} />
-        </>
-      }
+        <div
+          dangerouslySetInnerHTML={{ __html: pages?.content }}
+          className='locationContent'
+        />
+        {
+          pages?.locationinfo?.faqs?.length > 0 && <>
+            <h3 className='font-bold text-2xl md:text-3xl mt-4 mb-3 capitalize'>Frequently Asked Questions</h3>
+            <Faqs data={pages.locationinfo.faqs} />
+          </>
+        }
 
-      <Reviews />
-    </section>
+        <Reviews />
+      </section>
     </>
   )
 }
