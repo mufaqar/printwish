@@ -1,3 +1,4 @@
+import SeoMeta from '@/components/seo/Seo'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -39,27 +40,12 @@ function Contact() {
 
     return (
         <>
-            <Head>
-                <title>Contact Us | Printwish</title>
-                <meta name="description" content="Contact Us | PrintWish T-Shirt Printing" />
-                <link rel="canonical" href={`https://www.printwish.co.uk/contact-us`} />
-                <meta property="og:locale" content="en_US" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="contact-us" />
-                <meta property="og:description" content="Contact Us | PrintWish T-Shirt Printing" />
-                <meta property="og:url" content={`https://printwish.co.uk/contact-us`} />
-                <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-                <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-                <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-                <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
-                <meta property="og:image:width" content="700" />
-                <meta property="og:image:height" content="467" />
-                <meta property="og:image:type" content="image/jpeg" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@PrintwishUk" />
-                <meta name="twitter:label1" content="Est. reading time" />
-                <meta name="twitter:data1" content="57 minutes" />
-            </Head>
+            <SeoMeta
+                title="Checkout | Printwish"
+                description="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.9"
+                url="contact-us"
+            />
+
             <div className="container mx-auto px-4 my-20">
                 <div>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">CONTACT US</h2>

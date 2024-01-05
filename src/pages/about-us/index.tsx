@@ -1,30 +1,13 @@
+import SeoMeta from '@/components/seo/Seo'
 import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 function About() {
   return (
     <>
-     <Head>
-        <title>About Us | Printwish</title>
-        <meta name="description" content="For Classy and stunning looks print wish is always on top Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? Then you have to buy custom […]" />
-        <link rel="canonical" href={`https://www.printwish.co.uk/about-us`} />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="about" />
-        <meta property="og:description" content="For Classy and stunning looks print wish is always on top Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? Then you have to buy custom […]" />
-        <meta property="og:url" content={`https://printwish.co.uk/about-us`} />
-        <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-        <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-        <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-        <meta property="og:image" content="https://backend.printwish.co.uk/wp-content/uploads/2023/10/trust.png" />
-        <meta property="og:image:width" content="700" />
-        <meta property="og:image:height" content="467" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@PrintwishUk" />
-        <meta name="twitter:label1" content="Est. reading time" />
-        <meta name="twitter:data1" content="57 minutes" />
-      </Head>
+     <SeoMeta title="About Us  | Printwish" description="For Classy and stunning looks print wish is always on top Staying on top of the latest fashion trend is tough so print wish is the company that proves you can do it because it designs your outfit as you want. Are you wondering about how to look classy? " url="about-us" />
+
+     
       <main className=' container mx-auto px-4 py-5'>
         <div className="">
           <div className="div">

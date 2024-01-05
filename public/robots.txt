@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://www.printwish.co.uk/sitemap.xml
+Sitemap: https://printwish.co.uk/sitemap.xml

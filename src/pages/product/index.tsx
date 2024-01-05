@@ -1,6 +1,7 @@
 import PageBanner from '@/components/banner/page-banner'
 import Pagination from '@/components/pagination/pagination'
 import Product_Box from '@/components/product-widgets/product-box'
+import SeoMeta from '@/components/seo/Seo'
 //import Product_Sidebar from '@/components/sidebar/product-sidebar'
 import { apiRequest } from '@/config/requests'
 import { GetServerSideProps, GetStaticProps } from 'next'
@@ -11,27 +12,7 @@ const ProductsPage = ({ products }: any) => {
     // console.log('products', products)
     return (
         <>
-            <Head>
-                <title>Products | Printwish</title>
-                <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-                <link rel="canonical" href="https://www.printwish.co.uk/product" />
-                <meta property="og:locale" content="en_US" />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Product" />
-                <meta property="og:description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
-                <meta property="og:url" content="https://printwish.co.uk/product" />
-                <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
-                <meta property="article:publisher" content="https://www.facebook.com/printwishuk" />
-                <meta property="article:modified_time" content="2023-07-06T22:58:46+00:00" />
-                <meta property="og:image" content="https://www.printwish.co.uk/images/logo.png" />
-                <meta property="og:image:width" content="700" />
-                <meta property="og:image:height" content="467" />
-                <meta property="og:image:type" content="image/jpeg" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@PrintwishUk" />
-                <meta name="twitter:label1" content="Est. reading time" />
-                <meta name="twitter:data1" content="57 minutes" />
-            </Head>
+            <SeoMeta title="Products  | Printwish" description="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" url="product" />
             <main>
                 <PageBanner title="Products" />
                 <section className='py-16 '>

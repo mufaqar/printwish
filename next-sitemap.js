@@ -2,7 +2,7 @@ const fs = require("fs");
 const { ApolloClient, InMemoryCache, gql } = require("@apollo/client")
 
 const BACKEND_SITE_URL = "https://backend.printwish.co.uk"
-const FRONTEND_URI = "https://www.printwish.co.uk"
+const FRONTEND_URI = "https://printwish.co.uk"
 
 const client = new ApolloClient({
   uri: `${BACKEND_SITE_URL}/graphql`,
