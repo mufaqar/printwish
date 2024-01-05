@@ -17,6 +17,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/cotton-bags',
+        destination: '/cotton-bags-cheap-branded-tote-bags',
+        permanent: true,
+      },
+      {
         source: '/t-shirt-printing-kent/',
         destination: '/custom-t-shirt-printing-cheap-t-shirt-printing',
         permanent: true,
