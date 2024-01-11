@@ -85,7 +85,7 @@ export default function Delivery_information() {
 
     return (
         <>
-          <SeoMeta title="Privacy Policy  | Printwish" description="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders." url="privacy-policy`" />
+          <SeoMeta title="Privacy Policy  | Printwish" description="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders." url="privacy-policy" />
 
          
             <main className='items-center mx-auto max-w-screen-xl px-6 md:px-6'>
