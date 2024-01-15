@@ -5,12 +5,12 @@ const SeoMeta = ({ title, description, url }) => {
     <Head>
       <title>{title} | Printwish</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={`https://printwish.co.uk/${url}`} />
+      <link rel="canonical" href={`https://printwish.co.uk/${url}/`} />
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={`https://printwish.co.uk/${url}`} />
+      <meta property="og:url" content={`https://printwish.co.uk/${url}/`} />
       <meta property="og:site_name" content="PrintWish T-Shirt Printing" />
       <meta
         property="article:publisher"

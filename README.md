@@ -16,6 +16,6 @@
 # Logo By Sizes
 
 
-https://github.com/mufaqar/printwish.git
 
-git remote set-url origin https://github.com/giddy-holdings/AskGiddy.git
+
+git remote set-url origin https://github.com/mufaqar/printwish.git
