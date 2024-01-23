@@ -21,7 +21,6 @@
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "autoprefixer": "10.4.14",
     "axios": "^1.5.1",
-    "caniuse-lite": "^1.0.30001579",
     "cloudinary-react": "^1.8.1",
     "crypto": "^1.0.1",
     "eslint": "8.45.0",
