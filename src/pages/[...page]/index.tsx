@@ -17,7 +17,7 @@ import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
 import SeoMeta from '@/components/seo/Seo'
 
 const CategorySlug = ({ products, slug, pages, productsForLocationPage, category, categoryInfo, categorySEO }: any) => {
-     console.log("🚀 ~ file: index.tsx:19 ~ CategorySlug ~ categorySEO:", categorySEO)
+    // console.log("🚀 ~ file: index.tsx:19 ~ CategorySlug ~ categorySEO:", categorySEO)
 
 
      const { query } = useRouter()
