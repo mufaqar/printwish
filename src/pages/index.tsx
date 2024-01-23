@@ -12,8 +12,7 @@ import Head from 'next/head'
 
 export default function Home(props: any) {
   // const count = useSelector((state:any) => state.AddToCart.value)
-  // const dispatch = useDispatch()
-  
+  // const dispatch = useDispatch()  
   return (
     <>
     
