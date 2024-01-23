@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import React from 'react'
 import { TbBasketOff } from 'react-icons/tb'
 import SeoMeta from './../components/seo/Seo'
