@@ -80,11 +80,10 @@ export default function Home(props: any) {
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const dataForProducts = {
     per_page: 10,
   };
-
   const { products } = await apiRequest('POST', 'get-products', dataForProducts)
   return { props: { products } }
 }
