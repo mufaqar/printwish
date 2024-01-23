@@ -33,6 +33,7 @@ import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
 import HowToBuy from '@/components/HowToBuy/HowToBuy';
 import SelectLogoColor from '@/components/SelectLogoColor/SelectLogoColor';
 import SeoMeta from '@/components/seo/Seo';
+import { priceVariationWithLogoColor } from '@/const/priceVariationWithLogo';
 interface IColor {
   code: string,
   name: string
@@ -56,7 +57,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
-  const [reset, setRest] = useState(false)
+  // const [reset, setRest] = useState(false)
 
   const HandleColor = (clr: any) => {
     const colorExists = selectedProduct?.colors?.some((color: any) => color.name === clr.name);
@@ -225,6 +226,12 @@ const ProductSlug = ({ post, product }: any) => {
       title: product.title
     })
     router.push('/cart')
+  }
+
+  const InvokeCalculatePrice =(clrInLogo:any)=>{
+    // const price = priceVariationWithLogoColor.filter((item: any) => item.coloInLogo === clrInLogo && totalQuantity <= item.maxQuantity && totalQuantity >= item.minQuantity).map(item => item.price)[0]
+    var p = calculatePrice(customizedMergeData, totalPrice, totalQuantity, +clrInLogo)
+    console.log("🚀 ~ file: [slug].tsx:234 ~ InvokeCalculatePrice ~ price:", p)
   }
 
   return (
@@ -420,7 +427,7 @@ const ProductSlug = ({ post, product }: any) => {
 
               {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2} />}
 
-              {designPosition && <SelectLogoColor />}
+              {designPosition && <SelectLogoColor InvokeCalculatePrice={InvokeCalculatePrice}/>}
 
               {selectedCustomizedLayout?.length > 1 && colorsInLogo > 0 && <Artwork />}
 
