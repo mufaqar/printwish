@@ -9,6 +9,6 @@ export const apiRequest = async (method, endPoint, data) => {
     if (method !== "GET") {
         requestOptions.body = JSON.stringify(data || null);
     }
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/${endPoint}`, requestOptions)
+    const res = await fetch(`https://printwish.co.uk/api/${endPoint}`, requestOptions)
     return await res.json()
 }
