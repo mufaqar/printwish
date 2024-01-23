@@ -10,8 +10,6 @@
 
 #Location
 
-#Name server
-
 
 # Logo By Sizes
 
