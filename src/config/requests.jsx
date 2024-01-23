@@ -1,6 +1,7 @@
 export const apiRequest = async (method, endPoint, data) => {
     const requestOptions = {
         method: method,
+        mode: "no-cors",
         headers: {
             'Content-Type': 'application/json',
         },
