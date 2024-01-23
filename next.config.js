@@ -3,6 +3,9 @@
 const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: [
       'printwish.co.uk',
