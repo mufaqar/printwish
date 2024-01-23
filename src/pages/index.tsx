@@ -7,13 +7,13 @@ import Steps from '@/components/promotional-steps/steps'
 import Product_Slider from '@/components/product-widgets/product-slider'
 import { apiRequest } from '@/config/requests'
 import Head from 'next/head'
-import { GetServerSideProps } from 'next'
 
 
 
 export default function Home(props: any) {
   // const count = useSelector((state:any) => state.AddToCart.value)
-  // const dispatch = useDispatch()  
+  // const dispatch = useDispatch()
+  
   return (
     <>
     
@@ -80,7 +80,7 @@ export default function Home(props: any) {
 
 
 
-  export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   const dataForProducts = {
     per_page: 10,
   };
