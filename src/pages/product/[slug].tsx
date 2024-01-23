@@ -229,7 +229,7 @@ const ProductSlug = ({ post, product }: any) => {
 
   return (
     <>
-      {/* <SeoMeta title={product?.seo?.title} description={product?.seo?.metaDesc} url={`product/${product?.slug}`} /> */}
+      <SeoMeta title={product?.seo?.title} description={product?.seo?.metaDesc} url={`product/${product?.slug}`} />
       <TopBar />
 
       <div className='block md:hidden px-3 container mx-auto'>
