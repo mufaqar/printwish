@@ -33,7 +33,7 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
 
      return (
           <>
-               <SeoMeta title={categorySEO?.title} description={categorySEO?.metaDesc} url={slug} />
+               {/* <SeoMeta title={categorySEO?.title} description={categorySEO?.metaDesc} url={slug} /> */}
                {
                     slug?.includes("t-shirt-printing") && slug !== "custom-t-shirt-printing-cheap-t-shirt-printing" ? <Location pages={pages} slug={slug} products={productsForLocationPage} /> : <>
                          {/* CATEGORY PAGE DATA ↓ */}
