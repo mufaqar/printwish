@@ -43,7 +43,7 @@ const Footer = () => {
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(4).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`${item.link}`} className="text-accent font-roboto hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-accent font-roboto hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
