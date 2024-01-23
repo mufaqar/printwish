@@ -22,7 +22,6 @@ export default function App({ Component, pageProps }: any) {
   const [cookies, setCookies] = useState(false)
   const [openOfferModel, setOpenOfferModel] = useState<boolean>(false)
   const [modalIsOpen, setIsOpen] = useState(true)
-  console.log('modalIsOpen', modalIsOpen);
 
   useEffect(() => {
     Router.events.on("routeChangeStart", (url) => {

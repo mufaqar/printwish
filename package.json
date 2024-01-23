@@ -1,6 +1,7 @@
 {
   "name": "printwish",
   "version": "0.1.0",
+  "proxy": "https://www.printwish.co.uk",
   "private": true,
   "scripts": {
     "dev": "next dev",
