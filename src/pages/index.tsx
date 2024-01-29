@@ -9,14 +9,13 @@ import { apiRequest } from '@/config/requests'
 import Head from 'next/head'
 
 
-
 export default function Home(props: any) {
   // const count = useSelector((state:any) => state.AddToCart.value)
   // const dispatch = useDispatch()
-  
+
   return (
     <>
-    
+
       <Head>
         <title>Cheap Bulk Custom T-Shirt Printing in London, UK - Wholesale Tshirt Printing</title>
         <meta name="description" content="Looking for a Bulk T shirt printing service in London, UK? get custom t shirts at wholesale price? We can guarantee cheap prices on bulk orders. ✔️ Cheap T Shirt Printing from £2.90" />
@@ -38,11 +37,12 @@ export default function Home(props: any) {
         <meta name="twitter:label1" content="Est. reading time" />
         <meta name="twitter:data1" content="57 minutes" />
         <meta name="google-site-verification" content="OU1pmCJ6gWoPeRZs1_8ycnWKRaixALVrLMHVxyBeVUE" />
-        <meta  name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </Head>
       <Main_Banner />
       <Brands_Slider />
       <Reviews />
+      <button onClick={() => FetchData()}>Click</button>
       <section className='pb-10'>
         <div className='max-w-screen-xl mx-auto'>
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
