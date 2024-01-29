@@ -42,7 +42,6 @@ export default function Home(props: any) {
       <Main_Banner />
       <Brands_Slider />
       <Reviews />
-      <button onClick={() => FetchData()}>Click</button>
       <section className='pb-10'>
         <div className='max-w-screen-xl mx-auto'>
           <h2 className='sm:text-4xl text-2xl font-semibold font-opensans text-accent uppercase text-center mb-5'>
