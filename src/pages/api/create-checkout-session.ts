@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const SecKey = process.env.STRIPE_SECRET_KEY
+const SecKey = process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY
 const SKey = SecKey
 const BaseURL = process.env.NEXT_PUBLIC_SITE_URL
 

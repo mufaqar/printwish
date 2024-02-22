@@ -1,5 +1,5 @@
 
-const SKey = process.env.STRIPE_SECRET_KEY
+const SKey = process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY
 const stripe = require('stripe')(SKey);
 
 export default async function webhookHandler(req, res) {
