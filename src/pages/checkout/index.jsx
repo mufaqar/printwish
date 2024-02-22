@@ -10,8 +10,6 @@ import SeoMeta from '@/components/seo/Seo';
 const Checkout = () => {
   const cartItems = useSelector((state) => state.AddToCart.value);
   const { priceWithVat, vat, couponDiscountPrice } =   TotalPriceCalculate(cartItems);
-  console.log("🚀 ~ Checkout ~ priceWithVat:", priceWithVat)
-
   const {
     register,
     handleSubmit,
