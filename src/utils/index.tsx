@@ -66,7 +66,8 @@ export const calculatePrintingPrice = (customizedMergeData: any, totalQuantity: 
 export const TotalPriceCalculate = (cartItems: any) => {
      const totalPriceWithoutVAT = cartItems.reduce((sum: any, product: any) => sum + +product.price, 0).toFixed(2);
      const vat = Number(((20 / 100) * totalPriceWithoutVAT).toFixed(2));
-     let priceWithVat = Number(totalPriceWithoutVAT) + vat;
+     let priceWithVat_d = Number(totalPriceWithoutVAT) + vat;
+     let priceWithVat = +priceWithVat_d.toFixed(1);
 
      let hasValidCoupon = null; // Initialize as null
      var couponDiscountPrice;

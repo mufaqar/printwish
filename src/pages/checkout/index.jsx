@@ -28,7 +28,7 @@ const Checkout = () => {
   const paymentSubmitHandler = () => {
     const orderdata = {
       title: 'test',
-      totalprice: 303,
+      totalprice: priceWithVat,
       paymentApproved: false,
       name: 'test name',
       email: 'test@gmail.com',
