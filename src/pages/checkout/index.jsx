@@ -9,8 +9,8 @@ import SeoMeta from '@/components/seo/Seo';
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.AddToCart.value);
-  const { priceWithVat, vat, couponDiscountPrice } =
-    TotalPriceCalculate(cartItems);
+  const { priceWithVat, vat, couponDiscountPrice } =   TotalPriceCalculate(cartItems);
+  console.log("🚀 ~ Checkout ~ priceWithVat:", priceWithVat)
 
   const {
     register,
@@ -28,7 +28,7 @@ const Checkout = () => {
   const paymentSubmitHandler = () => {
     const orderdata = {
       title: 'test',
-      totalprice: priceWithVat,
+      totalprice: 303,
       paymentApproved: false,
       name: 'test name',
       email: 'test@gmail.com',

@@ -80,7 +80,7 @@ export const TotalPriceCalculate = (cartItems: any) => {
      if (hasValidCoupon === 'valid') {
           couponDiscountPrice = priceWithVat * 15 / 100;
           priceAfterCopuon = priceWithVat - couponDiscountPrice
-          priceWithVat = priceAfterCopuon
+          priceWithVat = +priceAfterCopuon.toFixed(2);
      }
 
 
