@@ -47,36 +47,7 @@ const Location = ({ products, pages, slug }: any) => {
             })}
           </div>
 
-          <div className='grid grid-cols-1 items-center md:grid-cols-2 mt-12'>
-            <div className='text-lg text-gray-600'>
-              <h5>Printwish Clothing</h5>
-              <p className='mt-2'>0800 051 0821</p>
-              <h6 className='mt-7 font-semibold underline'><Link href="mailto:enquiries@printwish.co.uk" >enquiries@printwish.co.uk </Link></h6>
-              <button className='mt-5 bg-[#D1DE8B] p-2 px-16 hover:scale-105 rounded-full shadow-xl'><Link href="mailto:enquiries@printwish.co.uk" >Enquire</Link></button>
-            </div>
-            <div className='md:mt-0 mt-6'>
-              <div className='grid grid-cols-2 p-4 t_shadow font-semibold'>
-                <div />
-                <div className='text-center sm:text-lg'> Opening Times </div>
-              </div>
-              <div className='grid grid-cols-2 text-gray-600'>
-                <ul className='text-center border-r-[1px] border-black'>
-                  {
-                    openSchdule.map((d, i) => (
-                      <li key={i} className='my-6'>{d.day}</li>
-                    ))
-                  }
-                </ul>
-                <ul className='text-center '>
-                  {
-                    openSchdule.map((d, i) => (
-                      <li key={i} className='my-6'>{d.time}</li>
-                    ))
-                  }
-                </ul>
-              </div>
-            </div>
-          </div>
+         
           <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'>ORDER DELIVERY TIMELINE?</h2>
           <p className='font-bold text-xl text-gray-600'>We are committed to timely deliveries. With complimentary UK Shipping on every
             order, you can expect your curated pieces within 5-7 business days post payment.
