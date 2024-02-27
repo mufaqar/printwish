@@ -20,6 +20,7 @@ export const SettingsProvider = ({ children }) => {
   const [designImage, setDesignImage] = useState()
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [selectedVariants, setSelectedVariants] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
 
 
   const [selectedProduct, setSelectedProduct] = useState({
@@ -91,7 +92,8 @@ export const SettingsProvider = ({ children }) => {
         designPosition, setDesignPosition,
         allCartItems, setAllCartItems,
         totalQuantity, setTotalQuantity,
-        selectedVariants, setSelectedVariants
+        selectedVariants, setSelectedVariants,
+        uploadedImages, setUploadedImages
       }}
     >
       {children}
