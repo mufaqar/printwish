@@ -441,6 +441,7 @@ const ProductSlug = ({ post, product }: any) => {
         sizes={product?.allPaSizes?.nodes} 
         handleSize={handleSize} 
         removeSize={handleColorRemoval}
+        number={customizedMergeData?.length + 2}
       />
     </>
   )
