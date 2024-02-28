@@ -80,7 +80,7 @@ export default function Cotton_Bag({ bag }: any) {
     return (
         <>
             
-            <SeoMeta title={bag.seo.title} description={bag.seo.title} url={`cotton-bags-cheap-branded-tote-bags/${bag.slug}`} />
+            <SeoMeta title={bag.seo.title} description={bag.seo.metaDesc} url={`cotton-bags-cheap-branded-tote-bags/${bag.slug}`} />
             <div>
                 <section className='shadow-lg p-3 md:block'>
                     <div className='container mx-auto flex flex-nowrap justify-between items-center'>
