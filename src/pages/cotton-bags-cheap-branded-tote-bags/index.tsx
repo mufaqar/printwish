@@ -57,7 +57,7 @@ const Bags = ({ gallery, bags }: any) => {
           })}
         </div>
         <h4 className='bg-primary p-3 mt-3 text-center text-white font-bold text-2xl md:text-3xl'>Gallery</h4>
-        <GallerySlider gallery={gallery} />
+        {/* <GallerySlider gallery={gallery} /> */}
         <section className='my-10'>
           <h2 className='font-semibold text-xl md:text-2xl'>Get Customized Tote Bags for all your Needs!</h2>
           <p className="my-4 text-gray-600 !font-light">Print Wish designs Customised tote bags for every type of requirement. With our technologically advanced design tools, we are motivated to bring our customers innovative designs with great quality. Tote bags are versatile enough to be used for different purposes. We have expertise in manufacturing a large number of Printed tote bags that can be used for different business and personal purposes.</p>
@@ -99,19 +99,19 @@ export default Bags
 
 
 export async function getServerSideProps() {
-  const response = await client.query({
-    query: GetGallery,
-  });
+  // const response = await client.query({
+  //   query: GetGallery,
+  // });
 
   const { data } = await client.query({
     query: ALLBAGS,
   });
 
-  const gallery = response?.data?.allGallery.nodes;
+ // const gallery = response?.data?.allGallery?.nodes;
   const bags = data?.bags.nodes;
   return {
     props: {
-      gallery,
+    //  gallery,
       bags
     },
   };
