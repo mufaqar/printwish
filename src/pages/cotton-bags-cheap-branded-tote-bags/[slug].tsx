@@ -9,6 +9,7 @@ import React, { useState } from 'react'
 import parse from "html-react-parser";
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify'
+import SeoMeta from '@/components/seo/Seo'
 
 export default function Cotton_Bag({ bag }: any) {
     const fullHead = parse(bag.seo.fullHead);
@@ -78,10 +79,8 @@ export default function Cotton_Bag({ bag }: any) {
 
     return (
         <>
-            <Head>
-                <title>{bag.seo.title}</title>
-                {fullHead}
-            </Head>
+            
+            <SeoMeta title={bag.seo.title} description={bag.seo.title} url={`/cotton-bags-cheap-branded-tote-bags/${bag.slug}`} />
             <div>
                 <section className='shadow-lg p-3 md:block'>
                     <div className='container mx-auto flex flex-nowrap justify-between items-center'>

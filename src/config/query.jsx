@@ -209,6 +209,7 @@ export const SINGLEBAG = gql`
 query SINGLEBAG($id: ID!) {
   bag(id: $id, idType: URI) {
     title
+    slug
     bagsInfo {
       price
       capacity
