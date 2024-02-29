@@ -8,7 +8,7 @@ export const SettingsContext = createContext();
 export const SettingsProvider = ({ children }) => {
   const [selectedCustomizedLayout, setSelectedCustomizedLayout] = useState('');
   const [selectArt, setSelectArt] = useState('')
-  const [colorsInLogo, setColorsInLogo] = useState(0)
+  const [colorsInLogo, setColorsInLogo] = useState([])
   const [modalIsOpen, setIsOpen] = useState(true);
   const [designWidth, setDesignWidth] = useState('');
   const [specialInstruction, setSpecialInstruction] = useState('');
@@ -19,6 +19,8 @@ export const SettingsProvider = ({ children }) => {
   const [allCartItems, setAllCartItems] = useState()
   const [designImage, setDesignImage] = useState()
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [selectedVariants, setSelectedVariants] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
 
 
   const [selectedProduct, setSelectedProduct] = useState({
@@ -89,7 +91,9 @@ export const SettingsProvider = ({ children }) => {
         designImage, setDesignImage,
         designPosition, setDesignPosition,
         allCartItems, setAllCartItems,
-        totalQuantity, setTotalQuantity
+        totalQuantity, setTotalQuantity,
+        selectedVariants, setSelectedVariants,
+        uploadedImages, setUploadedImages
       }}
     >
       {children}

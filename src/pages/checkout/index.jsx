@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import { SettingsContext } from '@/context/global-context';
 import { useForm } from 'react-hook-form';
-import Head from 'next/head';
 import { TotalPriceCalculate } from '@/utils';
 import SeoMeta from '@/components/seo/Seo';
+import useOrderHandler from '@/hooks/useOrderHandler';
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.AddToCart.value);
   const { priceWithVat, vat, couponDiscountPrice } =   TotalPriceCalculate(cartItems);
+  const { OrderSubmit } = useOrderHandler();
+
   const {
     register,
     handleSubmit,
@@ -18,37 +19,14 @@ const Checkout = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    sessionStorage.setItem('Formdata', JSON.stringify(data));
-    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-    paymentSubmitHandler();
+    const seesion_orderData = sessionStorage.getItem('orderData');
+    const getAQouteData = JSON.parse(seesion_orderData)
+    WooOrderHandler(getAQouteData, data);
   };
 
-  const paymentSubmitHandler = () => {
-    const orderdata = {
-      title: 'test',
-      totalprice: priceWithVat,
-      paymentApproved: false,
-      name: 'test name',
-      email: 'test@gmail.com',
-    };
-
-    try {
-      fetch(`/api/create-checkout-session`, {
-        method: 'POST',
-        body: JSON.stringify({
-          orderdata,
-        }),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          window.location.href = response.session.url;
-        });
-    } catch (error) {
-      console.log(
-        '🚀 ~ file: CraditCard.jsx:46 ~ paymentSubmitHandler ~ error:',
-        error
-      );
-    }
+  const WooOrderHandler = (getAQouteData, data) => {
+      OrderSubmit(getAQouteData, data);
+      // sessionStorage.removeItem('orderData');
   };
 
   return (
@@ -60,14 +38,14 @@ const Checkout = () => {
       />
 
       <div className="relative mx-auto w-full bg-white">
-        <div className="grid min-h-screen grid-cols-2">
+        <div className="grid min-h-screen m:grid-cols-2">
           <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">
             <div className="mx-auto w-full max-w-lg">
               <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">
                 Shipping Address!
                 <span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span>
               </h1>
-
+             
               <>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -160,7 +138,7 @@ const Checkout = () => {
               </>
             </div>
           </div>
-          <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
+          <div className="relative col-span-full hidden flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
             <h2 className="sr-only">Order summary</h2>
             <div>
               <div className="absolute inset-0 h-full w-full bg-primary opacity-95"></div>

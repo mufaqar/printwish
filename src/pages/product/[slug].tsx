@@ -33,6 +33,10 @@ import useGetTotalQuantity from '@/hooks/useGetTotalQuantity'
 import HowToBuy from '@/components/HowToBuy/HowToBuy';
 import SelectLogoColor from '@/components/SelectLogoColor/SelectLogoColor';
 import SeoMeta from '@/components/seo/Seo';
+import GetAQoute from '@/components/get-a-qoute/getAQoute';
+import SelectColor from '@/components/get-a-qoute/selectColor';
+import SelectedColor from '@/components/get-a-qoute/selectedColor';
+import useColorsInLogo from '@/hooks/useColorsInLogo';
 interface IColor {
   code: string,
   name: string
@@ -40,9 +44,11 @@ interface IColor {
 
 const ProductSlug = ({ post, product }: any) => {
   //const fullHead = parse(product.seo.fullHead);
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, setIsOpen, colorsInLogo,
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, uploadedImages, selectedVariants, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
+
+  const [orderForm, setOrderForm] = useState(false)
 
   useEffect(() => {
     setSelectedProduct({
@@ -52,7 +58,6 @@ const ProductSlug = ({ post, product }: any) => {
     })
   }, [calculatePrice])
 
-  console.log('colorsInLogo1', +colorsInLogo)
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
@@ -227,6 +232,32 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
+  const mergeColorInLogo = (uploadedImages:any, colorsInLogo:any) => {
+    const res = uploadedImages.map((image:any) => {
+      const matchingColor = colorsInLogo.find((color:any) => color.variantName === image.item);
+      return {
+        ...image,
+        colorInLogo: matchingColor ? matchingColor.colorInLogo : null
+      };
+    });
+    return res.filter((image:any) => image.colorInLogo !== null);
+  }
+
+  const handleAddaQoute = (colorsInLogo:any, aditionalInformation:any) => {
+    const ImagesWithLogoColor = mergeColorInLogo(uploadedImages, colorsInLogo);
+    const orderData = {
+      colosWithSize : selectedProduct?.colors,
+      ImagesWithLogoColor,
+      aditionalInformation,
+      productId: product.id,
+      title: product.title,
+      sku: product?.sku
+    }
+    sessionStorage.setItem('orderData', JSON.stringify(orderData)) 
+    setOrderForm(false)
+    router.push('/checkout')
+  }
+
   return (
     <>
       <SeoMeta title={product?.seo?.title} description={product?.seo?.metaDesc} url={`product/${product?.slug}`} />
@@ -346,124 +377,32 @@ const ProductSlug = ({ post, product }: any) => {
             </section>
           }
           <HowToBuy />
-          {
-            product?.allPaColor.nodes.length > 0 &&
-            <section className=''>
-              <div className="bg-background p-3 md:p-8 rounded-lg ">
-                <h5 className='text-xl font-semibold text-accent font-roboto'>Step 1 - Choose one or more colours:</h5>
-                <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
-                  {
-                    product?.allPaColor.nodes?.map((clr: any, idx: number) => {
-                      const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
-                      return (
-                        <li key={idx} onClick={() => HandleColor(clr)} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
-                          <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
-                          <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
-                        </li>
-                      )
-                    })
-                  }
-                </ul>
-                {/* selected color and show all sizes with each selcted color */}
-              </div>
 
-              {/* all selected colors list*/}
-              <div>
-                {
-                  selectedProduct?.colors?.map((c: IColor, idx: number) => {
-                    return (
-                      <div key={idx} className='flex border-[1.5px] justify-between my-3 bg-background p-3 md:py-4 md:px-6 rounded-lg' style={{ borderColor: `#${c?.code}` }}>
-                        <div>
-                          <div className='flex items-center gap-2'>
-                            <div className="p-4 rounded-full" style={{ backgroundColor: `#${c?.code}`, borderColor: `#${c?.code}` }} />
-                            <p className='text-lg uppercase'>{c?.name}</p>
-                          </div>
-                          {/* map all size that are accociated to this product  */}
-                          <ul className='flex flex-wrap items-center gap-3 mt-3 '>
-                            {
-                              product?.allPaSizes?.nodes?.map((item: any, idx: number) => {
-                                const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
-                                const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
+          <h5 className="text-xl font-semibold text-accent mb-2 mt-5 font-roboto">Get a qoute form:</h5>
 
-                                return (
-                                  <div key={idx} className='flex flex-col items-center justify-center'>
-                                    <p className='text-lg text-accent font-bold'>{item.name}</p>
-                                    <div className='mt-1'>
-                                      <input type="number" name={item.name} min="0" className='w-16 bg-white border border-gray-300 p-2 py-1 placeholder:text-lg placeholder:text-gray-400 placeholder:font-semibold font-semibold focus:outline-none text-lg focus:ring-0 focus:border-gray-500 text-center rounded-3xl'
-                                        placeholder='0'
-                                        value={quantity}
-                                        onChange={(e) => handleSize(e, c?.name, item.name)}
-                                      />
-                                    </div>
-                                  </div>
-                                )
-                              })
-                            }
-                          </ul>
-                        </div>
-                        <i className='mt-4 font-semibold text-xl cursor-pointer active:scale-105'><RxCross2 onClick={() => handleColorRemoval(c.name)} /></i>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-
-            </section>
-          }
-
-          {
-            isPrintable &&
-            <>
-              {
-                customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
-              }
-
-              {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2} />}
-
-              {designPosition && <SelectLogoColor />}
-
-              {selectedCustomizedLayout?.length > 1 && colorsInLogo > 0 && <Artwork />}
-
-              {
-                selectArt === 'Upload image' && <>
-                  <section className='mt-4 bg-background p-8 rounded-lg'>
-                    <UploadImage />
-                    <SizeAndInstruction />
-                  </section>
-                </>
-              }
-              {selectArt === 'Text creator' && <TextCreator />}
-
-              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - ADD YOUR LOGOS:</h5>}
-
-              {
-                customizedMergeData?.length < 4 &&
-                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
-                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle your logo' : 'ADD YOUR LOGOS'}
-                </button>
-                // {customizedMergeData?.length + 1}
-              }
-            </>
-          }
+          <button onClick={() => setOrderForm(true)} className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+            <AiOutlinePlus /> Get a qoute
+          </button>
+          
+        
           {
             selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-3xl text-red-600'>
               <h6 className='font-extrabold'>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)) / totalQuantity).toFixed(2)}</span></h6>
             </div>
           }
 
-          <div className='text-2xl flex items-center mt-3 gap-2'>
+          {/* <div className='text-2xl flex items-center mt-3 gap-2'>
             Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0 `} <span className='font-normal text-primary text-xl ml-1'>excluding VAT</span></span>
-          </div>
+          </div> */}
 
-          {
+          {/* {
             Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('ADD YOUR LOGO PLEASE') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
               <SlBasketLoaded /> Add to cart
             </button>
-          }
+          } */}
 
           <DeliveryTime title="Standard" desc="" />
         </section>
-
 
       </main>
       <Reviews />
@@ -484,6 +423,20 @@ const ProductSlug = ({ post, product }: any) => {
         </div>
 
       </section>
+      {
+        orderForm && <GetAQoute
+          colors={product?.allPaColor.nodes}
+          selectedProduct={selectedProduct}
+          handleColor={HandleColor}
+          selctedColors={selectedProduct?.colors}
+          sizes={product?.allPaSizes?.nodes}
+          handleSize={handleSize}
+          removeSize={handleColorRemoval}
+          number={customizedMergeData?.length + 2}
+          setOrderForm={setOrderForm}
+          handleAddaQoute={handleAddaQoute}
+        />
+      }
 
     </>
   )
