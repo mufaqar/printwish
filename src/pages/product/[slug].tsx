@@ -47,6 +47,8 @@ const ProductSlug = ({ post, product }: any) => {
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
+  const [orderForm, setOrderForm] = useState(false)
+
   useEffect(() => {
     setSelectedProduct({
       ...selectedProduct,
@@ -349,66 +351,29 @@ const ProductSlug = ({ post, product }: any) => {
             </section>
           }
           <HowToBuy />
-          {
-            product?.allPaColor.nodes.length > 0 && 
-            <section className=''>
-              <SelectColor colors={product?.allPaColor.nodes} selectedProduct={selectedProduct} handleColor={HandleColor}/>
-              <SelectedColor selctedColors={selectedProduct?.colors} sizes={product?.allPaSizes?.nodes} selectedProduct={selectedProduct} handleSize={handleSize} removeSize={handleColorRemoval}/>
-            </section>
-          }
 
-          {
-            isPrintable &&
-            <>
-              {
-                customizedMergeData?.map((item: any, idx: number) => (<SelectedCustmizedLayout item={item} id={idx + 1} key={idx} />))
-              }
+          <h5 className="text-xl font-semibold text-accent mb-2 mt-5 font-roboto">Get a qoute form:</h5>
 
-              {customizationButton && <CustomiztionProduct number={customizedMergeData?.length + 2} />}
-
-              {designPosition && <SelectLogoColor />}
-
-              {selectedCustomizedLayout?.length > 1 && colorsInLogo > 0 && <Artwork />}
-
-              {
-                selectArt === 'Upload image' && <>
-                  <section className='mt-4 bg-background p-8 rounded-lg'>
-                    <UploadImage />
-                    <SizeAndInstruction />
-                  </section>
-                </>
-              }
-              {selectArt === 'Text creator' && <TextCreator />}
-
-              {!customizationButton && <h5 className='text-xl font-semibold text-accent font-roboto mt-5'>Step 2 - ADD YOUR LOGOS:</h5>}
-
-              {
-                customizedMergeData?.length < 4 &&
-                <button onClick={() => selectedProduct?.designArtWork ? selectedProduct?.designArtWork.length < 4 ? handleCustomization() : toast.error("Customization Limit Completed!") : handleCustomization()} className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
-                  {customizationButton ? <AiOutlineLine /> : <AiOutlinePlus />} {customizationButton ? 'Cancle your logo' : 'ADD YOUR LOGOS'}
-                </button>
-                // {customizedMergeData?.length + 1}
-              }
-              <button className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
-                  <AiOutlinePlus /> Get a qoute
-                </button>
-            </>
-          }
+          <button onClick={() => setOrderForm(true)} className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+            <AiOutlinePlus /> Get a qoute
+          </button>
+          
+        
           {
             selectedProduct?.colors[0]?.selectedSize?.length > 0 && <div className='mt-6 text-3xl text-red-600'>
               <h6 className='font-extrabold'>Unit Price : <span className='font-semibold'>£{(Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)) / totalQuantity).toFixed(2)}</span></h6>
             </div>
           }
 
-          <div className='text-2xl flex items-center mt-3 gap-2'>
+          {/* <div className='text-2xl flex items-center mt-3 gap-2'>
             Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0 `} <span className='font-normal text-primary text-xl ml-1'>excluding VAT</span></span>
-          </div>
+          </div> */}
 
-          {
+          {/* {
             Number(calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)) > 0 && <button onClick={() => { totalQuantity < product?.poductInfo?.minimumOrder ? toast.info(`Minimum Order Value is ${product?.poductInfo?.minimumOrder} Units`) : customizedMergeData.length > 0 ? handleAddToCart(product) : toast.warn('ADD YOUR LOGO PLEASE') }} className='flex uppercase font-light items-center mt-5 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
               <SlBasketLoaded /> Add to cart
             </button>
-          }
+          } */}
 
           <DeliveryTime title="Standard" desc="" />
         </section>
@@ -433,16 +398,20 @@ const ProductSlug = ({ post, product }: any) => {
         </div>
 
       </section>
-      <GetAQoute 
-        colors={product?.allPaColor.nodes} 
-        selectedProduct={selectedProduct} 
-        handleColor={HandleColor}
-        selctedColors={selectedProduct?.colors} 
-        sizes={product?.allPaSizes?.nodes} 
-        handleSize={handleSize} 
-        removeSize={handleColorRemoval}
-        number={customizedMergeData?.length + 2}
-      />
+      {
+        orderForm && <GetAQoute
+          colors={product?.allPaColor.nodes}
+          selectedProduct={selectedProduct}
+          handleColor={HandleColor}
+          selctedColors={selectedProduct?.colors}
+          sizes={product?.allPaSizes?.nodes}
+          handleSize={handleSize}
+          removeSize={handleColorRemoval}
+          number={customizedMergeData?.length + 2}
+          setOrderForm={setOrderForm}
+        />
+      }
+
     </>
   )
 }
