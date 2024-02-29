@@ -1,12 +1,11 @@
 import { SettingsContext } from '@/context/global-context'
-import useColorsInLogo from '@/hooks/useColorsInLogo';
 import React, { useContext } from 'react'
 import { FaCircleCheck } from "react-icons/fa6";
 
-const SelectLogoColor = () => {
+const SelectLogoColor = ({colorsInLogo, handleSelectedColor}) => {
 
      const { selectedVariants } = useContext(SettingsContext)
-     const [colorsInLogo, handleSelectedColor] = useColorsInLogo();
+     
 
      return (
           <>

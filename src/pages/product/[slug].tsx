@@ -36,6 +36,7 @@ import SeoMeta from '@/components/seo/Seo';
 import GetAQoute from '@/components/get-a-qoute/getAQoute';
 import SelectColor from '@/components/get-a-qoute/selectColor';
 import SelectedColor from '@/components/get-a-qoute/selectedColor';
+import useColorsInLogo from '@/hooks/useColorsInLogo';
 interface IColor {
   code: string,
   name: string
@@ -43,7 +44,7 @@ interface IColor {
 
 const ProductSlug = ({ post, product }: any) => {
   //const fullHead = parse(product.seo.fullHead);
-  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, setIsOpen, colorsInLogo,
+  const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, uploadedImages, selectedVariants, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
   var { whitesmall, whitelarge, colorsmall, colorlarge } = product.poductInfo
 
@@ -57,7 +58,6 @@ const ProductSlug = ({ post, product }: any) => {
     })
   }, [calculatePrice])
 
-  console.log('colorsInLogo1', +colorsInLogo)
 
   const [imagePath, setImagePath] = useState(product?.featuredImage?.node?.mediaItemUrl)
 
@@ -232,6 +232,32 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
+  const mergeColorInLogo = (uploadedImages:any, colorsInLogo:any) => {
+    const res = uploadedImages.map((image:any) => {
+      const matchingColor = colorsInLogo.find((color:any) => color.variantName === image.item);
+      return {
+        ...image,
+        colorInLogo: matchingColor ? matchingColor.colorInLogo : null
+      };
+    });
+    return res.filter((image:any) => image.colorInLogo !== null);
+  }
+
+  const handleAddaQoute = (colorsInLogo:any, aditionalInformation:any) => {
+    const ImagesWithLogoColor = mergeColorInLogo(uploadedImages, colorsInLogo);
+    const orderData = {
+      colosWithSize : selectedProduct?.colors,
+      ImagesWithLogoColor,
+      aditionalInformation,
+      productId: product.id,
+      title: product.title,
+      sku: product?.sku
+    }
+    sessionStorage.setItem('orderData', JSON.stringify(orderData)) 
+    setOrderForm(false)
+    router.push('/checkout')
+  }
+
   return (
     <>
       <SeoMeta title={product?.seo?.title} description={product?.seo?.metaDesc} url={`product/${product?.slug}`} />
@@ -378,7 +404,6 @@ const ProductSlug = ({ post, product }: any) => {
           <DeliveryTime title="Standard" desc="" />
         </section>
 
-
       </main>
       <Reviews />
 
@@ -409,6 +434,7 @@ const ProductSlug = ({ post, product }: any) => {
           removeSize={handleColorRemoval}
           number={customizedMergeData?.length + 2}
           setOrderForm={setOrderForm}
+          handleAddaQoute={handleAddaQoute}
         />
       }
 
