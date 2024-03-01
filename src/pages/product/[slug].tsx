@@ -439,7 +439,7 @@ const ProductSlug = ({ post, product }: any) => {
         <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0`}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
       </section> */}
-      <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
+      {/* <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
         <div className='flex-1 p-2 px-5'>
           <h5 className='font-semibold'>Total</h5>
           <h4 className='font-semibold text-secondary text-xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0`} <span className='text-gray-500 text-base font-light'>VAT excl.</span></h4>
@@ -449,7 +449,7 @@ const ProductSlug = ({ post, product }: any) => {
           <BsCartDash /> Add to cart
         </div>
 
-      </section>
+      </section> */}
       {
         orderForm && <GetAQoute
           colors={product?.allPaColor.nodes}
