@@ -81,8 +81,7 @@ const useOrderHandler = () => {
     shipping.first_name = data.name;
     shipping.address_1 = data.address;
 
-    api
-      .post("orders", orderData)
+    api.post("orders", orderData)
       .then((response) => {
         console.log(response.data);
         window.location.href="/success";
