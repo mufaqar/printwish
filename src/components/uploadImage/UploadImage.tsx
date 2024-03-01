@@ -20,7 +20,7 @@ const UploadImage = () => {
         {selectedVariants?.map((item: any, idx: number) => (
           <div key={idx}>
             <h5 className={`text-xl font-semibold text-accent pl-2 mb-2 font-roboto`}>{item} Artwork</h5>
-            <div className='grid gap-6 grid-cols-4 bg-white p-4 rounded-xl'>
+            <div className='grid gap-6 md:grid-cols-4 grid-cols-1 bg-white p-4 rounded-xl'>
             <div className="flex items-center justify-start ">
                 <Image
                   src={uploadedImages.find((image: any) => image.item === item)?.link || '/images/capture.png'}

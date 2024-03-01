@@ -24,7 +24,7 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
             </h5>
             <div
               key={id}
-              className="items-center justify-center  mt-4 gap-2 p-0 grid md:grid-cols-7"
+              className="items-center justify-center  mt-4 gap-2 p-0 grid md:grid-cols-7 grid-cols-2"
             >
               {[1, 2, 3, 4, 5, 6, 7].map((item, idx) => (
                 <div className="relative" key={idx}>
@@ -36,7 +36,7 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
                         : 'border-gray-100 hover:border-main'
                     }`}
                   >
-                    <h2 className="text-[100px] leading-loose "> {item} </h2>
+                    <h2 className="md:text-[100px] text-5xl md:leading-loose "> {item} </h2>
 
                     {item === 7
                       ? 'Full Colours'
