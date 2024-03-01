@@ -376,11 +376,38 @@ const ProductSlug = ({ post, product }: any) => {
               </div>
             </section>
           }
-          <HowToBuy />
+          {/* <HowToBuy /> */}
 
-          <h5 className="text-xl font-semibold text-accent mb-2 mt-5 font-roboto">Get a qoute form:</h5>
+        
 
-          <button onClick={() => setOrderForm(true)} className='flex uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-primary hover:bg-transparent rounded-full'>
+          {
+            product?.allPaColor.nodes.length > 0 &&
+            <section className=''>
+              <div className="bg-background p-3 md:p-8 rounded-lg ">
+                <h5 className='text-xl font-semibold text-accent font-roboto'> Available Colors:</h5>
+                <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
+                  {
+                    product?.allPaColor.nodes?.map((clr: any, idx: number) => {
+                      const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
+                      return (
+                        <li key={idx}  className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
+                          <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
+                          <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+           
+                {/* selected color and show all sizes with each selcted color */}
+              </div>
+
+           
+
+            </section>
+          }
+
+          <button onClick={() => setOrderForm(true)} className='flex w-1/3 justify-center uppercase font-light items-center mt-4 border border-secondary gap-2 py-3 bg-secondary text-white px-6 hover:text-white hover:bg-primary rounded-md'>
             <AiOutlinePlus /> Get a qoute
           </button>
           

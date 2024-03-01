@@ -7,7 +7,7 @@ const SelectColor = ({
 }:any) => {
      return (
           <div className="bg-background md:py-8 rounded-lg ">
-               <h5 className='text-xl font-semibold text-accent font-roboto'>Select your colours and sizes</h5>
+               <h5 className='text-xl font-semibold text-accent font-roboto bg-gray-200 px-4 py-6 border border-black/60 rounded'>Step 1 - Choose one or more colours:</h5>
                <ul className='flex flex-wrap gap-[2px] md:gap-2 mt-4'>
                     {
                          colors?.map((clr: any, idx: number) => {

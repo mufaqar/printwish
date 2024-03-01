@@ -9,7 +9,15 @@ const UploadImage = () => {
 
   return (
     <>
-      <section className="grid lg:grid-cols-2 gap-6 mt-10">
+
+      <div className="px-4 py-6 border border-black/60 rounded">
+        <h5 className="text-xl font-semibold text-accent pl-2 font-roboto">
+          Step 4- Upload your artwork (Optional)
+        </h5>
+
+      </div>
+      <section className="grid lg:grid-cols-2 gap-6 ">
+
         {selectedVariants?.map((item: any, idx: number) => (
           <div key={idx}>
             <h5 className={`text-xl font-semibold text-accent pl-2 mb-2 font-roboto`}>{item} Artwork</h5>
