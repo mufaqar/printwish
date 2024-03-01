@@ -408,7 +408,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
 
           <button onClick={() => setOrderForm(true)} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-secondary gap-2 py-3 bg-secondary text-white px-6 hover:text-white hover:bg-primary rounded-md'>
-            <AiOutlinePlus /> Get a qoute
+             Get a qoute
           </button>
           
         
