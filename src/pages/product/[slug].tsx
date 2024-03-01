@@ -407,7 +407,7 @@ const ProductSlug = ({ post, product }: any) => {
             </section>
           }
 
-          <button onClick={() => setOrderForm(true)} className='flex w-1/3 justify-center uppercase font-light items-center mt-4 border border-secondary gap-2 py-3 bg-secondary text-white px-6 hover:text-white hover:bg-primary rounded-md'>
+          <button onClick={() => setOrderForm(true)} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-secondary gap-2 py-3 bg-secondary text-white px-6 hover:text-white hover:bg-primary rounded-md'>
             <AiOutlinePlus /> Get a qoute
           </button>
           
@@ -435,10 +435,10 @@ const ProductSlug = ({ post, product }: any) => {
       <Reviews />
 
       {/* floating price */}
-      <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[200px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
+      {/* <section className='fixed bg-white hidden md:flex rounded-2xl min-w-[200px] flex-col justify-end items-end _shadow bottom-0 right-10 px-8 py-5'>
         <h5 className='text-2xl text-accent font-light'>Total: <span className='font-semibold text-secondary text-4xl'>{totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0`}</span></h5>
         <p className='text-gray-500 font-light'>VAT excl.</p>
-      </section>
+      </section> */}
       <section className='md:hidden fixed bg-white bottom-0 w-full flex _shadow z-10 cursor-pointer'>
         <div className='flex-1 p-2 px-5'>
           <h5 className='font-semibold'>Total</h5>

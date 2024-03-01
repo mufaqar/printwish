@@ -11,7 +11,6 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
         <h5 className="text-xl font-semibold text-accent pl-2 font-roboto">
           Step 3 - Number of colours per artwork
         </h5>
-        <p className="pl-2">How many colors your logo design is?</p>
       </div>
       <section className="bg-gray-50 md:p-6 p-5 border-[1.5px] rounded-lg border-gray-50  mt-4">
         {selectedVariants?.map((v, id) => (
@@ -21,13 +20,13 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
                 id !== 0 && 'mt-5'
               }`}
             >
-              For Position {id + 1}
+              {v} Print Colours
             </h5>
             <div
               key={id}
-              className="items-center justify-center  mt-4 gap-2 p-0 grid md:grid-cols-5 md:w-3/4 "
+              className="items-center justify-center  mt-4 gap-2 p-0 grid md:grid-cols-7"
             >
-              {[1, 2, 3, 4, 5].map((item, idx) => (
+              {[1, 2, 3, 4, 5, 6, 7].map((item, idx) => (
                 <div className="relative" key={idx}>
                   <button
                     onClick={() => handleSelectedColor(v, item)}
@@ -37,11 +36,9 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
                         : 'border-gray-100 hover:border-main'
                     }`}
                   >
-                    <h2 className='text-[100px] leading-loose '> {item} </h2>
-                    <span className="p-1 px-3   ">
-                      {item} 
-                    </span>
-                    {item === 5
+                    <h2 className="text-[100px] leading-loose "> {item} </h2>
+
+                    {item === 7
                       ? 'Full Colours'
                       : item > 1
                       ? 'Colours'
