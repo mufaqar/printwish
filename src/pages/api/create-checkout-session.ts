@@ -28,7 +28,7 @@ export default async function handler(
         },
         unit_amount: price,
       },
-      quantity: 1,
+      quantity: 5,
     },],
     mode: 'payment',
     success_url: `${BaseURL}/success?session_id={CHECKOUT_SESSION_ID}&${objString}`,

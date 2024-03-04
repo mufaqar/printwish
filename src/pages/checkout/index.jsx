@@ -8,7 +8,9 @@ import useOrderHandler from '@/hooks/useOrderHandler';
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.AddToCart.value);
-  const { priceWithVat, vat, couponDiscountPrice } =   TotalPriceCalculate(cartItems);
+  console.log('🚀 ~ Checkout ~ cartItems:', cartItems);
+  const { priceWithVat, vat, couponDiscountPrice } =
+    TotalPriceCalculate(cartItems);
   const { OrderSubmit } = useOrderHandler();
 
   const {
@@ -20,13 +22,13 @@ const Checkout = () => {
 
   const onSubmit = (data) => {
     const seesion_orderData = sessionStorage.getItem('orderData');
-    const getAQouteData = JSON.parse(seesion_orderData)
+    const getAQouteData = JSON.parse(seesion_orderData);
     WooOrderHandler(getAQouteData, data);
   };
 
   const WooOrderHandler = (getAQouteData, data) => {
-      OrderSubmit(getAQouteData, data);
-      // sessionStorage.removeItem('orderData');
+    OrderSubmit(getAQouteData, data);
+    // sessionStorage.removeItem('orderData');
   };
 
   return (
@@ -38,14 +40,14 @@ const Checkout = () => {
       />
 
       <div className="relative mx-auto w-full bg-white">
-        <div className="grid min-h-screen m:grid-cols-2">
+        <div className="grid min-h-screen grid-cols-2">
           <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">
             <div className="mx-auto w-full max-w-lg">
               <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">
                 Shipping Address!
                 <span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span>
               </h1>
-             
+
               <>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -138,13 +140,13 @@ const Checkout = () => {
               </>
             </div>
           </div>
-          <div className="relative col-span-full hidden flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
+          <div className="relative  flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
             <h2 className="sr-only">Order summary</h2>
             <div>
               <div className="absolute inset-0 h-full w-full bg-primary opacity-95"></div>
             </div>
             <div className="relative">
-              <ul className="space-y-5">
+              {/* <ul className="space-y-5">
                 {cartItems?.map((item, idx) => {
                   return (
                     <li className="flex justify-between" key={idx}>
@@ -167,9 +169,9 @@ const Checkout = () => {
                     </li>
                   );
                 })}
-              </ul>
+              </ul> */}
               <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
-              <div className="space-y-2">
+              {/* <div className="space-y-2">
                 <p className="flex justify-between text-lg font-bold text-white">
                   <span>Total price:</span>
                   <span>£{priceWithVat.toFixed(2)}</span>
@@ -191,12 +193,12 @@ const Checkout = () => {
                     <span>£{couponDiscountPrice.toFixed(2)}</span>
                   </p>
                 )}
-              </div>
+              </div> */}
             </div>
             <div className="relative mt-10 text-white">
               <h3 className="mb-5 text-lg font-bold">Support</h3>
               <p className="text-sm font-semibold">
-                0800 051 0821{' '}
+                0800 051 0821
                 <span className="font-light">(International)</span>
               </p>
               <p className="mt-1 text-sm font-semibold">
