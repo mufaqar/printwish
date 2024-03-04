@@ -1,4 +1,5 @@
 import { SettingsContext } from '@/context/global-context';
+import Image from 'next/image';
 import React, { useContext } from 'react';
 import { FaCircleCheck } from 'react-icons/fa6';
 
@@ -36,7 +37,7 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
                         : 'border-gray-100 hover:border-main'
                     }`}
                   >
-                    <h2 className="md:text-[100px] text-5xl md:leading-loose "> {item} </h2>
+                   <Image src={`/images/colors/${item}.jpg`} width="200" height="200" alt="1" />
 
                     {item === 7
                       ? 'Full Colours'
