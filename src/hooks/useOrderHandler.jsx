@@ -69,7 +69,10 @@ const useOrderHandler = () => {
 
     orderData.payment_method = "bacs";
     orderData.payment_method_title = allCartItems.title;
-    orderData.set_paid = true;
+    orderData.set_paid = false;
+    orderData.status = "processing";
+
+    
 
     var billing = orderData["billing"];
     billing.email = data.email;

@@ -3,8 +3,6 @@ import Link from 'next/link';
 import SeoMeta from '@/components/seo/Seo';
 
 const Success = () => {
-  
-
   return (
     <React.StrictMode>
       <SeoMeta
@@ -26,11 +24,11 @@ const Success = () => {
           </svg>
           <div class="text-center">
             <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">
-              You've successfully placed the order!
+              Thanks for your enquiry!
             </h3>
             <p class="text-gray-600 my-2">
-              Thank you for completing your secure online payment. We will
-              contact you soon
+              One of our staff member will check your enquiry and get back to
+              you with the best quote as soon as possible.
             </p>
             <p> Have a great day! </p>
             <div class="py-10 text-center">
