@@ -140,7 +140,7 @@ const Checkout = () => {
               </>
             </div>
           </div>
-          <div className="relative  flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
+          <div className="relative col-span-full  flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
             <h2 className="sr-only">Order summary</h2>
             <div>
               <div className="absolute inset-0 h-full w-full bg-primary opacity-95"></div>
