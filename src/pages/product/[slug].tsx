@@ -43,6 +43,7 @@ interface IColor {
 }
 
 const ProductSlug = ({ post, product }: any) => {
+  console.log("🚀 ~ ProductSlug ~ product:", product)
   //const fullHead = parse(product.seo.fullHead);
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, uploadedImages, selectedVariants, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
@@ -251,7 +252,8 @@ const ProductSlug = ({ post, product }: any) => {
       aditionalInformation,
       productId: product.id,
       title: product.title,
-      sku: product?.sku
+      sku: product?.sku,
+      productImage: product?.featuredImage
     }
     sessionStorage.setItem('orderData', JSON.stringify(orderData)) 
     setOrderForm(false)

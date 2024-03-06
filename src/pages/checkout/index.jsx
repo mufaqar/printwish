@@ -5,10 +5,11 @@ import { useForm } from 'react-hook-form';
 import { TotalPriceCalculate } from '@/utils';
 import SeoMeta from '@/components/seo/Seo';
 import useOrderHandler from '@/hooks/useOrderHandler';
+import SelectedProduct from '@/components/SelectedProduct';
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.AddToCart.value);
-  console.log('🚀 ~ Checkout ~ cartItems:', cartItems);
+  
   const { priceWithVat, vat, couponDiscountPrice } =
     TotalPriceCalculate(cartItems);
   const { OrderSubmit } = useOrderHandler();
@@ -19,9 +20,8 @@ const Checkout = () => {
     watch,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
-    const seesion_orderData = sessionStorage.getItem('orderData');
+    var seesion_orderData = sessionStorage.getItem('orderData');
     const getAQouteData = JSON.parse(seesion_orderData);
     WooOrderHandler(getAQouteData, data);
   };
@@ -30,6 +30,9 @@ const Checkout = () => {
     OrderSubmit(getAQouteData, data);
     // sessionStorage.removeItem('orderData');
   };
+
+
+
 
   return (
     <>
@@ -170,6 +173,7 @@ const Checkout = () => {
                   );
                 })}
               </ul> */}
+              <SelectedProduct/>
               <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
               {/* <div className="space-y-2">
                 <p className="flex justify-between text-lg font-bold text-white">
@@ -194,6 +198,7 @@ const Checkout = () => {
                   </p>
                 )}
               </div> */}
+            
             </div>
             <div className="relative mt-10 text-white">
               <h3 className="mb-5 text-lg font-bold">Support</h3>
