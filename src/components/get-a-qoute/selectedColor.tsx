@@ -14,6 +14,7 @@ const SelectedColor = ({
                <div>
                     {
                          selctedColors?.map((c: any, idx: number) => {
+                            
                               return (
                                    <div key={idx} className='flex border-[1.5px] justify-between my-3 bg-background p-3 md:py-4 md:px-6 rounded-lg' style={{ borderColor: `#${c?.code}` }}>
                                         <div>
@@ -24,6 +25,7 @@ const SelectedColor = ({
                                              {/* map all size that are accociated to this product  */}
                                              <ul className='flex flex-wrap items-center gap-3 mt-3 '>
                                                   {
+                                                      
                                                        sizes?.map((item: any, idx: number) => {
                                                             const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
                                                             const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
