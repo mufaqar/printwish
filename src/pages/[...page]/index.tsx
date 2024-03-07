@@ -44,8 +44,9 @@ const CategorySlug = ({ products, slug, pages, productsForLocationPage, category
                          }
                          <Brands_Slider />
                          <Reviews />
-                         <div className='max-w-[500px] w-full mb-8 mx-auto'>
-                              <DeliveryTime title="Super Fast Delivery Available" desc="Place your order today and receive within 5 working days" />
+                         <div className='max-w-[500px] w-full pl-2 mb-8 mx-auto'>
+                              {/* <DeliveryTime title="Super Fast Delivery Available" desc="Place your order today and receive within 5 working days" /> */}
+                              <DeliveryTime title="Super Fast Delivery Available" desc="" />
                          </div>
 
                          {
