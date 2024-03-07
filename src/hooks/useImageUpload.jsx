@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { SettingsContext } from "@/context/global-context";
 
 const useImageUpload = () => {
-  const { setImageURL, setDesignImage, setUploadedImages } = useContext(SettingsContext);
+  const { setImageURL, setDesignImage, setUploadedImages, setImageName } = useContext(SettingsContext);
   const [loading, setLoading] = useState(false);
 
   const handleImageChange = async (event, item) => {
@@ -27,11 +27,13 @@ const useImageUpload = () => {
         }
       );
       const res = await response.json();
+      console.log("🚀 ~ handleImageChange ~ res:", res)
 
       // Update state with the uploaded image link and the corresponding item name
       setUploadedImages((prevImages) => [...prevImages, { item, link: res.url }]);
       setImageURL(res.url);
       setDesignImage(res.url);
+      setImageName(res.original_filename)
     } catch (error) {
       console.log("Error uploading image:", error);
     } finally {

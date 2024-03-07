@@ -4,7 +4,7 @@ import { SettingsContext } from "@/context/global-context";
 import useImageUpload from '@/hooks/useImageUpload'
 
 const UploadImage = () => {
-  const { selectedVariants, uploadedImages } = useContext(SettingsContext);
+  const { selectedVariants, uploadedImages, imageName } = useContext(SettingsContext);
   const { loading, handleImageChange } = useImageUpload();
 
   return (
@@ -25,14 +25,15 @@ const UploadImage = () => {
               <div className=" w-full min-h-[120px] border-2 border-gray-300 border-dashed rounded-lg">
                 {
                   uploadedImages.find((image: any) => image.item === item)?.link && <>
-                  <div className="flex items-center justify-start px-3 py-4">
+                  <div className="flex items-start justify-start px-3 py-4 gap-4">
                   <Image
                     src={uploadedImages.find((image: any) => image.item === item)?.link || '/images/capture.png'}
                     alt="Selected Preview"
-                    width={200}
+                    width={140}
                     height={100}
                     className='rounded-lg'
                   />
+                  <p>{imageName}</p>
                   </div>
                   </>
                 }

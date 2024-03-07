@@ -21,7 +21,7 @@ export const SettingsProvider = ({ children }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [selectedVariants, setSelectedVariants] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]);
-
+  const [imageName, setImageName] = useState()
 
   const [selectedProduct, setSelectedProduct] = useState({
     colors: [],
@@ -93,7 +93,7 @@ export const SettingsProvider = ({ children }) => {
         allCartItems, setAllCartItems,
         totalQuantity, setTotalQuantity,
         selectedVariants, setSelectedVariants,
-        uploadedImages, setUploadedImages
+        uploadedImages, setUploadedImages, imageName, setImageName
       }}
     >
       {children}
