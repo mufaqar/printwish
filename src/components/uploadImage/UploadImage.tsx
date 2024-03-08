@@ -22,7 +22,7 @@ const UploadImage = () => {
             <h5 className={`text-xl font-semibold text-accent pl-2 mb-2 font-roboto`}>{item} Artwork</h5>
             <div className=' bg-white p-4 rounded-xl'>
 
-              <div className=" w-full min-h-[120px] border-2 border-gray-300 border-dashed rounded-lg">
+              <div className="flex flex-col md:flex-row w-full min-h-[120px] border-2 border-gray-300 border-dashed rounded-lg">
                 {
                   uploadedImages.find((image: any) => image.item === item)?.link && <>
                   <div className="flex items-start justify-start px-3 py-4 gap-4">
@@ -33,12 +33,12 @@ const UploadImage = () => {
                     height={100}
                     className='rounded-lg'
                   />
-                  <p>{imageName}</p>
+                  <p className="md:hidden">{imageName}</p>
                   </div>
                   </>
                 }
                 
-                <label className="flex flex-col min-h-[120px] items-center justify-center w-full h-full  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                <label className="flex flex-col min-h-[120px] items-center justify-center w-full h-auto rounded-xl  cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                   {loading ? ( // Show loading indicator when uploading
                     <p>Loading...</p>
                   ) : (

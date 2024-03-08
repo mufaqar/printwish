@@ -8,6 +8,7 @@ const SelectedColor = ({
      removeSize,
      selectedProduct
 }:any) => {
+     console.log("🚀 ~ sizes:", sizes)
      return (
           <>
                {/* all selected colors list*/}
@@ -26,7 +27,7 @@ const SelectedColor = ({
                                              <ul className='flex flex-wrap items-center gap-3 mt-3 '>
                                                   {
                                                       
-                                                       sizes?.map((item: any, idx: number) => {
+                                                       sizes?.toReversed()?.map((item: any, idx: number) => {
                                                             const matchingColor = selectedProduct.colors.find((color: any) => color.name === c?.name);
                                                             const quantity = matchingColor?.selectedSize.find((sizeObj: any) => sizeObj.name === item.name)?.quantity;
 

@@ -10,9 +10,9 @@ const SelectedProduct = () => {
           setItems(JSON.parse(item))
      }, [])
      return (
-          <div className='md:flex items-start gap-2'>
+          <div className='flex items-start gap-2 border p-2'>
                <Image src={items?.productImage?.node?.mediaItemUrl} alt={items?.title} width={100} height={60} />
-               <div>
+               <div className='ml-4 border-l-[1px] pl-4'>
                     <h5 className="text-white font-medium">{items?.title}</h5>
                     <h5 className="text-white font-medium">SKU: <span className='font-extralight'>{items?.sku}</span></h5>
                     <div className="text-white font-medium">Color: <div className='font-extralight'>

@@ -49,6 +49,7 @@ const GetAQoute = ({
                     
                     <h5 className={`text-xl font-semibold text-accent mb-2 mt-5 font-roboto`}>Additional information or requests</h5>
                     <textarea value={aditionalInformation} onChange={(e)=>setAditionalInformation(e.target.value)} className='block w-full p-3 h-[340px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md'/>
+                    <div className='flex justify-end'>
                     <button onClick={()=>
                          {
                               selectedVariants?.length > 0 && 
@@ -58,7 +59,7 @@ const GetAQoute = ({
                          }
                     } 
                     className={`
-                    uppercase font-light items-center border border-primary gap-2 w-full text-center py-3 text-white px-6   mt-7 rounded-lg
+                    uppercase font-light items-center border border-primary gap-2 w-1/2 text-center py-3 text-white px-6   mt-7 rounded-lg
                          ${
                               selectedVariants?.length > 0 && 
                          selctedColors?.length > 0 &&
@@ -66,6 +67,7 @@ const GetAQoute = ({
                          }
                     `}
                     >Add to Qoute</button>
+                    </div>
                </div>
           </section>
      )
