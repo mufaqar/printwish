@@ -141,10 +141,7 @@ const Checkout = () => {
               <div className="mt-5 border p-6">
                 <h3 className="font-semibold text-lg">What happens next?</h3>
                 <ul className="text-sm text-gray-600 list-disc pl-4 mt-2">
-                  <li>
-                    Once approved, you can make a payment or apply credit
-                    account.{' '}
-                  </li>
+                 
                   <li>
                     Once you approve the quote and digital mockup, you can make
                     a payment by using a secure payment link which we will send
