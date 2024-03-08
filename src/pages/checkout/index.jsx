@@ -9,7 +9,7 @@ import SelectedProduct from '@/components/SelectedProduct';
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.AddToCart.value);
-  
+
   const { priceWithVat, vat, couponDiscountPrice } =
     TotalPriceCalculate(cartItems);
   const { OrderSubmit } = useOrderHandler();
@@ -31,9 +31,6 @@ const Checkout = () => {
     // sessionStorage.removeItem('orderData');
   };
 
-
-
-
   return (
     <>
       <SeoMeta
@@ -46,8 +43,16 @@ const Checkout = () => {
         <div className="grid min-h-screen grid-cols-2">
           <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-1 lg:py-24">
             <div className="mx-auto w-full max-w-lg">
+              <div className="mb-5 md:hidden block">
+                <h1 className="relative text-2xl text-black mb-8 sm:text-3xl">
+                  Your Quote Details
+                  <span className="mt-2 block h-[3px] w-10 bg-gray-200 sm:w-20"></span>
+                </h1>
+                <SelectedProduct />
+              </div>
+
               <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">
-              Contact Information
+                Contact Information
                 <span className="mt-2 block h-1 w-10 bg-primary sm:w-20"></span>
               </h1>
 
@@ -125,7 +130,7 @@ const Checkout = () => {
                       </span>
                     )}
                   </div>
-                 
+
                   <input
                     type="submit"
                     className="mt-4 cursor-pointer inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg"
@@ -133,14 +138,19 @@ const Checkout = () => {
                   />
                 </form>
               </>
-              <div className='mt-5 border p-6'>
-              <h3 className='font-semibold text-lg'>What happens next?</h3>
-              <ul className='text-sm text-gray-600 list-disc pl-4 mt-2'>
-                <li>SUBMIT YOUR QUOTE – and we will be in touch in 15-30mins</li>
-                <li>We will provide free visual proofs before payment</li>
-                <li>Once approved, you can make payment or apply for a CREDIT ACCOUNT</li>
-                <li>100% money back guarantee</li>
-              </ul>
+              <div className="mt-5 border p-6">
+                <h3 className="font-semibold text-lg">What happens next?</h3>
+                <ul className="text-sm text-gray-600 list-disc pl-4 mt-2">
+                  <li>
+                    Once approved, you can make a payment or apply credit
+                    account.{' '}
+                  </li>
+                  <li>
+                    Once you approve the quote and digital mockup, you can make
+                    a payment by using a secure payment link which we will send
+                    with an invoice.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -174,45 +184,18 @@ const Checkout = () => {
                   );
                 })}
               </ul> */}
+              <div className='md:block hidden'>
               <h1 className="relative text-2xl text-gray-200 mb-8 sm:text-3xl">
                 Your Quote Details
                 <span className="mt-2 block h-[3px] w-10 bg-gray-200 sm:w-20"></span>
               </h1>
-              <SelectedProduct/>
-              <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
-              {/* <div className="space-y-2">
-                <p className="flex justify-between text-lg font-bold text-white">
-                  <span>Total price:</span>
-                  <span>£{priceWithVat.toFixed(2)}</span>
-                </p>
-                <p className="text-xs font-medium !-mt-0 !mb-2 text-gray-400">
-                  include Vat
-                </p>
-                <p className="flex justify-between text-sm font-medium text-white">
-                  <span>Shipping</span>
-                  <span> Free </span>
-                </p>
-                <p className="flex justify-between text-sm font-medium text-white">
-                  <span>Vat: 20%</span>
-                  <span>£{vat}</span>
-                </p>
-                {couponDiscountPrice && (
-                  <p className="flex justify-between text-sm font-medium text-white">
-                    <span>Discount</span>
-                    <span>£{couponDiscountPrice.toFixed(2)}</span>
-                  </p>
-                )}
-              </div> */}
-            
+              <SelectedProduct />
+              </div>
             </div>
             <div className="relative mt-10 text-white">
               <h3 className="mb-5 text-lg font-bold">Support</h3>
-              <p className="text-sm font-semibold">
-                0800 051 0821
-                <span className="font-light">(International)</span>
-              </p>
+              <p className="text-sm font-semibold">0800 051 0821</p>
               <p className="mt-1 text-sm font-semibold">
-                {' '}
                 <Link href="mailto:enquiries@printwish.co.uk">
                   enquiries@printwish.co.uk{' '}
                 </Link>
@@ -220,12 +203,9 @@ const Checkout = () => {
               </p>
               <p className="mt-1 text-sm font-semibold">
                 <Link href="mailto:sales@printwish.co.uk">
-                  sales@printwish.co.uk{' '}
+                  sales@printwish.co.uk
                 </Link>
                 <span className="font-light">(Email)</span>
-              </p>
-              <p className="mt-2 text-xs font-medium">
-                Call us now for payment related issues
               </p>
             </div>
 
@@ -239,20 +219,26 @@ const Checkout = () => {
                 </span>
               </p>
             </div>
-            
+
             <div className="relative mt-10">
-              <div className="my-5 h-0.5 w-full !bg-white/30"/>
-              <h3 className='font-semibold text-lg text-white'>Request For Quote</h3>
-              <p className='text-gray-200 mt-4'>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
-              <p className="mt-10 text-sm font-semibold text-gray-200">
-                    By placing this order you agree to the{' '}
+              <div className="my-5 h-0.5 w-full !bg-white/30" />
+              <h3 className="font-semibold text-lg text-white">
+                Request For Quote
+              </h3>
+              <p className="text-gray-200 mt-4">
+                Your personal data will be used to process your order, support
+                your experience throughout this website, and for other purposes
+                described in our privacy policy.
+              </p>
+              {/* <p className="mt-10 text-sm font-semibold text-gray-200">
+                    By placing this order you agree to the
                     <Link
                       href="/terms-and-conditions"
                       className="whitespace-nowrap text-secondary underline hover:text-primary"
                     >
                       Terms and Conditions
                     </Link>
-                  </p>
+                  </p> */}
             </div>
           </div>
         </div>
