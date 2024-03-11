@@ -79,7 +79,6 @@ const Cart = () => {
                                                        <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                                             <div className="mt-5 sm:mt-0 pr-4">
                                                                  <h2 className="text-lg font-bold text-gray-900">{item?.name || item?.title}</h2>
-                                                                 <p className="text-lg font-bold mt-1">Unit Price: £{((item?.productPrice + printingPrice) / newTotalQuantity).toFixed(2)}</p>
                                                                  <p className="mt-1 text-xs text-gray-700">SKU: {item?.sku}</p>
                                                             </div>
 
@@ -102,7 +101,7 @@ const Cart = () => {
                                                                                           <li key={s?.name} className='border-[1px] p-1.5 text-sm mt-[2px] md:mt-0'>
                                                                                                <p>Size: {s?.name} </p>
                                                                                                <p>Quanitity: {s?.quantity} </p>
-                                                                                               <p>Unit Price: {(s.price / s?.quantity).toFixed(2)} </p>
+                                                                                            
                                                                                           </li>
                                                                                      ))
                                                                                 }
