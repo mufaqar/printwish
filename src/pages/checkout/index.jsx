@@ -140,7 +140,7 @@ const Checkout = () => {
               </>
               <div className="mt-5 border p-6">
                 <h3 className="font-semibold text-lg">What happens next?</h3>
-                <ul className="text-sm text-gray-600 list-disc pl-4 mt-2">
+                <ul className="md:text-sm text-xs list-disc pl-4 mt-2 flex flex-col gap-2">
                   <li>
                     SUBMIT YOUR QUOTE - and we will be in touch in 15-30
                     minutes.
@@ -153,7 +153,7 @@ const Checkout = () => {
                     invoice and a secure payment link.
                   </li>
                   <li>100% money back guarantee.</li>
-                  <li>Huge discounts on Bulk orders.</li>
+                  <li>Huge discounts available on bulk orders.</li>
                 </ul>
               </div>
             </div>

@@ -14,8 +14,8 @@ const Footer = () => {
             <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               About
             </h6>
-            <p className='text-accent font-roboto mb-3'>
-              PrintWish UK Printwish UK is a leading custom apparel provider and it is always here to inspire you with great customized things like T-shirts, tote bags, hoodies, sweatshirts, Hi-vis, apron, Wholesale Tote Bags, and many more. Company Registration No:10537490.All Rights Reserved.VAT Reg: GB 433635794.
+            <p className='text-sm text-accent font-roboto mb-1.5'>
+              PrintWish UK Printwish UK is a leading custom apparel provider and Wholesale Company.
             </p>
             <p className='text-sm font-semibold font-roboto text-accent'>
               WORKING DAYS/HOURS:
@@ -29,7 +29,7 @@ const Footer = () => {
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {Categories.slice(1, 5).map((item: CategoryType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`/${item.link}`} className="text-accent font-roboto hover:text-secondary">
+                  <Link href={`/${item.link}`} className="text-sm text-accent font-roboto hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -43,7 +43,7 @@ const Footer = () => {
             <ul className='grid gap-2 list-inside list-square marker:text-secondary'>
               {NavLinks.slice(4).map((item: NavLinksType, idx: number) => {
                 return <li key={idx} className="relative before:content-[' '] before:h-[1px] before:w-3 before:bg-secondary before:absolute before:top-[13px] before:left-1">
-                  <Link href={`${item.link}`} className="text-accent font-roboto hover:text-secondary">
+                  <Link href={`${item.link}`} className="text-sm text-accent font-roboto hover:text-secondary">
                     {item.name}
                   </Link>
                 </li>
@@ -54,35 +54,35 @@ const Footer = () => {
             <h6 className='text-xl font-semibold font-opensans text-accent uppercase mb-5'>
               Contact
             </h6>
-            <ul className='grid gap-2'>
+            <ul className='flex flex-col gap-3'>
               <li className="">
-                <span className="text-accent font-roboto flex gap-1">
+                <span className="text-sm text-accent font-roboto flex gap-1">
                   <BsPinMap size={20} className='text-secondary min-w-[20px]' /> PrintWish:
                   6th Floor, City Gate East, Tollhouse Hill, Nottingham, NG1 5FS
                 </span>
               </li>
               <li className="">
-                <Link href="tel:08000510821" className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
+                <Link href="tel:08000510821" className="text-sm text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsTelephone size={20} className='text-secondary min-w-[20px]' /> 0800 051 0821
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:sales@printwish.co.uk" target='_blank' className="text-sm text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeAt size={20} className='text-secondary min-w-[20px]' /> sales@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:enquiries@printwish.co.uk" target='_blank' className="text-sm text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeAt size={20} className='text-secondary min-w-[20px]' /> enquiries@printwish.co.uk
                 </Link>
               </li>
               <li className="">
-                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-accent font-roboto hover:text-secondary flex items-center gap-1">
+                <Link href="mailto:printwish20@gmail.com" target='_blank' className="text-sm text-accent font-roboto hover:text-secondary flex items-center gap-1">
                   <BsEnvelopeAt size={20} className='text-secondary min-w-[20px]' /> printwish20@gmail.com
                 </Link>
               </li>
             </ul>
-            <ul className='flex sm:gap-2 gap-1 items-center mt-7'>
+            <ul className='flex sm:gap-2 gap-6 items-center mt-7'>
               <li>
                 <Link href="https://www.facebook.com/printwishuk/" target='_blank'
                   className="inline-flex items-center p-2 text-sm font-medium text-secondary bg-transparent border border-secondary hover:border-primary hover:text-primary rounded-full">
@@ -127,14 +127,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='bg-accent mt-16 border-t'>
-        <div className='py-8  grid md:grid-cols-2 grid-cols-1 gap-7 max-w-screen-xl mx-auto px-4 items-center'>
-          <div className="flex items-center">
-            <Link href="/">
-              <Image src="/images/logo.png" alt="logo" width={200} height={54} className='mx-auto' />
-            </Link>
-          </div>
-          <p className="block text-sm md:text-right text-highlight font-roboto">PrintWish UK is Trading as PrintWish. Copyright 2022-23. Design with Love by <a href='httsp://mufaqar.com' target='_blank'>Mufaqar</a>
+      <div className='mt-16 border-t'>
+        <div className='py-8 grid  grid-cols-1 gap-7 max-w-screen-xl mx-auto px-4 items-center'>
+          <p className="block text-xs md:text-center text-accent font-roboto">
+            PrintWish UK is Trading as PrintWish. Copyright 2022-23. Design with Love by
           </p>
         </div>
       </div>
