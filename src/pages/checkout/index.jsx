@@ -141,12 +141,19 @@ const Checkout = () => {
               <div className="mt-5 border p-6">
                 <h3 className="font-semibold text-lg">What happens next?</h3>
                 <ul className="text-sm text-gray-600 list-disc pl-4 mt-2">
-                 
                   <li>
-                    Once you approve the quote and digital mockup, you can make
-                    a payment by using a secure payment link which we will send
-                    with an invoice.
+                    SUBMIT YOUR QUOTE - and we will be in touch in 15-30
+                    minutes.
                   </li>
+                  <li>
+                    We will provide free visuals proofs before the payment.
+                  </li>
+                  <li>
+                    Once you approve the visual proof, we can then send you the
+                    invoice and a secure payment link.
+                  </li>
+                  <li>100% money back guarantee.</li>
+                  <li>Huge discounts on Bulk orders.</li>
                 </ul>
               </div>
             </div>
@@ -181,12 +188,12 @@ const Checkout = () => {
                   );
                 })}
               </ul> */}
-              <div className='md:block hidden'>
-              <h1 className="relative text-2xl text-gray-200 mb-8 sm:text-3xl">
-                Your Quote Details
-                <span className="mt-2 block h-[3px] w-10 bg-gray-200 sm:w-20"></span>
-              </h1>
-              <SelectedProduct />
+              <div className="md:block hidden">
+                <h1 className="relative text-2xl text-gray-200 mb-8 sm:text-3xl">
+                  Your Quote Details
+                  <span className="mt-2 block h-[3px] w-10 bg-gray-200 sm:w-20"></span>
+                </h1>
+                <SelectedProduct />
               </div>
             </div>
             <div className="relative mt-10 text-white">
