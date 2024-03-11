@@ -7,7 +7,7 @@ import { BsEnvelopeAt, BsTelephone, BsPinMap } from 'react-icons/bs'
 
 const Footer = () => {
   return (
-    <footer className='bg-background pt-16 border-t'>
+    <footer className='bg-background pt-12 border-t'>
       <div className='container mx-auto px-4'>
         <div className='grid md:grid-cols-4 grid-cols-1 gap-7'>
           <div>
@@ -127,10 +127,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='mt-16 border-t'>
-        <div className='py-8 grid  grid-cols-1 gap-7 max-w-screen-xl mx-auto px-4 items-center'>
+      <div className='mt-7 border-t'>
+        <div className='py-4 grid  grid-cols-1 gap-7 max-w-screen-xl mx-auto px-4 items-center'>
           <p className="block text-xs md:text-center text-accent font-roboto">
-            PrintWish UK is Trading as PrintWish. Copyright 2022-23. Design with Love by
+            PrintWish UK is Trading as PrintWish. Copyright 2022-24
           </p>
         </div>
       </div>
