@@ -8,9 +8,9 @@ const SelectLogoColor = ({ colorsInLogo, handleSelectedColor }) => {
 
   return (
     <>
-      <div className="px-4 py-6 border border-black/60 rounded">
+      <div className={`bg-gray-200 px-4 py-6 border rounded ${colorsInLogo.length > 0 ? 'border-black/60' : '!border-red-500'}`}>
         <h5 className="text-xl font-semibold text-accent pl-2 font-roboto">
-          Step 3 - Number of colours per artwork
+          Step 3 - Number of colours per artwork *
         </h5>
       </div>
       <section className="bg-gray-50 md:p-6 p-5 border-[1.5px] rounded-lg border-gray-50  mt-4">

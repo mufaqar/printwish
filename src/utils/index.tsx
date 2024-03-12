@@ -131,3 +131,16 @@ export const getNextBusinessDay = (startDate: any, daysToAdd: any) => {
 };
 
 
+export function checkSelection(selectedColor:any) {
+     if (selectedColor.length > 0) {
+         let totalQuantity = 0;
+         for (let color of selectedColor) {
+             for (let size of color.selectedSize) {
+                 totalQuantity += parseInt(size.quantity);
+             }
+         }
+         return totalQuantity > 0;
+     } else {
+         return false;
+     }
+ }

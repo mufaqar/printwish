@@ -10,7 +10,6 @@ export const AddToCart = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      console.log("🚀 ~ file: AddToCart.jsx:13 ~ state:", state.value)
       // Check Product exist or not 
       const existingItemIndex = state.value.findIndex(item => item.id === action.payload.id);
       if(existingItemIndex !== -1){

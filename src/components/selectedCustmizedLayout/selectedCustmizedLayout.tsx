@@ -5,7 +5,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { MdDelete, MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
 const SelectedCustmizedLayout = ({ item, id }: any) => {
-     console.log("🚀 ~ file: selectedCustmizedLayout.tsx:8 ~ SelectedCustmizedLayout ~ item:", item.imageURL)
      
      const { selectedProduct, setSelectedProduct } = useContext(SettingsContext)
 
