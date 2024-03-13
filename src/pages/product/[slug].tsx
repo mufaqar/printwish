@@ -407,7 +407,15 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-
+          <div className="mt-6 border p-6 rounded-lg">
+            <h4 className='font-semibold text-lg'>Are you looking for a discount on your order?</h4>
+            <ul className="my-2 list-square pl-4">
+              <li>Get 10% discount when you order 250+</li>
+              <li>Get 15% discount when you order 750+</li>
+              <li>Get 20% discount when you order 1000+</li>
+            </ul>
+            <p>Request us a quote today amd get an amazing discount with every bulk order.</p>
+          </div>
           <button onClick={() => setOrderForm(true)} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-secondary gap-2 py-3 bg-secondary text-white px-6 hover:text-white hover:bg-primary rounded-md'>
              Get a qoute
           </button>
