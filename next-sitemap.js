@@ -45,9 +45,9 @@ async function generateSitemap() {
     query products {
       products(first: 100) {
         nodes {
-          date
+          
           slug
-          modified
+        
         }
       }
     }`;
