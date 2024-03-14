@@ -21,8 +21,8 @@ const CustomiztionProduct = ({ number }: any) => {
      return (
           <>
                <section className='mt-4 rounded-lg'>
-                    <div className='bg-gray-200 px-4 py-6 border border-black/60 rounded'>
-                    <h5 className='text-xl font-semibold text-accent pl-2 font-roboto  '>Step 2 - Where must we print your artwork?</h5>
+                    <div className={`bg-gray-200 px-4 py-6 border rounded ${selectedVariants.length > 0 ? 'border-black/60' : '!border-red-500'}`}>
+                    <h5 className={`text-xl font-semibold text-accent pl-2 font-roboto`}>Step 2 - Where must we print your artwork? *</h5>
                     <p className='pl-2'>T-Shirt Print Area</p>
                     </div>
                     <div className='mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6'>

@@ -10,7 +10,6 @@ const Pagination = ({perPage, endpoint}:any) => {
      const { query } = useRouter()
      const params = useRouter()
      const [allProductsCount, setAllProductsCount] = useState<any>()
-     console.log("🚀 ~ file: pagination.tsx:13 ~ Pagination ~ allProductsCount:", allProductsCount)
 
      useEffect(() => {
           const f = async () => {
