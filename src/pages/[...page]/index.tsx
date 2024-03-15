@@ -160,7 +160,7 @@ export async function getServerSideProps({ params }: any) {
                slug,
                category: getID,
                categoryInfo: response?.data?.productCategory?.categoryInfo,
-               categorySEO: response?.data?.productCategory.seo
+               categorySEO: response?.data?.productCategory?.seo
           },
      };
 
