@@ -416,7 +416,7 @@ const ProductSlug = ({ post, product }: any) => {
             </ul>
             <p>Request us a quote today and get an amazing discount with every bulk order.</p>
           </div>
-          <button onClick={() => setOrderForm(true)} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-secondary gap-2 py-3 bg-secondary text-white px-6 hover:text-white hover:bg-primary rounded-md'>
+          <button onClick={() => setOrderForm(true)} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
              Get a qoute
           </button>
           

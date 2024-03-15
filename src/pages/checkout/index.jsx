@@ -99,7 +99,7 @@ const Checkout = () => {
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-gray-500">
-                      Mobile Number
+                      Mobile Number (Optional)
                     </label>
                     <input
                       type="text"
@@ -117,24 +117,21 @@ const Checkout = () => {
                   </div>
                   <div>
                     <label className="text-xs font-semibold text-gray-500">
-                      Address
+                      Delivery Date
                     </label>
-                    <textarea
-                      placeholder="Address"
-                      {...register('address', { required: true })}
+                    <input
+                      type="date"
+                      placeholder="Delivery Date"
+                      {...register('address')}
+                     
                       className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
-                    ></textarea>
-                    {errors.address && (
-                      <span className="text-red-400 m-1">
-                        This field is required
-                      </span>
-                    )}
+                   />
                   </div>
 
                   <input
                     type="submit"
                     className="mt-4 cursor-pointer inline-flex w-full items-center justify-center rounded bg-primary py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-primary sm:text-lg"
-                    value="Proceed"
+                    value="Proceed to Submit your Quote"
                   />
                 </form>
               </>
@@ -161,7 +158,7 @@ const Checkout = () => {
           <div className="relative col-span-full  flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-1 lg:py-24">
             <h2 className="sr-only">Order summary</h2>
             <div>
-              <div className="absolute inset-0 h-full w-full bg-primary opacity-95"></div>
+              <div className="absolute inset-0 h-full w-full bg-[#1f375d] opacity-95"></div>
             </div>
             <div className="relative">
               {/* <ul className="space-y-5">
