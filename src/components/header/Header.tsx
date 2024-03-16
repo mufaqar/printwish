@@ -145,7 +145,7 @@ const Header = () => {
                 <button onClick={() => setOpenMobileSearch(true)} className='md:hidden'>
                   <BiSearch size={24} className='text-white' />
                 </button>
-                <Link href="/cart" className='text-white relative'>
+                <Link href="#" className='text-white relative'>
                   <CiShoppingBasket size="24" />
                   <span className='absolute text-xs bg-red-600 p-[2px] flex flex-col justify-center items-center w-5 h-5 rounded-full -right-3 -top-1'>{cartItems.length || 0}</span>
                 </Link>
