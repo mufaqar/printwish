@@ -232,21 +232,21 @@ const ProductSlug = ({ post, product }: any) => {
     router.push('/cart')
   }
 
-  const mergeColorInLogo = (uploadedImages:any, colorsInLogo:any) => {
-    const res = uploadedImages.map((image:any) => {
-      const matchingColor = colorsInLogo.find((color:any) => color.variantName === image.item);
+  const mergeColorInLogo = (uploadedImages: any, colorsInLogo: any) => {
+    const res = uploadedImages.map((image: any) => {
+      const matchingColor = colorsInLogo.find((color: any) => color.variantName === image.item);
       return {
         ...image,
         colorInLogo: matchingColor ? matchingColor.colorInLogo : null
       };
     });
-    return res.filter((image:any) => image.colorInLogo !== null);
+    return res.filter((image: any) => image.colorInLogo !== null);
   }
 
-  const handleAddaQoute = (colorsInLogo:any, aditionalInformation:any) => {
+  const handleAddaQoute = (colorsInLogo: any, aditionalInformation: any) => {
     const ImagesWithLogoColor = mergeColorInLogo(uploadedImages, colorsInLogo);
     const orderData = {
-      colosWithSize : selectedProduct?.colors,
+      colosWithSize: selectedProduct?.colors,
       ImagesWithLogoColor,
       aditionalInformation,
       productId: product.id,
@@ -254,7 +254,7 @@ const ProductSlug = ({ post, product }: any) => {
       sku: product?.sku,
       productImage: product?.featuredImage
     }
-    sessionStorage.setItem('orderData', JSON.stringify(orderData)) 
+    sessionStorage.setItem('orderData', JSON.stringify(orderData))
     setOrderForm(false)
     router.push('/checkout')
   }
@@ -379,7 +379,7 @@ const ProductSlug = ({ post, product }: any) => {
           }
           {/* <HowToBuy /> */}
 
-        
+
 
           {
             product?.allPaColor.nodes.length > 0 &&
@@ -391,7 +391,7 @@ const ProductSlug = ({ post, product }: any) => {
                     product?.allPaColor.nodes?.map((clr: any, idx: number) => {
                       const colorExists = selectedProduct?.colors?.some((item: any) => item.code === clr.description);
                       return (
-                        <li key={idx}  className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
+                        <li key={idx} className={`${colorExists ? 'border-green-400' : 'border-transparent'} p-1 hover-text border-[3px] rounded-full`}  >
                           <div className='p-[18px] cursor-pointer hover:scale-105 active:scale-100 transition-all duration-200 ease-in-out rounded-full' style={{ backgroundColor: `#${clr?.description}` }} />
                           <span className="tooltip-text whitespace-nowrap text-center" id="top">{clr?.name}</span>
                         </li>
@@ -399,11 +399,11 @@ const ProductSlug = ({ post, product }: any) => {
                     })
                   }
                 </ul>
-           
+
                 {/* selected color and show all sizes with each selcted color */}
               </div>
 
-           
+
 
             </section>
           }
@@ -416,12 +416,18 @@ const ProductSlug = ({ post, product }: any) => {
             </ul>
             <p>Request us a quote today and get an amazing discount with every bulk order.</p>
           </div>
-          <button onClick={() => setOrderForm(true)} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
-             Get a qoute
+          <button onClick={() => {
+            setOrderForm(true);
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth' 
+            })
+          }} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
+            Get a qoute
           </button>
-          
-        
-         
+
+
+
 
           {/* <div className='text-2xl flex items-center mt-3 gap-2'>
             Total: <span className='font-semibold text-secondary text-2xl'> {totalQuantity > 0 ? `£${calculatePrice(customizedMergeData, totalPrice, totalQuantity, +colorsInLogo)}` : `£0 `} <span className='font-normal text-primary text-xl ml-1'>excluding VAT</span></span>
