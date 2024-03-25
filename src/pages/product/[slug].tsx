@@ -414,7 +414,7 @@ const ProductSlug = ({ post, product }: any) => {
               <li>Get 15% discount when you order 750+</li>
               <li>Get 20% discount when you order 1000+</li>
             </ul>
-            <p>Request us a quote today and get an amazing discount with every bulk order.</p>
+            <p>Request us a Quote today and get an amazing discount with every bulk order.</p>
           </div>
           <button onClick={() => {
             setOrderForm(true);
@@ -423,7 +423,7 @@ const ProductSlug = ({ post, product }: any) => {
               behavior: 'smooth' 
             })
           }} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
-            Get a qoute
+            Get a quote
           </button>
 
 
