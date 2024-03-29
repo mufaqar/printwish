@@ -158,6 +158,10 @@ query GetLocation($slug: String!) {
         answer
         question
       }
+      productSection {
+        title
+        subTitle
+      }
     }
   }
 }
