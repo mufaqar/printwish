@@ -407,7 +407,7 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-          <div className="mt-6 border p-6 rounded-lg">
+          {/* <div className="mt-6 border p-6 rounded-lg">
             <h4 className='font-semibold text-lg'>Are you looking for a discount on your order?</h4>
             <ul className="my-2 list-square pl-4">
               <li>Get 10% discount when you order 250+</li>
@@ -415,7 +415,7 @@ const ProductSlug = ({ post, product }: any) => {
               <li>Get 20% discount when you order 1000+</li>
             </ul>
             <p>Request us a Quote today and get an amazing discount with every bulk order.</p>
-          </div>
+          </div> */}
           <button onClick={() => {
             setOrderForm(true);
             window.scrollTo({
