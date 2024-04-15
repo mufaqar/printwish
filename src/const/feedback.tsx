@@ -1,5 +1,47 @@
 export const Feedback = [
     {
+        img: "/images/reviews/20March-03.jpg"
+    },
+    {
+        img: "/images/reviews/20-03.jpg"
+    },
+    {
+        img: "/images/reviews/19-03.jpg"
+    },
+    {
+        img: "/images/reviews/18-03.jpg"
+    },
+    {
+        img: "/images/reviews/17-03.jpg"
+    },
+    {
+        img: "/images/reviews/15-03.jpg"
+    },
+    {
+        img: "/images/reviews/14-03.jpg"
+    },
+    {
+        img: "/images/reviews/13-03.jpg"
+    },
+    {
+        img: "/images/reviews/12-03.jpg"
+    },
+    {
+        img: "/images/reviews/11-03.jpg"
+    },
+    {
+        img: "/images/reviews/09-03.jpg"
+    },
+    {
+        img: "/images/reviews/8-03.jpg"
+    },
+    {
+        img: "/images/reviews/6-03.jpg"
+    },
+    {
+        img: "/images/reviews/5-03.jpg"
+    },
+    {
         img: "/images/reviews/review-01.jpg"
     },
     {
@@ -50,5 +92,5 @@ export const Feedback = [
 ]
 
 export type FeedbackType = {
-    img: any,
+    img: string,
 }
