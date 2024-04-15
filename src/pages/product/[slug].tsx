@@ -407,7 +407,7 @@ const ProductSlug = ({ post, product }: any) => {
 
             </section>
           }
-          <div className="mt-6 border p-6 rounded-lg">
+          {/* <div className="mt-6 border p-6 rounded-lg">
             <h4 className='font-semibold text-lg'>Are you looking for a discount on your order?</h4>
             <ul className="my-2 list-square pl-4">
               <li>Get 10% discount when you order 250+</li>
@@ -415,14 +415,14 @@ const ProductSlug = ({ post, product }: any) => {
               <li>Get 20% discount when you order 1000+</li>
             </ul>
             <p>Request us a Quote today and get an amazing discount with every bulk order.</p>
-          </div>
+          </div> */}
           <button onClick={() => {
             setOrderForm(true);
             window.scrollTo({
               top: 0,
               behavior: 'smooth' 
             })
-          }} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
+          }} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-6 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
             Get a quote
           </button>
 
