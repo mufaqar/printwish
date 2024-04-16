@@ -422,7 +422,7 @@ const ProductSlug = ({ post, product }: any) => {
               top: 0,
               behavior: 'smooth' 
             })
-          }} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-4 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
+          }} className='flex w-full md:w-1/3 justify-center uppercase font-light items-center mt-6 border border-primary gap-2 py-3 bg-primary text-white px-6 hover:text-white hover:bg-secondary rounded-md'>
             Get a quote
           </button>
 
