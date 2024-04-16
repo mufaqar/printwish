@@ -159,16 +159,7 @@ export const LOCATION_PAGE = gql`
         productSection {
           title
           subTitle
-          productSections {
-            title
-            description
-            link
-            image {
-              node {
-                mediaItemUrl
-              }
-            }
-          }
+          
         }
         orderSection {
           title
