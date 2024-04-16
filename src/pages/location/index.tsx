@@ -7,6 +7,7 @@ import Faqs from '../../components/faqs/faqs'
 import Link from 'next/link'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
 // import parse from "html-react-parser";
 
 const Location = ({ products, pages, slug }: any) => {
@@ -35,7 +36,11 @@ const Location = ({ products, pages, slug }: any) => {
               }
             </div>
 
-          <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
+            <div className='md:max-w-[420px] mx-auto'>
+
+            <DeliveryTime title="Standard" desc="" /></div>
+
+          <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>Our Range of Printed T- shirts</h4>
           <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
             {products?.map((item: any, idx: number) => {
               const img = item?.featuredImage?.node.mediaItemUrl
