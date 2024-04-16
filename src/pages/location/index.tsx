@@ -24,16 +24,22 @@ const Location = ({ products, pages, slug }: any) => {
           <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.productSection?.subTitle}</p>
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
             {
-              list1.map((item, id) => (
-                <div key={id}>
-                  <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
-                  <h5 className='text-center mt-4 font-bold text-gray-700 min-h-[57px] text-lg'>{item?.name.replace(/London/g, pages?.title)}</h5>
-                  <h6 className='text-center font-light mt-1 text-gray-800'>{item.text.replace(/London/g, pages?.title)}</h6>
-                  <button onClick={() => router.push('/custom-t-shirt-printing-cheap-t-shirt-printing')} className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105'>View Products</button>
+             pages?.locationinfo?.productSection?.productSections.map((item: any, id: number) => (
+
+
+              <div key={id}>
+                  <Image src={item?.image?.node?.mediaItemUrl} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
+                  <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.title} </h5>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item?.description }}
+                    className='text-center font-light mt-4 text-gray-800'
+                  />
+                   <Link href={item?.link}  className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105 block text-center'>View Products</Link>
+                  
                 </div>
-              ))
+               ))
             }
-          </div>
+            </div>
 
           <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
           <div className='grid lg:grid-cols-4 md:grid-cols-3 xl:grid-cols-5 grid-cols-2 gap-5 mt-7'>
