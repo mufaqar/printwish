@@ -21,8 +21,6 @@ const Location = ({ products, pages, slug }: any) => {
         <div className='mb-10'>
           <h1 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'> {pages?.locationinfo?.productSection?.title}</h1>
           <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.productSection?.subTitle}</p>
-
-            
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
             {
               list1.map((item, id) => (
@@ -44,7 +42,7 @@ const Location = ({ products, pages, slug }: any) => {
             })}
           </div>
 
-         
+
           <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'>ORDER DELIVERY TIMELINE?</h2>
           <p className='font-bold text-xl text-gray-600'>We are committed to timely deliveries. With complimentary UK Shipping on every
             order, you can expect your curated pieces within 5-7 business days post payment.
