@@ -9,36 +9,30 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 // import parse from "html-react-parser";
 
-
 const Location = ({ products, pages, slug }: any) => {
-  console.log("🚀 ~ Location ~ pages:", pages.locationinfo)
+  // console.log("🚀 ~ Location ~ pages:", pages.locationinfo)
   // const fullHead = parse(pages.seo.fullHead);
   const router = useRouter()
   return (
     <>
-
-
       <section className='container mx-auto px-4 my-10'>
         <div className='mb-10'>
           <h1 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4'> {pages?.locationinfo?.productSection?.title}</h1>
           <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.productSection?.subTitle}</p>
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
-            {
-             pages?.locationinfo?.productSection?.productSections.map((item: any, id: number) => (
-
-
-              <div key={id}>
-                  <Image src={item?.image?.node?.mediaItemUrl} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
-                  <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.title} </h5>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: item?.description }}
-                    className='text-center font-light mt-4 text-gray-800'
-                  />
-                   <Link href={item?.link}  className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105 block text-center'>View Products</Link>
-                  
-                </div>
-               ))
-            }
+              {
+              pages?.locationinfo?.productSection?.productSections.map((item: any, id: number) => (
+                <div key={id}>
+                    <Image src={item?.image?.node?.mediaItemUrl} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
+                    <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.title} </h5>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: item?.description }}
+                      className='text-center font-light mt-4 text-gray-800'
+                    />
+                    <Link href={item?.link}  className='bg-[#D1DE8B] text-black p-2 w-full mt-4 hover:scale-105 block text-center'>View Products</Link>                  
+                  </div>
+                ))
+              }
             </div>
 
           <h4 className='bg-primary p-3 text-center text-white font-bold text-2xl mt-10 md:text-3xl'>BRANDED T-SHIRTS</h4>
@@ -49,10 +43,9 @@ const Location = ({ products, pages, slug }: any) => {
             })}
           </div>
 
-
+        {/* Order  Section   */}
           <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'> {pages?.locationinfo?.orderSection?.title}</h2>
           <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.orderSection?.subTitle}</p>
-
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
             {
               pages?.locationinfo?.orderSection?.orderSections.map((item: any, id: number) => (
