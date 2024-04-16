@@ -162,6 +162,19 @@ query GetLocation($slug: String!) {
         title
         subTitle
       }
+      orderSection {
+        title
+        subTitle
+        orderSections {
+          title
+          description
+          image {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
     }
   }
 }

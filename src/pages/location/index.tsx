@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 
 
 const Location = ({ products, pages, slug }: any) => {
+  console.log("🚀 ~ Location ~ pages:", pages.locationinfo)
   // const fullHead = parse(pages.seo.fullHead);
   const router = useRouter()
   return (
@@ -43,28 +44,24 @@ const Location = ({ products, pages, slug }: any) => {
           </div>
 
 
-          <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'>ORDER DELIVERY TIMELINE?</h2>
-          <p className='font-bold text-xl text-gray-600'>We are committed to timely deliveries. With complimentary UK Shipping on every
-            order, you can expect your curated pieces within 5-7 business days post payment.
-            Should you have urgent needs or special requests, our dedicated team is
-            available at sales@printwish.co.uk.</p>
+          <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'> {pages?.locationinfo?.orderSection?.title}</h2>
+          <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.orderSection?.subTitle}</p>
 
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
             {
-              list2.map((item, id) => (
+              pages?.locationinfo?.orderSection?.orderSections.map((item: any, id: number) => (
                 <div key={id}>
-                  <Image src={item.image} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
-                  <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.name}</h5>
-                  <h6 className='text-center font-light mt-4 text-gray-800'>{item.text.replace(/London/g, item?.name)}</h6>
+                  <Image src={item?.image?.node?.mediaItemUrl} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
+                  <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.title} </h5>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item?.description }}
+                    className='text-center font-light mt-4 text-gray-800'
+                  />
                 </div>
               ))
             }
           </div>
-
         </div>
-
-
-
         <div
           dangerouslySetInnerHTML={{ __html: pages?.content }}
           className='locationContent'
