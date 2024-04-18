@@ -258,9 +258,9 @@ export const SINGLEBAG = gql`
 `;
 
 export const GetProductByTag = gql`
-  query GetProductByTag($tag: ID = "") {
+  query GetProductByTag($tag: ID = "all") {
     productTag(id: $tag, idType: SLUG) {
-      products {
+      products(first: 30) {
         nodes {
           title
           slug

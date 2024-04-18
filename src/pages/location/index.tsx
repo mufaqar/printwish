@@ -11,6 +11,7 @@ import DeliveryTime from '@/components/deliveryTime/DeliveryTime'
 // import parse from "html-react-parser";
 
 const Location = ({ products, pages, slug }: any) => {
+ // console.log("🚀 ~ Location ~ products:", products)
   // console.log("🚀 ~ Location ~ pages:", pages.locationinfo)
   // const fullHead = parse(pages.seo.fullHead);
   const router = useRouter()
