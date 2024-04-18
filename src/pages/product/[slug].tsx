@@ -286,10 +286,10 @@ const ProductSlug = ({ post, product }: any) => {
               }) : <img src={imagePath} alt={product.name} width={600} height={600} className="w-full rounded-lg" />
             }
           </Slider>
-          <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
-            <h6>Printed From <strong className='text-gray-500'>{ product?.price}</strong> per unit</h6>
-            <h6>Lead Time : <span className='text-gray-500'>3-5 working days</span></h6>
-            <h6>Minimum Order Value is  <span className='text-gray-500'>25 units.</span></h6>
+          <div className='mt-5 text-lg text-black bg-background p-8 rounded-lg font-medium '>
+            <h6>Printed From <strong className='text-black'>{ product?.price}</strong> ex Vat per unit</h6>
+            <h6>Lead Time : <span className='text-black'>3-5 working days</span></h6>
+            <h6>Minimum Order Value is  <span className='text-black'>25 units.</span></h6>
           </div>
           {
             product?.poductInfo?.rating?.ratingNumber && <div className='md:hidden'><RatingInfo data={product?.poductInfo?.productRating} /></div>
