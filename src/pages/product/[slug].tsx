@@ -43,6 +43,7 @@ interface IColor {
 }
 
 const ProductSlug = ({ post, product }: any) => {
+ // console.log("🚀 ~ ProductSlug ~ product:", product)
   //const fullHead = parse(product.seo.fullHead);
   const { selectedCustomizedLayout, setSelectedCustomizedLayout, selectArt, designPosition, uploadedImages, selectedVariants, colorsInLogo,
     setSelectArt, setColorsInLogo, selectedProduct, setSelectedProduct, customizationButton, setCustomizationButton, setDesignPosition } = useContext(SettingsContext)
@@ -286,7 +287,7 @@ const ProductSlug = ({ post, product }: any) => {
             }
           </Slider>
           <div className='mt-5 text-lg text-gray-600 bg-background p-8 rounded-lg'>
-            <h6>Printed From <strong className='text-gray-500'>£{(whitesmall || product?.price?.replace('£', '')).toFixed(2)}</strong> per unit</h6>
+            <h6>Printed From <strong className='text-gray-500'>{ product?.price}</strong> per unit</h6>
             <h6>Lead Time : <span className='text-gray-500'>3-5 working days</span></h6>
             <h6>Minimum Order Value is  <span className='text-gray-500'>25 units.</span></h6>
           </div>
