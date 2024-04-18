@@ -32,7 +32,6 @@ export default DealsBanner
 export const points = [
      "Super Fast Turnarounds",
      "Money Back Guaranteed.",
-     "Secure payment System Via Stripe",
      "Fast and Free Delivery Via DPD.",
      "Over 2000+ Customer reviews"
 ]
