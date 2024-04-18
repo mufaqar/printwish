@@ -33,7 +33,7 @@ const Product_Box = ({ data, image }: any) => {
           </p>
 
           <p className='text-center font-bold font-roboto mb-3 text-primary'>
-            Printed From <span className='text-secondary  hover:text-secondary'>£{smallPrice?.value || data?.poductInfo?.whitesmall || simplePrice}</span>
+            Printed From <span className='text-secondary  hover:text-secondary'>£{ simplePrice}</span>
           </p>
           {
             ratingData?.ratingStarUrl?.value.length > 2 && <div onClick={() => setOpenRating(!openRating)} className='flex flex-col -mt-3 justify-between items-center min-h-[62px]'>
