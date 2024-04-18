@@ -31,7 +31,6 @@ const Product_Box = ({ data, image }: any) => {
           <p className='text-xs text-center text-secondary sm:text-base'>
             <strong>{colors_lenght?.options?.length || colors_lenght}</strong> Colors available
           </p>
-
           <p className='text-center font-bold font-roboto mb-3 text-primary'>
             Printed From <span className='text-secondary  hover:text-secondary'>£{ simplePrice}</span>
           </p>
