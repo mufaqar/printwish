@@ -140,7 +140,7 @@ export default function Cotton_Bag({ bag }: any) {
                         <div className='md:w-1/4 w-full'>
                             <div className='bg-primary p-5'>
                                 <h2 className='font-semibold text-white text-2xl text-center'>
-                                    Qoute Form
+                                    Quote Form
                                 </h2>
                                 <p className='font-medium text-white text-base text-center'>
                                     To Ask a Question, Start an Order, or Get a Quote, Please Fill in The Contact Form Below

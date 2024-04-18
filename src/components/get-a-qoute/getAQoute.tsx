@@ -50,15 +50,15 @@ const GetAQoute = ({
 
                     <h5 className={`text-xl font-semibold text-accent mb-2 mt-5 font-roboto`}>Additional information or requests</h5>
                     <textarea value={aditionalInformation} onChange={(e) => setAditionalInformation(e.target.value)} className='block w-full p-3 h-[340px] text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md' />
-                    <div className='flex justify-end'>
+                    <div className='flex justify-center'>
                          <button onClick={() => {
                                    handleAddaQouteWithValidation(colorsInLogo, aditionalInformation)
                               }
                          }
-                         className={` uppercase font-light items-center border border-primary gap-2 w-1/2 text-center py-3 text-white px-6   mt-7 rounded-lg
+                         className={` uppercase font-light items-center border border-primary gap-2 w-full text-center py-3 text-white px-6   mt-7 rounded-lg
                               ${colorsInLogo ? 'bg-primary hover:bg-transparent hover:text-primary cursor-pointer' : 'bg-gray-400 border-gray-400 cursor-default' }
                          `}
-                         >Add to Qoute</button>
+                         >Add to Quote</button>
                     </div>
                </div>
           </section>
