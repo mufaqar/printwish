@@ -54,7 +54,7 @@ const Location = ({ products, pages, slug }: any) => {
           <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.orderSection?.subTitle}</p>
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
             {
-              pages?.locationinfo?.orderSection?.orderSections.map((item: any, id: number) => (
+              pages?.locationinfo?.orderSection?.orderSections?.map((item: any, id: number) => (
                 <div key={id}>
                   <Image src={item?.image?.node?.mediaItemUrl} alt={item.name} width={600} height={200} className='sm:h-[180px] object-cover border border-gray-100' />
                   <h5 className='text-center mt-4 font-bold text-gray-700 text-lg'>{item?.title} </h5>
