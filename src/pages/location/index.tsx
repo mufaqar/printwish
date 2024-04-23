@@ -50,7 +50,7 @@ const Location = ({ products, pages, slug }: any) => {
           </div>
 
         {/* Order  Section   */}
-          <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'> {pages?.locationinfo?.orderSection?.title}</h2>
+          {/* <h2 className='font-bold text-[#D1DE8B] text-4xl sm:text-[46px] capitalize my-4  mt-10'> {pages?.locationinfo?.orderSection?.title}</h2>
           <p className='font-bold text-xl text-gray-600'>{pages?.locationinfo?.orderSection?.subTitle}</p>
           <div className='grid grid-col-1 gap-5 sm:grid-cols-2 md:grid-cols-4 mt-12'>
             {
@@ -65,7 +65,7 @@ const Location = ({ products, pages, slug }: any) => {
                 </div>
               ))
             }
-          </div>
+          </div> */}
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: pages?.content }}
